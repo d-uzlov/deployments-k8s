@@ -1,0 +1,94 @@
+2022-09-30T12:02:55.402451Z	info	FLAG: --concurrency="2"
+2022-09-30T12:02:55.402485Z	info	FLAG: --domain="default.svc.cluster.local"
+2022-09-30T12:02:55.402489Z	info	FLAG: --help="false"
+2022-09-30T12:02:55.402492Z	info	FLAG: --log_as_json="false"
+2022-09-30T12:02:55.402495Z	info	FLAG: --log_caller=""
+2022-09-30T12:02:55.402500Z	info	FLAG: --log_output_level="default:info"
+2022-09-30T12:02:55.402503Z	info	FLAG: --log_rotate=""
+2022-09-30T12:02:55.402505Z	info	FLAG: --log_rotate_max_age="30"
+2022-09-30T12:02:55.402507Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-09-30T12:02:55.402510Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-09-30T12:02:55.402512Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-09-30T12:02:55.402522Z	info	FLAG: --log_target="[stdout]"
+2022-09-30T12:02:55.402525Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-09-30T12:02:55.402527Z	info	FLAG: --outlierLogPath=""
+2022-09-30T12:02:55.402530Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2022-09-30T12:02:55.402532Z	info	FLAG: --proxyLogLevel="warning"
+2022-09-30T12:02:55.402535Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-09-30T12:02:55.402537Z	info	FLAG: --stsPort="0"
+2022-09-30T12:02:55.402539Z	info	FLAG: --templateFile=""
+2022-09-30T12:02:55.402542Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-09-30T12:02:55.402549Z	info	FLAG: --vklog="0"
+2022-09-30T12:02:55.402552Z	info	Version 1.14.3-a95e01fe300e14a11e7e9503d4b2c196ab755fcf-Clean
+2022-09-30T12:02:55.402854Z	info	Proxy role	ips=[10.244.1.18] type=sidecar id=greeting-68cd9666dc-hvl5z.default domain=default.svc.cluster.local
+2022-09-30T12:02:55.402915Z	info	Apply proxy config from env {}
+
+2022-09-30T12:02:55.408716Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-09-30T12:02:55.408808Z	info	JWT policy is third-party-jwt
+2022-09-30T12:02:55.408818Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-09-30T12:02:55.409816Z	info	SDS socket not found. Starting Istio SDS Server
+2022-09-30T12:02:55.409886Z	info	CA Endpoint 169.254.0.2:15012, provider Citadel
+2022-09-30T12:02:55.409853Z	info	Opening status port 15020
+2022-09-30T12:02:55.409926Z	info	Using CA 169.254.0.2:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-09-30T12:02:55.410104Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-09-30T12:02:55.431220Z	info	ads	All caches have been synced up in 32.616758ms, marking server ready
+2022-09-30T12:02:55.431538Z	info	sds	SDS server for workload certificates started, listening on "./var/run/secrets/workload-spiffe-uds/socket"
+2022-09-30T12:02:55.431563Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-09-30T12:02:55.431649Z	info	sds	Starting SDS grpc server
+2022-09-30T12:02:55.432270Z	info	starting Http service at 127.0.0.1:15004
+2022-09-30T12:02:55.433162Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-09-30T12:02:55.439491Z	info	Starting proxy agent
+2022-09-30T12:02:55.439617Z	info	Epoch 0 starting
+2022-09-30T12:02:55.439675Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-09-30T12:02:55.853353Z	warn	ca	ca request failed, starting attempt 1 in 108.120461ms
+2022-09-30T12:02:55.961785Z	warn	ca	ca request failed, starting attempt 2 in 210.780795ms
+2022-09-30T12:02:56.173455Z	warn	ca	ca request failed, starting attempt 3 in 410.871257ms
+2022-09-30T12:02:56.585770Z	warn	ca	ca request failed, starting attempt 4 in 836.203778ms
+2022-09-30T12:02:57.422600Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:02:58.404794Z	warn	ca	ca request failed, starting attempt 1 in 103.813134ms
+2022-09-30T12:02:58.509335Z	warn	ca	ca request failed, starting attempt 2 in 195.715279ms
+2022-09-30T12:02:58.705918Z	warn	ca	ca request failed, starting attempt 3 in 396.100435ms
+2022-09-30T12:02:59.102580Z	warn	ca	ca request failed, starting attempt 4 in 866.391802ms
+2022-09-30T12:02:59.969847Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:01.234107Z	warn	ca	ca request failed, starting attempt 1 in 97.711355ms
+2022-09-30T12:03:01.332615Z	warn	ca	ca request failed, starting attempt 2 in 195.921989ms
+2022-09-30T12:03:01.529219Z	warn	ca	ca request failed, starting attempt 3 in 403.92962ms
+2022-09-30T12:03:01.933966Z	warn	ca	ca request failed, starting attempt 4 in 782.006713ms
+2022-09-30T12:03:02.716811Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:04.473344Z	warn	ca	ca request failed, starting attempt 1 in 92.324066ms
+2022-09-30T12:03:04.566776Z	warn	ca	ca request failed, starting attempt 2 in 197.971444ms
+2022-09-30T12:03:04.765540Z	warn	ca	ca request failed, starting attempt 3 in 361.111254ms
+2022-09-30T12:03:05.127235Z	warn	ca	ca request failed, starting attempt 4 in 843.657677ms
+2022-09-30T12:03:05.972697Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:07.126229Z	warn	ca	ca request failed, starting attempt 1 in 92.172656ms
+2022-09-30T12:03:07.218588Z	warn	ca	ca request failed, starting attempt 2 in 180.820222ms
+2022-09-30T12:03:07.400174Z	warn	ca	ca request failed, starting attempt 3 in 364.877028ms
+2022-09-30T12:03:07.766067Z	warn	ca	ca request failed, starting attempt 4 in 777.913163ms
+2022-09-30T12:03:08.544837Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:11.605508Z	warn	ca	ca request failed, starting attempt 1 in 96.745351ms
+2022-09-30T12:03:11.703063Z	warn	ca	ca request failed, starting attempt 2 in 186.879733ms
+2022-09-30T12:03:11.890770Z	warn	ca	ca request failed, starting attempt 3 in 391.461638ms
+2022-09-30T12:03:12.282951Z	warn	ca	ca request failed, starting attempt 4 in 728.384502ms
+2022-09-30T12:03:13.012487Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:16.817913Z	warn	ca	ca request failed, starting attempt 1 in 100.531968ms
+2022-09-30T12:03:16.919408Z	warn	ca	ca request failed, starting attempt 2 in 212.452546ms
+2022-09-30T12:03:17.132959Z	warn	ca	ca request failed, starting attempt 3 in 430.571353ms
+2022-09-30T12:03:17.564917Z	warn	ca	ca request failed, starting attempt 4 in 878.077838ms
+2022-09-30T12:03:18.444161Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 169.254.0.2:15012: connect: connection refused"
+2022-09-30T12:03:24.700637Z	warn	ca	ca request failed, starting attempt 1 in 94.54894ms
+2022-09-30T12:03:24.796178Z	warn	ca	ca request failed, starting attempt 2 in 219.755161ms
