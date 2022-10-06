@@ -1,0 +1,18 @@
+defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  meshId: mesh1
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: server
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: mesh1
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: server
+    ISTIO_METAJSON_LABELS: '{"app":"server","service.istio.io/canonical-name":"server","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: default
+    SERVICE_ACCOUNT: service-account
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411

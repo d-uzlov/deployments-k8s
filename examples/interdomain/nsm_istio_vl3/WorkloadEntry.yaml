@@ -8,7 +8,7 @@ spec:
   # sidecars will automatically communicate with the workload using
   # istio mutual TLS.
   serviceAccount: details-legacy
-  address: 169.254.0.2
+  address: 169.254.0.3
   labels:
     app: details-legacy
     instance-id: vm1
@@ -22,10 +22,10 @@ spec:
     - details.bookinfo.com
   location: MESH_INTERNAL
   ports:
-    - number: 80
+    - number: 9080
       name: http
       protocol: HTTP
-      targetPort: 8080
+      targetPort: 9080
   resolution: STATIC
   workloadSelector:
     labels:

@@ -83,74 +83,60 @@ data:
 #    -----END CERTIFICATE-----
   root-cert.pem: |
     -----BEGIN CERTIFICATE-----
-    MIIFSzCCAzOgAwIBAgIJAISwmbtxw31CMA0GCSqGSIb3DQEBBQUAMCIxDjAMBgNV
-    BAoMBUlzdGlvMRAwDgYDVQQDDAdSb290IENBMB4XDTIyMDkwNzA4NTE1MVoXDTI0
-    MDkwNjA4NTE1MVowPTEOMAwGA1UECgwFSXN0aW8xGDAWBgNVBAMMD0ludGVybWVk
-    aWF0ZSBDQTERMA8GA1UEBwwIY2x1c3RlcjEwggIiMA0GCSqGSIb3DQEBAQUAA4IC
-    DwAwggIKAoICAQDAUaweoqPHtW8eaEJtfPZuWJ4Tvr4DPgzHMGJ5GCpwnrWUufbv
-    hxOU6x6II00SyYTihBeWU29tyC3ruTmRd1anTTdM36OqrItr36Pv1Eguj+PCuY6e
-    55Ej0YJz+wI/+budxxLuPhqTFNCCCwANK+W9hyq2aT5SayzypU5v9akN3Pkc4NdX
-    Jxf3lK1L5alHtdeLjiXF2MI0t8DB4apNiZwZp9OR0v7rDYrNZ26X8FNm38qvEa8K
-    nTW3Z4UjHcNJyTo4Pa04Iz0iEO5eRBTeBX7yq9gorZnh5NkcOgZgnpd/e83fYUXD
-    oiVsa+TBUZ83yae2QiT74QKkXKBeOpRX1Q02e97/Vi+9nHN8Jz/jzuLNVv/21hu0
-    /nuwGnWeM3MGrZSrgC6fTbCr4UgqCDOkAKImyWHTlx6Yo2KJ8SeYiFNfKOC+fFh/
-    45dS21JFWBebfFoadp7OlZSyVTPNkU4djpSvcIxdI290UggQPHJYmoVQYUTmXH+C
-    nG/cncOteMifP6b8SSXrU3ADOivhz8V1SROnWKgORVncj5G2OLf9GVFhYW4vmykU
-    7miIMWa/yix8yiqIClEoKYIs6rA3rmz7QhhOBAUTNgpZFaiqkuUomgaHeosCHlwE
-    TLzbN3OYJawhUdu+WngmXekv/OpiYdJscNz0ntuOfG9sTEvDdHbBRDRToQIDAQAB
-    o2kwZzAdBgNVHQ4EFgQUd03x4EG+2yPWkPbuxOu3UagxfNQwEgYDVR0TAQH/BAgw
-    BgEB/wIBADAOBgNVHQ8BAf8EBAMCAuQwIgYDVR0RBBswGYIXaXN0aW9kLmlzdGlv
-    LXN5c3RlbS5zdmMwDQYJKoZIhvcNAQEFBQADggIBAFsHmu0ivLs69ck/RrFaPbHN
-    nrq1q4FRPnvY8zLgSHSvnZuQ9LqLiGBoSncL0stxJfgq+UzXn5u8Ot+9KloZ4zuS
-    X39r+dCF9xHAWpivWHpmTOcbZdxzESnqt/nloVAqU3bEk/hHQXFuwMKjWuk6QMwD
-    EnO2SCdIKk1vTfe88WV5ZsYe74DsYGl5kfxBHMe86zcwBqKNK9dlo6NWSus/EvSG
-    Dt5pQt0dt7w5ToJAaTa+IZx34a0jh5PGzthyDXUJH4l1lkkxaT0F+yYG9WYZfrYd
-    IQ53WWzMHzgJcfZUUXgqQ4zylHAAAtCUc8Ri1U79hjO0ePyQpTyPWqViPAE8QGVV
-    nOFllznKxMam5d8DOiL6ENQ1IW+mlVUvhOIKxCR603nG2LRsumElr/QagQAaIa8T
-    Na7dhFEOgQINCO/i4oHhST2JMxuse6B5hXCnCC54b+PPjLq2tTjHd3xIuQai2Iys
-    LtZpkrEepYs5LyqkhDf3eyPX4rMxuZr+F3y+l5nSpdlmdXRQ+U4QJreIL760Z86c
-    E5RHmCMt1w/1NCiMIo8DKKTxr1s1kaRIW/Q9cqphpF2sDtqNd2OsutnTeNEgnhuX
-    Awc1K8Bv+CZyUxbhbV2eDtA2LQAgNgEj+RXZCz8YuHG6ZiFQZ6JnBdLPaF2iuZRv
-    uP3o7hpe33QKQU8HJ2yf
+    MIIC/TCCAeWgAwIBAgIRAKi96pny8Nj5DdBorscAlpcwDQYJKoZIhvcNAQELBQAw
+    GDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDAeFw0yMjEwMDUwODI0MTZaFw0zMjEw
+    MDIwODI0MTZaMBgxFjAUBgNVBAoTDWNsdXN0ZXIubG9jYWwwggEiMA0GCSqGSIb3
+    DQEBAQUAA4IBDwAwggEKAoIBAQDVP9ddeUmkSx5m1B77PqoLyoIhFqovmCyFYvDw
+    bjO4mfbGBt9XOK4nbqlHCIb2DNcs1G7WkKRE4X6p0NMH7xNyigQVCta1hqCcRxda
+    SB3wFZkiGE3yVAjR4/Jgvmhm4edL3Kp89Gb+zKVbymwyy8A8QSx280AyREWmALZ0
+    cBoCE0JtHwX1jg0YUkESSOn7Fc0HOFmphjRG/4UpYWNNRlImEYrojsBa6pT6loIV
+    scKdLze6IkXHusT2NzxJGgdXOXZI+JUtuKkatfz6JSJx/Gr2gAUS4pCO+TywWTuk
+    tvg3CkyBn+kz2A2r50khk/Uuv+CvBBWddfBIi1+qHUMhl2EXAgMBAAGjQjBAMA4G
+    A1UdDwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSVGDq31Dz+
+    vYkLF25eCuxgoI1IoDANBgkqhkiG9w0BAQsFAAOCAQEADUye/WUyJ57SClo7aEWQ
+    HObzqY+kRo/UuH4u6bDbYymdDPHSguh3bBMgQH7Z8O5W6e725honGbGGXnJjTKW1
+    C6nLerQxI7mEZSpny2kizJxwRApC9n6/MWPMwKDB1w0sZsbytBkojks7SN70jJUc
+    fHOC45WX+7SQbYAb92GQBp93kqw1YqBem1dsrioaK3ZMht15R6Dj0Zu3flplLLgW
+    rxRDtMkm1KhavSMZP+HgQynpjKcxSDhbEuHTbeWwiE1uxdFbUGpxDveYzjnjebxx
+    o03q9QkZebbRfrdOic6rOmRwKuwGPeIlN+P2KEK2SyHWEyv37SGQFppjsaI0gUXN
+    Eg==
     -----END CERTIFICATE-----
   cluster.env: |
     CANONICAL_REVISION='latest'
-    CANONICAL_SERVICE='server'
+    CANONICAL_SERVICE='vmapp'
     ISTIO_INBOUND_PORTS='*'
     ISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'
-    ISTIO_METAJSON_LABELS='{"app":"server","service.istio.io/canonical-name":"server","service.istio.io/canonical-revision":"latest"}'
+    ISTIO_METAJSON_LABELS='{"app":"vmapp","service.istio.io/canonical-name":"vmapp","service.istio.io/canonical-revision":"latest"}'
     ISTIO_META_CLUSTER_ID='Kubernetes'
     ISTIO_META_DNS_CAPTURE='true'
-    ISTIO_META_MESH_ID='mesh1'
+    ISTIO_META_MESH_ID=''
     ISTIO_META_NETWORK=''
-    ISTIO_META_WORKLOAD_NAME='server'
-    ISTIO_NAMESPACE='default'
-    ISTIO_SERVICE='server.default'
+    ISTIO_META_WORKLOAD_NAME='vmapp'
+    ISTIO_NAMESPACE='istio-vm'
+    ISTIO_SERVICE='vmapp.istio-vm'
     ISTIO_SERVICE_CIDR='*'
-    POD_NAMESPACE='default'
-    SERVICE_ACCOUNT='service-account'
+    POD_NAMESPACE='istio-vm'
+    SERVICE_ACCOUNT='serviceaccount'
     TRUST_DOMAIN='cluster.local'
-  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6InBUUnJoaHVTUHFOQ0tGYmtYU3U3UUNEZDhIdzByY0hKOTFTVGtZNkFUOHMifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY0ODcwODgzLCJpYXQiOjE2NjQ4NjcyODMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6InNlcnZpY2UtYWNjb3VudCIsInVpZCI6IjRkOTQzNjFmLTdmNjMtNDBkNC1hZjdhLTMxZDYzZTY4YTA4ZiJ9fSwibmJmIjoxNjY0ODY3MjgzLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDpzZXJ2aWNlLWFjY291bnQifQ.VY6v0YNsOhvNjxwIE4DdsG1wv1JL7fYUb_19nVSGNflSPOwKaDiVTBboWZEuBOer8P4d9Z8xK23_4acCeDSEhQRmrCrV76Q9zQpvMcWOk-4Xt2tQMKUFGphyPMiBTANvXuFpwKnnrwdLqpvTX9Ny0u9zMtzHLjD7n8dYesiliknf_5T7kNgb9R_YaelCwP-RU0vcU_hK4rND5Fj0OmnOpyAzLtcLVAG1mGjQsK3uGS9riTPGaGQw42R5LEtkOAcCKi1IhHQsR1ANcs7S-oFFu3jf2IcHk9M4GPDpVXnyAjeL3UMfSPBOLiOaOzhDhpElcK7PduVoy8Do8a6uRpyeog
+  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6IkljSG9wc2tpWnhxZzFxSzJscVJMN044NDU5Zzdibi13Y1BrVVkxWkRQeG8ifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY0OTYyMTAwLCJpYXQiOjE2NjQ5NTg1MDAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJpc3Rpby12bSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudCIsInVpZCI6ImFiYTdhNTUxLTFhZDUtNDU5Ny1hNDNhLTVmYjQxMmNhNTZmOSJ9fSwibmJmIjoxNjY0OTU4NTAwLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6aXN0aW8tdm06c2VydmljZWFjY291bnQifQ.k11zs40XyEr1vHS6-kTBLrjSs-pyCNKFC76oqArnRE80qZLiTXZPc83Bir2KVM-cMsaykVrzziz3OJ96w80dBUKkLV9uhOabU7ipaBOeRyNrVEGSnLB8Tsw7-eOmti6UYoNQHmg-8LHB-WjNUcdyHZG4_Ll_QRNqZbC8DNIqM30vTcg6jyfdD1HWBH1oCtZBrxYTBmQPX0oEgIFMTt_zhIwv5KOXq4ULkEN6fyL258MJM2aBLQuyUe45QZ7qX5lx2AjZx8uIF8VD2T_GRt_qp9YJCeE7K6HWpMyp_b6LgBoMaH48OkiG_IbqJUS6smMq_4PrWERIAtXnAFsPqAX9Xg
   mesh: |
     defaultConfig:
       discoveryAddress: istiod.istio-system.svc:15012
-      meshId: mesh1
       proxyMetadata:
         CANONICAL_REVISION: latest
-        CANONICAL_SERVICE: server
+        CANONICAL_SERVICE: vmapp
         ISTIO_META_CLUSTER_ID: Kubernetes
         ISTIO_META_DNS_CAPTURE: "true"
-        ISTIO_META_MESH_ID: mesh1
+        ISTIO_META_MESH_ID: ""
         ISTIO_META_NETWORK: ""
-        ISTIO_META_WORKLOAD_NAME: server
-        ISTIO_METAJSON_LABELS: '{"app":"server","service.istio.io/canonical-name":"server","service.istio.io/canonical-revision":"latest"}'
-        POD_NAMESPACE: default
-        SERVICE_ACCOUNT: service-account
+        ISTIO_META_WORKLOAD_NAME: vmapp
+        ISTIO_METAJSON_LABELS: '{"app":"vmapp","service.istio.io/canonical-name":"vmapp","service.istio.io/canonical-revision":"latest"}'
+        POD_NAMESPACE: istio-vm
+        SERVICE_ACCOUNT: serviceaccount
         TRUST_DOMAIN: cluster.local
       tracing:
         zipkin:
           address: zipkin.istio-system:9411
-
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -176,7 +162,7 @@ spec:
         app: greeting
       annotations:
 #        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=server
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
+#        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
     spec:
       volumes:
         - name: cert
@@ -198,13 +184,13 @@ spec:
         - args:
             - proxy
             - sidecar
-            - --domain
-            - $(POD_NAMESPACE).svc.cluster.local
-            - --proxyLogLevel=warning
-            - --proxyComponentLogLevel=misc:error
-            - --log_output_level=default:info
-            - --concurrency
-            - "2"
+#            - --domain
+#            - $(POD_NAMESPACE).svc.cluster.local
+#            - --proxyLogLevel=warning
+#            - --proxyComponentLogLevel=misc:error
+#            - --log_output_level=default:info
+#            - --concurrency
+#            - "2"
           env:
 #              - name: CA_ROOT_CA
 #                value: /etc/ca-cert.pem
@@ -215,7 +201,7 @@ spec:
               - name: PILOT_CERT_PROVIDER
                 value: NONE
               - name: CA_ADDR
-                value: 169.254.0.2:15012
+                value: 10.244.1.2:15012
               - name: POD_NAME
                 valueFrom:
                   fieldRef:
