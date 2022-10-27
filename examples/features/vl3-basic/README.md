@@ -20,12 +20,17 @@ kubectl create ns ns-vl3
 
 Deploy network service, nsc and vl3 nses (See at `kustomization.yaml`):
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-basic?ref=23c5e9bd151a2ec204932e8b06190efa07b5df88
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-basic?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+```
+
+Wait for clients to be ready:
+```bash
+kubectl wait --for=condition=ready --timeout=2m pod -l app=nsc-kernel -n ns-vl3
 ```
 
 Find all nscs:
 ```bash
-nscs=$(kubectl  get pods -l app=nsc-kernel -o go-template --template="{{range .items}}{{.metadata.name}} {{end}}" -n ns-vl3) 
+nscs=$(kubectl  get pods -l app=nsc-kernel -o go-template --template="{{range .items}}{{.metadata.name}} {{end}}" -n ns-vl3)
 [[ ! -z $nscs ]]
 ```
 
@@ -44,13 +49,13 @@ done
 ```
 
 Ping each vl3-nse by each client.
-Note: By default we're using ipam prefix is `169.254.0.0/16` and client prefix len is `24`. We also have two vl3 nses in this example. So we are expect to have a two vl3 addresses: `169.254.0.0` and `169.254.1.0` that should be accessible by each client.
+Note: By default ipam prefix is `172.16.0.0/16` and client prefix len is `24`. We also have two vl3 nses in this example. So we expect to have two vl3 addresses: `172.16.0.0` and `172.16.1.0` that should be accessible by each client.
 ```bash
 for nsc in $nscs 
 do
     echo $nsc pings nses
-    kubectl exec -n ns-vl3 $nsc -- ping 169.254.0.0 -c4
-    kubectl exec -n ns-vl3 $nsc -- ping 169.254.1.0 -c4
+    kubectl exec -n ns-vl3 $nsc -- ping 172.16.0.0 -c4
+    kubectl exec -n ns-vl3 $nsc -- ping 172.16.1.0 -c4
 done
 ```
 

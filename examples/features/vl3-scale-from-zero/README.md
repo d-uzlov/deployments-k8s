@@ -15,7 +15,7 @@ kubectl create ns ns-vl3-scale-from-zero
 
 Deploy NSC and supplier:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-scale-from-zero?ref=23c5e9bd151a2ec204932e8b06190efa07b5df88
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-scale-from-zero?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
 ```
 
 Wait for applications ready:
@@ -49,14 +49,14 @@ do
 done
 ```
 
-Ping each vl3-nse by each client. 
-Note: By default we're using ipam prefix is `169.254.0.0/16` and client prefix len is `24`. We also have two vl3 nses in this example. So we are expect to have a two vl3 addresses: `169.254.0.0` and `169.254.1.0` that should be accessible by each client.
+Ping each vl3-nse by each client.
+Note: By default ipam prefix is `172.16.0.0/16` and client prefix len is `24`. We also have two vl3 nses in this example. So we expect to have two vl3 addresses: `172.16.0.0` and `172.16.1.0` that should be accessible by each client.
 ```bash
 for nsc in $nscs 
 do
     echo $nsc pings nses
-    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 169.254.0.0 -c4
-    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 169.254.1.0 -c4
+    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.0.0 -c4
+    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.1.0 -c4
 done
 ```
 

@@ -13,46 +13,9 @@ Create test namespace:
 kubectl create ns ns-vfio2noop
 ```
 
-Generate MAC addresses for the VFIO client and server:
-```bash
-function mac_create(){
-    echo -n 00
-    dd bs=1 count=5 if=/dev/random 2>/dev/null | hexdump -v -e '/1 ":%02x"'
-}
-```
-```bash
-CLIENT_MAC=$(mac_create)
-echo Client MAC: ${CLIENT_MAC}
-```
-```bash
-SERVER_MAC=$(mac_create)
-echo Server MAC: ${SERVER_MAC}
-```
-
-Create NSE-vfio patch:
-```bash
-cat > patch-nse-vfio.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nse-vfio
-spec:
-  template:
-    spec:
-      containers:
-        - name: sidecar
-          env:
-            - name: NSM_SERVICES
-              value: "pingpong@worker.domain: { addr: ${SERVER_MAC} }"
-        - name: ponger
-          command: ["/bin/bash", "/root/scripts/pong.sh", "ens6f3", "31", ${SERVER_MAC}]
-EOF
-```
-
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Vfio2Noop?ref=23c5e9bd151a2ec204932e8b06190efa07b5df88
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Vfio2Noop?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
 ```
 
 Wait for applications ready:
@@ -77,12 +40,12 @@ function dpdk_ping() {
   client_mac="$1"
   server_mac="$2"
 
-  command="/root/dpdk-pingpong/build/app/pingpong \
-      --no-huge                                   \
-      --                                          \
-      -n 500                                      \
-      -c                                          \
-      -C ${client_mac}                            \
+  command="/root/dpdk-pingpong/build/pingpong \
+      --no-huge                               \
+      --                                      \
+      -n 500                                  \
+      -c                                      \
+      -C ${client_mac}                        \
       -S ${server_mac}
       "
   out="$(kubectl -n ns-vfio2noop exec ${NSC_VFIO} --container pinger -- /bin/bash -c "${command}" 2>"${err_file}")"
@@ -109,8 +72,10 @@ function dpdk_ping() {
   return 0
 }
 ```
+
+Ping with client and server MAC addresses:
 ```bash
-dpdk_ping ${CLIENT_MAC} ${SERVER_MAC}
+dpdk_ping "0a:55:44:33:22:00" "0a:55:44:33:22:11"
 ```
 
 ## Cleanup
@@ -121,7 +86,7 @@ NSE=$(kubectl -n ns-vfio2noop get pods -l app=nse-vfio --template '{{range .item
 ```
 ```bash
 kubectl -n ns-vfio2noop exec ${NSE} --container ponger -- /bin/bash -c '\
-  sleep 10 && kill $(pgrep "pingpong") 1>/dev/null 2>&1 &               \
+  (sleep 10 && kill $(pgrep "pingpong")) 1>/dev/null 2>&1 &             \
 '
 ```
 
