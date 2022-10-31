@@ -13,13 +13,13 @@ spec:
   selector:
     app: greeting
 ---
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: greeting-sa
-  labels:
-    account: greeting
----
+#apiVersion: v1
+#kind: ServiceAccount
+#metadata:
+#  name: greeting-sa
+#  labels:
+#    account: greeting
+#---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,12 +34,13 @@ spec:
   template:
     metadata:
       labels:
+        istio-injection: enabled
         app: greeting
       annotations:
 #        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=server
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
+        networkservicemesh.io: kernel://my-vl3-network/nsm-1
     spec:
-      serviceAccountName: greeting-sa
+#      serviceAccountName: greeting-sa
       containers:
         - name: server
           image: hashicorp/http-echo:alpine

@@ -76,7 +76,7 @@ spec:
         - name: PILOT_CERT_PROVIDER
           value: istiod
         - name: CA_ADDR
-          value: 169.254.0.2:15012
+          value: 172.18.128.1:15012
         - name: POD_NAME
           valueFrom:
             fieldRef:
@@ -202,7 +202,7 @@ spec:
           runAsGroup: 0
           runAsNonRoot: false
           runAsUser: 0
-      serviceAccountName: greeting-sa
+      serviceAccountName: serviceaccountvm
       volumes:
       - name: workload-socket
       - name: workload-certs

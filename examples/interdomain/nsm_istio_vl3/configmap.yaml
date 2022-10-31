@@ -25,7 +25,7 @@ data:
         reload 5s
     }
     my.cluster1:53 {
-      forward . 172.18.1.128:53 {
+      forward . 172.18.128.0:53 {
         force_tcp
       }
     }

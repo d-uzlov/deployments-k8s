@@ -7,8 +7,11 @@ This example simply show how can be deployed and configured two NSM on different
 
 Install NSM
 ```bash
-kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/nsm/cluster1?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
-kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/nsm/cluster2?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+
+kubectl --kubeconfig=$KUBECONFIG1 apply -k /Users/thetadr/work/msm/deployments-k8s/examples/interdomain/nsm/cluster1
+kubectl --kubeconfig=$KUBECONFIG2 apply -k /Users/thetadr/work/msm/deployments-k8s/examples/interdomain/nsm/cluster2
+#kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/nsm/cluster1?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+#kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/nsm/cluster2?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
 ```
 
 Wait for admission-webhook-k8s:

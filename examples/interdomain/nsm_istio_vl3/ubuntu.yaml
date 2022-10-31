@@ -13,8 +13,22 @@ spec:
     metadata:
       labels:
         app: ubuntu
+      annotations:
+#        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
+        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
     spec:
+#      automountServiceAccountToken: true
+#      serviceAccountName: build-robot
+#        automountServiceAccountToken: false
       containers:
         - name: ubuntu
           image: ubuntu
           command: ["sleep", "123456"]
+#          volumeMounts:
+#            - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+#              name: kube-api-access-dcpwp
+#              readOnly: true
+          securityContext:
+#            allowPrivilegeEscalation:
+#            readOnlyRootFilesystem: false
+            privileged: true

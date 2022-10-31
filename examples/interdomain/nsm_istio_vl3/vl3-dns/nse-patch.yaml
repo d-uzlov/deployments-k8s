@@ -16,5 +16,7 @@ spec:
               value: "my-vl3-network"
             - name: NSM_REGISTER_SERVICE
               value: "true"
-#            - name: NSM_DNS_TEMPLATES
-#              value: "{{ index .Labels \"dnsName\" }}.{{ .NetworkService }}."
+            - name: NSM_DNS_TEMPLATES
+#              value: "{{ index .label \"app\" }}.{{ index .Labels \" namespace \"}}."
+#              value: "{{ index .Labels \"podName\" }}.vl3."
+              value: "{{ index .Labels \"dnsName\" }}.sample.svc."
