@@ -17,7 +17,7 @@ spec:
       serviceAccount: admission-webhook-sa
       containers:
         - name: admission-webhook-k8s
-          image: thetadr/cmd-admission-webhook-k8s:fix-if-pod
+          image: thetadr/cmd-admission-webhook-k8s:fix2
           imagePullPolicy: IfNotPresent
           readinessProbe:
             httpGet:

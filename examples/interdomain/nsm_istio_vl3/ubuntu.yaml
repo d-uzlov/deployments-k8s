@@ -13,9 +13,9 @@ spec:
     metadata:
       labels:
         app: ubuntu
-      annotations:
+#      annotations:
 #        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
+#        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
     spec:
 #      automountServiceAccountToken: true
 #      serviceAccountName: build-robot

@@ -21,22 +21,23 @@ metadata:
 data:
   root-cert.pem: |
     -----BEGIN CERTIFICATE-----
-    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
+    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
+    nQ==
     -----END CERTIFICATE-----
   cluster.env: |
     CANONICAL_REVISION='latest'
@@ -55,10 +56,10 @@ data:
     POD_NAMESPACE='vm-ns'
     SERVICE_ACCOUNT='serviceaccountvm'
     TRUST_DOMAIN='cluster.local'
-  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6Ikk3VUVLVkJvT3B6Xzk4SDhCNldaS1ZRWnZoUTZhcmhyRU5nSmEtR0xMTTAifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY2MjU5ODIxLCJpYXQiOjE2NjYyNTYyMjEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiMWMwMTUzNjEtNGY2Ny00ZTI3LTg3ZDMtYzQ2OGU1ZDY4Y2FhIn19LCJuYmYiOjE2NjYyNTYyMjEsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.y67C2uCd38UH58MhBeipTGVS3J-hHYQtyI9fS8rSfjX3l4iOgIZ0tQUM2nN1_ZynEco9TxBdQckByGNz6_gwXWMLOSq2M63qkJoyUwQ9Qhm6uyioeS9h5a0BPycv2jQpFOXGEVViQANLhl0xPW6P8QwaGCDU-sHZJsKYxxc-JTO2XUDeik1UA1xEtBfQLUn03amSpbiDTkABKOznVg85Qb3jMzMf34zH4ufOku5YarP2PSPyn5ZE2hQr4A5N9b7HgShqcW1Z_hJIxpyn49vHaYgKUEeRgpbFoku3CrwseecwUxzVTFbCO8qO-6isdUShLLjf1k1I3hU5-3AZWUQf4w
+  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6IkVQU1BTNTlQVEt3ekVHMndTejRqVWxyanVfTmJhbUV0NjhGUW4wTU83QU0ifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY3Mjk2NjIyLCJpYXQiOjE2NjcyOTMwMjIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiMDE0YjE4NTktMTAzNS00MmY2LWI2NWItOTc4NTY0ZWYyMmE2In19LCJuYmYiOjE2NjcyOTMwMjIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.KHEaN_k4vRYpNYat7YRHIw7DHJ7hiM0BAhU5WLn1DJn13JOHSW6DvCWOG2koMgyJmQ43-nXnagfxeJWselwqcyqNJEhvsd-fFBXAPjPOWiVIrK5jOWILIF-GXx-GPCCsydmB5h_f5FQ8Wm8T2s_cDeSn2SPEgn5Hp7OgcTRssJlhRnJGTYceVvDMD94pHtg744UZzJdKOf4MpCvloo-WoVwUKx4ESGfOkXExLwM43-ROQ7O2rRIn4tPMdbdVvyY19pBka7FhOlsaVqCOHefwpRzSZr20bG5zoIjPI5QPV8Muy7yp7tb-eKy1oOK4RcxJnB8dRr0Sb67RVVSb2AbaKQ
   mesh: |
     defaultConfig:
-      discoveryAddress: 172.18.0.3:30398
+      discoveryAddress: 10.96.228.158:15012
       meshId: mesh1
       proxyMetadata:
         CANONICAL_REVISION: latest
@@ -99,7 +100,7 @@ spec:
     metadata:
       labels:
         app: greeting
-      annotations:
+#      annotations:
 #        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=server
 #        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
     spec:
@@ -125,8 +126,8 @@ spec:
             - sidecar
             - --domain
             - ""
-            - --proxyLogLevel=warning
-            - --proxyComponentLogLevel=misc:error
+            - --proxyLogLevel=debug
+            - --proxyComponentLogLevel=misc:debug
             - --log_output_level=default:debug
             - --concurrency
             - "0"
@@ -140,7 +141,8 @@ spec:
               - name: PILOT_CERT_PROVIDER
                 value: NONE
               - name: CA_ADDR
-                value: 172.18.0.3:30398
+#                value: 10.244.1.2:15012
+                value: 10.96.228.158:15012
               - name: POD_NAME
                 valueFrom:
                   fieldRef:
@@ -155,11 +157,11 @@ spec:
 #                    fieldPath: status.podIP
               - name: SERVICE_ACCOUNT
                 value: serviceaccountvm
-              - name: HOST_IP
-                valueFrom:
-                  fieldRef:
-                    apiVersion: v1
-                    fieldPath: status.hostIP
+#              - name: HOST_IP
+#                valueFrom:
+#                  fieldRef:
+#                    apiVersion: v1
+#                    fieldPath: status.hostIP
               - name: PROXY_CONFIG
                 value: |
                   {}
