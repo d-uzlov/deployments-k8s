@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: greeting-dr
+spec:
+  host: greeting.default.svc.cluster.local
+  trafficPolicy: # Apply to all ports
+    tls:
+      mode: DISABLE

@@ -19,25 +19,226 @@ metadata:
   namespace: default
   name: cert-file
 data:
+  hosts: |
+    # Kubernetes-managed hosts file.
+    127.0.0.1	localhost
+    ::1	localhost ip6-localhost ip6-loopback
+    fe00::0	ip6-localnet
+    fe00::0	ip6-mcastprefix
+    fe00::1	ip6-allnodes
+    fe00::2	ip6-allrouters
+    10.244.1.36	greeting-7d7f8979b9-t9z9w
+    172.16.0.2 istiod.istio-system.svc
+  istio-start.sh: |
+    #!/bin/bash
+    #
+    # Copyright Istio Authors. All Rights Reserved.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    #
+    ################################################################################
+    #
+    # Script to configure and start the Istio sidecar.
+
+    set -e
+
+    # Match pilot/docker/Dockerfile.proxyv2
+    export ISTIO_META_ISTIO_VERSION="1.16.0"
+
+    set -a
+    # Load optional config variables
+    ISTIO_SIDECAR_CONFIG=${ISTIO_SIDECAR_CONFIG:-./var/lib/istio/envoy/sidecar.env}
+    if [[ -r ${ISTIO_SIDECAR_CONFIG} ]]; then
+      echo "[Slava] if sidecar config"
+      # shellcheck disable=SC1090
+      . "$ISTIO_SIDECAR_CONFIG"
+    fi
+
+    # Load config variables ISTIO_SYSTEM_NAMESPACE, CONTROL_PLANE_AUTH_POLICY
+    ISTIO_CLUSTER_CONFIG=${ISTIO_CLUSTER_CONFIG:-./var/lib/istio/envoy/cluster.env}
+    if [[ -r ${ISTIO_CLUSTER_CONFIG} ]]; then
+      echo "[Slava] if cluster config"
+      # shellcheck disable=SC1090
+      . "$ISTIO_CLUSTER_CONFIG"
+    fi
+    set +a
+
+    # Set defaults
+    ISTIO_BIN_BASE=${ISTIO_BIN_BASE:-/usr/local/bin}
+    ISTIO_LOG_DIR=${ISTIO_LOG_DIR:-./var/log/istio}
+    NS=${ISTIO_NAMESPACE:-default}
+    SVC=${ISTIO_SERVICE:-rawvm}
+    ISTIO_SYSTEM_NAMESPACE=${ISTIO_SYSTEM_NAMESPACE:-istio-system}
+
+    # If set, override the default
+    CONTROL_PLANE_AUTH_POLICY=${ISTIO_CP_AUTH:-"MUTUAL_TLS"}
+
+    if [ -z "${ISTIO_SVC_IP:-}" ]; then
+      echo "[Slava] if svc ip"
+      ISTIO_SVC_IP=$(hostname --all-ip-addresses | cut -d ' ' -f 1)
+    fi
+
+    if [ -z "${POD_NAME:-}" ]; then
+      echo "[Slava] if pod name"
+      POD_NAME=$(hostname -s)
+    fi
+
+    if [[ ${1-} == "clean" ]] ; then
+      if [ "${ISTIO_CUSTOM_IP_TABLES}" != "true" ] ; then
+        echo "[Slava] if ISTIO_CUSTOM_IP_TABLES"
+        # clean the previous Istio iptables chains.
+        "${ISTIO_BIN_BASE}/pilot-agent" istio-clean-iptables
+      fi
+      exit 0
+    fi
+
+    # Init option will only initialize iptables. set ISTIO_CUSTOM_IP_TABLES to true if you would like to ignore this step
+    if [ "${ISTIO_CUSTOM_IP_TABLES}" != "true" ] ; then
+        if [[ ${1-} == "init" || ${1-} == "-p" ]] ; then
+          echo "[Slava] if ISTIO_CUSTOM_IP_TABLES init"
+          # clean the previous Istio iptables chains. This part is different from the init image mode,
+          # where the init container runs in a fresh environment and there cannot be previous Istio chains
+          "${ISTIO_BIN_BASE}/pilot-agent" istio-clean-iptables
+
+          # Update iptables, based on current config. This is for backward compatibility with the init image mode.
+          # The sidecar image can replace the k8s init image, to avoid downloading 2 different images.
+          "${ISTIO_BIN_BASE}/pilot-agent" istio-iptables "${@}"
+          exit 0
+        fi
+
+        if [[ ${1-} != "run" ]] ; then
+          echo "[Slava] if ISTIO_CUSTOM_IP_TABLES run"
+          # clean the previous Istio iptables chains. This part is different from the init image mode,
+          # where the init container runs in a fresh environment and there cannot be previous Istio chains
+          "${ISTIO_BIN_BASE}/pilot-agent" istio-clean-iptables
+
+          # Update iptables, based on config file
+          "${ISTIO_BIN_BASE}/pilot-agent" istio-iptables
+        fi
+    fi
+
+    EXEC_USER=${EXEC_USER:-istio-proxy}
+    if [ "${ISTIO_INBOUND_INTERCEPTION_MODE}" = "TPROXY" ] ; then
+      echo "[Slava] if ISTIO_INBOUND_INTERCEPTION_MODE TPROXY"
+      # In order to allow redirect inbound traffic using TPROXY, run envoy with the CAP_NET_ADMIN capability.
+      # This allows configuring listeners with the "transparent" socket option set to true.
+      EXEC_USER=root
+    fi
+
+    # The default matches the default istio.yaml - use sidecar.env to override ISTIO_PILOT_PORT or CA_ADDR if you
+    # enable auth. This requires node-agent to be running.
+    DEFAULT_PILOT_ADDRESS="istiod.${ISTIO_SYSTEM_NAMESPACE}.svc:15012"
+    CUSTOM_PILOT_ADDRESS="${PILOT_ADDRESS:-}"
+    if [ -z "${CUSTOM_PILOT_ADDRESS}" ] && [ -n "${ISTIO_PILOT_PORT:-}" ]; then
+      echo "[Slava] if CUSTOM_PILOT_ADDRESS && ISTIO_PILOT_PORT"
+      CUSTOM_PILOT_ADDRESS=istiod.${ISTIO_SYSTEM_NAMESPACE}.svc:${ISTIO_PILOT_PORT}
+    fi
+
+    # CA_ADDR > PILOT_ADDRESS > ISTIO_PILOT_PORT
+    CA_ADDR=${CA_ADDR:-${CUSTOM_PILOT_ADDRESS:-${DEFAULT_PILOT_ADDRESS}}}
+    PROV_CERT=${PROV_CERT-./etc/certs}
+    OUTPUT_CERTS=${OUTPUT_CERTS-./etc/certs}
+
+    export PROV_CERT
+    export OUTPUT_CERTS
+    export CA_ADDR
+
+    # If predefined ISTIO_AGENT_FLAGS is null, make it an empty string.
+    ISTIO_AGENT_FLAGS=${ISTIO_AGENT_FLAGS:-}
+    # Split ISTIO_AGENT_FLAGS by spaces.
+    IFS=' ' read -r -a ISTIO_AGENT_FLAGS_ARRAY <<< "$ISTIO_AGENT_FLAGS"
+
+    DEFAULT_PROXY_CONFIG="
+    serviceCluster: $SVC
+    controlPlaneAuthPolicy: ${CONTROL_PLANE_AUTH_POLICY}
+    "
+    if [ -n "${CUSTOM_PILOT_ADDRESS}" ]; then
+      echo "[Slava] if CUSTOM_PILOT_ADDRESS"
+      PROXY_CONFIG="$PROXY_CONFIG
+    discoveryAddress: ${CUSTOM_PILOT_ADDRESS}
+    "
+    fi
+
+    # PROXY_CONFIG > PILOT_ADDRESS > ISTIO_PILOT_PORT
+    export PROXY_CONFIG=${PROXY_CONFIG:-${DEFAULT_PROXY_CONFIG}}
+
+    if [ ${EXEC_USER} == "${USER:-}" ] ; then
+      echo "[Slava] if EXEC_USER"
+      # if started as istio-proxy (or current user), do a normal start, without
+      # redirecting stderr.
+      INSTANCE_IP=${ISTIO_SVC_IP} POD_NAME=${POD_NAME} POD_NAMESPACE=${NS} "${ISTIO_BIN_BASE}/pilot-agent" proxy "${ISTIO_AGENT_FLAGS_ARRAY[@]}"
+    else
+
+    # su will mess with the limits set on the process we run. This may lead to quickly exhausting the file limits
+    # We will get the host limit and set it in the child as well.
+    # TODO(https://superuser.com/questions/1645513/why-does-executing-a-command-in-su-change-limits) can we do better?
+    currentLimit=$(ulimit -n)
+
+    #echo "Environment variables" > /variables.log
+    #echo "ISTIO_SVC_IP" >> /variables.log
+    #echo $ISTIO_SVC_IP >> /variables.log
+    #echo "POD_NAME" >> /variables.log
+    #echo $POD_NAME >> /variables.log
+    #echo "NS" >> /variables.log
+    #echo $NS >> /variables.log
+    #echo "ISTIO_AGENT_FLAGS_ARRAY" >> /variables.log
+    #echo "${ISTIO_AGENT_FLAGS_ARRAY[@]}" >> /variables.log
+    #echo "PROXY_CONFIG" >> /variables.log
+    #echo $PROXY_CONFIG >> /variables.log
+    #echo "CUSTOM_PILOT_ADDRESS" >> /variables.log
+    #echo ${CUSTOM_PILOT_ADDRESS} >> /variables.log
+    #echo "CONTROL_PLANE_AUTH_POLICY" >> /variables.log
+    #echo ${CONTROL_PLANE_AUTH_POLICY} >> /variables.log
+    #echo "SVC" >> /variables.log
+    #echo $SVC >> /variables.log
+    #echo "PROV_CERT" >> /variables.log
+    #echo $PROV_CERT >> /variables.log
+    #echo "OUTPUT_CERTS" >> /variables.log
+    #echo $OUTPUT_CERTS >> /variables.log
+    #echo "CA_ADDR" >> /variables.log
+    #echo $CA_ADDR >> /variables.log
+    #echo "ISTIO_INBOUND_INTERCEPTION_MODE" >> /variables.log
+    #echo "${ISTIO_INBOUND_INTERCEPTION_MODE}" >> /variables.log
+    #echo "ISTIO_CLUSTER_CONFIG" >> /variables.log
+    #echo $ISTIO_CLUSTER_CONFIG >> /variables.log
+    #echo "ISTIO_SIDECAR_CONFIG" >> /variables.log
+    #echo $ISTIO_SIDECAR_CONFIG >> /variables.log
+    #echo "EXEC_USER" >> /variables.log
+    #echo $EXEC_USER >> /variables.log
+    #echo "currentLimit" >> /variables.log
+    #echo ${currentLimit} >> /variables.log
+    # Will run: ${ISTIO_BIN_BASE}/envoy -c $ENVOY_CFG --restart-epoch 0 --drain-time-s 2 --parent-shutdown-time-s 3 --service-cluster $SVC --service-node 'sidecar~${ISTIO_SVC_IP}~${POD_NAME}.${NS}.svc.cluster.local~${NS}.svc.cluster.local' $ISTIO_DEBUG >${ISTIO_LOG_DIR}/istio.log" istio-proxy
+    #exec sudo -E -u ${EXEC_USER} -s /bin/bash -c "ulimit -n ${currentLimit}; INSTANCE_IP=${ISTIO_SVC_IP} POD_NAME=${POD_NAME} POD_NAMESPACE=${NS} exec ${ISTIO_BIN_BASE}/pilot-agent proxy ${ISTIO_AGENT_FLAGS_ARRAY[*]} 2>> ${ISTIO_LOG_DIR}/istio.err.log >> ${ISTIO_LOG_DIR}/istio.log"
+    exec sudo -E -u ${EXEC_USER} -s /bin/bash -c "ulimit -n ${currentLimit}; INSTANCE_IP=${ISTIO_SVC_IP} POD_NAME=${POD_NAME} POD_NAMESPACE=${NS} exec ${ISTIO_BIN_BASE}/pilot-agent proxy ${ISTIO_AGENT_FLAGS_ARRAY[*]}"
+    fi
   root-cert.pem: |
     -----BEGIN CERTIFICATE-----
-    MIIC/TCCAeWgAwIBAgIRAIYmtgUVTPSlCzz5fwD6hDIwDQYJKoZIhvcNAQELBQAw
-    GDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDAeFw0yMjExMDEwODQ4MzBaFw0zMjEw
-    MjkwODQ4MzBaMBgxFjAUBgNVBAoTDWNsdXN0ZXIubG9jYWwwggEiMA0GCSqGSIb3
-    DQEBAQUAA4IBDwAwggEKAoIBAQC+h0ikR6ZsxoHSx/C2glLW5qOvOMY02H+fMp8T
-    aA6grOw+piOsTQlEMty1O+M6N0Ge+eYQSit3BnHIDHqsCIKe3yDxnD+zgmHM4KUK
-    CTeltip7+K5A65W4yu53vpYQBhJErWek6pJp47AcJ+Xg6+04U/0w7y3CPqdupSV/
-    c5s6qNFR+I/aXMgRklEMsyMjzYIVkfSiHbqO/j+SL4pLnYFuXa7p0U+p/Gr6j4r2
-    iweqELsMBvzyt8nzt2bOXui20XUEYNDv/VVUpqPqmx2uRvRVKDlzObT9Lqf7JqqL
-    MUkEcliJH92KQdYz8eSc0pDhH+854hImus+IZ781HSwhOkuJAgMBAAGjQjBAMA4G
-    A1UdDwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQ+IiqCLcso
-    3jGd7UhZ1ZX1pBhi/zANBgkqhkiG9w0BAQsFAAOCAQEApKiIoExAB34xxUCs3BZJ
-    VXDiHPaWBSLCmFO31keo0WFBhTUd++oDjUUgoI4Ze5UXrul01pix27Jo5LhM3EXx
-    NlakfCC39p6YcOhjcn2ip6LjxbX11rsJPdloYMtBwXY6jXrSsn2eSkyL1RHxErcq
-    q98akNv4IZPQU2VQ0YuEuHrC5M8H6Cp2tMToOqij52XvxfvzChTfuNpxayJW3h6D
-    xdidkT1T+ImaMqRNAc0DuhRM1mLOJ1r1yT2A6pNF1eC7VHw3qro4ai0UzXrTErxU
-    i1jiEydlpZ82rJLRFSRzKyXnF83vdTLmCDk39L6F9OLvXkYhBIdZr/3+t/G1q813
-    nQ==
+    MIIC/DCCAeSgAwIBAgIQd7DZkQ57IFKdgPsWj5AXXjANBgkqhkiG9w0BAQsFADAY
+    MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTExMDE1MzQ1OVoXDTMyMTEw
+    NzE1MzQ1OVowGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN
+    AQEBBQADggEPADCCAQoCggEBALXxDgOO6ByXeTM76Ni3qOl80lMTy74ZQOpw3I5j
+    DkB8dD57Rfrth9elHEKHivxFt2uU3iSrGuhq0p89rOZj650IyqwTlwONU+K2Fk4M
+    doVW108l1I+pXqF/oDu6OrN9S7OocSj8z5NyTCQAf5asGBWhVCo02OjW91NFO77M
+    C8+hhP6QRcKO7+BVGuCpsfVuQ8OMrU9bGQWBjpEjoAXkFOYTeyNICoGHo5tYldqw
+    Q+REFouKDuo3SqHFwk46XM6JmZUa26+CpD1z/wKgWug2YBG4ii+d7aiudZWZkacR
+    I9s3RApRTzP6DfP6yBm1/jRplfENG6+c9q7I3IFPMffvtMUCAwEAAaNCMEAwDgYD
+    VR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFOxk5UeD7IGP
+    Sh/H48ofvkOYlrg0MA0GCSqGSIb3DQEBCwUAA4IBAQCWBqOuqa83tr4bAc+Olmnf
+    u9C+gWIHfckrJ3EJ74Mf1muAa5P5qWwvmhKMgzXTMSt/io6wgf7hMSWqtHJHI8jP
+    PdODUwENuxz1HTasCLMF/wZiQVcZQbSO+2xa4g67wvyQsAclxegKDwdSNV+YKoIE
+    baSY32Ya5MqkQKIoYhLlXgsZJPDiLl/8vHfRImD4a63Z30zHrtf1QChTE7vSVXke
+    Ynz42sXgew9tIOSNgYUGm5D6XEyHioDql5NwD0lAoJW6zJfhLS3xuTX8yj5NOki3
+    YYd909y84j7g3t3IEcpYJgIUHx1UI600iEQ+qRhf6F39YlcWBzwgotgPzhxphVHd
     -----END CERTIFICATE-----
   cluster.env: |
     CANONICAL_REVISION='latest'
@@ -47,37 +248,39 @@ data:
     ISTIO_METAJSON_LABELS='{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
     ISTIO_META_CLUSTER_ID='Kubernetes'
     ISTIO_META_DNS_CAPTURE='true'
-    ISTIO_META_MESH_ID='mesh1'
+    ISTIO_META_MESH_ID=''
     ISTIO_META_NETWORK=''
     ISTIO_META_WORKLOAD_NAME='vm-app'
     ISTIO_NAMESPACE='vm-ns'
+    ISTIO_SVC_IP='172.16.0.8'
     ISTIO_SERVICE='vm-app.vm-ns'
     ISTIO_SERVICE_CIDR='*'
     POD_NAMESPACE='vm-ns'
     SERVICE_ACCOUNT='serviceaccountvm'
     TRUST_DOMAIN='cluster.local'
-  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6IkVQU1BTNTlQVEt3ekVHMndTejRqVWxyanVfTmJhbUV0NjhGUW4wTU83QU0ifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY3Mjk2NjIyLCJpYXQiOjE2NjcyOTMwMjIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiMDE0YjE4NTktMTAzNS00MmY2LWI2NWItOTc4NTY0ZWYyMmE2In19LCJuYmYiOjE2NjcyOTMwMjIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.KHEaN_k4vRYpNYat7YRHIw7DHJ7hiM0BAhU5WLn1DJn13JOHSW6DvCWOG2koMgyJmQ43-nXnagfxeJWselwqcyqNJEhvsd-fFBXAPjPOWiVIrK5jOWILIF-GXx-GPCCsydmB5h_f5FQ8Wm8T2s_cDeSn2SPEgn5Hp7OgcTRssJlhRnJGTYceVvDMD94pHtg744UZzJdKOf4MpCvloo-WoVwUKx4ESGfOkXExLwM43-ROQ7O2rRIn4tPMdbdVvyY19pBka7FhOlsaVqCOHefwpRzSZr20bG5zoIjPI5QPV8Muy7yp7tb-eKy1oOK4RcxJnB8dRr0Sb67RVVSb2AbaKQ
+  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6ImpoZjlzSmdnUFlmaEdFWUhEUWdBV25LQmUtaUJPWFZoalBwVXRGXzNCUXcifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY4NTk5NDY2LCJpYXQiOjE2Njg1OTU4NjYsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiZjVmMjE4ZGItZjU2OC00NWM3LWFlZGMtY2EzM2NiZjU2ZTlkIn19LCJuYmYiOjE2Njg1OTU4NjYsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.EGfAkPk5MH-8xu6WhRKE_sUqzFwJ_R8tPYJlwhFycfuB350Fgbj697rY6noN0W14W71C7k-nmSzRecrRWQntnwctett29SBm7gGW0VY_rvkF_rhXpYZ0Z0kdVxVPRh7ta6pjoojaujcHJOI19VTN7vuyy5rCGoC_2ttk8xhyEj_rZ494qLZXyZ6oCfp0yZ8SlzylGFCC8-XLokxZMCXdB-8OoSvk6ep8oNF2kHvsZnaah9tRJiCXIkqU_0x7O7kJ92EOEh7LSeVkCyLsH1IvJL1Ij-n-uY-OHLkI9dM2Y0f4O0zrW0_9XB-I0OKB1845Qt8Nm2R-XP2QVPoETDEDzQ
   mesh: |
     defaultConfig:
-      discoveryAddress: 10.96.228.158:15012
-      meshId: mesh1
+      discoveryAddress: istiod.istio-system.svc:15012
       proxyMetadata:
+        CA_ROOT_CA: /var/run/secrets/istio/root-cert.pem
         CANONICAL_REVISION: latest
         CANONICAL_SERVICE: vm-app
         ISTIO_META_CLUSTER_ID: Kubernetes
         ISTIO_META_DNS_CAPTURE: "true"
-        ISTIO_META_MESH_ID: mesh1
+        ISTIO_META_MESH_ID: ""
         ISTIO_META_NETWORK: ""
         ISTIO_META_WORKLOAD_NAME: vm-app
         ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
         POD_NAMESPACE: vm-ns
         SERVICE_ACCOUNT: serviceaccountvm
         TRUST_DOMAIN: cluster.local
-      serviceCluster: vm-app.vm-ns
       tracing:
         zipkin:
           address: zipkin.istio-system:9411
 #---
+#discoveryAddress: istiod.istio-system.svc:15012
+#discoveryAddress: 172.16.0.2:15012
 #apiVersion: v1
 #kind: ServiceAccount
 #metadata:
@@ -100,10 +303,14 @@ spec:
     metadata:
       labels:
         app: greeting
-#      annotations:
-#        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=server
+      annotations:
+        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=server
 #        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1
     spec:
+      hostAliases:
+        - ip: "172.16.0.2"
+          hostnames:
+            - istiod.istio-system.svc
       volumes:
         - name: cert
           configMap:
@@ -121,28 +328,31 @@ spec:
           ports:
             - containerPort: 9080
               name: http
-        - args:
+        - name: istio-proxy
+          args:
             - proxy
             - sidecar
             - --domain
             - ""
-            - --proxyLogLevel=debug
-            - --proxyComponentLogLevel=misc:debug
-            - --log_output_level=default:debug
+            - --proxyLogLevel=info
+            - --proxyComponentLogLevel=misc:info
+            - --log_output_level=default:info
             - --concurrency
             - "0"
+#          command: ["/usr/local/bin/pilot-agent", "proxy"]
+#          command: ["sudo", "bash", "/usr/local/bin/istio-start.sh"]
           env:
 #              - name: CA_ROOT_CA
 #                value: /etc/ca-cert.pem
 #              - name: CONTROL_PLANE_AUTH_POLICY
 #                value: NONE
-              - name: JWT_POLICY
-                value: third-party-jwt
+#              - name: JWT_POLICY
+#                value: third-party-jwt
               - name: PILOT_CERT_PROVIDER
                 value: NONE
               - name: CA_ADDR
-#                value: 10.244.1.2:15012
-                value: 10.96.228.158:15012
+                value: istiod.istio-system.svc:15012
+#                value: 172.16.0.2:15012
               - name: POD_NAME
                 valueFrom:
                   fieldRef:
@@ -151,26 +361,28 @@ spec:
               - name: POD_NAMESPACE
                 value: vm-ns
 #              - name: INSTANCE_IP
-#                valueFrom:
-#                  fieldRef:
-#                    apiVersion: v1
-#                    fieldPath: status.podIP
+#                value: server.my-vl3-network
+              - name: INSTANCE_IP
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: status.podIP
               - name: SERVICE_ACCOUNT
                 value: serviceaccountvm
-#              - name: HOST_IP
-#                valueFrom:
-#                  fieldRef:
-#                    apiVersion: v1
-#                    fieldPath: status.hostIP
-              - name: PROXY_CONFIG
-                value: |
-                  {}
-              - name: ISTIO_META_POD_PORTS
-                value: |-
-                  [
-                  ]
-              - name: ISTIO_META_APP_CONTAINERS
-                value: alpine
+              - name: HOST_IP
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: status.hostIP
+#              - name: PROXY_CONFIG
+#                value: |
+#                  {}
+#              - name: ISTIO_META_POD_PORTS
+#                value: |-
+#                  [
+#                  ]
+#              - name: ISTIO_META_APP_CONTAINERS
+#                value: alpine
               - name: ISTIO_META_CLUSTER_ID
                 value: Kubernetes
               - name: ISTIO_META_INTERCEPTION_MODE
@@ -185,8 +397,22 @@ spec:
                 value: cluster.local
           image: docker.io/istio/proxyv2:1.15.2
           imagePullPolicy: IfNotPresent
-          name: istio-proxy
+#          securityContext:
+#            allowPrivilegeEscalation: false
+#            capabilities:
+#              add:
+#                - NET_ADMIN
+#                - NET_RAW
+#              drop:
+#                - ALL
+#            privileged: true
           volumeMounts:
+#            - mountPath: /etc/hosts
+#              name: cert
+#              subPath: hosts
+            - mountPath: /usr/local/bin/istio-start.sh
+              name: cert
+              subPath: istio-start.sh
             - mountPath: /var/run/secrets/istio/root-cert.pem
               name: cert
               subPath: root-cert.pem
@@ -220,45 +446,45 @@ spec:
             requests:
               cpu: 100m
               memory: 128Mi
-      initContainers:
-        - args:
-                  - istio-iptables
-                  - -p
-                  - "15001"
-                  - -z
-                  - "15006"
-                  - -u
-                  - "1337"
-                  - -m
-                  - REDIRECT
-                  - -i
-                  - '*'
-                  - -x
-                  - ""
-                  - -b
-                  - '*'
-                  - -d
-                  - 15090,15021,15020
-          image: docker.io/istio/proxyv2:1.15.2
-          imagePullPolicy: IfNotPresent
-          name: istio-init
-          resources:
-            limits:
-                cpu: "2"
-                memory: 1Gi
-            requests:
-                cpu: 100m
-                memory: 128Mi
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-                add:
-                  - NET_ADMIN
-                  - NET_RAW
-                drop:
-                  - ALL
-            privileged: false
-            readOnlyRootFilesystem: false
-            runAsGroup: 0
-            runAsNonRoot: false
-            runAsUser: 0
+#      initContainers:
+#        - args:
+#                  - istio-iptables
+#                  - -p
+#                  - "15001"
+#                  - -z
+#                  - "15006"
+#                  - -u
+#                  - "1337"
+#                  - -m
+#                  - REDIRECT
+#                  - -i
+#                  - '*'
+#                  - -x
+#                  - ""
+#                  - -b
+#                  - '*'
+#                  - -d
+#                  - 15090,15021,15020
+#          image: docker.io/istio/proxyv2:1.15.2
+#          imagePullPolicy: IfNotPresent
+#          name: istio-init
+#          resources:
+#            limits:
+#                cpu: "2"
+#                memory: 1Gi
+#            requests:
+#                cpu: 100m
+#                memory: 128Mi
+#          securityContext:
+#            allowPrivilegeEscalation: false
+#            capabilities:
+#                add:
+#                  - NET_ADMIN
+#                  - NET_RAW
+#                drop:
+#                  - ALL
+#            privileged: false
+#            readOnlyRootFilesystem: false
+#            runAsGroup: 0
+#            runAsNonRoot: false
+#            runAsUser: 0

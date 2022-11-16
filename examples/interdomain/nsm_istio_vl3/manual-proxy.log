@@ -1,0 +1,119 @@
+INSTANCE_IP=${ISTIO_SVC_IP} POD_NAME=${POD_NAME} POD_NAMESPACE=${NS} CA_ADDR=istiod.istio-system.svc:15012 /usr/local/bin/pilot-agent proxy
+2022-11-11T08:49:30.279751Z	info	FLAG: --concurrency="0"
+2022-11-11T08:49:30.279798Z	info	FLAG: --domain=""
+2022-11-11T08:49:30.279808Z	info	FLAG: --help="false"
+2022-11-11T08:49:30.279812Z	info	FLAG: --log_as_json="false"
+2022-11-11T08:49:30.279816Z	info	FLAG: --log_caller=""
+2022-11-11T08:49:30.279826Z	info	FLAG: --log_output_level="default:info"
+2022-11-11T08:49:30.279830Z	info	FLAG: --log_rotate=""
+2022-11-11T08:49:30.279836Z	info	FLAG: --log_rotate_max_age="30"
+2022-11-11T08:49:30.279843Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-11-11T08:49:30.279848Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-11-11T08:49:30.279853Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-11-11T08:49:30.279860Z	info	FLAG: --log_target="[stdout]"
+2022-11-11T08:49:30.279867Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-11-11T08:49:30.279872Z	info	FLAG: --outlierLogPath=""
+2022-11-11T08:49:30.279876Z	info	FLAG: --proxyComponentLogLevel=""
+2022-11-11T08:49:30.279881Z	info	FLAG: --proxyLogLevel="warning,misc:error"
+2022-11-11T08:49:30.279888Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-11-11T08:49:30.279893Z	info	FLAG: --stsPort="0"
+2022-11-11T08:49:30.279898Z	info	FLAG: --templateFile=""
+2022-11-11T08:49:30.279903Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-11-11T08:49:30.279922Z	info	FLAG: --vklog="0"
+2022-11-11T08:49:30.279932Z	info	Version 1.15.2-b542583af7f8240ad0c9cab56eb9f8d55e1357ab-Clean
+2022-11-11T08:49:30.282942Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-11-11T08:49:30.283218Z	info	Proxy role	ips=[10.244.1.12 172.16.0.3] type=sidecar id=greeting-78cb964754-wfkvz.vm-ns domain=vm-ns.svc.cluster.local
+2022-11-11T08:49:30.283261Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-11-11T08:49:30.287689Z	info	Apply proxy config from env {}
+
+2022-11-11T08:49:30.289233Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-11-11T08:49:30.289289Z	info	JWT policy is third-party-jwt
+2022-11-11T08:49:30.289301Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-11-11T08:49:30.290039Z	info	Opening status port 15020
+2022-11-11T08:49:30.291012Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-11-11T08:49:30.291063Z	info	CA Endpoint 10.96.228.158:15012, provider Citadel
+2022-11-11T08:49:30.291123Z	info	Using CA 10.96.228.158:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-11-11T08:49:30.291287Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-11-11T08:49:30.315927Z	info	ads	All caches have been synced up in 39.915166ms, marking server ready
+2022-11-11T08:49:30.316449Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-11-11T08:49:30.316539Z	info	sds	Starting SDS grpc server
+2022-11-11T08:49:30.317157Z	info	starting Http service at 127.0.0.1:15004
+2022-11-11T08:49:30.319469Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-11-11T08:49:30.323192Z	info	Starting proxy agent
+2022-11-11T08:49:30.323251Z	info	starting
+2022-11-11T08:49:30.323297Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-11-11T08:49:30.414453Z	warn	ca	ca request failed, starting attempt 1 in 96.965478ms
+2022-11-11T08:49:30.511959Z	warn	ca	ca request failed, starting attempt 2 in 204.569385ms
+2022-11-11T08:49:30.717547Z	warn	ca	ca request failed, starting attempt 3 in 361.708411ms
+2022-11-11T08:49:31.079959Z	warn	ca	ca request failed, starting attempt 4 in 820.02885ms
+2022-11-11T08:49:31.900886Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.96.228.158:15012: connect: connection refused"
+2022-11-11T08:49:32.375382Z	warn	ca	ca request failed, starting attempt 1 in 96.128502ms
+2022-11-11T08:49:32.471739Z	warn	ca	ca request failed, starting attempt 2 in 197.667435ms
+2022-11-11T08:49:32.670281Z	warn	ca	ca request failed, starting attempt 3 in 434.101823ms
+2022-11-11T08:49:33.105005Z	warn	ca	ca request failed, starting attempt 4 in 838.708205ms
+2022-11-11T08:49:33.944632Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.96.228.158:15012: connect: connection refused"
+2022-11-11T08:49:34.957721Z	warn	ca	ca request failed, starting attempt 1 in 95.545049ms
+^C2022-11-11T08:49:35.046139Z	warning	envoy main	caught SIGINT
+2022-11-11T08:49:35.046289Z	info	Agent draining Proxy
+2022-11-11T08:49:35.046303Z	info	Status server has successfully terminated
+2022-11-11T08:49:35.046483Z	error	accept tcp [::]:15020: use of closed network connection
+2022-11-11T08:49:35.047865Z	info	failed draining listeners for Envoy on port 15000: Post "http://localhost:15000/drain_listeners?inboundonly&graceful": read tcp 127.0.0.1:43822->127.0.0.1:15000: read: connection reset by peer
+2022-11-11T08:49:35.047929Z	warn	Error in invoking drain listeners endpoint Post "http://localhost:15000/drain_listeners?inboundonly&graceful": read tcp 127.0.0.1:43822->127.0.0.1:15000: read: connection reset by peer
+2022-11-11T08:49:35.047959Z	info	Graceful termination period is 5s, starting...
+2022-11-11T08:49:35.054075Z	warn	ca	ca request failed, starting attempt 2 in 187.248201ms
+2022-11-11T08:49:35.241532Z	warn	ca	ca request failed, starting attempt 3 in 419.569239ms
+2022-11-11T08:49:35.662387Z	warn	ca	ca request failed, starting attempt 4 in 766.53518ms
+2022-11-11T08:49:36.429500Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.96.228.158:15012: connect: connection refused"
+2022-11-11T08:49:37.172244Z	warn	ca	ca request failed, starting attempt 1 in 93.86175ms
+2022-11-11T08:49:37.266566Z	warn	ca	ca request failed, starting attempt 2 in 208.455752ms
+2022-11-11T08:49:37.476234Z	warn	ca	ca request failed, starting attempt 3 in 437.573519ms
+2022-11-11T08:49:37.915043Z	warn	ca	ca request failed, starting attempt 4 in 739.14649ms
+2022-11-11T08:49:38.655199Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.96.228.158:15012: connect: connection refused"
+2022-11-11T08:49:40.048993Z	info	Graceful termination period complete, terminating remaining proxies.
+2022-11-11T08:49:40.049043Z	warn	Aborted proxy instance
+2022-11-11T08:49:40.049054Z	warn	Envoy aborted abnormally
+2022-11-11T08:49:40.049063Z	info	Agent has successfully terminated

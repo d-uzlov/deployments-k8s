@@ -18,5 +18,5 @@ spec:
               value: "true"
             - name: NSM_DNS_TEMPLATES
 #              value: "{{ index .label \"app\" }}.{{ index .Labels \" namespace \"}}."
-#              value: "{{ index .Labels \"podName\" }}.vl3."
-              value: "{{ index .Labels \"dnsName\" }}.sample.svc."
+              value: "{{ index .Labels \"dnsName\" }}.{{ .NetworkService }}."
+#              value: "{{ index .Labels \"dnsName\" }}.sample.svc."

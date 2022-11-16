@@ -10,7 +10,7 @@ kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
 
 3. install istio
 ```bash
-istioctl  install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
+istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 ```
 
 kubectl --kubeconfig=$KUBECONFIG2 apply -f greeting/server.yaml 
