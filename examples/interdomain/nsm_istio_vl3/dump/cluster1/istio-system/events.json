@@ -1,0 +1,38 @@
+{
+    "kind": "EventList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "1097740"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "istiod.1726431d9384bafe",
+                "namespace": "istio-system",
+                "uid": "ab5ff320-aa80-48c3-afdc-df817cf03e19",
+                "resourceVersion": "1097327",
+                "creationTimestamp": "2022-11-10T15:35:06Z"
+            },
+            "involvedObject": {
+                "kind": "HorizontalPodAutoscaler",
+                "namespace": "istio-system",
+                "name": "istiod",
+                "uid": "e4e8d702-8bed-4c4e-9b4b-defb0f2ffab3",
+                "apiVersion": "autoscaling/v2",
+                "resourceVersion": "3463"
+            },
+            "reason": "FailedGetResourceMetric",
+            "message": "failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server could not find the requested resource (get pods.metrics.k8s.io)",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "firstTimestamp": "2022-11-10T15:35:06Z",
+            "lastTimestamp": "2022-11-17T09:00:06Z",
+            "count": 38684,
+            "type": "Warning",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        }
+    ]
+}

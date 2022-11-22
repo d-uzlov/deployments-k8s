@@ -1,0 +1,82 @@
+{
+    "kind": "ServiceList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "1097740"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "greeting",
+                "namespace": "default",
+                "uid": "03f6b909-1da6-44ed-a7f9-35a3b4e01af1",
+                "resourceVersion": "948517",
+                "creationTimestamp": "2022-11-16T11:05:12Z",
+                "annotations": {
+                    "kubernetes.io/service-account.name": "default"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "http-9080",
+                        "protocol": "TCP",
+                        "port": 9080,
+                        "targetPort": 9080
+                    }
+                ],
+                "clusterIP": "10.96.202.149",
+                "clusterIPs": [
+                    "10.96.202.149"
+                ],
+                "type": "ClusterIP",
+                "sessionAffinity": "None",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "metadata": {
+                "name": "kubernetes",
+                "namespace": "default",
+                "uid": "0b9745b5-9be9-4258-915b-2b2adea8a476",
+                "resourceVersion": "199",
+                "creationTimestamp": "2022-11-10T15:05:51Z",
+                "labels": {
+                    "component": "apiserver",
+                    "provider": "kubernetes"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "https",
+                        "protocol": "TCP",
+                        "port": 443,
+                        "targetPort": 6443
+                    }
+                ],
+                "clusterIP": "10.96.0.1",
+                "clusterIPs": [
+                    "10.96.0.1"
+                ],
+                "type": "ClusterIP",
+                "sessionAffinity": "None",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ]
+}

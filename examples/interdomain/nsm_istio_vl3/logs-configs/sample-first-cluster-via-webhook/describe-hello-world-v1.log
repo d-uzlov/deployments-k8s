@@ -1,0 +1,260 @@
+Name:         helloworld-v1-7f76fb6bb5-5p2kk
+Namespace:    sample
+Priority:     0
+Node:         kind-1-worker/172.18.0.2
+Start Time:   Thu, 17 Nov 2022 23:50:26 +0500
+Labels:       app=helloworld
+              pod-template-hash=7f76fb6bb5
+              security.istio.io/tlsMode=istio
+              service.istio.io/canonical-name=helloworld
+              service.istio.io/canonical-revision=v1
+              spiffe.io/spiffe-id=true
+              version=v1
+Annotations:  kubectl.kubernetes.io/default-container: helloworld
+              kubectl.kubernetes.io/default-logs-container: helloworld
+              prometheus.io/path: /stats/prometheus
+              prometheus.io/port: 15020
+              prometheus.io/scrape: true
+              sidecar.istio.io/status:
+                {"initContainers":["istio-init"],"containers":["istio-proxy"],"volumes":["workload-socket","credential-socket","workload-certs","istio-env...
+Status:       Running
+IP:           10.244.1.12
+IPs:
+  IP:           10.244.1.12
+Controlled By:  ReplicaSet/helloworld-v1-7f76fb6bb5
+Init Containers:
+  cmd-nsc-init:
+    Container ID:   containerd://e7183c4fe0a24af14822486279b345952abf9232f9f1d2a6f2e234aaa1f52c32
+    Image:          ghcr.io/networkservicemesh/ci/cmd-nsc-init:02c9e59
+    Image ID:       ghcr.io/networkservicemesh/ci/cmd-nsc-init@sha256:1202ee70439a72a484c54056bfcd4a8dd17a57b2776c89f7eeb47d3fbcb712a2
+    Port:           <none>
+    Host Port:      <none>
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 17 Nov 2022 23:50:27 +0500
+      Finished:     Thu, 17 Nov 2022 23:50:35 +0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NSM_LOG_LEVEL:           TRACE
+      SPIFFE_ENDPOINT_SOCKET:  unix:///run/spire/sockets/agent.sock
+      NSM_NAME:                helloworld-v1-7f76fb6bb5-5p2kk (v1:metadata.name)
+      POD_NAME:                helloworld-v1-7f76fb6bb5-5p2kk (v1:metadata.name)
+      NSM_NETWORK_SERVICES:    kernel://my-vl3-network/nsm-1?dnsName=helloworld
+    Mounts:
+      /run/spire/sockets from spire-agent-socket (ro)
+      /var/lib/networkservicemesh from nsm-socket (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2nwp7 (ro)
+  istio-init:
+    Container ID:  containerd://1fa04ca305017697035f7f20d4450a096f74fe73b4ff2cb890e18be5ea616872
+    Image:         docker.io/istio/proxyv2:1.15.1
+    Image ID:      docker.io/istio/proxyv2@sha256:7698e960a43b280b99081a505f86f2c73616112a57f21a8a9b6ab91c5ce3a682
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      istio-iptables
+      -p
+      15001
+      -z
+      15006
+      -u
+      1337
+      -m
+      REDIRECT
+      -i
+      *
+      -x
+      
+      -b
+      *
+      -d
+      15090,15021,15020
+      --log_output_level=default:info
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 17 Nov 2022 23:50:36 +0500
+      Finished:     Thu, 17 Nov 2022 23:50:36 +0500
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     2
+      memory:  1Gi
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2nwp7 (ro)
+Containers:
+  helloworld:
+    Container ID:   containerd://c59d6ef6394ce1f59b631449272ad144090e3bf1c13f1705655a0b83ba79f369
+    Image:          docker.io/istio/examples-helloworld-v1
+    Image ID:       docker.io/istio/examples-helloworld-v1@sha256:c671702b11cbcda103720c2bd3e81a4211012bfef085b7326bb7fbfd8cea4a94
+    Port:           5000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 17 Nov 2022 23:50:51 +0500
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        100m
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2nwp7 (ro)
+  cmd-nsc:
+    Container ID:   containerd://fd019060604b4afb89aa5ee30e04e038bf63a9d70fb0189b9787916cd9d81c8a
+    Image:          ghcr.io/networkservicemesh/ci/cmd-nsc:c520eb5
+    Image ID:       ghcr.io/networkservicemesh/ci/cmd-nsc@sha256:6a0130356842342fa6f309ebd11878895ece2aa23690d8a3a54e2a1fa1327bce
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Thu, 17 Nov 2022 23:50:51 +0500
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NSM_LOG_LEVEL:           TRACE
+      SPIFFE_ENDPOINT_SOCKET:  unix:///run/spire/sockets/agent.sock
+      NSM_NAME:                helloworld-v1-7f76fb6bb5-5p2kk (v1:metadata.name)
+      POD_NAME:                helloworld-v1-7f76fb6bb5-5p2kk (v1:metadata.name)
+      NSM_NETWORK_SERVICES:    kernel://my-vl3-network/nsm-1?dnsName=helloworld
+    Mounts:
+      /run/spire/sockets from spire-agent-socket (ro)
+      /var/lib/networkservicemesh from nsm-socket (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2nwp7 (ro)
+  istio-proxy:
+    Container ID:  containerd://77539e9f0c4a1a786a828cb0ab60344a89daddaed939b78cd0be9386d6236a7e
+    Image:         docker.io/istio/proxyv2:1.15.1
+    Image ID:      docker.io/istio/proxyv2@sha256:7698e960a43b280b99081a505f86f2c73616112a57f21a8a9b6ab91c5ce3a682
+    Port:          15090/TCP
+    Host Port:     0/TCP
+    Args:
+      proxy
+      sidecar
+      --domain
+      $(POD_NAMESPACE).svc.cluster.local
+      --proxyLogLevel=warning
+      --proxyComponentLogLevel=misc:error
+      --log_output_level=default:info
+      --concurrency
+      2
+    State:          Running
+      Started:      Thu, 17 Nov 2022 23:50:52 +0500
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     2
+      memory:  1Gi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Readiness:  http-get http://:15021/healthz/ready delay=1s timeout=3s period=2s #success=1 #failure=30
+    Environment:
+      JWT_POLICY:                    third-party-jwt
+      PILOT_CERT_PROVIDER:           istiod
+      CA_ADDR:                       istiod.istio-system.svc:15012
+      POD_NAME:                      helloworld-v1-7f76fb6bb5-5p2kk (v1:metadata.name)
+      POD_NAMESPACE:                 sample (v1:metadata.namespace)
+      INSTANCE_IP:                    (v1:status.podIP)
+      SERVICE_ACCOUNT:                (v1:spec.serviceAccountName)
+      HOST_IP:                        (v1:status.hostIP)
+      PROXY_CONFIG:                  {}
+                                     
+      ISTIO_META_POD_PORTS:          [
+                                         {"containerPort":5000,"protocol":"TCP"}
+                                     ]
+      ISTIO_META_APP_CONTAINERS:     helloworld,cmd-nsc
+      ISTIO_META_CLUSTER_ID:         Kubernetes
+      ISTIO_META_INTERCEPTION_MODE:  REDIRECT
+      ISTIO_META_WORKLOAD_NAME:      helloworld-v1
+      ISTIO_META_OWNER:              kubernetes://apis/apps/v1/namespaces/sample/deployments/helloworld-v1
+      ISTIO_META_MESH_ID:            cluster.local
+      TRUST_DOMAIN:                  cluster.local
+    Mounts:
+      /etc/istio/pod from istio-podinfo (rw)
+      /etc/istio/proxy from istio-envoy (rw)
+      /var/lib/istio/data from istio-data (rw)
+      /var/run/secrets/credential-uds from credential-socket (rw)
+      /var/run/secrets/istio from istiod-ca-cert (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2nwp7 (ro)
+      /var/run/secrets/tokens from istio-token (rw)
+      /var/run/secrets/workload-spiffe-credentials from workload-certs (rw)
+      /var/run/secrets/workload-spiffe-uds from workload-socket (rw)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  workload-socket:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  credential-socket:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  workload-certs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  istio-envoy:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  istio-data:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  istio-podinfo:
+    Type:  DownwardAPI (a volume populated by information about the pod)
+    Items:
+      metadata.labels -> labels
+      metadata.annotations -> annotations
+  istio-token:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  43200
+  istiod-ca-cert:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      istio-ca-root-cert
+    Optional:  false
+  spire-agent-socket:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/spire/sockets
+    HostPathType:  Directory
+  nsm-socket:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/networkservicemesh
+    HostPathType:  Directory
+  kube-api-access-2nwp7:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  5m19s  default-scheduler  Successfully assigned sample/helloworld-v1-7f76fb6bb5-5p2kk to kind-1-worker
+  Normal  Pulled     5m18s  kubelet            Container image "ghcr.io/networkservicemesh/ci/cmd-nsc-init:02c9e59" already present on machine
+  Normal  Created    5m18s  kubelet            Created container cmd-nsc-init
+  Normal  Started    5m18s  kubelet            Started container cmd-nsc-init
+  Normal  Pulled     5m9s   kubelet            Container image "docker.io/istio/proxyv2:1.15.1" already present on machine
+  Normal  Created    5m9s   kubelet            Created container istio-init
+  Normal  Started    5m9s   kubelet            Started container istio-init
+  Normal  Pulling    5m8s   kubelet            Pulling image "docker.io/istio/examples-helloworld-v1"
+  Normal  Pulled     4m54s  kubelet            Successfully pulled image "docker.io/istio/examples-helloworld-v1" in 13.893099106s
+  Normal  Created    4m54s  kubelet            Created container helloworld
+  Normal  Started    4m54s  kubelet            Started container helloworld
+  Normal  Pulled     4m54s  kubelet            Container image "ghcr.io/networkservicemesh/ci/cmd-nsc:c520eb5" already present on machine
+  Normal  Created    4m54s  kubelet            Created container cmd-nsc
+  Normal  Started    4m54s  kubelet            Started container cmd-nsc
+  Normal  Pulled     4m54s  kubelet            Container image "docker.io/istio/proxyv2:1.15.1" already present on machine
+  Normal  Created    4m54s  kubelet            Created container istio-proxy
+  Normal  Started    4m53s  kubelet            Started container istio-proxy

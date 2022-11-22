@@ -1,0 +1,1243 @@
+==== START logs for container kube-apiserver of pod kube-system/kube-apiserver-kind-1-control-plane ====
+I1110 15:05:41.382285       1 server.go:558] external host was not specified, using 172.18.0.2
+I1110 15:05:41.382817       1 server.go:158] Version: v1.24.0
+I1110 15:05:41.382968       1 server.go:160] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1110 15:05:42.009894       1 shared_informer.go:255] Waiting for caches to sync for node_authorizer
+I1110 15:05:42.014683       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1110 15:05:42.014728       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+I1110 15:05:42.017468       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1110 15:05:42.017502       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+W1110 15:05:42.022558       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+W1110 15:05:43.009034       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+W1110 15:05:43.023252       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+W1110 15:05:44.009435       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+W1110 15:05:44.336614       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+W1110 15:05:47.086564       1 genericapiserver.go:557] Skipping API apiextensions.k8s.io/v1beta1 because it has no resources.
+I1110 15:05:47.087596       1 instance.go:274] Using reconciler: lease
+I1110 15:05:47.461319       1 instance.go:586] API group "internal.apiserver.k8s.io" is not enabled, skipping.
+W1110 15:05:48.312052       1 genericapiserver.go:557] Skipping API authentication.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.313982       1 genericapiserver.go:557] Skipping API authorization.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.327647       1 genericapiserver.go:557] Skipping API certificates.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.329467       1 genericapiserver.go:557] Skipping API coordination.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.335252       1 genericapiserver.go:557] Skipping API networking.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.338385       1 genericapiserver.go:557] Skipping API node.k8s.io/v1alpha1 because it has no resources.
+W1110 15:05:48.344886       1 genericapiserver.go:557] Skipping API rbac.authorization.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.344900       1 genericapiserver.go:557] Skipping API rbac.authorization.k8s.io/v1alpha1 because it has no resources.
+W1110 15:05:48.346503       1 genericapiserver.go:557] Skipping API scheduling.k8s.io/v1beta1 because it has no resources.
+W1110 15:05:48.346516       1 genericapiserver.go:557] Skipping API scheduling.k8s.io/v1alpha1 because it has no resources.
+W1110 15:05:48.351189       1 genericapiserver.go:557] Skipping API storage.k8s.io/v1alpha1 because it has no resources.
+W1110 15:05:48.355549       1 genericapiserver.go:557] Skipping API flowcontrol.apiserver.k8s.io/v1alpha1 because it has no resources.
+W1110 15:05:48.360330       1 genericapiserver.go:557] Skipping API apps/v1beta2 because it has no resources.
+W1110 15:05:48.360344       1 genericapiserver.go:557] Skipping API apps/v1beta1 because it has no resources.
+W1110 15:05:48.362684       1 genericapiserver.go:557] Skipping API admissionregistration.k8s.io/v1beta1 because it has no resources.
+I1110 15:05:48.367388       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1110 15:05:48.367402       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+W1110 15:05:48.401584       1 genericapiserver.go:557] Skipping API apiregistration.k8s.io/v1beta1 because it has no resources.
+I1110 15:05:49.863418       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1110 15:05:49.863532       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I1110 15:05:49.863552       1 dynamic_serving_content.go:132] "Starting controller" name="serving-cert::/etc/kubernetes/pki/apiserver.crt::/etc/kubernetes/pki/apiserver.key"
+I1110 15:05:49.863615       1 secure_serving.go:210] Serving securely on [::]:6443
+I1110 15:05:49.863721       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1110 15:05:49.863851       1 available_controller.go:491] Starting AvailableConditionController
+I1110 15:05:49.863862       1 cache.go:32] Waiting for caches to sync for AvailableConditionController controller
+I1110 15:05:49.863883       1 controller.go:83] Starting OpenAPI AggregationController
+I1110 15:05:49.863928       1 apf_controller.go:317] Starting API Priority and Fairness config controller
+I1110 15:05:49.864189       1 controller.go:80] Starting OpenAPI V3 AggregationController
+I1110 15:05:49.864236       1 autoregister_controller.go:141] Starting autoregister controller
+I1110 15:05:49.864275       1 cache.go:32] Waiting for caches to sync for autoregister controller
+I1110 15:05:49.865214       1 dynamic_serving_content.go:132] "Starting controller" name="aggregator-proxy-cert::/etc/kubernetes/pki/front-proxy-client.crt::/etc/kubernetes/pki/front-proxy-client.key"
+I1110 15:05:49.865430       1 apiservice_controller.go:97] Starting APIServiceRegistrationController
+I1110 15:05:49.865470       1 cache.go:32] Waiting for caches to sync for APIServiceRegistrationController controller
+I1110 15:05:49.865542       1 customresource_discovery_controller.go:209] Starting DiscoveryController
+I1110 15:05:49.865655       1 controller.go:85] Starting OpenAPI controller
+I1110 15:05:49.865747       1 controller.go:85] Starting OpenAPI V3 controller
+I1110 15:05:49.865830       1 naming_controller.go:291] Starting NamingConditionController
+I1110 15:05:49.865884       1 establishing_controller.go:76] Starting EstablishingController
+I1110 15:05:49.865933       1 nonstructuralschema_controller.go:192] Starting NonStructuralSchemaConditionController
+I1110 15:05:49.865982       1 apiapproval_controller.go:186] Starting KubernetesAPIApprovalPolicyConformantConditionController
+I1110 15:05:49.866016       1 cluster_authentication_trust_controller.go:440] Starting cluster_authentication_trust_controller controller
+I1110 15:05:49.866028       1 crd_finalizer.go:266] Starting CRDFinalizer
+I1110 15:05:49.866067       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I1110 15:05:49.866092       1 crdregistration_controller.go:111] Starting crd-autoregister controller
+I1110 15:05:49.866109       1 shared_informer.go:255] Waiting for caches to sync for crd-autoregister
+I1110 15:05:49.866097       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1110 15:05:49.866130       1 shared_informer.go:255] Waiting for caches to sync for cluster_authentication_trust_controller
+I1110 15:05:49.886409       1 controller.go:611] quota admission added evaluator for: namespaces
+I1110 15:05:49.912730       1 shared_informer.go:262] Caches are synced for node_authorizer
+I1110 15:05:49.964477       1 apf_controller.go:322] Running API Priority and Fairness config worker
+I1110 15:05:49.964541       1 cache.go:39] Caches are synced for AvailableConditionController controller
+I1110 15:05:49.964656       1 cache.go:39] Caches are synced for autoregister controller
+I1110 15:05:49.965580       1 cache.go:39] Caches are synced for APIServiceRegistrationController controller
+I1110 15:05:49.966185       1 shared_informer.go:262] Caches are synced for crd-autoregister
+I1110 15:05:49.966217       1 shared_informer.go:262] Caches are synced for cluster_authentication_trust_controller
+I1110 15:05:50.557985       1 controller.go:132] OpenAPI AggregationController: action for item : Nothing (removed from the queue).
+I1110 15:05:50.558031       1 controller.go:132] OpenAPI AggregationController: action for item k8s_internal_local_delegation_chain_0000000000: Nothing (removed from the queue).
+E1110 15:05:50.863914       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:05:50.863951       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1110 15:05:50.870662       1 storage_scheduling.go:95] created PriorityClass system-node-critical with value 2000001000
+I1110 15:05:50.875721       1 storage_scheduling.go:95] created PriorityClass system-cluster-critical with value 2000000000
+I1110 15:05:50.875760       1 storage_scheduling.go:111] all system priority classes are created successfully or already exist.
+I1110 15:05:51.476732       1 controller.go:611] quota admission added evaluator for: roles.rbac.authorization.k8s.io
+I1110 15:05:51.531941       1 controller.go:611] quota admission added evaluator for: rolebindings.rbac.authorization.k8s.io
+I1110 15:05:51.605600       1 alloc.go:327] "allocated clusterIPs" service="default/kubernetes" clusterIPs=map[IPv4:10.96.0.1]
+W1110 15:05:51.614362       1 lease.go:234] Resetting endpoints for master service "kubernetes" to [172.18.0.2]
+I1110 15:05:51.616171       1 controller.go:611] quota admission added evaluator for: endpoints
+I1110 15:05:51.622807       1 controller.go:611] quota admission added evaluator for: endpointslices.discovery.k8s.io
+I1110 15:05:53.041131       1 controller.go:611] quota admission added evaluator for: serviceaccounts
+I1110 15:05:53.052953       1 controller.go:611] quota admission added evaluator for: deployments.apps
+I1110 15:05:53.064436       1 alloc.go:327] "allocated clusterIPs" service="kube-system/kube-dns" clusterIPs=map[IPv4:10.96.0.10]
+I1110 15:05:53.085225       1 controller.go:611] quota admission added evaluator for: daemonsets.apps
+I1110 15:05:53.184065       1 controller.go:611] quota admission added evaluator for: leases.coordination.k8s.io
+I1110 15:06:07.855911       1 controller.go:611] quota admission added evaluator for: controllerrevisions.apps
+I1110 15:06:08.207082       1 controller.go:611] quota admission added evaluator for: replicasets.apps
+I1110 15:06:10.174211       1 controller.go:611] quota admission added evaluator for: events.events.k8s.io
+E1110 15:06:50.864087       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:06:50.864135       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 15:08:50.864529       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:08:50.864626       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 15:12:50.865347       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:12:50.865406       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1110 15:17:01.059527       1 alloc.go:327] "allocated clusterIPs" service="kube-system/exposed-kube-dns" clusterIPs=map[IPv4:10.96.196.188]
+I1110 15:17:38.693064       1 alloc.go:327] "allocated clusterIPs" service="spire/k8s-workload-registrar" clusterIPs=map[IPv4:10.96.229.146]
+I1110 15:17:39.141075       1 alloc.go:327] "allocated clusterIPs" service="spire/spire-server" clusterIPs=map[IPv4:10.96.21.163]
+I1110 15:17:39.582192       1 controller.go:611] quota admission added evaluator for: statefulsets.apps
+I1110 15:17:47.373743       1 trace.go:205] Trace[2112995018]: "Call validating webhook" configuration:k8s-workload-registrar,webhook:k8s-workload-registrar.spire.svc,resource:spiffeid.spiffe.io/v1beta1, Resource=spiffeids,subresource:,operation:CREATE,UID:8ddb842d-9268-4dbc-970e-ebf41d497f0e (10-Nov-2022 15:17:46.344) (total time: 1028ms):
+Trace[2112995018]: ---"Request completed" 1028ms (15:17:47.373)
+Trace[2112995018]: [1.028742935s] [1.028742935s] END
+I1110 15:17:47.373852       1 controller.go:611] quota admission added evaluator for: spiffeids.spiffeid.spiffe.io
+I1110 15:17:47.380244       1 trace.go:205] Trace[1364170380]: "Create" url:/apis/spiffeid.spiffe.io/v1beta1/namespaces/spire/spiffeids,user-agent:k8s-workload-registrar/v0.0.0 (linux/amd64) kubernetes/$Format,audit-id:7a7dd593-92fb-4f88-a3ea-7122b8bd883c,client:172.18.0.3,accept:application/json, */*,protocol:HTTP/2.0 (10-Nov-2022 15:17:46.342) (total time: 1037ms):
+Trace[1364170380]: ---"Object stored in database" 1036ms (15:17:47.379)
+Trace[1364170380]: [1.037338279s] [1.037338279s] END
+E1110 15:20:50.866443       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:20:50.866496       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+W1110 15:26:21.554159       1 watcher.go:229] watch chan error: etcdserver: mvcc: required revision has been compacted
+W1110 15:27:23.128694       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:27:23.128730       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:27:23.128739       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:27:23.128747       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:27:23.128755       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:27:23.128762       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:27:23.128770       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:27:23.128778       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:27:23.128786       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:27:23.128793       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:27:23.128801       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:27:23.128808       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+I1110 15:27:28.037082       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/admission-webhook-svc" clusterIPs=map[IPv4:10.96.135.72]
+I1110 15:27:28.525360       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/nsmgr-proxy" clusterIPs=map[IPv4:10.96.203.243]
+I1110 15:27:29.007844       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/registry" clusterIPs=map[IPv4:10.96.49.22]
+I1110 15:27:29.485713       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/registry-proxy" clusterIPs=map[IPv4:10.96.77.227]
+I1110 15:27:49.453770       1 controller.go:611] quota admission added evaluator for: networkserviceendpoints.networkservicemesh.io
+I1110 15:30:13.031766       1 alloc.go:327] "allocated clusterIPs" service="ns-dns-vl3/vl3-ipam" clusterIPs=map[IPv4:10.96.124.38]
+I1110 15:30:20.353537       1 controller.go:611] quota admission added evaluator for: networkservices.networkservicemesh.io
+W1110 15:32:17.325010       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.325029       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.325033       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.325036       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.325039       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.325042       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.325046       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.325049       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.325052       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.325055       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.325058       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.325061       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.491255       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.491275       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.491280       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.491284       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.491288       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.491292       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.491297       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.491300       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.491304       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.491308       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.491312       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.491316       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.491322       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.491326       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.491330       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.491333       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.491337       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.491341       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.491345       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.491349       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.491352       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.491356       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.491361       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.491364       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.493408       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.493425       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.493429       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.493433       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.493438       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.493442       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.493445       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.493449       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.493453       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.493457       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.493461       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.493464       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.794463       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.794498       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.794508       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.794517       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.794526       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.794535       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.794543       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.794552       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.794561       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.794569       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.794577       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.794586       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.948174       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.948200       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.948207       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.948214       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.948220       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.948226       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.948232       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.948238       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.948244       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.948250       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.948256       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:17.948262       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.948270       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:17.948280       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:17.948290       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:17.948301       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:17.948309       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:17.948315       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:17.948322       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:17.948329       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:17.948336       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:17.948342       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:17.948348       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:17.948355       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.106976       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.107012       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.107022       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.107030       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.107038       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.107046       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.107053       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.107061       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.107070       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.107080       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.107088       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.107096       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.107107       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.107115       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.107123       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.107130       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.107138       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.107146       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.107154       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.107162       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.107169       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.107178       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.107186       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.107194       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.278936       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.278970       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.278981       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.278989       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.278998       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.279006       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.279015       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.279024       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.279033       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.279042       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.279052       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.279060       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.279072       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.279081       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.279090       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.279098       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.279107       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.279115       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.279124       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.279132       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.279141       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.279150       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.279158       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.279167       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.279181       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.279190       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.279199       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.279208       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.279217       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.279225       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.279236       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.279246       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.279255       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.279263       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.279271       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.279280       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.283120       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.283148       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.283157       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.283166       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.283174       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.283182       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.283191       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.283199       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.283208       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.283216       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.283226       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.283234       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.283246       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.283255       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.283263       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.283272       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.283282       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.283291       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.283299       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.283308       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.283317       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.283325       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.283336       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.283345       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.283360       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.283381       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.283390       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.283399       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.283407       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.283416       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.283425       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.283434       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.283444       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.283453       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.283461       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.283470       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.533663       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.533684       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.533688       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.533693       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.533697       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.533701       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.533704       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.533708       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.533712       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.533716       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.533721       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.533727       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.533733       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.533737       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.533741       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.533745       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.533750       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.533754       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.533758       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.533763       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.533767       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.533771       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.533776       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.533780       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.533787       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.533791       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.533795       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.533800       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.533804       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.533808       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.533812       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.533816       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.533820       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.533824       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.533827       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.533831       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.533839       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.533843       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.533846       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.533850       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.533854       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.533858       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.533862       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.533866       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.533869       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.533873       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.533877       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.533881       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.535958       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.535976       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.535980       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.535984       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.535988       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.535992       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.535996       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.536000       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.536005       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.536010       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.536014       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.536019       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.536025       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.536029       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.536033       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.536038       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.536042       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.536046       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.536050       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.536061       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.536065       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.536069       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.536073       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.536077       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.536085       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.536089       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.536093       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.536098       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.536102       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.536106       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.536111       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.536115       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.536119       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.536123       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.536127       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.536131       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.536139       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.536144       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.536149       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.536153       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.536157       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.536161       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.536165       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.536169       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.536173       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.536178       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.536182       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.536186       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.956672       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.956709       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.956719       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.956728       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.956736       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.956746       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.956754       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.956762       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.956771       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.956779       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.956788       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.956796       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.956808       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.956828       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.956836       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.956846       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.956854       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.956863       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.956872       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.956888       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.956897       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.956910       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.956919       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.956930       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.956949       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.956962       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.956971       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.956984       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.956992       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.957001       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.957010       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.957024       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.957033       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.957042       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.957056       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.957065       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.957086       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.957098       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.957108       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.957122       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.957131       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.957139       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.957148       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.957157       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.957165       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.957174       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.957182       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.957196       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.957209       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.957221       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.957230       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.957239       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.957247       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.957256       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.957266       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.957275       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.957283       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.957293       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.957301       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.957309       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963265       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.963280       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.963284       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.963288       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963293       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.963297       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.963300       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.963304       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.963307       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.963311       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.963315       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.963318       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.963324       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.963328       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.963332       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.963336       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.963340       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.963344       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.963348       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.963351       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.963355       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.963359       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.963362       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.963366       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963373       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.963377       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.963380       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.963384       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.963387       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.963391       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963395       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.963399       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.963403       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.963407       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.963411       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.963415       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.963422       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.963425       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.963429       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.963433       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.963436       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.963440       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.963444       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963447       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.963452       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.963456       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:18.963459       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.963463       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.963469       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:18.963473       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:18.963476       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:18.963480       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:18.963484       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:18.963487       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:18.963491       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:18.963494       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:18.963498       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:18.963501       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:18.963505       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:18.963508       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283559       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283583       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283589       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283594       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283599       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283605       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283609       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283615       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283620       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283624       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283629       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283634       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283641       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283647       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283652       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283657       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283662       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283666       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283673       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283678       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283683       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283688       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283693       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283698       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283708       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283714       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283719       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283725       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283730       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283735       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283740       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283746       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283751       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283756       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283763       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283768       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283779       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283785       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283791       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283796       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283801       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283806       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283811       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283817       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283822       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283827       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283833       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283838       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283846       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283851       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.283856       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283862       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283867       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283872       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283877       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283883       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283888       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283893       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283898       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283904       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283912       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.283917       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.283922       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.283928       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.283933       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.283938       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.283944       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.283949       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.283954       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.283959       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.283964       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.283970       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286033       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286049       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.286054       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286060       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286064       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286068       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286072       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286076       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286081       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286085       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286089       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286093       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286100       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286105       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286109       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286113       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286117       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286121       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286125       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.286131       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286137       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286141       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286145       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286150       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286158       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286163       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286167       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286172       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286176       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286181       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286185       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286189       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286194       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.286198       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286203       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286207       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286215       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286219       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286224       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286228       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286232       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286239       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286243       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286248       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286252       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.286256       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286260       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286265       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286271       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286275       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.286280       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286284       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286289       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286293       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286297       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286302       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286306       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286311       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286315       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286320       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286328       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.286332       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.286336       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.286340       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.286345       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.286350       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.286354       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.286358       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.286362       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.286367       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.286371       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.286376       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.507993       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508015       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508019       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508023       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508027       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508030       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508034       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508037       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508040       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508045       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508050       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508055       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508062       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508067       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508071       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508075       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508079       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508083       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508087       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508090       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508094       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508098       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508102       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508106       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508113       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508117       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508121       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508125       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508130       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508136       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508141       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508144       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508148       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508152       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508156       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508159       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508167       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508171       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508174       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508178       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508183       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508187       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508190       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508194       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508197       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508201       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508206       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508212       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508219       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508223       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508226       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508230       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508234       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508238       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508242       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508245       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508249       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508252       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508256       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508260       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508268       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508273       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508279       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508285       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508291       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.508296       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508302       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508309       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508320       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508328       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508333       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508340       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508352       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.508363       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.508370       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.508379       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.508384       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.508391       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.508397       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.508412       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.508423       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.508429       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.508442       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.508454       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510516       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510531       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510537       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510540       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510544       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510548       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510551       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510555       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510559       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510564       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510568       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510572       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510577       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510581       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510586       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510590       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510594       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510598       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510602       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510605       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510609       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510613       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510617       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510622       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510628       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510646       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510652       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510657       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510661       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510665       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510668       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510672       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510676       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510681       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510685       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510688       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510695       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510699       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510702       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510706       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510709       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510713       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510717       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510721       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510724       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510728       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510731       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510735       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510741       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510746       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510750       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510755       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510759       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510763       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510768       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510772       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510775       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510779       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510782       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510786       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510792       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510797       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510801       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510805       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510809       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510813       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:19.510818       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510821       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510824       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510828       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510832       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510836       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510845       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Time
+W1110 15:32:19.510849       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
+W1110 15:32:19.510852       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+W1110 15:32:19.510859       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
+W1110 15:32:19.510863       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
+W1110 15:32:19.510867       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions
+W1110 15:32:19.510872       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions
+W1110 15:32:19.510876       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+W1110 15:32:19.510880       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
+W1110 15:32:19.510884       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.Status
+W1110 15:32:19.510888       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause
+W1110 15:32:19.510893       1 merge.go:121] Should not happen: OpenAPI V3 merge schema conflict on io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails
+W1110 15:32:25.592980       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:25.593053       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+I1110 15:32:25.593101       1 controller.go:611] quota admission added evaluator for: envoyfilters.networking.istio.io
+W1110 15:32:25.755817       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:25.755878       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:32:25.917837       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:25.917898       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:32:26.098534       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:26.098595       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:32:26.258325       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:26.258385       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:32:26.418113       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:32:26.418171       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+I1110 15:32:27.305035       1 controller.go:611] quota admission added evaluator for: poddisruptionbudgets.policy
+I1110 15:32:27.772378       1 controller.go:611] quota admission added evaluator for: horizontalpodautoscalers.autoscaling
+I1110 15:32:27.939095       1 alloc.go:327] "allocated clusterIPs" service="istio-system/istiod" clusterIPs=map[IPv4:10.96.82.107]
+I1110 15:32:35.034757       1 trace.go:205] Trace[297078653]: "Call validating webhook" configuration:istio-validator-istio-system,webhook:rev.validation.istio.io,resource:networking.istio.io/v1alpha3, Resource=gateways,subresource:,operation:CREATE,UID:51f51a47-9221-4825-803a-874b5d289f64 (10-Nov-2022 15:32:33.981) (total time: 1052ms):
+Trace[297078653]: [1.052806165s] [1.052806165s] END
+W1110 15:32:35.034784       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": x509: certificate signed by unknown authority
+E1110 15:32:35.034814       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": x509: certificate signed by unknown authority
+I1110 15:32:35.034846       1 controller.go:611] quota admission added evaluator for: gateways.networking.istio.io
+I1110 15:32:35.036633       1 trace.go:205] Trace[1658896192]: "Create" url:/apis/networking.istio.io/v1alpha3/namespaces/istio-system/gateways,user-agent:pilot-discovery/1.15.1,audit-id:ba779297-e8b1-45e8-bf5d-921fe9104524,client:172.18.0.3,accept:application/json, */*,protocol:HTTP/2.0 (10-Nov-2022 15:32:33.980) (total time: 1055ms):
+Trace[1658896192]: ---"Object stored in database" 1055ms (15:32:35.036)
+Trace[1658896192]: [1.055860395s] [1.055860395s] END
+W1110 15:32:35.066798       1 dispatcher.go:161] rejected by webhook "rev.validation.istio.io": &errors.StatusError{ErrStatus:v1.Status{TypeMeta:v1.TypeMeta{Kind:"", APIVersion:""}, ListMeta:v1.ListMeta{SelfLink:"", ResourceVersion:"", Continue:"", RemainingItemCount:(*int64)(nil)}, Status:"Failure", Message:"admission webhook \"rev.validation.istio.io\" denied the request: configuration is invalid: gateway must have at least one server", Reason:"", Details:(*v1.StatusDetails)(nil), Code:400}}
+I1110 15:32:39.856454       1 controller.go:611] quota admission added evaluator for: istiooperators.install.istio.io
+W1110 15:34:48.887563       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:48.887627       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:34:49.061088       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:49.061149       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:34:49.231223       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:49.231283       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:34:49.507322       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:49.507385       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:34:49.694445       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:49.694509       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+W1110 15:34:49.865008       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+E1110 15:34:49.865073       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": service "istiod" not found
+I1110 15:34:51.425342       1 alloc.go:327] "allocated clusterIPs" service="istio-system/istiod" clusterIPs=map[IPv4:10.96.62.199]
+I1110 15:35:00.832857       1 trace.go:205] Trace[20246038]: "Call validating webhook" configuration:istio-validator-istio-system,webhook:rev.validation.istio.io,resource:networking.istio.io/v1alpha3, Resource=gateways,subresource:,operation:CREATE,UID:e6aae8ea-3392-4ff5-8151-9880f8d5d6f8 (10-Nov-2022 15:34:59.823) (total time: 1009ms):
+Trace[20246038]: [1.009223179s] [1.009223179s] END
+W1110 15:35:00.832904       1 dispatcher.go:142] Failed calling webhook, failing open rev.validation.istio.io: failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": dial tcp 10.96.62.199:443: connect: connection refused
+E1110 15:35:00.832952       1 dispatcher.go:149] failed calling webhook "rev.validation.istio.io": failed to call webhook: Post "https://istiod.istio-system.svc:443/validate?timeout=10s": dial tcp 10.96.62.199:443: connect: connection refused
+I1110 15:35:00.835620       1 trace.go:205] Trace[1046027782]: "Create" url:/apis/networking.istio.io/v1alpha3/namespaces/istio-system/gateways,user-agent:pilot-discovery/1.15.1,audit-id:bd0df07e-67e5-4e67-9ab1-d5388627d456,client:172.18.0.3,accept:application/json, */*,protocol:HTTP/2.0 (10-Nov-2022 15:34:59.822) (total time: 1012ms):
+Trace[1046027782]: ---"Object stored in database" 1012ms (15:35:00.835)
+Trace[1046027782]: [1.012722644s] [1.012722644s] END
+I1110 15:35:01.865279       1 trace.go:205] Trace[1806747676]: "Call validating webhook" configuration:istio-validator-istio-system,webhook:rev.validation.istio.io,resource:networking.istio.io/v1alpha3, Resource=gateways,subresource:,operation:CREATE,UID:7b7a6aa8-64ae-4d51-813d-794e1a631459 (10-Nov-2022 15:35:00.852) (total time: 1012ms):
+Trace[1806747676]: ---"Request completed" 1012ms (15:35:01.865)
+Trace[1806747676]: [1.012715436s] [1.012715436s] END
+W1110 15:35:01.865329       1 dispatcher.go:161] rejected by webhook "rev.validation.istio.io": &errors.StatusError{ErrStatus:v1.Status{TypeMeta:v1.TypeMeta{Kind:"", APIVersion:""}, ListMeta:v1.ListMeta{SelfLink:"", ResourceVersion:"", Continue:"", RemainingItemCount:(*int64)(nil)}, Status:"Failure", Message:"admission webhook \"rev.validation.istio.io\" denied the request: configuration is invalid: gateway must have at least one server", Reason:"", Details:(*v1.StatusDetails)(nil), Code:400}}
+I1110 15:35:01.865588       1 trace.go:205] Trace[1767801312]: "Create" url:/apis/networking.istio.io/v1alpha3/namespaces/istio-system/gateways,user-agent:pilot-discovery/1.15.1,audit-id:fd83aa4e-61cf-4d42-b76f-ba1422aa98b1,client:172.18.0.3,accept:application/json, */*,protocol:HTTP/2.0 (10-Nov-2022 15:35:00.851) (total time: 1013ms):
+Trace[1767801312]: [1.0137809s] [1.0137809s] END
+E1110 15:36:50.867737       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 15:36:50.867777       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 16:08:50.868851       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 16:08:50.868898       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 17:08:50.869708       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 17:08:50.869757       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 18:08:50.870840       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 18:08:50.870895       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 19:08:50.871231       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 19:08:50.871292       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 20:08:50.872522       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 20:08:50.872561       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 21:08:50.872671       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 21:08:50.872709       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 22:08:50.873608       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 22:08:50.873643       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1110 23:08:50.874590       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1110 23:08:50.874676       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 00:08:50.875142       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 00:08:50.875178       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 01:08:50.875730       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 01:08:50.875768       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 02:08:50.876883       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 02:08:50.876924       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 03:08:50.877047       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 03:08:50.877099       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 04:08:50.877516       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 04:08:50.877563       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 05:08:50.878151       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 05:08:50.878191       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 06:08:50.878811       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 06:08:50.878856       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 07:08:50.879903       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 07:08:50.879965       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 08:08:50.880670       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 08:08:50.880708       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 09:08:50.881789       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 09:08:50.881836       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 10:08:50.881980       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 10:08:50.882026       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 11:08:50.882220       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 11:08:50.882272       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 12:08:50.882776       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 12:08:50.882821       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 13:08:50.883942       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 13:08:50.883976       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 14:08:50.884653       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 14:08:50.884700       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 15:08:50.885862       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 15:08:50.885902       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 16:08:50.887055       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 16:08:50.887109       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 17:08:50.888334       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 17:08:50.888374       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 18:08:50.889376       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 18:08:50.889422       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 19:08:50.889835       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 19:08:50.889888       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 20:08:50.890843       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 20:08:50.890886       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 21:08:50.891349       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 21:08:50.891388       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 22:08:50.892322       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 22:08:50.892368       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1111 23:08:50.892857       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1111 23:08:50.892893       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 00:08:50.893326       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 00:08:50.893380       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 01:08:50.894366       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 01:08:50.894405       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 02:08:50.895034       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 02:08:50.895063       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 03:08:50.896224       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 03:08:50.896269       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 04:08:50.896386       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 04:08:50.896433       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 05:08:50.896983       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 05:08:50.897026       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 06:08:50.897140       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 06:08:50.897205       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 07:08:50.897619       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 07:08:50.897665       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 08:08:50.898501       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 08:08:50.898544       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 09:08:50.898863       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 09:08:50.898910       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 10:08:50.899959       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 10:08:50.900011       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 11:08:50.900359       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 11:08:50.900397       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 12:08:50.900918       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 12:08:50.900967       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 13:08:50.902130       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 13:08:50.902174       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 14:08:50.902708       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 14:08:50.902753       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 15:08:50.902872       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 15:08:50.902911       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 16:08:50.903345       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 16:08:50.903388       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 17:08:50.903807       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 17:08:50.903852       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 18:08:50.904126       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 18:08:50.904169       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 19:08:50.905141       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 19:08:50.905190       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 20:08:50.906375       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 20:08:50.906416       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 21:08:50.907162       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 21:08:50.907204       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 22:08:50.908050       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 22:08:50.908094       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1112 23:08:50.908490       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1112 23:08:50.908536       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 00:08:50.908636       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 00:08:50.908682       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 01:08:50.909138       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 01:08:50.909184       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 02:08:50.910433       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 02:08:50.910474       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 03:08:50.911365       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 03:08:50.911408       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 04:08:50.912376       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 04:08:50.912422       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 05:08:50.913048       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 05:08:50.913098       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 06:08:50.913454       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 06:08:50.913497       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 07:08:50.914172       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 07:08:50.914212       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 08:08:50.914620       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 08:08:50.914701       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 09:08:50.915560       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 09:08:50.915603       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 10:08:50.916637       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 10:08:50.916681       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 11:08:50.917893       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 11:08:50.917932       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 12:08:50.918621       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 12:08:50.918699       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 13:08:50.919114       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 13:08:50.919152       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 14:08:50.920127       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 14:08:50.920177       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 15:08:50.920338       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 15:08:50.920377       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 16:08:50.921322       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 16:08:50.921373       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 17:08:50.922012       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 17:08:50.922053       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 18:08:50.923185       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 18:08:50.923224       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 19:08:50.924512       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 19:08:50.924557       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 20:08:50.925326       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 20:08:50.925365       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 21:08:50.925854       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 21:08:50.925902       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 22:08:50.926908       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 22:08:50.926951       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1113 23:08:50.927834       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1113 23:08:50.927880       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 00:08:50.928845       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 00:08:50.928888       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 01:08:50.929637       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 01:08:50.929689       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 02:08:50.930804       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 02:08:50.930846       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 03:08:50.931491       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 03:08:50.931533       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 04:08:50.932569       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 04:08:50.932610       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 05:08:50.933173       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 05:08:50.933217       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 06:08:50.933356       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 06:08:50.933426       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 07:08:50.934558       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 07:08:50.934603       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 08:08:50.935483       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 08:08:50.935526       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 09:08:50.936009       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 09:08:50.936049       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 10:08:50.936440       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 10:08:50.936494       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 11:08:50.936587       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 11:08:50.936632       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 12:08:50.936821       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 12:08:50.936865       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 13:08:50.936953       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 13:08:50.936999       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 14:08:50.937902       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 14:08:50.937941       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 15:08:50.938252       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 15:08:50.938286       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 16:08:50.939440       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 16:08:50.939484       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 17:08:50.940182       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 17:08:50.940221       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 18:08:50.940545       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 18:08:50.940594       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 19:08:50.941217       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 19:08:50.941276       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 20:08:50.942082       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 20:08:50.942123       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 21:08:50.943242       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 21:08:50.943280       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 22:08:50.943776       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 22:08:50.943821       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1114 23:08:50.944980       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1114 23:08:50.945035       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 00:08:50.945974       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 00:08:50.946018       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 01:08:50.947198       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 01:08:50.947241       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 02:08:50.948398       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 02:08:50.948444       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 03:08:50.949396       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 03:08:50.949436       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 04:08:50.949764       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 04:08:50.949810       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 05:08:50.950317       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 05:08:50.950362       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 06:08:50.950590       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 06:08:50.950631       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 07:08:50.951065       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 07:08:50.951105       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 08:08:50.951415       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 08:08:50.951456       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1115 09:02:16.958183       1 trace.go:205] Trace[1443158605]: "List" url:/api/v1/pods,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:807f172e-acab-41f7-9e39-f259b068185e,client:5.129.209.178,accept:application/json;as=Table;v=v1;g=meta.k8s.io,application/json;as=Table;v=v1beta1;g=meta.k8s.io,application/json,protocol:HTTP/2.0 (15-Nov-2022 09:02:16.433) (total time: 524ms):
+Trace[1443158605]: ---"Writing http response done" count:24 520ms (09:02:16.958)
+Trace[1443158605]: [524.99343ms] [524.99343ms] END
+E1115 09:08:50.952232       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 09:08:50.952275       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1115 09:44:15.400246       1 controller.go:611] quota admission added evaluator for: destinationrules.networking.istio.io
+E1115 10:08:50.952872       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 10:08:50.952917       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 11:08:50.953410       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 11:08:50.953452       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 12:08:50.954075       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 12:08:50.954120       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 13:08:50.954408       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 13:08:50.954449       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 14:08:50.954923       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 14:08:50.954966       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 15:08:50.955633       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 15:08:50.955680       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 16:08:50.956656       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 16:08:50.956712       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 17:08:50.957265       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 17:08:50.957311       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 18:08:50.958411       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 18:08:50.958467       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 19:08:50.959390       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 19:08:50.959440       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 20:08:50.960347       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 20:08:50.960386       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 21:08:50.960743       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 21:08:50.960789       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 22:08:50.961725       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 22:08:50.961764       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1115 23:08:50.962192       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1115 23:08:50.962232       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 00:08:50.962769       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 00:08:50.962828       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 01:08:50.963903       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 01:08:50.963947       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 02:08:50.965064       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 02:08:50.965109       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 03:08:50.966183       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 03:08:50.966223       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 04:08:50.966604       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 04:08:50.966699       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 05:08:50.966873       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 05:08:50.966912       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 06:08:50.967717       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 06:08:50.967767       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 07:08:50.968114       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 07:08:50.968143       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 08:08:50.968517       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 08:08:50.968562       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 09:08:50.969456       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 09:08:50.969496       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 10:08:50.970597       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 10:08:50.970684       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1116 11:05:12.262547       1 controller.go:611] quota admission added evaluator for: serviceentries.networking.istio.io
+I1116 11:05:12.444253       1 alloc.go:327] "allocated clusterIPs" service="default/greeting" clusterIPs=map[IPv4:10.96.202.149]
+E1116 11:08:50.971681       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 11:08:50.971725       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1116 11:36:45.317420       1 alloc.go:327] "allocated clusterIPs" service="sample/helloworld" clusterIPs=map[IPv4:10.96.232.84]
+I1116 11:39:08.974876       1 alloc.go:327] "allocated clusterIPs" service="sample/helloworld" clusterIPs=map[IPv4:10.96.74.246]
+E1116 12:08:50.972050       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 12:08:50.972090       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 13:08:50.972973       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 13:08:50.973016       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 14:08:50.973424       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 14:08:50.973479       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 15:08:50.974525       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 15:08:50.974569       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 16:08:50.975525       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 16:08:50.975577       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 17:08:50.976523       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 17:08:50.976568       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 18:08:50.976910       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 18:08:50.976954       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 19:08:50.978095       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 19:08:50.978137       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 20:08:50.979180       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 20:08:50.979228       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 21:08:50.979860       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 21:08:50.979920       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 22:08:50.980376       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 22:08:50.980414       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1116 23:08:50.980703       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1116 23:08:50.980749       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1117 00:04:39.019929       1 trace.go:205] Trace[1748639568]: "List" url:/api/v1/pods,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:c5d96498-4c9e-4127-9ad2-1afae968b66b,client:5.129.209.178,accept:application/json;as=Table;v=v1;g=meta.k8s.io,application/json;as=Table;v=v1beta1;g=meta.k8s.io,application/json,protocol:HTTP/2.0 (17-Nov-2022 00:04:38.370) (total time: 649ms):
+Trace[1748639568]: ---"Writing http response done" count:24 645ms (00:04:39.019)
+Trace[1748639568]: [649.643683ms] [649.643683ms] END
+E1117 00:08:50.980906       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 00:08:50.980950       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 01:08:50.981088       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 01:08:50.981136       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1117 02:00:07.039620       1 trace.go:205] Trace[2020691294]: "List" url:/api/v1/pods,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:27564951-35c8-4703-b69c-a8e955dd5b16,client:5.129.209.178,accept:application/json;as=Table;v=v1;g=meta.k8s.io,application/json;as=Table;v=v1beta1;g=meta.k8s.io,application/json,protocol:HTTP/2.0 (17-Nov-2022 02:00:05.085) (total time: 1954ms):
+Trace[2020691294]: ---"Writing http response done" count:24 1949ms (02:00:07.039)
+Trace[2020691294]: [1.9544829s] [1.9544829s] END
+E1117 02:08:50.981519       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 02:08:50.981563       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 03:08:50.982780       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 03:08:50.982822       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 04:08:50.982928       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 04:08:50.982965       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 05:08:50.983477       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 05:08:50.983522       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 06:08:50.984150       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 06:08:50.984188       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 07:08:50.985369       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 07:08:50.985407       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+E1117 08:08:50.986343       1 controller.go:113] loading OpenAPI spec for "" failed with: APIService  does not exist for update
+I1117 08:08:50.986386       1 controller.go:126] OpenAPI AggregationController: action for item : Rate Limited Requeue.
+I1117 09:03:54.457114       1 trace.go:205] Trace[1575746896]: "Get" url:/api/v1/namespaces/istio-system/pods/istiod-cd9c68bc-d48sm/log,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:55f423aa-db41-40d4-b8a8-f57ddfdc6155,client:5.129.209.178,accept:application/json, */*,protocol:HTTP/2.0 (17-Nov-2022 09:03:48.133) (total time: 6323ms):
+Trace[1575746896]: ---"Writing http response done" 6320ms (09:03:54.457)
+Trace[1575746896]: [6.323407205s] [6.323407205s] END
+I1117 09:04:12.137046       1 trace.go:205] Trace[411692075]: "Get" url:/api/v1/namespaces/istio-system/pods/istiod-cd9c68bc-d48sm/log,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:9de91fc0-1812-4f57-a96f-db799deeac14,client:5.129.209.178,accept:application/json, */*,protocol:HTTP/2.0 (17-Nov-2022 09:04:10.035) (total time: 2101ms):
+Trace[411692075]: ---"Writing http response done" 2097ms (09:04:12.136)
+Trace[411692075]: [2.101598234s] [2.101598234s] END
+I1117 09:04:39.321520       1 trace.go:205] Trace[1192401173]: "Get" url:/api/v1/namespaces/kube-system/pods/kindnet-hvgcx/log,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:af34420b-07af-4bf3-9479-36dc1b454a71,client:5.129.209.178,accept:application/json, */*,protocol:HTTP/2.0 (17-Nov-2022 09:04:38.046) (total time: 1274ms):
+Trace[1192401173]: ---"Writing http response done" 1272ms (09:04:39.321)
+Trace[1192401173]: [1.274761457s] [1.274761457s] END
+I1117 09:04:46.256536       1 trace.go:205] Trace[1975586071]: "Get" url:/api/v1/namespaces/kube-system/pods/kindnet-xrqvg/log,user-agent:kubectl/v1.22.2 (darwin/arm64) kubernetes/8b5a191,audit-id:68659513-8a74-4ce4-ad9f-cae9d5d82f81,client:5.129.209.178,accept:application/json, */*,protocol:HTTP/2.0 (17-Nov-2022 09:04:44.767) (total time: 1488ms):
+Trace[1975586071]: ---"Writing http response done" 1485ms (09:04:46.256)
+Trace[1975586071]: [1.488869525s] [1.488869525s] END
+==== END logs for container kube-apiserver of pod kube-system/kube-apiserver-kind-1-control-plane ====

@@ -1,0 +1,232 @@
+2022-11-17T18:33:20.346342Z	info	FLAG: --concurrency="0"
+2022-11-17T18:33:20.346377Z	info	FLAG: --domain=""
+2022-11-17T18:33:20.346382Z	info	FLAG: --help="false"
+2022-11-17T18:33:20.346384Z	info	FLAG: --log_as_json="false"
+2022-11-17T18:33:20.346387Z	info	FLAG: --log_caller=""
+2022-11-17T18:33:20.346389Z	info	FLAG: --log_output_level="default:info"
+2022-11-17T18:33:20.346391Z	info	FLAG: --log_rotate=""
+2022-11-17T18:33:20.346394Z	info	FLAG: --log_rotate_max_age="30"
+2022-11-17T18:33:20.346396Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-11-17T18:33:20.346399Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-11-17T18:33:20.346401Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-11-17T18:33:20.346408Z	info	FLAG: --log_target="[stdout]"
+2022-11-17T18:33:20.346411Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-11-17T18:33:20.346413Z	info	FLAG: --outlierLogPath=""
+2022-11-17T18:33:20.346415Z	info	FLAG: --proxyComponentLogLevel="misc:info"
+2022-11-17T18:33:20.346418Z	info	FLAG: --proxyLogLevel="info"
+2022-11-17T18:33:20.346421Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-11-17T18:33:20.346423Z	info	FLAG: --stsPort="0"
+2022-11-17T18:33:20.346426Z	info	FLAG: --templateFile=""
+2022-11-17T18:33:20.346429Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-11-17T18:33:20.346432Z	info	FLAG: --vklog="0"
+2022-11-17T18:33:20.346435Z	info	Version 1.15.2-b542583af7f8240ad0c9cab56eb9f8d55e1357ab-Clean
+2022-11-17T18:33:20.349744Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-11-17T18:33:20.349987Z	info	Proxy role	ips=[10.244.1.9 172.16.0.3] type=sidecar id=greeting-7b86c8d9b6-wqn6w.vm-ns domain=vm-ns.svc.cluster.local
+2022-11-17T18:33:20.350039Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CA_ROOT_CA: /var/run/secrets/istio/root-cert.pem
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-11-17T18:33:20.353503Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CA_ROOT_CA: /var/run/secrets/istio/root-cert.pem
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-11-17T18:33:20.353655Z	info	JWT policy is third-party-jwt
+2022-11-17T18:33:20.353668Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-11-17T18:33:20.454386Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-11-17T18:33:20.454463Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-11-17T18:33:20.454417Z	info	Opening status port 15020
+2022-11-17T18:33:20.454497Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-11-17T18:33:20.454707Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-11-17T18:33:20.475967Z	info	ads	All caches have been synced up in 133.580289ms, marking server ready
+2022-11-17T18:33:20.476297Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-11-17T18:33:20.476336Z	info	sds	Starting SDS grpc server
+2022-11-17T18:33:20.476682Z	info	starting Http service at 127.0.0.1:15004
+2022-11-17T18:33:20.477699Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-11-17T18:33:20.479493Z	info	Starting proxy agent
+2022-11-17T18:33:20.479524Z	info	starting
+2022-11-17T18:33:20.479544Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l info --component-log-level misc:info --concurrency 2]
+2022-11-17T18:33:20.520299Z	info	envoy main	initializing epoch 0 (base id=0, hot restart version=disabled)
+2022-11-17T18:33:20.520326Z	info	envoy main	statically linked extensions:
+2022-11-17T18:33:20.520330Z	info	envoy main	  envoy.sip_proxy.filters: envoy.filters.sip.router
+2022-11-17T18:33:20.520334Z	info	envoy main	  envoy.thrift_proxy.transports: auto, framed, header, unframed
+2022-11-17T18:33:20.520336Z	info	envoy main	  envoy.bootstrap: envoy.bootstrap.wasm, envoy.extensions.network.socket_interface.default_socket_interface
+2022-11-17T18:33:20.520338Z	info	envoy main	  envoy.filters.upstream_network: envoy.filters.network.upstream.metadata_exchange
+2022-11-17T18:33:20.520345Z	info	envoy main	  envoy.filters.network: envoy.echo, envoy.ext_authz, envoy.filters.network.connection_limit, envoy.filters.network.direct_response, envoy.filters.network.dubbo_proxy, envoy.filters.network.echo, envoy.filters.network.ext_authz, envoy.filters.network.http_connection_manager, envoy.filters.network.local_ratelimit, envoy.filters.network.metadata_exchange, envoy.filters.network.mongo_proxy, envoy.filters.network.mysql_proxy, envoy.filters.network.ratelimit, envoy.filters.network.rbac, envoy.filters.network.redis_proxy, envoy.filters.network.sip_proxy, envoy.filters.network.sni_cluster, envoy.filters.network.sni_dynamic_forward_proxy, envoy.filters.network.tcp_cluster_rewrite, envoy.filters.network.tcp_proxy, envoy.filters.network.thrift_proxy, envoy.filters.network.wasm, envoy.filters.network.zookeeper_proxy, envoy.http_connection_manager, envoy.mongo_proxy, envoy.ratelimit, envoy.redis_proxy, envoy.tcp_proxy, forward_downstream_sni, sni_verifier
+2022-11-17T18:33:20.520348Z	info	envoy main	  envoy.upstreams: envoy.filters.connection_pools.tcp.generic
+2022-11-17T18:33:20.520350Z	info	envoy main	  envoy.rate_limit_descriptors: envoy.rate_limit_descriptors.expr
+2022-11-17T18:33:20.520352Z	info	envoy main	  envoy.tls.cert_validator: envoy.tls.cert_validator.default, envoy.tls.cert_validator.spiffe
+2022-11-17T18:33:20.520354Z	info	envoy main	  envoy.http.original_ip_detection: envoy.http.original_ip_detection.custom_header, envoy.http.original_ip_detection.xff
+2022-11-17T18:33:20.520357Z	info	envoy main	  envoy.tls.key_providers: cryptomb
+2022-11-17T18:33:20.520359Z	info	envoy main	  envoy.upstream_options: envoy.extensions.upstreams.http.v3.HttpProtocolOptions, envoy.upstreams.http.http_protocol_options
+2022-11-17T18:33:20.520361Z	info	envoy main	  envoy.request_id: envoy.request_id.uuid
+2022-11-17T18:33:20.520363Z	info	envoy main	  envoy.quic.server.crypto_stream: envoy.quic.crypto_stream.server.quiche
+2022-11-17T18:33:20.520365Z	info	envoy main	  envoy.quic.proof_source: envoy.quic.proof_source.filter_chain
+2022-11-17T18:33:20.520367Z	info	envoy main	  network.connection.client: default
+2022-11-17T18:33:20.520369Z	info	envoy main	  envoy.route.early_data_policy: envoy.route.early_data_policy.default
+2022-11-17T18:33:20.520372Z	info	envoy main	  envoy.retry_priorities: envoy.retry_priorities.previous_priorities
+2022-11-17T18:33:20.520374Z	info	envoy main	  envoy.network.dns_resolver: envoy.network.dns_resolver.cares
+2022-11-17T18:33:20.520376Z	info	envoy main	  envoy.health_checkers: envoy.health_checkers.redis
+2022-11-17T18:33:20.520378Z	info	envoy main	  envoy.compression.decompressor: envoy.compression.brotli.decompressor, envoy.compression.gzip.decompressor
+2022-11-17T18:33:20.520380Z	info	envoy main	  envoy.http.cache: envoy.extensions.http.cache.simple
+2022-11-17T18:33:20.520383Z	info	envoy main	  envoy.grpc_credentials: envoy.grpc_credentials.aws_iam, envoy.grpc_credentials.default, envoy.grpc_credentials.file_based_metadata
+2022-11-17T18:33:20.520385Z	info	envoy main	  envoy.guarddog_actions: envoy.watchdog.abort_action, envoy.watchdog.profile_action
+2022-11-17T18:33:20.520388Z	info	envoy main	  envoy.transport_sockets.upstream: envoy.transport_sockets.alts, envoy.transport_sockets.quic, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.starttls, envoy.transport_sockets.tap, envoy.transport_sockets.tls, envoy.transport_sockets.upstream_proxy_protocol, raw_buffer, starttls, tls
+2022-11-17T18:33:20.520391Z	info	envoy main	  envoy.formatter: envoy.formatter.metadata, envoy.formatter.req_without_query
+2022-11-17T18:33:20.520393Z	info	envoy main	  envoy.common.key_value: envoy.key_value.file_based
+2022-11-17T18:33:20.520395Z	info	envoy main	  envoy.filters.udp_listener: envoy.filters.udp.dns_filter, envoy.filters.udp_listener.udp_proxy
+2022-11-17T18:33:20.520399Z	info	envoy main	  envoy.matching.http.input: envoy.matching.inputs.destination_ip, envoy.matching.inputs.destination_port, envoy.matching.inputs.direct_source_ip, envoy.matching.inputs.dns_san, envoy.matching.inputs.request_headers, envoy.matching.inputs.request_trailers, envoy.matching.inputs.response_headers, envoy.matching.inputs.response_trailers, envoy.matching.inputs.server_name, envoy.matching.inputs.source_ip, envoy.matching.inputs.source_port, envoy.matching.inputs.source_type, envoy.matching.inputs.subject, envoy.matching.inputs.uri_san
+2022-11-17T18:33:20.520401Z	info	envoy main	  envoy.matching.action: composite-action, skip
+2022-11-17T18:33:20.520409Z	info	envoy main	  envoy.access_loggers: envoy.access_loggers.file, envoy.access_loggers.http_grpc, envoy.access_loggers.open_telemetry, envoy.access_loggers.stderr, envoy.access_loggers.stdout, envoy.access_loggers.tcp_grpc, envoy.access_loggers.wasm, envoy.file_access_log, envoy.http_grpc_access_log, envoy.open_telemetry_access_log, envoy.stderr_access_log, envoy.stdout_access_log, envoy.tcp_grpc_access_log, envoy.wasm_access_log
+2022-11-17T18:33:20.520412Z	info	envoy main	  envoy.http.stateful_header_formatters: envoy.http.stateful_header_formatters.preserve_case, preserve_case
+2022-11-17T18:33:20.520414Z	info	envoy main	  envoy.resolvers: envoy.ip
+2022-11-17T18:33:20.520416Z	info	envoy main	  envoy.regex_engines: envoy.regex_engines.google_re2
+2022-11-17T18:33:20.520419Z	info	envoy main	  envoy.rbac.matchers: envoy.rbac.matchers.upstream_ip_port
+2022-11-17T18:33:20.520421Z	info	envoy main	  envoy.udp_packet_writer: envoy.udp_packet_writer.default, envoy.udp_packet_writer.gso
+2022-11-17T18:33:20.520423Z	info	envoy main	  envoy.clusters: envoy.cluster.eds, envoy.cluster.logical_dns, envoy.cluster.original_dst, envoy.cluster.static, envoy.cluster.strict_dns, envoy.clusters.aggregate, envoy.clusters.dynamic_forward_proxy, envoy.clusters.redis
+2022-11-17T18:33:20.520425Z	info	envoy main	  envoy.matching.common_inputs: envoy.matching.common_inputs.environment_variable
+2022-11-17T18:33:20.520434Z	info	envoy main	  envoy.filters.http: envoy.bandwidth_limit, envoy.buffer, envoy.cors, envoy.csrf, envoy.ext_authz, envoy.ext_proc, envoy.fault, envoy.filters.http.adaptive_concurrency, envoy.filters.http.admission_control, envoy.filters.http.alternate_protocols_cache, envoy.filters.http.aws_lambda, envoy.filters.http.aws_request_signing, envoy.filters.http.bandwidth_limit, envoy.filters.http.buffer, envoy.filters.http.cache, envoy.filters.http.cdn_loop, envoy.filters.http.composite, envoy.filters.http.compressor, envoy.filters.http.cors, envoy.filters.http.csrf, envoy.filters.http.decompressor, envoy.filters.http.dynamic_forward_proxy, envoy.filters.http.ext_authz, envoy.filters.http.ext_proc, envoy.filters.http.fault, envoy.filters.http.grpc_http1_bridge, envoy.filters.http.grpc_http1_reverse_bridge, envoy.filters.http.grpc_json_transcoder, envoy.filters.http.grpc_stats, envoy.filters.http.grpc_web, envoy.filters.http.header_to_metadata, envoy.filters.http.health_check, envoy.filters.http.ip_tagging, envoy.filters.http.jwt_authn, envoy.filters.http.local_ratelimit, envoy.filters.http.lua, envoy.filters.http.match_delegate, envoy.filters.http.oauth2, envoy.filters.http.on_demand, envoy.filters.http.original_src, envoy.filters.http.ratelimit, envoy.filters.http.rbac, envoy.filters.http.router, envoy.filters.http.set_metadata, envoy.filters.http.stateful_session, envoy.filters.http.tap, envoy.filters.http.wasm, envoy.grpc_http1_bridge, envoy.grpc_json_transcoder, envoy.grpc_web, envoy.health_check, envoy.ip_tagging, envoy.local_rate_limit, envoy.lua, envoy.rate_limit, envoy.router, istio.alpn, istio_authn
+2022-11-17T18:33:20.520440Z	info	envoy main	  envoy.http.stateful_session: envoy.http.stateful_session.cookie
+2022-11-17T18:33:20.520443Z	info	envoy main	  envoy.retry_host_predicates: envoy.retry_host_predicates.omit_canary_hosts, envoy.retry_host_predicates.omit_host_metadata, envoy.retry_host_predicates.previous_hosts
+2022-11-17T18:33:20.520445Z	info	envoy main	  envoy.dubbo_proxy.protocols: dubbo
+2022-11-17T18:33:20.520447Z	info	envoy main	  envoy.dubbo_proxy.serializers: dubbo.hessian2
+2022-11-17T18:33:20.520449Z	info	envoy main	  envoy.access_loggers.extension_filters: envoy.access_loggers.extension_filters.cel
+2022-11-17T18:33:20.520452Z	info	envoy main	  envoy.matching.input_matchers: envoy.matching.matchers.consistent_hashing, envoy.matching.matchers.ip
+2022-11-17T18:33:20.520455Z	info	envoy main	  envoy.filters.listener: envoy.filters.listener.http_inspector, envoy.filters.listener.original_dst, envoy.filters.listener.original_src, envoy.filters.listener.proxy_protocol, envoy.filters.listener.tls_inspector, envoy.listener.http_inspector, envoy.listener.original_dst, envoy.listener.original_src, envoy.listener.proxy_protocol, envoy.listener.tls_inspector
+2022-11-17T18:33:20.520457Z	info	envoy main	  envoy.wasm.runtime: envoy.wasm.runtime.null, envoy.wasm.runtime.v8
+2022-11-17T18:33:20.520460Z	info	envoy main	  envoy.thrift_proxy.filters: envoy.filters.thrift.header_to_metadata, envoy.filters.thrift.rate_limit, envoy.filters.thrift.router
+2022-11-17T18:33:20.520463Z	info	envoy main	  envoy.stats_sinks: envoy.dog_statsd, envoy.graphite_statsd, envoy.metrics_service, envoy.stat_sinks.dog_statsd, envoy.stat_sinks.graphite_statsd, envoy.stat_sinks.hystrix, envoy.stat_sinks.metrics_service, envoy.stat_sinks.statsd, envoy.stat_sinks.wasm, envoy.statsd
+2022-11-17T18:33:20.520466Z	info	envoy main	  envoy.matching.network.input: envoy.matching.inputs.application_protocol, envoy.matching.inputs.destination_ip, envoy.matching.inputs.destination_port, envoy.matching.inputs.direct_source_ip, envoy.matching.inputs.dns_san, envoy.matching.inputs.server_name, envoy.matching.inputs.source_ip, envoy.matching.inputs.source_port, envoy.matching.inputs.source_type, envoy.matching.inputs.subject, envoy.matching.inputs.transport_protocol, envoy.matching.inputs.uri_san
+2022-11-17T18:33:20.520468Z	info	envoy main	  envoy.resource_monitors: envoy.resource_monitors.fixed_heap, envoy.resource_monitors.injected_resource
+2022-11-17T18:33:20.520471Z	info	envoy main	  envoy.tracers: envoy.dynamic.ot, envoy.tracers.datadog, envoy.tracers.dynamic_ot, envoy.tracers.opencensus, envoy.tracers.skywalking, envoy.tracers.xray, envoy.tracers.zipkin, envoy.zipkin
+2022-11-17T18:33:20.520474Z	info	envoy main	  envoy.thrift_proxy.protocols: auto, binary, binary/non-strict, compact, twitter
+2022-11-17T18:33:20.520476Z	info	envoy main	  envoy.dubbo_proxy.filters: envoy.filters.dubbo.router
+2022-11-17T18:33:20.520479Z	info	envoy main	  envoy.internal_redirect_predicates: envoy.internal_redirect_predicates.allow_listed_routes, envoy.internal_redirect_predicates.previous_routes, envoy.internal_redirect_predicates.safe_cross_scheme
+2022-11-17T18:33:20.520482Z	info	envoy main	  envoy.transport_sockets.downstream: envoy.transport_sockets.alts, envoy.transport_sockets.quic, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.starttls, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, starttls, tls
+2022-11-17T18:33:20.520484Z	info	envoy main	  envoy.compression.compressor: envoy.compression.brotli.compressor, envoy.compression.gzip.compressor
+2022-11-17T18:33:20.524718Z	warning	envoy misc	Deprecated field: type envoy.config.cluster.v3.Cluster Using deprecated option 'envoy.config.cluster.v3.Cluster.max_requests_per_connection' from file cluster.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.524791Z	warning	envoy misc	Deprecated field: type envoy.config.bootstrap.v3.Bootstrap Using deprecated option 'envoy.config.bootstrap.v3.Bootstrap.tracing' from file bootstrap.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.524858Z	info	envoy main	HTTP header map info:
+2022-11-17T18:33:20.526442Z	info	envoy main	  request header map: 656 bytes: :authority,:method,:path,:protocol,:scheme,accept,accept-encoding,access-control-request-headers,access-control-request-method,authentication,authorization,cache-control,cdn-loop,connection,content-encoding,content-length,content-type,expect,grpc-accept-encoding,grpc-timeout,if-match,if-modified-since,if-none-match,if-range,if-unmodified-since,keep-alive,origin,pragma,proxy-connection,proxy-status,referer,te,transfer-encoding,upgrade,user-agent,via,x-client-trace-id,x-envoy-attempt-count,x-envoy-decorator-operation,x-envoy-downstream-service-cluster,x-envoy-downstream-service-node,x-envoy-expected-rq-timeout-ms,x-envoy-external-address,x-envoy-force-trace,x-envoy-hedge-on-per-try-timeout,x-envoy-internal,x-envoy-ip-tags,x-envoy-max-retries,x-envoy-original-path,x-envoy-original-url,x-envoy-retriable-header-names,x-envoy-retriable-status-codes,x-envoy-retry-grpc-on,x-envoy-retry-on,x-envoy-upstream-alt-stat-name,x-envoy-upstream-rq-per-try-timeout-ms,x-envoy-upstream-rq-timeout-alt-response,x-envoy-upstream-rq-timeout-ms,x-envoy-upstream-stream-duration-ms,x-forwarded-client-cert,x-forwarded-for,x-forwarded-host,x-forwarded-proto,x-ot-span-context,x-request-id
+2022-11-17T18:33:20.526451Z	info	envoy main	  request trailer map: 128 bytes: 
+2022-11-17T18:33:20.526454Z	info	envoy main	  response header map: 432 bytes: :status,access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,access-control-expose-headers,access-control-max-age,age,cache-control,connection,content-encoding,content-length,content-type,date,etag,expires,grpc-message,grpc-status,keep-alive,last-modified,location,proxy-connection,proxy-status,server,transfer-encoding,upgrade,vary,via,x-envoy-attempt-count,x-envoy-decorator-operation,x-envoy-degraded,x-envoy-immediate-health-check-fail,x-envoy-ratelimited,x-envoy-upstream-canary,x-envoy-upstream-healthchecked-cluster,x-envoy-upstream-service-time,x-request-id
+2022-11-17T18:33:20.526456Z	info	envoy main	  response trailer map: 152 bytes: grpc-message,grpc-status
+2022-11-17T18:33:20.535214Z	info	envoy main	runtime: layers:
+  - name: global config
+    static_layer:
+      re2.max_program_size.error_level: 32768
+      overload.global_downstream_max_connections: 2147483647
+      envoy.reloadable_features.http_reject_path_with_fragment: false
+      envoy.deprecated_features:envoy.config.listener.v3.Listener.hidden_envoy_deprecated_use_original_dst: true
+      envoy.reloadable_features.no_extension_lookup_by_name: false
+  - name: admin
+    admin_layer:
+      {}
+2022-11-17T18:33:20.535544Z	info	envoy admin	admin address: 127.0.0.1:15000
+2022-11-17T18:33:20.535614Z	info	envoy dns	c-ares library initialized.
+2022-11-17T18:33:20.535733Z	info	envoy config	loading tracing configuration
+2022-11-17T18:33:20.535740Z	info	envoy config	  validating default server-wide tracing driver: envoy.tracers.zipkin
+2022-11-17T18:33:20.535747Z	info	envoy config	loading 0 static secret(s)
+2022-11-17T18:33:20.535749Z	info	envoy config	loading 5 cluster(s)
+2022-11-17T18:33:20.560153Z	info	envoy config	loading 2 listener(s)
+2022-11-17T18:33:20.561383Z	info	envoy config	loading stats configuration
+2022-11-17T18:33:20.563038Z	info	envoy main	starting main dispatch loop
+2022-11-17T18:33:20.663248Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-11-17T18:33:20.711000Z	info	envoy runtime	RTDS has finished initialization
+2022-11-17T18:33:20.711036Z	info	envoy upstream	cm init: initializing cds
+2022-11-17T18:33:20.719286Z	info	cache	generated new workload certificate	latency=242.96834ms ttl=23h59m59.280731845s
+2022-11-17T18:33:20.719358Z	info	cache	Root cert has changed, start rotating root cert
+2022-11-17T18:33:20.719381Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-11-17T18:33:20.719469Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.280536321s
+2022-11-17T18:33:20.811648Z	info	envoy upstream	cds: add 19 cluster(s), remove 5 cluster(s)
+2022-11-17T18:33:20.814054Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.815144Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.816108Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.816658Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.817226Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.817814Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.818421Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.818958Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.819492Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.819995Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.820474Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.821008Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.821552Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.822063Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.822553Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:20.823633Z	info	envoy upstream	cds: added/updated 19 cluster(s), skipped 0 unmodified cluster(s)
+2022-11-17T18:33:20.823650Z	info	envoy upstream	cm init: initializing secondary clusters
+2022-11-17T18:33:20.852253Z	info	ads	ADS: new connection for node:greeting-7b86c8d9b6-wqn6w.vm-ns-1
+2022-11-17T18:33:20.852473Z	info	cache	returned workload certificate from cache	ttl=23h59m59.147537878s
+2022-11-17T18:33:20.855329Z	info	ads	SDS: PUSH request for node:greeting-7b86c8d9b6-wqn6w.vm-ns resources:1 size:4.0kB resource:default
+2022-11-17T18:33:20.892910Z	info	ads	ADS: new connection for node:greeting-7b86c8d9b6-wqn6w.vm-ns-2
+2022-11-17T18:33:20.893156Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.106855955s
+2022-11-17T18:33:20.893457Z	info	ads	SDS: PUSH request for node:greeting-7b86c8d9b6-wqn6w.vm-ns resources:1 size:1.1kB resource:ROOTCA
+2022-11-17T18:33:20.906011Z	info	envoy upstream	cm init: all clusters initialized
+2022-11-17T18:33:20.906050Z	info	envoy main	all clusters initialized. initializing init manager
+2022-11-17T18:33:20.985634Z	info	envoy upstream	lds: add/update listener '10.96.0.1_443'
+2022-11-17T18:33:20.986531Z	info	envoy upstream	lds: add/update listener '10.96.174.160_443'
+2022-11-17T18:33:20.987323Z	info	envoy upstream	lds: add/update listener '10.96.0.10_53'
+2022-11-17T18:33:20.988105Z	info	envoy upstream	lds: add/update listener '10.96.55.237_53'
+2022-11-17T18:33:20.988509Z	info	envoy upstream	lds: add/update listener '10.96.174.160_15012'
+2022-11-17T18:33:20.989487Z	info	envoy tracing	instantiating a new tracer: envoy.tracers.zipkin
+2022-11-17T18:33:20.992376Z	info	envoy upstream	lds: add/update listener '10.96.93.13_8081'
+2022-11-17T18:33:20.993668Z	info	envoy upstream	lds: add/update listener '10.96.93.13_8443'
+2022-11-17T18:33:20.994944Z	info	envoy upstream	lds: add/update listener '10.96.57.162_443'
+2022-11-17T18:33:20.996221Z	info	envoy upstream	lds: add/update listener '10.96.149.53_5005'
+2022-11-17T18:33:20.997470Z	info	envoy upstream	lds: add/update listener '10.96.98.166_443'
+2022-11-17T18:33:20.998709Z	info	envoy upstream	lds: add/update listener '10.96.13.162_5002'
+2022-11-17T18:33:20.999886Z	info	envoy upstream	lds: add/update listener '10.96.173.231_5006'
+2022-11-17T18:33:21.001116Z	info	envoy upstream	lds: add/update listener '0.0.0.0_15010'
+2022-11-17T18:33:21.002227Z	info	envoy upstream	lds: add/update listener '0.0.0.0_15014'
+2022-11-17T18:33:21.003379Z	info	envoy upstream	lds: add/update listener '10.96.0.10_9153'
+2022-11-17T18:33:21.004551Z	info	envoy upstream	lds: add/update listener '10.96.90.39_5004'
+2022-11-17T18:33:21.005093Z	info	envoy upstream	lds: add/update listener 'virtualOutbound'
+2022-11-17T18:33:21.007534Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:21.011693Z	warning	envoy misc	Deprecated field: type envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext Using deprecated option 'envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext.match_subject_alt_names' from file common.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:21.014122Z	info	envoy upstream	lds: add/update listener 'virtualInbound'
+2022-11-17T18:33:21.131234Z	warning	envoy misc	Deprecated field: type envoy.config.route.v3.RouteAction Using deprecated option 'envoy.config.route.v3.RouteAction.max_grpc_timeout' from file route_components.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:21.131369Z	warning	envoy misc	Deprecated field: type envoy.config.route.v3.RouteAction Using deprecated option 'envoy.config.route.v3.RouteAction.max_grpc_timeout' from file route_components.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-11-17T18:33:21.132935Z	info	envoy config	all dependencies initialized. starting workers
+2022-11-17T18:33:22.231066Z	info	Readiness succeeded in 1.895136137s
+2022-11-17T18:33:22.231731Z	info	Envoy proxy is ready
+2022-11-17T18:34:21.135731Z	info	envoy main	shutting down parent after drain

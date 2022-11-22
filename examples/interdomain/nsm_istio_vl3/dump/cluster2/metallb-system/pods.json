@@ -1,0 +1,562 @@
+{
+    "kind": "PodList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "776155"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "controller-7476b58756-kfc5t",
+                "generateName": "controller-7476b58756-",
+                "namespace": "metallb-system",
+                "uid": "679b4944-c041-40b1-bf20-45b9a5ab4ca7",
+                "resourceVersion": "1114",
+                "creationTimestamp": "2022-11-10T15:14:15Z",
+                "labels": {
+                    "app": "metallb",
+                    "component": "controller",
+                    "pod-template-hash": "7476b58756"
+                },
+                "annotations": {
+                    "prometheus.io/port": "7472",
+                    "prometheus.io/scrape": "true"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "controller-7476b58756",
+                        "uid": "87161eda-93fe-42c7-ac75-475d92cc5323",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "kube-api-access-z2v94",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "controller",
+                        "image": "quay.io/metallb/controller:v0.12.1",
+                        "args": [
+                            "--port=7472",
+                            "--config=config",
+                            "--log-level=info"
+                        ],
+                        "ports": [
+                            {
+                                "name": "monitoring",
+                                "containerPort": 7472,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "METALLB_ML_SECRET_NAME",
+                                "value": "memberlist"
+                            },
+                            {
+                                "name": "METALLB_DEPLOYMENT",
+                                "value": "controller"
+                            }
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "kube-api-access-z2v94",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "livenessProbe": {
+                            "httpGet": {
+                                "path": "/metrics",
+                                "port": "monitoring",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "readinessProbe": {
+                            "httpGet": {
+                                "path": "/metrics",
+                                "port": "monitoring",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent",
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "all"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "allowPrivilegeEscalation": false
+                        }
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 0,
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                    "kubernetes.io/os": "linux"
+                },
+                "serviceAccountName": "controller",
+                "serviceAccount": "controller",
+                "nodeName": "kind-2-worker",
+                "securityContext": {
+                    "runAsUser": 65534,
+                    "runAsNonRoot": true,
+                    "fsGroup": 65534
+                },
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:15Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:35Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:35Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:15Z"
+                    }
+                ],
+                "hostIP": "172.18.0.4",
+                "podIP": "10.244.1.2",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.2"
+                    }
+                ],
+                "startTime": "2022-11-10T15:14:15Z",
+                "containerStatuses": [
+                    {
+                        "name": "controller",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-10T15:14:17Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "quay.io/metallb/controller:v0.12.1",
+                        "imageID": "quay.io/metallb/controller@sha256:4db40890faff645102d33a04fbb736265fad2259425f5a01cbb84df524eae53a",
+                        "containerID": "containerd://2a0bedd515587bb97e263163b96d5179235246aca70c2c9c5c040b6e130b2d1d",
+                        "started": true
+                    }
+                ],
+                "qosClass": "BestEffort"
+            }
+        },
+        {
+            "metadata": {
+                "name": "speaker-s9j6f",
+                "generateName": "speaker-",
+                "namespace": "metallb-system",
+                "uid": "8626c086-bfaf-4aec-919c-0d229bb65f34",
+                "resourceVersion": "1129",
+                "creationTimestamp": "2022-11-10T15:14:14Z",
+                "labels": {
+                    "app": "metallb",
+                    "component": "speaker",
+                    "controller-revision-hash": "5699568d9f",
+                    "pod-template-generation": "1"
+                },
+                "annotations": {
+                    "prometheus.io/port": "7472",
+                    "prometheus.io/scrape": "true"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "DaemonSet",
+                        "name": "speaker",
+                        "uid": "87dd79d4-fa8c-49b3-b590-a09d9d243455",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "kube-api-access-b4lzd",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "speaker",
+                        "image": "quay.io/metallb/speaker:v0.12.1",
+                        "args": [
+                            "--port=7472",
+                            "--config=config",
+                            "--log-level=info"
+                        ],
+                        "ports": [
+                            {
+                                "name": "monitoring",
+                                "hostPort": 7472,
+                                "containerPort": 7472,
+                                "protocol": "TCP"
+                            },
+                            {
+                                "name": "memberlist-tcp",
+                                "hostPort": 7946,
+                                "containerPort": 7946,
+                                "protocol": "TCP"
+                            },
+                            {
+                                "name": "memberlist-udp",
+                                "hostPort": 7946,
+                                "containerPort": 7946,
+                                "protocol": "UDP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "METALLB_NODE_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "spec.nodeName"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "METALLB_HOST",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "status.hostIP"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "METALLB_ML_BIND_ADDR",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "status.podIP"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "METALLB_ML_LABELS",
+                                "value": "app=metallb,component=speaker"
+                            },
+                            {
+                                "name": "METALLB_ML_SECRET_KEY",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "name": "memberlist",
+                                        "key": "secretkey"
+                                    }
+                                }
+                            }
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "kube-api-access-b4lzd",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "livenessProbe": {
+                            "httpGet": {
+                                "path": "/metrics",
+                                "port": "monitoring",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "readinessProbe": {
+                            "httpGet": {
+                                "path": "/metrics",
+                                "port": "monitoring",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent",
+                        "securityContext": {
+                            "capabilities": {
+                                "add": [
+                                    "NET_RAW"
+                                ],
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "allowPrivilegeEscalation": false
+                        }
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 2,
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                    "kubernetes.io/os": "linux"
+                },
+                "serviceAccountName": "speaker",
+                "serviceAccount": "speaker",
+                "nodeName": "kind-2-worker",
+                "hostNetwork": true,
+                "securityContext": {},
+                "affinity": {
+                    "nodeAffinity": {
+                        "requiredDuringSchedulingIgnoredDuringExecution": {
+                            "nodeSelectorTerms": [
+                                {
+                                    "matchFields": [
+                                        {
+                                            "key": "metadata.name",
+                                            "operator": "In",
+                                            "values": [
+                                                "kind-2-worker"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node-role.kubernetes.io/master",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute"
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute"
+                    },
+                    {
+                        "key": "node.kubernetes.io/disk-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/pid-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/unschedulable",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/network-unavailable",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:14Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:44Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:44Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-10T15:14:14Z"
+                    }
+                ],
+                "hostIP": "172.18.0.4",
+                "podIP": "172.18.0.4",
+                "podIPs": [
+                    {
+                        "ip": "172.18.0.4"
+                    }
+                ],
+                "startTime": "2022-11-10T15:14:14Z",
+                "containerStatuses": [
+                    {
+                        "name": "speaker",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-10T15:14:31Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "quay.io/metallb/speaker:v0.12.1",
+                        "imageID": "quay.io/metallb/speaker@sha256:40e0373788f3ea5e21a42b302a0ae4fd537646eb4b485e02b7ae52dc71da230c",
+                        "containerID": "containerd://f19d0e063331097cc98bc54cc6420290fdc6e5a550e843e2fff66f706f5d0c4a",
+                        "started": true
+                    }
+                ],
+                "qosClass": "BestEffort"
+            }
+        }
+    ]
+}

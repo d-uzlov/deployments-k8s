@@ -1,0 +1,151 @@
+{
+    "kind": "ReplicaSetList",
+    "apiVersion": "apps/v1",
+    "metadata": {
+        "resourceVersion": "776155"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "controller-7476b58756",
+                "namespace": "metallb-system",
+                "uid": "87161eda-93fe-42c7-ac75-475d92cc5323",
+                "resourceVersion": "1115",
+                "generation": 1,
+                "creationTimestamp": "2022-11-10T15:14:15Z",
+                "labels": {
+                    "app": "metallb",
+                    "component": "controller",
+                    "pod-template-hash": "7476b58756"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "controller",
+                        "uid": "cedd3dd2-252f-4012-9cae-41aa1e9c8b06",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "metallb",
+                        "component": "controller",
+                        "pod-template-hash": "7476b58756"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "metallb",
+                            "component": "controller",
+                            "pod-template-hash": "7476b58756"
+                        },
+                        "annotations": {
+                            "prometheus.io/port": "7472",
+                            "prometheus.io/scrape": "true"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "controller",
+                                "image": "quay.io/metallb/controller:v0.12.1",
+                                "args": [
+                                    "--port=7472",
+                                    "--config=config",
+                                    "--log-level=info"
+                                ],
+                                "ports": [
+                                    {
+                                        "name": "monitoring",
+                                        "containerPort": 7472,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "METALLB_ML_SECRET_NAME",
+                                        "value": "memberlist"
+                                    },
+                                    {
+                                        "name": "METALLB_DEPLOYMENT",
+                                        "value": "controller"
+                                    }
+                                ],
+                                "resources": {},
+                                "livenessProbe": {
+                                    "httpGet": {
+                                        "path": "/metrics",
+                                        "port": "monitoring",
+                                        "scheme": "HTTP"
+                                    },
+                                    "initialDelaySeconds": 10,
+                                    "timeoutSeconds": 1,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "failureThreshold": 3
+                                },
+                                "readinessProbe": {
+                                    "httpGet": {
+                                        "path": "/metrics",
+                                        "port": "monitoring",
+                                        "scheme": "HTTP"
+                                    },
+                                    "initialDelaySeconds": 10,
+                                    "timeoutSeconds": 1,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "failureThreshold": 3
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent",
+                                "securityContext": {
+                                    "capabilities": {
+                                        "drop": [
+                                            "all"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "allowPrivilegeEscalation": false
+                                }
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 0,
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/os": "linux"
+                        },
+                        "serviceAccountName": "controller",
+                        "serviceAccount": "controller",
+                        "securityContext": {
+                            "runAsUser": 65534,
+                            "runAsNonRoot": true,
+                            "fsGroup": 65534
+                        },
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        }
+    ]
+}

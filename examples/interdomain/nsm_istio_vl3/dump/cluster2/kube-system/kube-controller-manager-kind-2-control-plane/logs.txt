@@ -1,0 +1,366 @@
+==== START logs for container kube-controller-manager of pod kube-system/kube-controller-manager-kind-2-control-plane ====
+I1110 15:06:50.765230       1 serving.go:348] Generated self-signed cert in-memory
+I1110 15:06:51.146959       1 controllermanager.go:180] Version: v1.24.0
+I1110 15:06:51.146989       1 controllermanager.go:182] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1110 15:06:51.148552       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I1110 15:06:51.148944       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1110 15:06:51.150436       1 secure_serving.go:210] Serving securely on 127.0.0.1:10257
+I1110 15:06:51.150577       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1110 15:06:51.151043       1 leaderelection.go:248] attempting to acquire leader lease kube-system/kube-controller-manager...
+E1110 15:06:56.152222       1 leaderelection.go:330] error retrieving resource lock kube-system/kube-controller-manager: Get "https://172.18.0.5:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/kube-controller-manager?timeout=5s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+I1110 15:06:59.083093       1 leaderelection.go:258] successfully acquired lease kube-system/kube-controller-manager
+I1110 15:06:59.083298       1 event.go:294] "Event occurred" object="kube-system/kube-controller-manager" fieldPath="" kind="Lease" apiVersion="coordination.k8s.io/v1" type="Normal" reason="LeaderElection" message="kind-2-control-plane_961da8ba-e9d6-4b94-98fd-282eda1c63f3 became leader"
+I1110 15:06:59.191366       1 shared_informer.go:255] Waiting for caches to sync for tokens
+I1110 15:06:59.202822       1 controllermanager.go:593] Started "serviceaccount"
+I1110 15:06:59.202934       1 serviceaccounts_controller.go:117] Starting service account controller
+I1110 15:06:59.202965       1 shared_informer.go:255] Waiting for caches to sync for service account
+I1110 15:06:59.213612       1 certificate_controller.go:119] Starting certificate controller "csrsigning-kubelet-serving"
+I1110 15:06:59.213645       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-serving
+I1110 15:06:59.213718       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1110 15:06:59.214234       1 certificate_controller.go:119] Starting certificate controller "csrsigning-kubelet-client"
+I1110 15:06:59.214271       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-client
+I1110 15:06:59.214375       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1110 15:06:59.215562       1 certificate_controller.go:119] Starting certificate controller "csrsigning-kube-apiserver-client"
+I1110 15:06:59.215618       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kube-apiserver-client
+I1110 15:06:59.215931       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1110 15:06:59.216977       1 controllermanager.go:593] Started "csrsigning"
+W1110 15:06:59.217038       1 core.go:225] configure-cloud-routes is set, but no cloud provider specified. Will not configure cloud provider routes.
+W1110 15:06:59.217062       1 controllermanager.go:571] Skipping "route"
+I1110 15:06:59.217333       1 certificate_controller.go:119] Starting certificate controller "csrsigning-legacy-unknown"
+I1110 15:06:59.217379       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-legacy-unknown
+I1110 15:06:59.217402       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1110 15:06:59.227503       1 controllermanager.go:593] Started "persistentvolume-expander"
+I1110 15:06:59.227640       1 expand_controller.go:341] Starting expand controller
+I1110 15:06:59.227666       1 shared_informer.go:255] Waiting for caches to sync for expand
+I1110 15:06:59.238060       1 controllermanager.go:593] Started "pv-protection"
+I1110 15:06:59.238107       1 pv_protection_controller.go:79] Starting PV protection controller
+I1110 15:06:59.238133       1 shared_informer.go:255] Waiting for caches to sync for PV protection
+I1110 15:06:59.248575       1 controllermanager.go:593] Started "endpointslice"
+I1110 15:06:59.248656       1 endpointslice_controller.go:257] Starting endpoint slice controller
+I1110 15:06:59.248679       1 shared_informer.go:255] Waiting for caches to sync for endpoint_slice
+I1110 15:06:59.258627       1 controllermanager.go:593] Started "replicationcontroller"
+I1110 15:06:59.258740       1 replica_set.go:205] Starting replicationcontroller controller
+I1110 15:06:59.258774       1 shared_informer.go:255] Waiting for caches to sync for ReplicationController
+I1110 15:06:59.269077       1 controllermanager.go:593] Started "deployment"
+I1110 15:06:59.269140       1 deployment_controller.go:153] "Starting controller" controller="deployment"
+I1110 15:06:59.269164       1 shared_informer.go:255] Waiting for caches to sync for deployment
+I1110 15:06:59.288302       1 controllermanager.go:593] Started "horizontalpodautoscaling"
+I1110 15:06:59.288446       1 horizontal.go:168] Starting HPA controller
+I1110 15:06:59.288478       1 shared_informer.go:255] Waiting for caches to sync for HPA
+I1110 15:06:59.291295       1 controllermanager.go:593] Started "csrcleaner"
+I1110 15:06:59.291399       1 cleaner.go:82] Starting CSR cleaner controller
+I1110 15:06:59.291487       1 shared_informer.go:262] Caches are synced for tokens
+I1110 15:06:59.301167       1 controllermanager.go:593] Started "ttl"
+I1110 15:06:59.301261       1 ttl_controller.go:121] Starting TTL controller
+I1110 15:06:59.301281       1 shared_informer.go:255] Waiting for caches to sync for TTL
+I1110 15:06:59.396834       1 controllermanager.go:593] Started "attachdetach"
+I1110 15:06:59.396940       1 attach_detach_controller.go:328] Starting attach detach controller
+I1110 15:06:59.396968       1 shared_informer.go:255] Waiting for caches to sync for attach detach
+I1110 15:06:59.546716       1 controllermanager.go:593] Started "endpoint"
+I1110 15:06:59.546829       1 endpoints_controller.go:178] Starting endpoint controller
+I1110 15:06:59.546849       1 shared_informer.go:255] Waiting for caches to sync for endpoint
+I1110 15:06:59.696003       1 controllermanager.go:593] Started "replicaset"
+I1110 15:06:59.696036       1 replica_set.go:205] Starting replicaset controller
+I1110 15:06:59.696051       1 shared_informer.go:255] Waiting for caches to sync for ReplicaSet
+I1110 15:06:59.847011       1 controllermanager.go:593] Started "cronjob"
+I1110 15:06:59.847057       1 cronjob_controllerv2.go:135] "Starting cronjob controller v2"
+I1110 15:06:59.847084       1 shared_informer.go:255] Waiting for caches to sync for cronjob
+I1110 15:06:59.996622       1 node_ipam_controller.go:91] Sending events to api server.
+I1110 15:07:10.038020       1 range_allocator.go:83] Sending events to api server.
+I1110 15:07:10.038278       1 range_allocator.go:117] No Secondary Service CIDR provided. Skipping filtering out secondary service addresses.
+I1110 15:07:10.038344       1 controllermanager.go:593] Started "nodeipam"
+I1110 15:07:10.038464       1 node_ipam_controller.go:154] Starting ipam controller
+I1110 15:07:10.038496       1 shared_informer.go:255] Waiting for caches to sync for node
+I1110 15:07:10.048387       1 controllermanager.go:593] Started "persistentvolume-binder"
+I1110 15:07:10.048489       1 pv_controller_base.go:311] Starting persistent volume controller
+I1110 15:07:10.048516       1 shared_informer.go:255] Waiting for caches to sync for persistent volume
+I1110 15:07:10.058671       1 controllermanager.go:593] Started "pvc-protection"
+I1110 15:07:10.058693       1 pvc_protection_controller.go:103] "Starting PVC protection controller"
+I1110 15:07:10.058717       1 shared_informer.go:255] Waiting for caches to sync for PVC protection
+I1110 15:07:10.075100       1 garbagecollector.go:149] Starting garbage collector controller
+I1110 15:07:10.075138       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1110 15:07:10.075197       1 graph_builder.go:289] GraphBuilder running
+I1110 15:07:10.075294       1 controllermanager.go:593] Started "garbagecollector"
+I1110 15:07:10.092460       1 controllermanager.go:593] Started "disruption"
+I1110 15:07:10.092578       1 disruption.go:363] Starting disruption controller
+I1110 15:07:10.092606       1 shared_informer.go:255] Waiting for caches to sync for disruption
+I1110 15:07:10.100389       1 controllermanager.go:593] Started "csrapproving"
+I1110 15:07:10.100583       1 certificate_controller.go:119] Starting certificate controller "csrapproving"
+I1110 15:07:10.100633       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrapproving
+I1110 15:07:10.110299       1 controllermanager.go:593] Started "ephemeral-volume"
+I1110 15:07:10.110344       1 controller.go:170] Starting ephemeral volume controller
+I1110 15:07:10.110364       1 shared_informer.go:255] Waiting for caches to sync for ephemeral
+I1110 15:07:10.120425       1 controllermanager.go:593] Started "podgc"
+I1110 15:07:10.120581       1 gc_controller.go:92] Starting GC controller
+I1110 15:07:10.120608       1 shared_informer.go:255] Waiting for caches to sync for GC
+I1110 15:07:10.157653       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for rolebindings.rbac.authorization.k8s.io
+I1110 15:07:10.157764       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for endpointslices.discovery.k8s.io
+I1110 15:07:10.157870       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for cronjobs.batch
+I1110 15:07:10.157926       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for jobs.batch
+I1110 15:07:10.157988       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for roles.rbac.authorization.k8s.io
+W1110 15:07:10.158144       1 shared_informer.go:533] resyncPeriod 12h20m5.469053402s is smaller than resyncCheckPeriod 13h49m37.71902151s and the informer has already started. Changing it to 13h49m37.71902151s
+I1110 15:07:10.158269       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for replicasets.apps
+I1110 15:07:10.158328       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for horizontalpodautoscalers.autoscaling
+I1110 15:07:10.158545       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for serviceaccounts
+I1110 15:07:10.158684       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for endpoints
+I1110 15:07:10.158764       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for podtemplates
+I1110 15:07:10.158812       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for daemonsets.apps
+I1110 15:07:10.158864       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for leases.coordination.k8s.io
+I1110 15:07:10.158902       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for deployments.apps
+I1110 15:07:10.158966       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for events.events.k8s.io
+I1110 15:07:10.159019       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for ingresses.networking.k8s.io
+I1110 15:07:10.159070       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for networkpolicies.networking.k8s.io
+I1110 15:07:10.159123       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for limitranges
+I1110 15:07:10.159185       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for csistoragecapacities.storage.k8s.io
+I1110 15:07:10.159256       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for controllerrevisions.apps
+I1110 15:07:10.159310       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for poddisruptionbudgets.policy
+I1110 15:07:10.159396       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for statefulsets.apps
+I1110 15:07:10.159445       1 controllermanager.go:593] Started "resourcequota"
+I1110 15:07:10.159485       1 resource_quota_controller.go:273] Starting resource quota controller
+I1110 15:07:10.159513       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1110 15:07:10.159569       1 resource_quota_monitor.go:308] QuotaMonitor running
+I1110 15:07:10.370183       1 controllermanager.go:593] Started "namespace"
+I1110 15:07:10.370286       1 namespace_controller.go:200] Starting namespace controller
+I1110 15:07:10.370306       1 shared_informer.go:255] Waiting for caches to sync for namespace
+I1110 15:07:10.503765       1 controllermanager.go:593] Started "daemonset"
+I1110 15:07:10.503879       1 daemon_controller.go:284] Starting daemon sets controller
+I1110 15:07:10.503905       1 shared_informer.go:255] Waiting for caches to sync for daemon sets
+I1110 15:07:10.653132       1 controllermanager.go:593] Started "statefulset"
+I1110 15:07:10.653225       1 stateful_set.go:147] Starting stateful set controller
+I1110 15:07:10.653245       1 shared_informer.go:255] Waiting for caches to sync for stateful set
+I1110 15:07:10.803449       1 controllermanager.go:593] Started "clusterrole-aggregation"
+I1110 15:07:10.803502       1 clusterroleaggregation_controller.go:194] Starting ClusterRoleAggregator
+I1110 15:07:10.803522       1 shared_informer.go:255] Waiting for caches to sync for ClusterRoleAggregator
+I1110 15:07:10.954277       1 controllermanager.go:593] Started "endpointslicemirroring"
+I1110 15:07:10.954318       1 endpointslicemirroring_controller.go:212] Starting EndpointSliceMirroring controller
+I1110 15:07:10.954343       1 shared_informer.go:255] Waiting for caches to sync for endpoint_slice_mirroring
+I1110 15:07:11.104336       1 controllermanager.go:593] Started "job"
+I1110 15:07:11.104436       1 job_controller.go:184] Starting job controller
+I1110 15:07:11.104467       1 shared_informer.go:255] Waiting for caches to sync for job
+I1110 15:07:11.151903       1 node_lifecycle_controller.go:77] Sending events to api server
+E1110 15:07:11.151957       1 core.go:211] failed to start cloud node lifecycle controller: no cloud provider provided
+W1110 15:07:11.151980       1 controllermanager.go:571] Skipping "cloud-node-lifecycle"
+I1110 15:07:11.303189       1 controllermanager.go:593] Started "ttl-after-finished"
+I1110 15:07:11.303269       1 ttlafterfinished_controller.go:109] Starting TTL after finished controller
+I1110 15:07:11.303290       1 shared_informer.go:255] Waiting for caches to sync for TTL after finished
+I1110 15:07:11.453799       1 controllermanager.go:593] Started "root-ca-cert-publisher"
+I1110 15:07:11.453882       1 publisher.go:107] Starting root CA certificate configmap publisher
+I1110 15:07:11.453897       1 shared_informer.go:255] Waiting for caches to sync for crt configmap
+I1110 15:07:11.604066       1 controllermanager.go:593] Started "bootstrapsigner"
+I1110 15:07:11.604134       1 shared_informer.go:255] Waiting for caches to sync for bootstrap_signer
+I1110 15:07:11.753647       1 controllermanager.go:593] Started "tokencleaner"
+I1110 15:07:11.753739       1 tokencleaner.go:118] Starting token cleaner controller
+I1110 15:07:11.753758       1 shared_informer.go:255] Waiting for caches to sync for token_cleaner
+I1110 15:07:11.753790       1 shared_informer.go:262] Caches are synced for token_cleaner
+I1110 15:07:11.802399       1 node_lifecycle_controller.go:377] Sending events to api server.
+I1110 15:07:11.802925       1 taint_manager.go:163] "Sending events to api server"
+I1110 15:07:11.803150       1 node_lifecycle_controller.go:505] Controller will reconcile labels.
+I1110 15:07:11.803255       1 controllermanager.go:593] Started "nodelifecycle"
+I1110 15:07:11.803350       1 node_lifecycle_controller.go:539] Starting node controller
+I1110 15:07:11.803374       1 shared_informer.go:255] Waiting for caches to sync for taint
+E1110 15:07:11.954105       1 core.go:91] Failed to start service controller: WARNING: no cloud provider provided, services of type LoadBalancer will fail
+W1110 15:07:11.954146       1 controllermanager.go:571] Skipping "service"
+I1110 15:07:11.968273       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1110 15:07:11.970498       1 shared_informer.go:262] Caches are synced for namespace
+I1110 15:07:11.981163       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1110 15:07:12.001234       1 shared_informer.go:262] Caches are synced for certificate-csrapproving
+I1110 15:07:12.003731       1 shared_informer.go:262] Caches are synced for ClusterRoleAggregator
+I1110 15:07:12.003822       1 shared_informer.go:262] Caches are synced for TTL after finished
+I1110 15:07:12.004036       1 shared_informer.go:262] Caches are synced for service account
+I1110 15:07:12.004277       1 shared_informer.go:262] Caches are synced for bootstrap_signer
+I1110 15:07:12.014378       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-serving
+I1110 15:07:12.014525       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-client
+I1110 15:07:12.016895       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kube-apiserver-client
+I1110 15:07:12.018245       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-legacy-unknown
+I1110 15:07:12.028010       1 shared_informer.go:262] Caches are synced for expand
+I1110 15:07:12.038514       1 shared_informer.go:262] Caches are synced for PV protection
+I1110 15:07:12.047202       1 shared_informer.go:262] Caches are synced for cronjob
+I1110 15:07:12.054092       1 shared_informer.go:262] Caches are synced for crt configmap
+I1110 15:07:12.155160       1 shared_informer.go:262] Caches are synced for endpoint_slice_mirroring
+I1110 15:07:12.169306       1 shared_informer.go:262] Caches are synced for deployment
+I1110 15:07:12.169358       1 shared_informer.go:262] Caches are synced for resource quota
+I1110 15:07:12.189515       1 shared_informer.go:262] Caches are synced for HPA
+I1110 15:07:12.193183       1 shared_informer.go:262] Caches are synced for disruption
+I1110 15:07:12.193217       1 disruption.go:371] Sending events to api server.
+I1110 15:07:12.196480       1 shared_informer.go:262] Caches are synced for ReplicaSet
+I1110 15:07:12.205050       1 shared_informer.go:262] Caches are synced for job
+I1110 15:07:12.210585       1 shared_informer.go:262] Caches are synced for ephemeral
+W1110 15:07:12.211942       1 actual_state_of_world.go:541] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="kind-2-control-plane" does not exist
+I1110 15:07:12.221517       1 shared_informer.go:262] Caches are synced for GC
+I1110 15:07:12.238678       1 shared_informer.go:262] Caches are synced for node
+I1110 15:07:12.238732       1 range_allocator.go:173] Starting range CIDR allocator
+I1110 15:07:12.238743       1 shared_informer.go:255] Waiting for caches to sync for cidrallocator
+I1110 15:07:12.238775       1 shared_informer.go:262] Caches are synced for cidrallocator
+I1110 15:07:12.246810       1 range_allocator.go:374] Set node kind-2-control-plane PodCIDR to [10.244.0.0/24]
+I1110 15:07:12.246946       1 shared_informer.go:262] Caches are synced for endpoint
+I1110 15:07:12.249008       1 shared_informer.go:262] Caches are synced for endpoint_slice
+I1110 15:07:12.249244       1 shared_informer.go:262] Caches are synced for persistent volume
+I1110 15:07:12.253838       1 shared_informer.go:262] Caches are synced for stateful set
+I1110 15:07:12.259319       1 shared_informer.go:262] Caches are synced for ReplicationController
+I1110 15:07:12.259388       1 shared_informer.go:262] Caches are synced for PVC protection
+I1110 15:07:12.259731       1 shared_informer.go:262] Caches are synced for resource quota
+I1110 15:07:12.297990       1 shared_informer.go:262] Caches are synced for attach detach
+I1110 15:07:12.301395       1 shared_informer.go:262] Caches are synced for TTL
+I1110 15:07:12.303841       1 shared_informer.go:262] Caches are synced for taint
+I1110 15:07:12.303998       1 node_lifecycle_controller.go:1399] Initializing eviction metric for zone: 
+I1110 15:07:12.304028       1 taint_manager.go:187] "Starting NoExecuteTaintManager"
+W1110 15:07:12.304127       1 node_lifecycle_controller.go:1014] Missing timestamp for Node kind-2-control-plane. Assuming now as a timestamp.
+I1110 15:07:12.304189       1 node_lifecycle_controller.go:1165] Controller detected that all Nodes are not-Ready. Entering master disruption mode.
+I1110 15:07:12.304284       1 shared_informer.go:262] Caches are synced for daemon sets
+I1110 15:07:12.304279       1 event.go:294] "Event occurred" object="kind-2-control-plane" fieldPath="" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node kind-2-control-plane event: Registered Node kind-2-control-plane in Controller"
+I1110 15:07:12.676125       1 shared_informer.go:262] Caches are synced for garbage collector
+I1110 15:07:12.676167       1 garbagecollector.go:158] Garbage collector: all resource monitors have synced. Proceeding to collect garbage
+I1110 15:07:12.681415       1 shared_informer.go:262] Caches are synced for garbage collector
+I1110 15:07:12.765036       1 event.go:294] "Event occurred" object="local-path-storage/local-path-provisioner" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set local-path-provisioner-9cd9bd544 to 1"
+I1110 15:07:12.765725       1 event.go:294] "Event occurred" object="kube-system/coredns" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set coredns-6d4b75cb6d to 2"
+I1110 15:07:12.970336       1 event.go:294] "Event occurred" object="kube-system/kube-proxy" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kube-proxy-59f9x"
+I1110 15:07:12.970424       1 event.go:294] "Event occurred" object="kube-system/kindnet" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kindnet-5dfm4"
+I1110 15:07:13.062544       1 event.go:294] "Event occurred" object="kube-system/coredns-6d4b75cb6d" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: coredns-6d4b75cb6d-2fdcj"
+I1110 15:07:13.063891       1 event.go:294] "Event occurred" object="local-path-storage/local-path-provisioner-9cd9bd544" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: local-path-provisioner-9cd9bd544-zrg2h"
+I1110 15:07:13.068573       1 event.go:294] "Event occurred" object="kube-system/coredns-6d4b75cb6d" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: coredns-6d4b75cb6d-hg62f"
+W1110 15:07:15.738326       1 actual_state_of_world.go:541] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="kind-2-worker" does not exist
+I1110 15:07:15.746101       1 event.go:294] "Event occurred" object="kube-system/kube-proxy" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kube-proxy-t4t7g"
+I1110 15:07:15.746509       1 event.go:294] "Event occurred" object="kube-system/kindnet" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kindnet-2l8h4"
+I1110 15:07:15.751838       1 range_allocator.go:374] Set node kind-2-worker PodCIDR to [10.244.1.0/24]
+W1110 15:07:17.305323       1 node_lifecycle_controller.go:1014] Missing timestamp for Node kind-2-worker. Assuming now as a timestamp.
+I1110 15:07:17.305365       1 event.go:294] "Event occurred" object="kind-2-worker" fieldPath="" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node kind-2-worker event: Registered Node kind-2-worker in Controller"
+I1110 15:07:22.305881       1 node_lifecycle_controller.go:1192] Controller detected that some Nodes are Ready. Exiting master disruption mode.
+W1110 15:07:26.023576       1 topologycache.go:199] Can't get CPU or zone information for kind-2-worker node
+I1110 15:14:14.611744       1 event.go:294] "Event occurred" object="metallb-system/speaker" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: speaker-s9j6f"
+I1110 15:14:15.053286       1 event.go:294] "Event occurred" object="metallb-system/controller" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set controller-7476b58756 to 1"
+I1110 15:14:15.059086       1 event.go:294] "Event occurred" object="metallb-system/controller-7476b58756" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: controller-7476b58756-kfc5t"
+I1110 15:17:53.392536       1 event.go:294] "Event occurred" object="spire/spire-server" fieldPath="" kind="StatefulSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="create Pod spire-server-0 in StatefulSet spire-server successful"
+I1110 15:17:53.813881       1 event.go:294] "Event occurred" object="spire/spire-agent" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: spire-agent-lrt6c"
+I1110 15:18:12.560713       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for spiffeids.spiffeid.spiffe.io
+I1110 15:18:12.560843       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1110 15:18:12.661023       1 shared_informer.go:262] Caches are synced for resource quota
+I1110 15:18:13.039478       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1110 15:18:13.039559       1 shared_informer.go:262] Caches are synced for garbage collector
+I1110 15:28:03.219734       1 event.go:294] "Event occurred" object="nsm-system/admission-webhook-k8s" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set admission-webhook-k8s-66c9bd474d to 1"
+I1110 15:28:03.240702       1 event.go:294] "Event occurred" object="nsm-system/admission-webhook-k8s-66c9bd474d" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: admission-webhook-k8s-66c9bd474d-ptmlb"
+I1110 15:28:03.697295       1 event.go:294] "Event occurred" object="nsm-system/nsmgr-proxy" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set nsmgr-proxy-5c4f578d4c to 1"
+I1110 15:28:03.703500       1 event.go:294] "Event occurred" object="nsm-system/nsmgr-proxy-5c4f578d4c" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: nsmgr-proxy-5c4f578d4c-h4nnx"
+I1110 15:28:04.171418       1 event.go:294] "Event occurred" object="nsm-system/registry-k8s" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set registry-k8s-7ff5bd6bcd to 1"
+I1110 15:28:04.177921       1 event.go:294] "Event occurred" object="nsm-system/registry-k8s-7ff5bd6bcd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: registry-k8s-7ff5bd6bcd-k7pct"
+I1110 15:28:04.644632       1 event.go:294] "Event occurred" object="nsm-system/registry-proxy" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set registry-proxy-7cbfc4f7f5 to 1"
+I1110 15:28:04.649434       1 event.go:294] "Event occurred" object="nsm-system/registry-proxy-7cbfc4f7f5" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: registry-proxy-7cbfc4f7f5-t69r7"
+I1110 15:28:05.129550       1 event.go:294] "Event occurred" object="nsm-system/forwarder-vpp" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: forwarder-vpp-ptwqj"
+I1110 15:28:05.607500       1 event.go:294] "Event occurred" object="nsm-system/nsmgr" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: nsmgr-fv5fs"
+I1110 15:28:13.106959       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for networkserviceendpoints.networkservicemesh.io
+I1110 15:28:13.107101       1 resource_quota_monitor.go:233] QuotaMonitor created object count evaluator for networkservices.networkservicemesh.io
+I1110 15:28:13.107184       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1110 15:28:13.207782       1 shared_informer.go:262] Caches are synced for resource quota
+I1110 15:28:13.323743       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1110 15:28:13.323823       1 shared_informer.go:262] Caches are synced for garbage collector
+I1110 15:36:15.369649       1 event.go:294] "Event occurred" object="default/ubuntu-deployment" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set ubuntu-deployment-99cf8d8f7 to 1"
+I1110 15:36:15.385058       1 event.go:294] "Event occurred" object="default/ubuntu-deployment-99cf8d8f7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: ubuntu-deployment-99cf8d8f7-pq82b"
+I1110 16:00:08.223060       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-676dcbfd6 to 1"
+I1110 16:00:08.254228       1 event.go:294] "Event occurred" object="default/greeting-676dcbfd6" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-676dcbfd6-gvvdm"
+I1110 16:02:53.687528       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-84bb6b84fc to 1"
+I1110 16:02:53.712727       1 event.go:294] "Event occurred" object="default/greeting-84bb6b84fc" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-84bb6b84fc-cq6nq"
+I1110 16:05:41.360552       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-78cb964754 to 1"
+I1110 16:05:41.384369       1 event.go:294] "Event occurred" object="default/greeting-78cb964754" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-78cb964754-wfkvz"
+I1110 17:06:59.293257       1 cleaner.go:172] Cleaning CSR "csr-rk449" as it is more than 1h0m0s old and approved.
+I1110 17:06:59.319885       1 cleaner.go:172] Cleaning CSR "csr-5wbtf" as it is more than 1h0m0s old and approved.
+I1111 08:21:40.974294       1 event.go:294] "Event occurred" object="default/ubuntu-deployment" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set ubuntu-deployment-99cf8d8f7 to 1"
+I1111 08:21:40.996453       1 event.go:294] "Event occurred" object="default/ubuntu-deployment-99cf8d8f7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: ubuntu-deployment-99cf8d8f7-wftrp"
+I1114 08:44:50.254348       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-b69bbb5d to 1"
+I1114 08:44:50.285035       1 event.go:294] "Event occurred" object="default/greeting-b69bbb5d" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-b69bbb5d-kpzst"
+I1114 08:51:56.332171       1 event.go:294] "Event occurred" object="default/ubuntu-deployment" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set ubuntu-deployment-99cf8d8f7 to 1"
+I1114 08:51:56.345368       1 event.go:294] "Event occurred" object="default/ubuntu-deployment-99cf8d8f7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: ubuntu-deployment-99cf8d8f7-nds7p"
+I1114 09:03:23.242529       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-745fc986b9 to 1"
+I1114 09:03:23.264931       1 event.go:294] "Event occurred" object="default/greeting-745fc986b9" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-745fc986b9-6cblx"
+I1114 12:52:11.904355       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-74c584cc99 to 1"
+I1114 12:52:11.933992       1 event.go:294] "Event occurred" object="default/greeting-74c584cc99" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-74c584cc99-5ntck"
+I1114 12:54:11.123943       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6fb6f54987 to 1"
+I1114 12:54:11.144041       1 event.go:294] "Event occurred" object="default/greeting-6fb6f54987" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6fb6f54987-7nj2q"
+I1114 12:55:40.569496       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6fb6f54987 to 1"
+I1114 12:55:40.587573       1 event.go:294] "Event occurred" object="default/greeting-6fb6f54987" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6fb6f54987-97ck7"
+I1114 12:59:30.765026       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-69cdcd75c7 to 1"
+I1114 12:59:30.784660       1 event.go:294] "Event occurred" object="default/greeting-69cdcd75c7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-69cdcd75c7-s2hgf"
+I1114 13:09:54.357746       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-69cdcd75c7 to 1"
+I1114 13:09:54.376466       1 event.go:294] "Event occurred" object="default/greeting-69cdcd75c7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-69cdcd75c7-q5pcx"
+I1114 13:13:00.749611       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-54c68455d4 to 1"
+I1114 13:13:00.768588       1 event.go:294] "Event occurred" object="default/greeting-54c68455d4" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-54c68455d4-ccgjp"
+I1114 13:14:34.524612       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6fb6f54987 to 1"
+I1114 13:14:34.543460       1 event.go:294] "Event occurred" object="default/greeting-6fb6f54987" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6fb6f54987-n8w8l"
+I1114 13:15:22.682911       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6fb6f54987 to 1"
+I1114 13:15:22.700666       1 event.go:294] "Event occurred" object="default/greeting-6fb6f54987" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6fb6f54987-qfbq4"
+I1114 13:19:22.987976       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6574c59d96 to 1"
+I1114 13:19:23.006050       1 event.go:294] "Event occurred" object="default/greeting-6574c59d96" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6574c59d96-4cscp"
+I1114 13:26:30.605977       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6574c59d96 to 1"
+I1114 13:26:30.624433       1 event.go:294] "Event occurred" object="default/greeting-6574c59d96" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6574c59d96-8292n"
+I1115 08:06:16.406505       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-d57967f47 to 1"
+I1115 08:06:16.437284       1 event.go:294] "Event occurred" object="default/greeting-d57967f47" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-d57967f47-gt2vd"
+I1115 08:19:52.832366       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-d57967f47 to 1"
+I1115 08:19:52.850939       1 event.go:294] "Event occurred" object="default/greeting-d57967f47" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-d57967f47-hgsmr"
+I1115 08:21:01.140620       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7d7f8979b9 to 1"
+I1115 08:21:01.159584       1 event.go:294] "Event occurred" object="default/greeting-7d7f8979b9" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7d7f8979b9-fw2v6"
+I1115 09:45:05.550167       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7d7f8979b9 to 1"
+I1115 09:45:05.575468       1 event.go:294] "Event occurred" object="default/greeting-7d7f8979b9" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7d7f8979b9-6sfkf"
+I1115 09:46:02.495769       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7d7f8979b9 to 1"
+I1115 09:46:02.516842       1 event.go:294] "Event occurred" object="default/greeting-7d7f8979b9" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7d7f8979b9-drzjp"
+I1115 09:47:36.100753       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-56b845bd to 1"
+I1115 09:47:36.121007       1 event.go:294] "Event occurred" object="default/greeting-56b845bd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-56b845bd-ccxtm"
+I1115 09:48:46.636527       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-56b845bd to 1"
+I1115 09:48:46.654234       1 event.go:294] "Event occurred" object="default/greeting-56b845bd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-56b845bd-4f9sn"
+I1115 09:49:28.786669       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6f55489987 to 1"
+I1115 09:49:28.805006       1 event.go:294] "Event occurred" object="default/greeting-6f55489987" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6f55489987-7tzrz"
+I1115 09:52:18.181820       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-56b845bd to 1"
+I1115 09:52:18.201075       1 event.go:294] "Event occurred" object="default/greeting-56b845bd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-56b845bd-rgnfn"
+I1115 09:53:10.191048       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7d7f8979b9 to 1"
+I1115 09:53:10.207826       1 event.go:294] "Event occurred" object="default/greeting-7d7f8979b9" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7d7f8979b9-t9z9w"
+I1115 09:58:34.397042       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7d9446fc96 to 1"
+I1115 09:58:34.415805       1 event.go:294] "Event occurred" object="default/greeting-7d9446fc96" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7d9446fc96-k28ls"
+I1115 10:31:09.962350       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-5dfdd5bcdd to 1"
+I1115 10:31:09.983650       1 event.go:294] "Event occurred" object="default/greeting-5dfdd5bcdd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-5dfdd5bcdd-l5xcb"
+I1115 10:31:59.539957       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6b97f8bb7c to 1"
+I1115 10:31:59.557021       1 event.go:294] "Event occurred" object="default/greeting-6b97f8bb7c" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6b97f8bb7c-wp25f"
+I1115 10:33:57.290049       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-5b4968648c to 1"
+I1115 10:33:57.321147       1 event.go:294] "Event occurred" object="default/greeting-5b4968648c" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-5b4968648c-bslxt"
+I1115 10:35:06.808374       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7c97b75dc7 to 1"
+I1115 10:35:06.829017       1 event.go:294] "Event occurred" object="default/greeting-7c97b75dc7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7c97b75dc7-274rt"
+I1115 10:36:05.771664       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-655f5b9995 to 1"
+I1115 10:36:05.791368       1 event.go:294] "Event occurred" object="default/greeting-655f5b9995" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-655f5b9995-qvcqg"
+I1115 10:44:14.269471       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-5d8f47698 to 1"
+I1115 10:44:14.288397       1 event.go:294] "Event occurred" object="default/greeting-5d8f47698" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-5d8f47698-8smgx"
+I1115 10:45:20.954796       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6b96f77584 to 1"
+I1115 10:45:20.976339       1 event.go:294] "Event occurred" object="default/greeting-6b96f77584" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6b96f77584-mnlmx"
+I1116 08:39:53.984134       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-856bfb6db4 to 1"
+I1116 08:39:54.018543       1 event.go:294] "Event occurred" object="default/greeting-856bfb6db4" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-856bfb6db4-gsj2b"
+I1116 08:45:20.615639       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-78777dd69 to 1"
+I1116 08:45:20.638868       1 event.go:294] "Event occurred" object="default/greeting-78777dd69" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-78777dd69-6vt7w"
+I1116 08:46:46.221035       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-75b6b9d7c7 to 1"
+I1116 08:46:46.246761       1 event.go:294] "Event occurred" object="default/greeting-75b6b9d7c7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-75b6b9d7c7-lsw2l"
+I1116 08:47:32.242023       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-78777dd69 to 1"
+I1116 08:47:32.262529       1 event.go:294] "Event occurred" object="default/greeting-78777dd69" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-78777dd69-982jf"
+I1116 08:49:11.323609       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-67c98f5c55 to 1"
+I1116 08:49:11.344590       1 event.go:294] "Event occurred" object="default/greeting-67c98f5c55" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-67c98f5c55-q64kv"
+I1116 08:49:49.038930       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6d9fc58d9b to 1"
+I1116 08:49:49.055030       1 event.go:294] "Event occurred" object="default/greeting-6d9fc58d9b" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6d9fc58d9b-zbfrb"
+I1116 08:50:00.198531       1 event.go:294] "Event occurred" object="default/greeting-67c98f5c55" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-67c98f5c55-g4lts"
+I1116 08:50:27.117388       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-6d9fc58d9b to 1"
+I1116 08:50:27.137970       1 event.go:294] "Event occurred" object="default/greeting-6d9fc58d9b" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-6d9fc58d9b-nrj4m"
+I1116 08:51:58.649534       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-74dd487548 to 1"
+I1116 08:51:58.677147       1 event.go:294] "Event occurred" object="default/greeting-74dd487548" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-74dd487548-2pzcw"
+I1116 08:56:08.646359       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7f9b99c659 to 1"
+I1116 08:56:08.669067       1 event.go:294] "Event occurred" object="default/greeting-7f9b99c659" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7f9b99c659-5mwdt"
+I1116 08:57:08.608779       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7458597554 to 1"
+I1116 08:57:08.630463       1 event.go:294] "Event occurred" object="default/greeting-7458597554" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7458597554-9zln5"
+I1116 08:58:01.833008       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-c6b96f7 to 1"
+I1116 08:58:01.854297       1 event.go:294] "Event occurred" object="default/greeting-c6b96f7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-c6b96f7-475lt"
+I1116 08:58:58.480626       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-5d47df7467 to 1"
+I1116 08:58:58.503276       1 event.go:294] "Event occurred" object="default/greeting-5d47df7467" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-5d47df7467-ll4r4"
+I1116 10:54:08.926930       1 event.go:294] "Event occurred" object="default/ubuntu-deployment" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set ubuntu-deployment-99cf8d8f7 to 1"
+I1116 10:54:08.950943       1 event.go:294] "Event occurred" object="default/ubuntu-deployment-99cf8d8f7" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: ubuntu-deployment-99cf8d8f7-4vqmt"
+I1116 11:30:04.978676       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-585c879595 to 1"
+I1116 11:30:04.997423       1 event.go:294] "Event occurred" object="default/greeting-585c879595" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-585c879595-m8p7f"
+I1116 11:30:57.423123       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-8658b4f89f to 1"
+I1116 11:30:57.446827       1 event.go:294] "Event occurred" object="default/greeting-8658b4f89f" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-8658b4f89f-nhqx7"
+I1116 11:34:13.302095       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7b86c8d9b6 to 1"
+I1116 11:34:13.321836       1 event.go:294] "Event occurred" object="default/greeting-7b86c8d9b6" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7b86c8d9b6-fbqmq"
+I1116 11:43:21.728177       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7dcfbfbd67 to 1"
+I1116 11:43:21.760594       1 event.go:294] "Event occurred" object="default/greeting-7dcfbfbd67" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7dcfbfbd67-rk6qt"
+I1116 11:45:37.310874       1 event.go:294] "Event occurred" object="default/greeting" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set greeting-7b86c8d9b6 to 1"
+I1116 11:45:37.333701       1 event.go:294] "Event occurred" object="default/greeting-7b86c8d9b6" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: greeting-7b86c8d9b6-kvvnt"
+==== END logs for container kube-controller-manager of pod kube-system/kube-controller-manager-kind-2-control-plane ====

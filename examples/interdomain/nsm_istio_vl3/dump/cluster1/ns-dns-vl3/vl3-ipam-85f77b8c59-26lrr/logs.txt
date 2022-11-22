@@ -1,0 +1,13 @@
+==== START logs for container vl3-ipam of pod ns-dns-vl3/vl3-ipam-85f77b8c59-26lrr ====
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE                           DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_LISTEN_ON                Comma-separated list of URL    unix:///listen.on.socket                                           url to listen on.
+NSM_LOG_LEVEL                String                         INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String                         otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+NSM_PREFIX                   String                         169.254.0.0/16                                                     CIDR Prefix to allocate CIDR prefixes for clients
+NSM_CLIENT_PREFIX_LEN        Unsigned Integer               24                                                                 Default len of clients prefix
+Nov 10 15:30:20.822[36m [INFO] [cmd:[/bin/app]] [0mConfiguration: &{[{tcp   :5006   false   }] TRACE otel-collector.observability.svc.cluster.local:4317 172.16.0.0/16 24}
+Nov 10 15:30:21.368[36m [INFO] [cmd:[/bin/app]] [0mSVID: "spiffe://nsm.cluster1/ns/ns-dns-vl3/pod/vl3-ipam-85f77b8c59-26lrr"
+==== END logs for container vl3-ipam of pod ns-dns-vl3/vl3-ipam-85f77b8c59-26lrr ====

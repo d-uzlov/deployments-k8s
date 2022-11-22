@@ -17,6 +17,4 @@ spec:
             - name: NSM_REGISTER_SERVICE
               value: "true"
             - name: NSM_DNS_TEMPLATES
-#              value: "{{ index .label \"app\" }}.{{ index .Labels \" namespace \"}}."
               value: "{{ index .Labels \"dnsName\" }}.{{ .NetworkService }}."
-#              value: "{{ index .Labels \"dnsName\" }}.sample.svc."

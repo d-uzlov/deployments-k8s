@@ -1,0 +1,280 @@
+{
+    "kind": "ReplicaSetList",
+    "apiVersion": "apps/v1",
+    "metadata": {
+        "resourceVersion": "1097744"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc",
+                "namespace": "istio-system",
+                "uid": "2c27d451-9f93-48cf-a9b3-37819d7f8561",
+                "resourceVersion": "3516",
+                "generation": 1,
+                "creationTimestamp": "2022-11-10T15:34:50Z",
+                "labels": {
+                    "app": "istiod",
+                    "install.operator.istio.io/owning-resource": "unknown",
+                    "istio": "pilot",
+                    "istio.io/rev": "default",
+                    "operator.istio.io/component": "Pilot",
+                    "pod-template-hash": "cd9c68bc",
+                    "sidecar.istio.io/inject": "false"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "istiod",
+                        "uid": "2c155570-11d6-4bc1-b2a6-f1bc0dc3e720",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "istio": "pilot",
+                        "pod-template-hash": "cd9c68bc"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "istiod",
+                            "install.operator.istio.io/owning-resource": "unknown",
+                            "istio": "pilot",
+                            "istio.io/rev": "default",
+                            "operator.istio.io/component": "Pilot",
+                            "pod-template-hash": "cd9c68bc",
+                            "sidecar.istio.io/inject": "false"
+                        },
+                        "annotations": {
+                            "prometheus.io/port": "15014",
+                            "prometheus.io/scrape": "true",
+                            "sidecar.istio.io/inject": "false"
+                        }
+                    },
+                    "spec": {
+                        "volumes": [
+                            {
+                                "name": "local-certs",
+                                "emptyDir": {
+                                    "medium": "Memory"
+                                }
+                            },
+                            {
+                                "name": "istio-token",
+                                "projected": {
+                                    "sources": [
+                                        {
+                                            "serviceAccountToken": {
+                                                "audience": "istio-ca",
+                                                "expirationSeconds": 43200,
+                                                "path": "istio-token"
+                                            }
+                                        }
+                                    ],
+                                    "defaultMode": 420
+                                }
+                            },
+                            {
+                                "name": "cacerts",
+                                "secret": {
+                                    "secretName": "cacerts",
+                                    "defaultMode": 420,
+                                    "optional": true
+                                }
+                            },
+                            {
+                                "name": "istio-kubeconfig",
+                                "secret": {
+                                    "secretName": "istio-kubeconfig",
+                                    "defaultMode": 420,
+                                    "optional": true
+                                }
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "discovery",
+                                "image": "docker.io/istio/pilot:1.15.1",
+                                "args": [
+                                    "discovery",
+                                    "--monitoringAddr=:15014",
+                                    "--log_output_level=default:info",
+                                    "--domain",
+                                    "cluster.local",
+                                    "--keepaliveMaxServerConnectionAge",
+                                    "30m"
+                                ],
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 15010,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 15017,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "REVISION",
+                                        "value": "default"
+                                    },
+                                    {
+                                        "name": "JWT_POLICY",
+                                        "value": "third-party-jwt"
+                                    },
+                                    {
+                                        "name": "PILOT_CERT_PROVIDER",
+                                        "value": "istiod"
+                                    },
+                                    {
+                                        "name": "POD_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POD_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SERVICE_ACCOUNT",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "spec.serviceAccountName"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "KUBECONFIG",
+                                        "value": "/var/run/secrets/remote/config"
+                                    },
+                                    {
+                                        "name": "PILOT_TRACE_SAMPLING",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "name": "PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_OUTBOUND",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_INBOUND",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "ISTIOD_ADDR",
+                                        "value": "istiod.istio-system.svc:15012"
+                                    },
+                                    {
+                                        "name": "PILOT_ENABLE_ANALYSIS",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "CLUSTER_ID",
+                                        "value": "Kubernetes"
+                                    }
+                                ],
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "2Gi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "name": "istio-token",
+                                        "readOnly": true,
+                                        "mountPath": "/var/run/secrets/tokens"
+                                    },
+                                    {
+                                        "name": "local-certs",
+                                        "mountPath": "/var/run/secrets/istio-dns"
+                                    },
+                                    {
+                                        "name": "cacerts",
+                                        "readOnly": true,
+                                        "mountPath": "/etc/cacerts"
+                                    },
+                                    {
+                                        "name": "istio-kubeconfig",
+                                        "readOnly": true,
+                                        "mountPath": "/var/run/secrets/remote"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "httpGet": {
+                                        "path": "/ready",
+                                        "port": 8080,
+                                        "scheme": "HTTP"
+                                    },
+                                    "initialDelaySeconds": 1,
+                                    "timeoutSeconds": 5,
+                                    "periodSeconds": 3,
+                                    "successThreshold": 1,
+                                    "failureThreshold": 3
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent",
+                                "securityContext": {
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "runAsUser": 1337,
+                                    "runAsGroup": 1337,
+                                    "runAsNonRoot": true,
+                                    "readOnlyRootFilesystem": true,
+                                    "allowPrivilegeEscalation": false
+                                }
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 30,
+                        "dnsPolicy": "ClusterFirst",
+                        "serviceAccountName": "istiod",
+                        "serviceAccount": "istiod",
+                        "securityContext": {
+                            "fsGroup": 1337
+                        },
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        }
+    ]
+}

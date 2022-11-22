@@ -1,0 +1,13 @@
+==== START logs for container coredns of pod kube-system/coredns-6d4b75cb6d-h9nkl ====
+.:53
+[INFO] plugin/reload: Running configuration MD5 = db32ca3650231d74073ff4cf814959a7
+CoreDNS-1.8.6
+linux/amd64, go1.17.1, 13a9191
+[INFO] Reloading
+[INFO] plugin/health: Going into lameduck mode for 5s
+[INFO] plugin/reload: Running configuration MD5 = 93c2b42b065da5f4c6d634f851427c22
+[INFO] Reloading complete
+[ERROR] plugin/errors: 2 greeting.default. A: read tcp 10.244.0.2:44828->172.18.0.1:53: i/o timeout
+[ERROR] plugin/errors: 2 greeting.default. A: read tcp 10.244.0.2:45028->172.18.0.1:53: i/o timeout
+[ERROR] plugin/errors: 2 greeting.vm-ns. A: read tcp 10.244.0.2:45362->172.18.0.1:53: i/o timeout
+==== END logs for container coredns of pod kube-system/coredns-6d4b75cb6d-h9nkl ====

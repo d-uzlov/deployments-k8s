@@ -5,8 +5,6 @@ metadata:
   name: sample
   labels:
     istio-injection: enabled
-#  annotations:
-#    networkservicemesh.io: kernel://my-vl3-network/nsm-1
 ---
 apiVersion: v1
 kind: Service
@@ -33,6 +31,7 @@ metadata:
     version: v1
   annotations:
     networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=helloworld
+#    networkservicemesh.io: kernel://my-vl3-network/nsm-1
 spec:
   replicas: 1
   selector:
@@ -65,6 +64,7 @@ metadata:
     version: v2
   annotations:
     networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=hello2
+#    networkservicemesh.io: kernel://my-vl3-network/nsm-1
 spec:
   replicas: 1
   selector:
