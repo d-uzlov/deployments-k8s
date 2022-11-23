@@ -1,0 +1,433 @@
+{
+    "kind": "EventList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "10865"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c406eb8487",
+                "namespace": "istio-system",
+                "uid": "50f174f6-3b2d-43d8-899c-faa4cf5bb42b",
+                "resourceVersion": "10242",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10239"
+            },
+            "reason": "Scheduled",
+            "message": "Successfully assigned istio-system/istiod-cd9c68bc-w42xj to kind-1-worker",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c427183f3d",
+                "namespace": "istio-system",
+                "uid": "1603a4bf-576d-4af3-9036-003ed85a0764",
+                "resourceVersion": "10255",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Pulled",
+            "message": "Container image \"ghcr.io/networkservicemesh/ci/cmd-nsc-init:8f0a5f1\" already present on machine",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c427f9fd05",
+                "namespace": "istio-system",
+                "uid": "e6256502-1c41-40ce-aaf8-ab90945cff87",
+                "resourceVersion": "10256",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Created",
+            "message": "Created container cmd-nsc-init",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c43359b8f8",
+                "namespace": "istio-system",
+                "uid": "20f72b38-7c78-43db-a3c3-2190b5522b5b",
+                "resourceVersion": "10261",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Started",
+            "message": "Started container cmd-nsc-init",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c58f3aad1a",
+                "namespace": "istio-system",
+                "uid": "d7d3cb35-6286-4113-9b38-c77d58255bf8",
+                "resourceVersion": "10273",
+                "creationTimestamp": "2022-11-23T07:04:02Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{discovery}"
+            },
+            "reason": "Pulled",
+            "message": "Container image \"docker.io/istio/pilot:1.15.1\" already present on machine",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:02Z",
+            "lastTimestamp": "2022-11-23T07:04:02Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c59020e5db",
+                "namespace": "istio-system",
+                "uid": "bab57ce2-5855-4546-aa66-1f6ed059e4e5",
+                "resourceVersion": "10274",
+                "creationTimestamp": "2022-11-23T07:04:02Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{discovery}"
+            },
+            "reason": "Created",
+            "message": "Created container discovery",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:02Z",
+            "lastTimestamp": "2022-11-23T07:04:02Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c59bc78813",
+                "namespace": "istio-system",
+                "uid": "a4920688-d931-4023-afae-c2b089ae5e69",
+                "resourceVersion": "10276",
+                "creationTimestamp": "2022-11-23T07:04:03Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{discovery}"
+            },
+            "reason": "Started",
+            "message": "Started container discovery",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:03Z",
+            "lastTimestamp": "2022-11-23T07:04:03Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c59bd5f218",
+                "namespace": "istio-system",
+                "uid": "0f7a7074-889c-4244-b2a3-28740a414f2e",
+                "resourceVersion": "10277",
+                "creationTimestamp": "2022-11-23T07:04:03Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Pulled",
+            "message": "Container image \"thetadr/cmd-nsc:dns-fix\" already present on machine",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:03Z",
+            "lastTimestamp": "2022-11-23T07:04:03Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c59cbef6ac",
+                "namespace": "istio-system",
+                "uid": "e077d53c-6c40-4663-89b0-2576d94fa878",
+                "resourceVersion": "10278",
+                "creationTimestamp": "2022-11-23T07:04:03Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Created",
+            "message": "Created container cmd-nsc",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:03Z",
+            "lastTimestamp": "2022-11-23T07:04:03Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc-w42xj.172a24c5a7b36e31",
+                "namespace": "istio-system",
+                "uid": "709d2068-3679-4ab0-ad2c-bae8434b8e81",
+                "resourceVersion": "10279",
+                "creationTimestamp": "2022-11-23T07:04:03Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc-w42xj",
+                "uid": "e6f83444-e686-4c5a-8d16-f57683462bf5",
+                "apiVersion": "v1",
+                "resourceVersion": "10241",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Started",
+            "message": "Started container cmd-nsc",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:03Z",
+            "lastTimestamp": "2022-11-23T07:04:03Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod-cd9c68bc.172a24c406aa908e",
+                "namespace": "istio-system",
+                "uid": "8dafe160-a7a7-4062-b98f-4573f5d8362b",
+                "resourceVersion": "10240",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "ReplicaSet",
+                "namespace": "istio-system",
+                "name": "istiod-cd9c68bc",
+                "uid": "dd9a1a34-d121-4b80-9662-6b66983d97f6",
+                "apiVersion": "apps/v1",
+                "resourceVersion": "10235"
+            },
+            "reason": "SuccessfulCreate",
+            "message": "Created pod: istiod-cd9c68bc-w42xj",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod.172a24c4031f9fe9",
+                "namespace": "istio-system",
+                "uid": "500cc324-b5c6-4821-aa49-f1c409a19778",
+                "resourceVersion": "10236",
+                "creationTimestamp": "2022-11-23T07:03:56Z"
+            },
+            "involvedObject": {
+                "kind": "Deployment",
+                "namespace": "istio-system",
+                "name": "istiod",
+                "uid": "e0075314-2bbd-4a27-8607-0b2231302a75",
+                "apiVersion": "apps/v1",
+                "resourceVersion": "10234"
+            },
+            "reason": "ScalingReplicaSet",
+            "message": "Scaled up replica set istiod-cd9c68bc to 1",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "firstTimestamp": "2022-11-23T07:03:56Z",
+            "lastTimestamp": "2022-11-23T07:03:56Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod.172a24c7a36ac7ae",
+                "namespace": "istio-system",
+                "uid": "d3795765-efff-41b8-ab8d-7a407a8302e3",
+                "resourceVersion": "10715",
+                "creationTimestamp": "2022-11-23T07:04:11Z"
+            },
+            "involvedObject": {
+                "kind": "HorizontalPodAutoscaler",
+                "namespace": "istio-system",
+                "name": "istiod",
+                "uid": "9dadd0ab-68b2-43c4-b67a-f5f9d289c66b",
+                "apiVersion": "autoscaling/v2",
+                "resourceVersion": "10254"
+            },
+            "reason": "FailedGetResourceMetric",
+            "message": "failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server could not find the requested resource (get pods.metrics.k8s.io)",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "firstTimestamp": "2022-11-23T07:04:11Z",
+            "lastTimestamp": "2022-11-23T07:07:12Z",
+            "count": 13,
+            "type": "Warning",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "istiod.172a24c7a3b9b151",
+                "namespace": "istio-system",
+                "uid": "693cbfed-bfd1-44de-96ff-9b8f349e6778",
+                "resourceVersion": "10685",
+                "creationTimestamp": "2022-11-23T07:04:11Z"
+            },
+            "involvedObject": {
+                "kind": "HorizontalPodAutoscaler",
+                "namespace": "istio-system",
+                "name": "istiod",
+                "uid": "9dadd0ab-68b2-43c4-b67a-f5f9d289c66b",
+                "apiVersion": "autoscaling/v2",
+                "resourceVersion": "10254"
+            },
+            "reason": "FailedComputeMetricsReplicas",
+            "message": "invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server could not find the requested resource (get pods.metrics.k8s.io)",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "firstTimestamp": "2022-11-23T07:04:11Z",
+            "lastTimestamp": "2022-11-23T07:06:56Z",
+            "count": 12,
+            "type": "Warning",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        }
+    ]
+}

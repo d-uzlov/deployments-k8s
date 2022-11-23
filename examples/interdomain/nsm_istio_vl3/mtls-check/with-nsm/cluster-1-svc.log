@@ -1,0 +1,13 @@
+NAMESPACE      NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                                 AGE
+default        kubernetes               ClusterIP      10.96.0.1       <none>         443/TCP                                 21m
+istio-system   istiod                   ClusterIP      10.96.212.52    <none>         15010/TCP,15012/TCP,443/TCP,15014/TCP   11m
+kube-system    exposed-kube-dns         LoadBalancer   10.96.101.66    172.18.128.0   53:30887/TCP                            16m
+kube-system    kube-dns                 ClusterIP      10.96.0.10      <none>         53/UDP,53/TCP,9153/TCP                  21m
+ns-dns-vl3     vl3-ipam                 LoadBalancer   10.96.151.117   172.18.128.4   5006:30860/TCP                          12m
+nsm-system     admission-webhook-svc    ClusterIP      10.96.135.196   <none>         443/TCP                                 13m
+nsm-system     nsmgr-proxy              LoadBalancer   10.96.202.148   172.18.128.2   5004:32432/TCP                          13m
+nsm-system     registry                 LoadBalancer   10.96.43.78     172.18.128.3   5002:31815/TCP                          13m
+nsm-system     registry-proxy           ClusterIP      10.96.228.42    <none>         5005/TCP                                13m
+sample         helloworld               ClusterIP      10.96.117.139   <none>         5000/TCP                                6m54s
+spire          k8s-workload-registrar   ClusterIP      10.96.169.202   <none>         443/TCP                                 16m
+spire          spire-server             LoadBalancer   10.96.61.135    172.18.128.1   8081:32195/TCP,8443:30506/TCP           16m

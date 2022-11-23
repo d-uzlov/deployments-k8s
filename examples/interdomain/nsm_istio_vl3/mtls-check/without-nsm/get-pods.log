@@ -1,0 +1,16 @@
+NAMESPACE            NAME                                           READY   STATUS    RESTARTS   AGE     IP           NODE                   NOMINATED NODE   READINESS GATES
+default              ubuntu-deployment-7575859557-4mwgf             1/1     Running   0          15m     10.244.1.3   kind-1-worker          <none>           <none>
+istio-system         istiod-cd9c68bc-mmghx                          1/1     Running   0          20m     10.244.1.2   kind-1-worker          <none>           <none>
+kube-system          coredns-6d4b75cb6d-fj74s                       1/1     Running   0          100m    10.244.0.3   kind-1-control-plane   <none>           <none>
+kube-system          coredns-6d4b75cb6d-k9gch                       1/1     Running   0          100m    10.244.0.4   kind-1-control-plane   <none>           <none>
+kube-system          etcd-kind-1-control-plane                      1/1     Running   0          101m    172.18.0.3   kind-1-control-plane   <none>           <none>
+kube-system          kindnet-28vl9                                  1/1     Running   0          100m    172.18.0.3   kind-1-control-plane   <none>           <none>
+kube-system          kindnet-llfkg                                  1/1     Running   0          100m    172.18.0.2   kind-1-worker          <none>           <none>
+kube-system          kube-apiserver-kind-1-control-plane            1/1     Running   0          101m    172.18.0.3   kind-1-control-plane   <none>           <none>
+kube-system          kube-controller-manager-kind-1-control-plane   1/1     Running   0          101m    172.18.0.3   kind-1-control-plane   <none>           <none>
+kube-system          kube-proxy-dv4x4                               1/1     Running   0          100m    172.18.0.3   kind-1-control-plane   <none>           <none>
+kube-system          kube-proxy-hj52v                               1/1     Running   0          100m    172.18.0.2   kind-1-worker          <none>           <none>
+kube-system          kube-scheduler-kind-1-control-plane            1/1     Running   0          101m    172.18.0.3   kind-1-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-9cd9bd544-vvfbn         1/1     Running   0          100m    10.244.0.2   kind-1-control-plane   <none>           <none>
+sample               helloworld-v1-77cb56d4b4-zg6ld                 2/2     Running   0          6m40s   10.244.1.4   kind-1-worker          <none>           <none>
+sample               helloworld-v2-79bf565586-j9zsk                 2/2     Running   0          6m39s   10.244.1.5   kind-1-worker          <none>           <none>

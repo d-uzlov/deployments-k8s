@@ -1,0 +1,593 @@
+==== START logs for container cmd-nsc-init of pod istio-system/istiod-cd9c68bc-w42xj ====
+time="2022-11-23T07:03:56Z" level=info msg="Starting NetworkServiceMesh Client ..."
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE                                                   DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_NAME                     String                                                 cmd-nsc-init                                                       Name of the client
+NSM_DIAL_TIMEOUT             Duration                                               5s                                                                 timeout to dial NSMgr
+NSM_REQUEST_TIMEOUT          Duration                                               15s                                                                timeout to request NSE
+NSM_CONNECT_TO               URL                                                    unix:///var/lib/networkservicemesh/nsm.io.sock                     url to connect to
+NSM_MAX_TOKEN_LIFETIME       Duration                                               10m                                                                maximum lifetime of tokens
+NSM_NETWORK_SERVICES         Comma-separated list of URL                                                                                               A list of Network Service Requests
+NSM_AWARENESS_GROUPS         Comma-separated list of Comma-separated list of URL                                                                       Awareness groups for mutually aware NSEs
+NSM_LOG_LEVEL                String                                                 INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String                                                 otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+Nov 23 07:03:57.000[36m [INFO] [cmd:[/bin/app]] [0mrootConf: &{Name:istiod-cd9c68bc-w42xj DialTimeout:5s RequestTimeout:15s ConnectTo:{Scheme:unix Opaque: User: Host: Path:/var/lib/networkservicemesh/nsm.io.sock RawPath: ForceQuery:false RawQuery: Fragment: RawFragment:} MaxTokenLifetime:10m0s NetworkServices:[{Scheme:kernel Opaque: User: Host:my-vl3-network Path:/nsm-1 RawPath: ForceQuery:false RawQuery:dnsName=istio-cp Fragment: RawFragment:}] AwarenessGroups:[] LogLevel:TRACE OpenTelemetryEndpoint:otel-collector.observability.svc.cluster.local:4317}
+Nov 23 07:04:01.093[36m [INFO] [cmd:[/bin/app]] [0msVID: "spiffe://example.org/ns/istio-system/pod/istiod-cd9c68bc-w42xj"
+Nov 23 07:04:01.093[36m [INFO] [cmd:[/bin/app]] [0mNSC: Connecting to Network Service Manager unix:///var/lib/networkservicemesh/nsm.io.sock
+Nov 23 07:04:01.095[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(1) ⎆ sdk/pkg/networkservice/common/updatepath/updatePathClient.Request()
+Nov 23 07:04:01.095[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(1.1)   request={"connection":{"id":"istiod-cd9c68bc-w42xj-0","network_service":"my-vl3-network","labels":{"dnsName":"istio-cp"}},"mechanism_preferences":[{"cls":"LOCAL","type":"KERNEL","parameters":{"name":"nsm-1"}}]}
+Nov 23 07:04:01.096[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(1.2)   request-diff={"connection":{"path":{"path_segments":{"+0":{"name":"istiod-cd9c68bc-w42xj","id":"istiod-cd9c68bc-w42xj-0"}}}}}
+Nov 23 07:04:01.096[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(2)  ⎆ sdk/pkg/networkservice/common/begin/beginClient.Request()
+Nov 23 07:04:01.096[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(3)   ⎆ sdk/pkg/networkservice/utils/metadata/metaDataClient.Request()
+Nov 23 07:04:01.096[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4)    ⎆ sdk/pkg/networkservice/common/clientinfo/clientInfo.Request()
+Nov 23 07:04:01.097[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.1)      Environment variable NODE_NAME is not set. Skipping.
+Nov 23 07:04:01.097[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.2)      Environment variable CLUSTER_NAME is not set. Skipping.
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.3)      request-diff={"connection":{"labels":{"+podName":"istiod-cd9c68bc-w42xj"}}}
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5)     ⎆ sdk-sriov/pkg/networkservice/common/token/multitoken/tokenClient.Request()
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(6)      ⎆ sdk/pkg/networkservice/common/mechanisms/mechanismsClient.Request()
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(7)       ⎆ sdk/pkg/networkservice/core/next/nextClient.Request()
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(8)        ⎆ sdk/pkg/networkservice/common/mechanisms/kernel/kernelMechanismClient.Request()
+Nov 23 07:04:01.097[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(8.1)          request-diff={"mechanism_preferences":{"0":{"parameters":{"+inodeURL":"file:///proc/thread-self/ns/net"}}}}
+Nov 23 07:04:01.098[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9)         ⎆ sdk/pkg/networkservice/common/authorize/authorizeClient.Request()
+Nov 23 07:04:01.098[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10)          ⎆ sdk/pkg/networkservice/common/mechanisms/sendfd/sendFDClient.Request()
+Nov 23 07:04:01.098[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10.1)            request-diff={"mechanism_preferences":{"0":{"parameters":{"inodeURL":"inode://4/4026536568"}}}}
+Nov 23 07:04:01.098[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(11)           ⎆ sdk/pkg/networkservice/common/excludedprefixes/excludedPrefixesClient.Request()
+Nov 23 07:04:01.098[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(12)            ⎆ api/pkg/api/networkservice/networkServiceClient.Request()
+Nov 23 07:04:01.832[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(12.1)              request-response={"id":"istiod-cd9c68bc-w42xj-0","network_service":"my-vl3-network","mechanism":{"cls":"LOCAL","type":"KERNEL","parameters":{"inodeURL":"inode://4/4026536568","name":"nsm-1"}},"context":{"ip_context":{"src_ip_addrs":["172.16.0.2/32"],"dst_ip_addrs":["172.16.0.0/32"],"src_routes":[{"prefix":"172.16.0.0/32","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/24","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/16","nextHop":"172.16.0.0"}],"dst_routes":[{"prefix":"172.16.0.2/32"}],"excluded_prefixes":["10.96.0.0/16","10.244.0.0/16"]},"dns_context":{"configs":[{"dns_server_ips":["172.16.0.1"]}]},"MTU":9000},"labels":{"dnsName":"istio-cp","nodeName":"kind-1-worker","podName":"istiod-cd9c68bc-w42xj"},"path":{"path_segments":[{"name":"istiod-cd9c68bc-w42xj","id":"istiod-cd9c68bc-w42xj-0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDF9.9Wb7R-TDWhi5yemZYKbHsbvka8qb1PPXVGJew2kkVbXqroX6o0o_1Hatw6IgNalm-Ds-5DGRtUdhITlHfV99ng","expires":{"seconds":1669187641,"nanos":98994269}},{"name":"nsmgr-rs74c","id":"b1168ee4-a534-44c9-8fa2-a6be1282c392","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0MX0.R0iw6YOxTCMljnP_QN-y3b3S97tUhNOJz8INmFPHujdGSEQujlE_-VxCK9EgaoeODE8mm7d6cRWDnK9ix84irg","expires":{"seconds":1669187641,"nanos":222632341}},{"name":"forwarder-vpp-vkvt4","id":"5a4be390-9e24-4d35-813f-d5bc4057a4d6","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQxfQ.LE5ogPCqFT16FB8aTKYkCHqHpARktw8PGtjreVgMVEle52Pqmn5WlPjN1bycPqRcpKT7b4Sz5nDEVY5TdGW1EQ","expires":{"seconds":1669187641,"nanos":445084976},"metrics":{"client_drops":"0","client_rx_bytes":"0","client_rx_packets":"0","client_tx_bytes":"0","client_tx_packets":"0","server_drops":"0","server_rx_bytes":"0","server_rx_packets":"0","server_tx_bytes":"0","server_tx_packets":"0"}},{"name":"nse-vl3-vpp-759db6cbbf-nz47l","id":"ede5ce11-2d27-45e3-89c0-37f6b9da81e0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQxfQ.ySQu7wkiEeGDSTgrlg_JJSCPGUFUdf5rIeUcRVWEYlb8OMeo_pqSuzpxSq7ueu86P5bE-qIHXF13lVQ5PNkdSQ","expires":{"seconds":1669187641,"nanos":447121567}}]},"network_service_endpoint_name":"nse-vl3-vpp-759db6cbbf-nz47l","payload":"IP"}
+Nov 23 07:04:01.832[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(11.1)             Request excluded IPs - srcIPs: [172.16.0.2/32], dstIPs: [172.16.0.0/32], excluded prefixes: [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:04:01.833[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(11.2)             Added excluded prefixes: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:04:01.833[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10.2)            request-response-diff={"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}
+Nov 23 07:04:01.854[36m [INFO] [cmd:[/bin/app]] [0msuccessfully connected to my-vl3-network. Response: id:"istiod-cd9c68bc-w42xj-0"  network_service:"my-vl3-network"  mechanism:{cls:"LOCAL"  type:"KERNEL"  parameters:{key:"inodeURL"  value:"file:///proc/thread-self/ns/net"}  parameters:{key:"name"  value:"nsm-1"}}  context:{ip_context:{src_ip_addrs:"172.16.0.2/32"  dst_ip_addrs:"172.16.0.0/32"  src_routes:{prefix:"172.16.0.0/32"  nextHop:"172.16.0.0"}  src_routes:{prefix:"172.16.0.0/24"  nextHop:"172.16.0.0"}  src_routes:{prefix:"172.16.0.0/16"  nextHop:"172.16.0.0"}  dst_routes:{prefix:"172.16.0.2/32"}  excluded_prefixes:"10.96.0.0/16"  excluded_prefixes:"10.244.0.0/16"}  dns_context:{configs:{dns_server_ips:"172.16.0.1"}}  MTU:9000}  labels:{key:"dnsName"  value:"istio-cp"}  labels:{key:"nodeName"  value:"kind-1-worker"}  labels:{key:"podName"  value:"istiod-cd9c68bc-w42xj"}  path:{path_segments:{name:"istiod-cd9c68bc-w42xj"  id:"istiod-cd9c68bc-w42xj-0"  token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDF9.9Wb7R-TDWhi5yemZYKbHsbvka8qb1PPXVGJew2kkVbXqroX6o0o_1Hatw6IgNalm-Ds-5DGRtUdhITlHfV99ng"  expires:{seconds:1669187641  nanos:98994269}}  path_segments:{name:"nsmgr-rs74c"  id:"b1168ee4-a534-44c9-8fa2-a6be1282c392"  token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0MX0.R0iw6YOxTCMljnP_QN-y3b3S97tUhNOJz8INmFPHujdGSEQujlE_-VxCK9EgaoeODE8mm7d6cRWDnK9ix84irg"  expires:{seconds:1669187641  nanos:222632341}}  path_segments:{name:"forwarder-vpp-vkvt4"  id:"5a4be390-9e24-4d35-813f-d5bc4057a4d6"  token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQxfQ.LE5ogPCqFT16FB8aTKYkCHqHpARktw8PGtjreVgMVEle52Pqmn5WlPjN1bycPqRcpKT7b4Sz5nDEVY5TdGW1EQ"  expires:{seconds:1669187641  nanos:445084976}  metrics:{key:"client_drops"  value:"0"}  metrics:{key:"client_rx_bytes"  value:"0"}  metrics:{key:"client_rx_packets"  value:"0"}  metrics:{key:"client_tx_bytes"  value:"0"}  metrics:{key:"client_tx_packets"  value:"0"}  metrics:{key:"server_drops"  value:"0"}  metrics:{key:"server_rx_bytes"  value:"0"}  metrics:{key:"server_rx_packets"  value:"0"}  metrics:{key:"server_tx_bytes"  value:"0"}  metrics:{key:"server_tx_packets"  value:"0"}}  path_segments:{name:"nse-vl3-vpp-759db6cbbf-nz47l"  id:"ede5ce11-2d27-45e3-89c0-37f6b9da81e0"  token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQxfQ.ySQu7wkiEeGDSTgrlg_JJSCPGUFUdf5rIeUcRVWEYlb8OMeo_pqSuzpxSq7ueu86P5bE-qIHXF13lVQ5PNkdSQ"  expires:{seconds:1669187641  nanos:447121567}}}  network_service_endpoint_name:"nse-vl3-vpp-759db6cbbf-nz47l"  payload:"IP"
+==== END logs for container cmd-nsc-init of pod istio-system/istiod-cd9c68bc-w42xj ====
+==== START logs for container discovery of pod istio-system/istiod-cd9c68bc-w42xj ====
+2022-11-23T07:04:03.095208Z	info	FLAG: --caCertFile=""
+2022-11-23T07:04:03.095247Z	info	FLAG: --clusterAliases="[]"
+2022-11-23T07:04:03.095251Z	info	FLAG: --clusterID="Kubernetes"
+2022-11-23T07:04:03.095254Z	info	FLAG: --clusterRegistriesNamespace="istio-system"
+2022-11-23T07:04:03.095256Z	info	FLAG: --configDir=""
+2022-11-23T07:04:03.095259Z	info	FLAG: --ctrlz_address="localhost"
+2022-11-23T07:04:03.095262Z	info	FLAG: --ctrlz_port="9876"
+2022-11-23T07:04:03.095265Z	info	FLAG: --domain="cluster.local"
+2022-11-23T07:04:03.095268Z	info	FLAG: --grpcAddr=":15010"
+2022-11-23T07:04:03.095271Z	info	FLAG: --help="false"
+2022-11-23T07:04:03.095274Z	info	FLAG: --httpAddr=":8080"
+2022-11-23T07:04:03.095278Z	info	FLAG: --httpsAddr=":15017"
+2022-11-23T07:04:03.095282Z	info	FLAG: --keepaliveInterval="30s"
+2022-11-23T07:04:03.095285Z	info	FLAG: --keepaliveMaxServerConnectionAge="30m0s"
+2022-11-23T07:04:03.095288Z	info	FLAG: --keepaliveTimeout="10s"
+2022-11-23T07:04:03.095290Z	info	FLAG: --kubeconfig=""
+2022-11-23T07:04:03.095294Z	info	FLAG: --kubernetesApiBurst="160"
+2022-11-23T07:04:03.095298Z	info	FLAG: --kubernetesApiQPS="80"
+2022-11-23T07:04:03.095301Z	info	FLAG: --log_as_json="false"
+2022-11-23T07:04:03.095304Z	info	FLAG: --log_caller=""
+2022-11-23T07:04:03.095307Z	info	FLAG: --log_output_level="default:info"
+2022-11-23T07:04:03.095309Z	info	FLAG: --log_rotate=""
+2022-11-23T07:04:03.095312Z	info	FLAG: --log_rotate_max_age="30"
+2022-11-23T07:04:03.095315Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-11-23T07:04:03.095319Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-11-23T07:04:03.095321Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-11-23T07:04:03.095329Z	info	FLAG: --log_target="[stdout]"
+2022-11-23T07:04:03.095333Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-11-23T07:04:03.095335Z	info	FLAG: --monitoringAddr=":15014"
+2022-11-23T07:04:03.095338Z	info	FLAG: --namespace="istio-system"
+2022-11-23T07:04:03.095341Z	info	FLAG: --networksConfig="./etc/istio/config/meshNetworks"
+2022-11-23T07:04:03.095344Z	info	FLAG: --profile="true"
+2022-11-23T07:04:03.095351Z	info	FLAG: --registries="[Kubernetes]"
+2022-11-23T07:04:03.095354Z	info	FLAG: --secureGRPCAddr=":15012"
+2022-11-23T07:04:03.095361Z	info	FLAG: --shutdownDuration="10s"
+2022-11-23T07:04:03.095367Z	info	FLAG: --tls-cipher-suites="[]"
+2022-11-23T07:04:03.095369Z	info	FLAG: --tlsCertFile=""
+2022-11-23T07:04:03.095372Z	info	FLAG: --tlsKeyFile=""
+2022-11-23T07:04:03.095376Z	info	FLAG: --vklog="0"
+2022-11-23T07:04:03.113447Z	info	klog	Config not found: /var/run/secrets/remote/config
+2022-11-23T07:04:03.130219Z	info	initializing mesh configuration ./etc/istio/config/mesh
+2022-11-23T07:04:03.137663Z	info	controllers	starting	controller=configmap istio
+2022-11-23T07:04:03.138086Z	info	Loaded MeshNetworks config from Kubernetes API server.
+2022-11-23T07:04:03.138109Z	info	mesh networks configuration updated to: {
+
+}
+2022-11-23T07:04:03.141466Z	info	Loaded MeshConfig config from Kubernetes API server.
+2022-11-23T07:04:03.142112Z	info	mesh configuration updated to: {
+    "proxyListenPort": 15001,
+    "connectTimeout": "10s",
+    "protocolDetectionTimeout": "0s",
+    "ingressClass": "istio",
+    "ingressService": "istio-ingressgateway",
+    "ingressControllerMode": "STRICT",
+    "enableTracing": true,
+    "defaultConfig": {
+        "configPath": "./etc/istio/proxy",
+        "binaryPath": "/usr/local/bin/envoy",
+        "serviceCluster": "istio-proxy",
+        "drainDuration": "45s",
+        "parentShutdownDuration": "60s",
+        "discoveryAddress": "istiod.istio-system.svc:15012",
+        "proxyAdminPort": 15000,
+        "controlPlaneAuthPolicy": "MUTUAL_TLS",
+        "statNameLength": 189,
+        "concurrency": 2,
+        "tracing": {
+            "zipkin": {
+                "address": "zipkin.istio-system:9411"
+            }
+        },
+        "statusPort": 15020,
+        "terminationDrainDuration": "5s"
+    },
+    "outboundTrafficPolicy": {
+        "mode": "ALLOW_ANY"
+    },
+    "enableAutoMtls": true,
+    "trustDomain": "cluster.local",
+    "defaultServiceExportTo": [
+        "*"
+    ],
+    "defaultVirtualServiceExportTo": [
+        "*"
+    ],
+    "defaultDestinationRuleExportTo": [
+        "*"
+    ],
+    "rootNamespace": "istio-system",
+    "localityLbSetting": {
+        "enabled": true
+    },
+    "dnsRefreshRate": "60s",
+    "thriftConfig": {
+
+    },
+    "enablePrometheusMerge": true,
+    "extensionProviders": [
+        {
+            "name": "prometheus",
+            "prometheus": {
+
+            }
+        },
+        {
+            "name": "stackdriver",
+            "stackdriver": {
+
+            }
+        },
+        {
+            "name": "envoy",
+            "envoyFileAccessLog": {
+                "path": "/dev/stdout"
+            }
+        }
+    ],
+    "defaultProviders": {
+
+    }
+}
+2022-11-23T07:04:03.145860Z	info	initializing mesh networks from mesh config watcher
+2022-11-23T07:04:03.146183Z	info	mesh configuration: {
+    "proxyListenPort": 15001,
+    "connectTimeout": "10s",
+    "protocolDetectionTimeout": "0s",
+    "ingressClass": "istio",
+    "ingressService": "istio-ingressgateway",
+    "ingressControllerMode": "STRICT",
+    "enableTracing": true,
+    "defaultConfig": {
+        "configPath": "./etc/istio/proxy",
+        "binaryPath": "/usr/local/bin/envoy",
+        "serviceCluster": "istio-proxy",
+        "drainDuration": "45s",
+        "parentShutdownDuration": "60s",
+        "discoveryAddress": "istiod.istio-system.svc:15012",
+        "proxyAdminPort": 15000,
+        "controlPlaneAuthPolicy": "MUTUAL_TLS",
+        "statNameLength": 189,
+        "concurrency": 2,
+        "tracing": {
+            "zipkin": {
+                "address": "zipkin.istio-system:9411"
+            }
+        },
+        "statusPort": 15020,
+        "terminationDrainDuration": "5s"
+    },
+    "outboundTrafficPolicy": {
+        "mode": "ALLOW_ANY"
+    },
+    "enableAutoMtls": true,
+    "trustDomain": "cluster.local",
+    "defaultServiceExportTo": [
+        "*"
+    ],
+    "defaultVirtualServiceExportTo": [
+        "*"
+    ],
+    "defaultDestinationRuleExportTo": [
+        "*"
+    ],
+    "rootNamespace": "istio-system",
+    "localityLbSetting": {
+        "enabled": true
+    },
+    "dnsRefreshRate": "60s",
+    "thriftConfig": {
+
+    },
+    "enablePrometheusMerge": true,
+    "extensionProviders": [
+        {
+            "name": "prometheus",
+            "prometheus": {
+
+            }
+        },
+        {
+            "name": "stackdriver",
+            "stackdriver": {
+
+            }
+        },
+        {
+            "name": "envoy",
+            "envoyFileAccessLog": {
+                "path": "/dev/stdout"
+            }
+        }
+    ],
+    "defaultProviders": {
+
+    }
+}
+2022-11-23T07:04:03.146204Z	info	version: 1.15.1-bf836f0be536b0adcef68f93c405994769e767cb-Clean
+2022-11-23T07:04:03.146737Z	info	flags: {
+   "ServerOptions": {
+      "HTTPAddr": ":8080",
+      "HTTPSAddr": ":15017",
+      "GRPCAddr": ":15010",
+      "MonitoringAddr": ":15014",
+      "EnableProfiling": true,
+      "TLSOptions": {
+         "CaCertFile": "",
+         "CertFile": "",
+         "KeyFile": "",
+         "TLSCipherSuites": null,
+         "CipherSuits": null
+      },
+      "SecureGRPCAddr": ":15012"
+   },
+   "InjectionOptions": {
+      "InjectionDirectory": "./var/lib/istio/inject"
+   },
+   "PodName": "istiod-cd9c68bc-w42xj",
+   "Namespace": "istio-system",
+   "Revision": "default",
+   "MeshConfigFile": "./etc/istio/config/mesh",
+   "NetworksConfigFile": "./etc/istio/config/meshNetworks",
+   "RegistryOptions": {
+      "FileDir": "",
+      "Registries": [
+         "Kubernetes"
+      ],
+      "KubeOptions": {
+         "SystemNamespace": "",
+         "MeshServiceController": null,
+         "DomainSuffix": "cluster.local",
+         "ClusterID": "Kubernetes",
+         "ClusterAliases": {},
+         "Metrics": null,
+         "XDSUpdater": null,
+         "NetworksWatcher": null,
+         "MeshWatcher": null,
+         "EndpointMode": 1,
+         "KubernetesAPIQPS": 80,
+         "KubernetesAPIBurst": 160,
+         "SyncTimeout": 0,
+         "DiscoveryNamespacesFilter": null
+      },
+      "ClusterRegistriesNamespace": "istio-system",
+      "KubeConfig": "",
+      "DistributionCacheRetention": 60000000000,
+      "DistributionTrackingEnabled": true
+   },
+   "CtrlZOptions": {
+      "Port": 9876,
+      "Address": "localhost"
+   },
+   "KeepaliveOptions": {
+      "Time": 30000000000,
+      "Timeout": 10000000000,
+      "MaxServerConnectionAge": 1800000000000,
+      "MaxServerConnectionAgeGrace": 10000000000
+   },
+   "ShutdownDuration": 10000000000,
+   "JwtRule": ""
+}
+2022-11-23T07:04:03.146757Z	info	initializing mesh handlers
+2022-11-23T07:04:03.146855Z	info	model	reloading network gateways
+2022-11-23T07:04:03.146881Z	info	creating CA and initializing public key
+2022-11-23T07:04:03.146915Z	info	Using istiod file format for signing ca files
+2022-11-23T07:04:03.146944Z	info	Use self-signed certificate as the CA certificate
+2022-11-23T07:04:03.150480Z	info	pkica	Failed to get secret (error: secrets "istio-ca-secret" not found), will create one
+2022-11-23T07:04:03.452172Z	info	pkica	Using self-generated public key: -----BEGIN CERTIFICATE-----
+MIIC/DCCAeSgAwIBAgIQbNkP5dU5FU8LyDv90yuEcTANBgkqhkiG9w0BAQsFADAY
+MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTEyMzA3MDQwM1oXDTMyMTEy
+MDA3MDQwM1owGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBAMaRv7Vfbv3TERgDUdypk2tV3n+kKyeQhyTMduJ2
+JsmTJ3xRMnAByRDPv3oj4EPRYJIc3Xkx+e9yFgAaY7GZFp31cdFIwgQVFpp1R5Ne
+mG9/ixcjcrehEdpO3W3FUtSFk0jPtN6pxZGYsh4XdpatnrkZBh8oMDI7B4/lb/D3
+fmPFsSF8mqPjEr23BzLZeb8FF7rWcVsE+pYnmFFlQ+Y3xxpbFSfsfhSHAB68olMq
+Rh17uLBnzJzM6HnT24AgVaDD37B7u22ppFkTzD9Gb0qI456zNfhvBYEj9gnNH/T6
+EjUYeUYC26lFte3tyQ5+o1VJcfBTS/REwcqhG1i078w79V8CAwEAAaNCMEAwDgYD
+VR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFH22fwAxM2bN
+6kM3LlCl2eGItSCiMA0GCSqGSIb3DQEBCwUAA4IBAQC/DoH3bmkIr2cj3rpgHXFX
+m1R9A+uso/86kyyOirI2peHBDYYIGL/XZDR3tdEIhaPCvHQ28ULr0tgjswXDbAax
+c3R4wOXsXCyeUwrWO4RcLIAJtb2MGU0Sd4ouZ9mQa5Ayb1hzeTBTaRA3jSgD3/I+
+STYJMZ97f9ZDzfR3/ZaT0H0Z0eJkR175GBaogau2lL0NuPw4tzureWhQscpiPF8/
+9D5nqyXkEjYTPGA9rfb/MYiAnUsiUQex65uz9gyMaK+VLMk0QcRu3rmtgfPFIfCE
+BzRQo+7bqu0+0Tep8KGHQk75UbmAcUx8ojVmlOSZfCBX5LdQpXdUaAqE0TL00jSO
+-----END CERTIFICATE-----
+
+2022-11-23T07:04:03.452209Z	info	rootcertrotator	Set up back off time 38m21s to start rotator.
+2022-11-23T07:04:03.452236Z	info	initializing controllers
+2022-11-23T07:04:03.452283Z	info	No certificates specified, skipping K8S DNS certificate controller
+2022-11-23T07:04:03.452286Z	info	rootcertrotator	Jitter is enabled, wait 38m21s before starting root cert rotator.
+2022-11-23T07:04:03.508599Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/GatewayClass as it is not present
+2022-11-23T07:04:03.508630Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/Gateway as it is not present
+2022-11-23T07:04:03.508635Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/HTTPRoute as it is not present
+2022-11-23T07:04:03.508639Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/ReferenceGrant as it is not present
+2022-11-23T07:04:03.508642Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/ReferencePolicy as it is not present
+2022-11-23T07:04:03.508646Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/TCPRoute as it is not present
+2022-11-23T07:04:03.508650Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/TLSRoute as it is not present
+2022-11-23T07:04:03.508946Z	info	Adding Kubernetes registry adapter
+2022-11-23T07:04:03.508969Z	info	initializing Istiod DNS certificates host: istiod.istio-system.svc, custom host: 
+2022-11-23T07:04:03.911684Z	info	Generating istiod-signed cert for [istiod.istio-system.svc istiod-remote.istio-system.svc istio-pilot.istio-system.svc]:
+ -----BEGIN CERTIFICATE-----
+MIIDaTCCAlGgAwIBAgIQEzNassa1y991JjBxxQfuzTANBgkqhkiG9w0BAQsFADAY
+MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTEyMzA3MDIwM1oXDTMyMTEy
+MDA3MDQwM1owADCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANI6yN1n
+mr1mXAO4xVuBIUXI+nuf6PhyTmrZPsVYC+w26MFkEMELDLkHr6Ku+ArHwMV6gmkW
+zCin7tW278MsxbyUp1XC5t96qCeA9LETX77+lVohlaSEVuxUromaTBOHkkQsH14h
+VgT5lEuyYrgfUcfKc39qQXcVouq7H5Yr99BiIUSyx8+6600bJ3ta8k3ivsiR+VYX
+oLujoiT1Q5sijKjiC4x6cU3XRbVPcoviN0XMmXc/Y0pRTWgmdAdOazEU2W6nmhzf
+QLG/cqbBzVkcarFnezWtRw1fEeWnwQxroA4x3tBNobCk2lTzW/rQ6MHWAYiDXKkt
+resALqiopxUXkzsCAwEAAaOBxjCBwzAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAU
+fbZ/ADEzZs3qQzcuUKXZ4Yi1IKIwYwYDVR0RAQH/BFkwV4IXaXN0aW9kLmlzdGlv
+LXN5c3RlbS5zdmOCHmlzdGlvZC1yZW1vdGUuaXN0aW8tc3lzdGVtLnN2Y4IcaXN0
+aW8tcGlsb3QuaXN0aW8tc3lzdGVtLnN2YzANBgkqhkiG9w0BAQsFAAOCAQEAhWcC
+zHvv6veVRSFQLGnGvUK07tBHpelvwSZSZj47fFctN0FGNPUYaHpGYKIZbZgkw3NZ
+to+WIwbwjfuCudjAOTdBq2vCVnkJt9Rx4JYXrmxrTr2XJ1yP3eLyn7DZXHLSWtIW
+A65PJD2b4lrNU0DnCDfpLmqX1Ulju7Gx/BuE/oGU7gxGMgecoqxVWZG9MdoV0GUe
+qtS+PJ/wh7ocgw4vPalY94LPAZxmkOHJxBT1Y5fAcdIRzTi4X1LN6XrrekM+AHXo
+WDCTT0f9htGksz0Csigg9d3fheDW7oWxyLhL6NKtVVQVE88kLHk9+L9vhpss6nlT
+6DXaFCa2bk0hE1DNGA==
+-----END CERTIFICATE-----
+
+2022-11-23T07:04:03.911718Z	info	Using istiod file format for signing ca files
+2022-11-23T07:04:03.911727Z	info	No plugged-in cert at etc/cacerts/ca-key.pem; self-signed cert is used
+2022-11-23T07:04:03.911851Z	info	x509 cert - Issuer: "O=cluster.local", Subject: "", SN: 13335ab2c6b5cbdf75263071c507eecd, NotBefore: "2022-11-23T07:02:03Z", NotAfter: "2032-11-20T07:04:03Z"
+2022-11-23T07:04:03.911858Z	info	Istiod certificates are reloaded
+2022-11-23T07:04:03.911899Z	info	spiffe	Added 1 certs to trust domain cluster.local in peer cert verifier
+2022-11-23T07:04:03.911904Z	info	initializing secure discovery service
+2022-11-23T07:04:03.911955Z	info	initializing secure webhook server for istiod webhooks
+2022-11-23T07:04:03.925973Z	info	initializing sidecar injector
+2022-11-23T07:04:03.954275Z	info	initializing config validator
+2022-11-23T07:04:03.954312Z	info	initializing Istiod admin server
+2022-11-23T07:04:03.954379Z	info	initializing registry event handlers
+2022-11-23T07:04:03.954418Z	info	starting discovery service
+2022-11-23T07:04:03.956530Z	info	Starting Istiod Server with primary cluster Kubernetes
+2022-11-23T07:04:03.956573Z	info	kube	Initializing Kubernetes service registry "Kubernetes"
+2022-11-23T07:04:03.956701Z	info	kube	should join leader-election for cluster Kubernetes: false
+2022-11-23T07:04:03.956713Z	info	initializing Kubernetes credential reader for cluster Kubernetes
+2022-11-23T07:04:03.956657Z	info	ControlZ available at 127.0.0.1:9876
+2022-11-23T07:04:03.956871Z	info	Starting multicluster remote secrets controller
+2022-11-23T07:04:03.957186Z	info	status	Starting status manager
+2022-11-23T07:04:03.957244Z	info	Starting validation controller
+2022-11-23T07:04:03.957431Z	info	controllers	starting	controller=ingress
+2022-11-23T07:04:03.957486Z	info	Starting ADS server
+2022-11-23T07:04:03.957527Z	info	Starting IstioD CA
+2022-11-23T07:04:03.957532Z	info	JWT policy is third-party-jwt
+2022-11-23T07:04:03.957575Z	info	controllers	starting	controller=healthcheck
+2022-11-23T07:04:03.957476Z	info	klog	attempting to acquire leader lease istio-system/istio-leader...
+2022-11-23T07:04:03.957578Z	info	controllers	starting	controller=webhook patcher
+2022-11-23T07:04:03.957617Z	info	kube	Starting Pilot K8S CRD controller
+2022-11-23T07:04:03.957647Z	info	Istiod CA has started
+2022-11-23T07:04:03.957687Z	info	controllers	starting	controller=unregister_workloadentry
+2022-11-23T07:04:03.957732Z	info	kube	controller "security.istio.io/v1beta1/AuthorizationPolicy" is syncing...
+2022-11-23T07:04:03.957723Z	info	klog	attempting to acquire leader lease istio-system/istio-gateway-status-leader...
+2022-11-23T07:04:03.957869Z	info	klog	attempting to acquire leader lease istio-system/istio-gateway-deployment-leader...
+2022-11-23T07:04:03.960148Z	info	kube	controller "extensions.istio.io/v1alpha1/WasmPlugin" is syncing...
+2022-11-23T07:04:03.964126Z	info	multicluster remote secrets controller cache synced in 7.288176ms
+2022-11-23T07:04:03.964199Z	info	controllers	starting	controller=multicluster secret
+2022-11-23T07:04:03.964355Z	info	kube	controller "extensions.istio.io/v1alpha1/WasmPlugin" is syncing...
+2022-11-23T07:04:03.972148Z	info	controllers	starting	controller=default revision
+2022-11-23T07:04:03.972142Z	info	controllers	starting	controller=default revision
+2022-11-23T07:04:03.972248Z	info	controllers	starting	controller=default revision
+2022-11-23T07:04:03.972442Z	info	kube	controller "networking.istio.io/v1alpha3/EnvoyFilter" is syncing...
+2022-11-23T07:04:03.973059Z	info	klog	successfully acquired lease istio-system/istio-gateway-status-leader
+2022-11-23T07:04:03.973120Z	info	leader election lock obtained: istio-gateway-status-leader
+2022-11-23T07:04:03.973165Z	info	Starting gateway status writer
+2022-11-23T07:04:03.973355Z	info	klog	successfully acquired lease istio-system/istio-gateway-deployment-leader
+2022-11-23T07:04:03.973515Z	info	leader election lock obtained: istio-gateway-deployment-leader
+2022-11-23T07:04:03.974256Z	info	klog	successfully acquired lease istio-system/istio-leader
+2022-11-23T07:04:03.974373Z	info	leader election lock obtained: istio-leader
+2022-11-23T07:04:03.988249Z	info	controllers	starting	controller=configmap istio-sidecar-injector
+2022-11-23T07:04:03.988699Z	info	ads	Full push, new service default/kubernetes.default.svc.cluster.local
+2022-11-23T07:04:03.988753Z	info	ads	Full push, new service kube-system/kube-dns.kube-system.svc.cluster.local
+2022-11-23T07:04:03.988782Z	info	ads	Full push, new service spire/k8s-workload-registrar.spire.svc.cluster.local
+2022-11-23T07:04:03.988820Z	info	ads	Full push, new service spire/spire-server.spire.svc.cluster.local
+2022-11-23T07:04:03.988844Z	info	ads	Full push, new service nsm-system/admission-webhook-svc.nsm-system.svc.cluster.local
+2022-11-23T07:04:03.988880Z	info	ads	Full push, new service nsm-system/registry.nsm-system.svc.cluster.local
+2022-11-23T07:04:03.988906Z	info	ads	Full push, new service ns-dns-vl3/vl3-ipam.ns-dns-vl3.svc.cluster.local
+2022-11-23T07:04:03.988939Z	info	ads	Incremental push, service istiod.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-11-23T07:04:03.988953Z	info	kube	kube controller for Kubernetes synced after 31.721182ms
+2022-11-23T07:04:03.989389Z	info	ads	Incremental push, service istiod.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-11-23T07:04:03.990533Z	info	kube	Pilot K8S CRD controller synced 33.093332ms
+2022-11-23T07:04:04.058327Z	info	Waiting for caches to be synced
+2022-11-23T07:04:04.058378Z	info	All controller caches have been synced up in 49.015µs
+2022-11-23T07:04:04.058362Z	info	kube	joining leader-election for istio-namespace-controller-election in istio-system on cluster Kubernetes
+2022-11-23T07:04:04.058596Z	info	klog	attempting to acquire leader lease istio-system/istio-namespace-controller-election...
+2022-11-23T07:04:04.058705Z	info	controllers	starting	controller=default revision
+2022-11-23T07:04:04.066886Z	info	klog	successfully acquired lease istio-system/istio-namespace-controller-election
+2022-11-23T07:04:04.067188Z	info	leader election lock obtained: istio-namespace-controller-election
+2022-11-23T07:04:04.067332Z	info	kube	starting namespace controller for cluster Kubernetes
+2022-11-23T07:04:04.075721Z	info	Starting ingress controller
+2022-11-23T07:04:04.075834Z	warn	Missing ingress, skip status updates
+2022-11-23T07:04:04.090710Z	info	ads	Push debounce stable[1] 41 for reason secret and 40 more reasons: 100.378393ms since last change, 123.811312ms since last push, full=true
+2022-11-23T07:04:04.098804Z	info	ads	XDS: Pushing:2022-11-23T07:04:04Z/1 Services:8 ConnectedEndpoints:0 Version:2022-11-23T07:04:04Z/1
+2022-11-23T07:04:04.122619Z	info	ads	All caches have been synced up in 1.030967862s, marking server ready
+2022-11-23T07:04:04.122926Z	info	starting secure gRPC discovery service at [::]:15012
+2022-11-23T07:04:04.122963Z	info	starting HTTP service at [::]:8080
+2022-11-23T07:04:04.123029Z	info	starting gRPC discovery service at [::]:15010
+2022-11-23T07:04:04.123071Z	info	starting webhook service at [::]:15017
+2022-11-23T07:04:04.169115Z	info	controllers	starting	controller=namespace controller
+2022-11-23T07:04:04.875522Z	info	ads	Full push, new service istio-system/istiod.istio-system.svc.cluster.local
+2022-11-23T07:04:04.976538Z	info	ads	Push debounce stable[2] 1 for config ServiceEntry/istio-system/istiod.istio-system.svc.cluster.local: 100.932498ms since last change, 100.932105ms since last push, full=true
+2022-11-23T07:04:04.977247Z	info	ads	XDS: Pushing:2022-11-23T07:04:04Z/2 Services:8 ConnectedEndpoints:0 Version:2022-11-23T07:04:04Z/2
+2022-11-23T07:04:04.998571Z	info	http: TLS handshake error from 172.18.0.3:64403: remote error: tls: bad certificate
+2022-11-23T07:04:05.002598Z	info	validationController	Not ready to switch validation to fail-closed: dummy invalid config not rejected
+2022-11-23T07:04:05.009605Z	info	validationController	Successfully updated validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Ignore,resourceVersion=10303)
+2022-11-23T07:04:05.027261Z	info	validationServer	configuration is invalid: gateway must have at least one server
+2022-11-23T07:04:05.029106Z	info	validationController	Endpoint successfully rejected invalid config. Switching to fail-close.
+2022-11-23T07:04:05.035616Z	info	validationController	Successfully updated validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail,resourceVersion=10304)
+2022-11-23T07:04:05.045414Z	info	validationController	Successfully updated validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Fail,resourceVersion=10305)
+2022-11-23T07:04:05.048885Z	info	validationController	validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail, resourceVersion=10304) is up-to-date. No change required.
+2022-11-23T07:04:05.052176Z	info	validationController	validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Fail, resourceVersion=10305) is up-to-date. No change required.
+2022-11-23T07:04:05.055694Z	info	validationController	validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail, resourceVersion=10304) is up-to-date. No change required.
+2022-11-23T07:04:06.019288Z	info	validationController	validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Fail, resourceVersion=10305) is up-to-date. No change required.
+2022-11-23T07:04:13.421237Z	info	validationController	Successfully updated validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail,resourceVersion=10327)
+2022-11-23T07:04:13.425666Z	info	validationController	validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail, resourceVersion=10327) is up-to-date. No change required.
+2022-11-23T07:06:46.651001Z	info	ads	ADS: "172.16.0.3:40246"  terminated
+2022-11-23T07:06:57.663010Z	info	ads	ADS: "172.16.0.3:40408"  terminated
+2022-11-23T07:07:09.178985Z	info	ads	ADS: "172.16.0.3:40566"  terminated
+2022-11-23T07:07:20.446996Z	info	ads	ADS: "172.16.0.3:40736"  terminated
+2022-11-23T07:07:32.743033Z	info	ads	ADS: "172.16.0.3:40918"  terminated
+2022-11-23T07:07:45.531024Z	info	ads	ADS: "172.16.0.3:41094"  terminated
+2022-11-23T07:08:09.342922Z	info	ads	ADS: "172.16.0.3:41440"  terminated
+==== END logs for container discovery of pod istio-system/istiod-cd9c68bc-w42xj ====
+==== START logs for container cmd-nsc of pod istio-system/istiod-cd9c68bc-w42xj ====
+time="2022-11-23T07:04:03Z" level=info msg="Starting NetworkServiceMesh Client ..."
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE                                                   DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_NAME                     String                                                 nsc                                                                Name of Network Service Client
+NSM_CONNECT_TO               URL                                                    unix:///var/lib/networkservicemesh/nsm.io.sock                     url to connect to NSM
+NSM_DIAL_TIMEOUT             Duration                                               5s                                                                 timeout to dial NSMgr
+NSM_REQUEST_TIMEOUT          Duration                                               15s                                                                timeout to request NSE
+NSM_MAX_TOKEN_LIFETIME       Duration                                               10m                                                                maximum lifetime of tokens
+NSM_LABELS                   Comma-separated list of String                                                                                            A list of client labels with format key1=val1,key2=val2, will be used a primary list for network services
+NSM_MECHANISM                String                                                 kernel                                                             Default Mechanism to use, supported values: kernel, vfio
+NSM_NETWORK_SERVICES         Comma-separated list of URL                                                                                               A list of Network Service Requests
+NSM_AWARENESS_GROUPS         Comma-separated list of Comma-separated list of URL                                                                       Awareness groups for mutually aware NSEs
+NSM_LOG_LEVEL                String                                                 INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String                                                 otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+NSM_LOCALDNSSERVERENABLED    True or False                                          true                                                               Local DNS Server enabled/disabled
+NSM_LOCALDNSSERVERADDRESS    String                                                 127.0.0.1:53                                                       Default address for local DNS server
+NSM_LIVENESSCHECKENABLED     True or False                                          true                                                               Dataplane liveness check enabled/disabled
+NSM_LIVENESSCHECKINTERVAL    Duration                                               200ms                                                              Dataplane liveness check interval
+NSM_LIVENESSCHECKTIMEOUT     Duration                                               1s                                                                 Dataplane liveness check timeout
+Nov 23 07:04:03.247[36m [INFO] [cmd:[/bin/app]] [0mrootConf: &{Name:istiod-cd9c68bc-w42xj ConnectTo:{Scheme:unix Opaque: User: Host: Path:/var/lib/networkservicemesh/nsm.io.sock RawPath: ForceQuery:false RawQuery: Fragment: RawFragment:} DialTimeout:5s RequestTimeout:15s MaxTokenLifetime:10m0s Labels:[] Mechanism:kernel NetworkServices:[{Scheme:kernel Opaque: User: Host:my-vl3-network Path:/nsm-1 RawPath: ForceQuery:false RawQuery:dnsName=istio-cp Fragment: RawFragment:}] AwarenessGroups:[] LogLevel:TRACE OpenTelemetryEndpoint:otel-collector.observability.svc.cluster.local:4317 LocalDNSServerEnabled:true LocalDNSServerAddress:127.0.0.1:53 LivenessCheckEnabled:true LivenessCheckInterval:200ms LivenessCheckTimeout:1s}
+Nov 23 07:04:04.302[36m [INFO] [cmd:[/bin/app]] [0msVID: "spiffe://example.org/ns/istio-system/pod/istiod-cd9c68bc-w42xj"
+Nov 23 07:04:04.303[36m [INFO] [cmd:[/bin/app]] [0mNSC: Connecting to Network Service Manager unix:///var/lib/networkservicemesh/nsm.io.sock
+Nov 23 07:04:04.311[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(1) ⎆ sdk/pkg/networkservice/common/updatepath/updatePathClient.Request()
+Nov 23 07:04:04.312[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(1.1)   request={"connection":{"id":"istiod-cd9c68bc-w42xj-0","network_service":"my-vl3-network","mechanism":{"cls":"LOCAL","type":"KERNEL","parameters":{"inodeURL":"inode://4/4026536568","name":"nsm-1"}},"context":{"ip_context":{"src_ip_addrs":["172.16.0.2/32"],"dst_ip_addrs":["172.16.0.0/32"],"src_routes":[{"prefix":"172.16.0.0/32","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/24","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/16","nextHop":"172.16.0.0"}],"dst_routes":[{"prefix":"172.16.0.2/32"}],"excluded_prefixes":["10.96.0.0/16","10.244.0.0/16"]},"dns_context":{"configs":[{"dns_server_ips":["172.16.0.1"]}]},"MTU":9000},"labels":{"dnsName":"istio-cp","nodeName":"kind-1-worker","podName":"istiod-cd9c68bc-w42xj"},"path":{"path_segments":[{"name":"istiod-cd9c68bc-w42xj","id":"istiod-cd9c68bc-w42xj-0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDF9.9Wb7R-TDWhi5yemZYKbHsbvka8qb1PPXVGJew2kkVbXqroX6o0o_1Hatw6IgNalm-Ds-5DGRtUdhITlHfV99ng","expires":{"seconds":1669187641,"nanos":98994269}},{"name":"nsmgr-rs74c","id":"b1168ee4-a534-44c9-8fa2-a6be1282c392","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0MX0.R0iw6YOxTCMljnP_QN-y3b3S97tUhNOJz8INmFPHujdGSEQujlE_-VxCK9EgaoeODE8mm7d6cRWDnK9ix84irg","expires":{"seconds":1669187641,"nanos":222632341}},{"name":"forwarder-vpp-vkvt4","id":"5a4be390-9e24-4d35-813f-d5bc4057a4d6","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQxfQ.LE5ogPCqFT16FB8aTKYkCHqHpARktw8PGtjreVgMVEle52Pqmn5WlPjN1bycPqRcpKT7b4Sz5nDEVY5TdGW1EQ","expires":{"seconds":1669187641,"nanos":445084976},"metrics":{"client_drops":"0","client_rx_bytes":"0","client_rx_packets":"0","client_tx_bytes":"0","client_tx_packets":"0","server_drops":"0","server_rx_bytes":"0","server_rx_packets":"0","server_tx_bytes":"0","server_tx_packets":"0"}},{"name":"nse-vl3-vpp-759db6cbbf-nz47l","id":"ede5ce11-2d27-45e3-89c0-37f6b9da81e0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQxfQ.ySQu7wkiEeGDSTgrlg_JJSCPGUFUdf5rIeUcRVWEYlb8OMeo_pqSuzpxSq7ueu86P5bE-qIHXF13lVQ5PNkdSQ","expires":{"seconds":1669187641,"nanos":447121567}}]},"network_service_endpoint_name":"nse-vl3-vpp-759db6cbbf-nz47l","payload":"IP"},"mechanism_preferences":[{"cls":"LOCAL","type":"KERNEL","parameters":{"name":"nsm-1"}}]}
+Nov 23 07:04:04.312[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(2)  ⎆ sdk/pkg/networkservice/common/begin/beginClient.Request()
+Nov 23 07:04:04.312[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(3)   ⎆ sdk/pkg/networkservice/utils/metadata/metaDataClient.Request()
+Nov 23 07:04:04.313[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4)    ⎆ sdk/pkg/networkservice/common/refresh/refreshClient.Request()
+Nov 23 07:04:04.313[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5)     ⎆ sdk/pkg/networkservice/common/clienturl/clientURLClient.Request()
+Nov 23 07:04:04.313[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5.1)       passed clientURL: unix:///var/lib/networkservicemesh/nsm.io.sock
+Nov 23 07:04:04.313[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(6)      ⎆ sdk/pkg/networkservice/common/clientconn/clientConnClient.Request()
+Nov 23 07:04:04.314[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(7)       ⎆ sdk/pkg/networkservice/common/heal/healClient.Request()
+Nov 23 07:04:04.314[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(8)        ⎆ sdk/pkg/networkservice/common/dial/dialClient.Request()
+Nov 23 07:04:04.315[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9)         ⎆ sdk/pkg/networkservice/common/clientinfo/clientInfo.Request()
+Nov 23 07:04:04.315[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.1)           Environment variable NODE_NAME is not set. Skipping.
+Nov 23 07:04:04.315[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.2)           The label podName was already assigned to istiod-cd9c68bc-w42xj. Skipping.
+Nov 23 07:04:04.315[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.3)           Environment variable CLUSTER_NAME is not set. Skipping.
+Nov 23 07:04:04.315[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10)          ⎆ sdk/pkg/networkservice/common/upstreamrefresh/upstreamRefreshClient.Request()
+Nov 23 07:04:04.315[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(11)           ⎆ sdk-sriov/pkg/networkservice/common/token/multitoken/tokenClient.Request()
+Nov 23 07:04:04.316[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(12)            ⎆ sdk/pkg/networkservice/common/mechanisms/mechanismsClient.Request()
+Nov 23 07:04:04.316[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(13)             ⎆ sdk/pkg/networkservice/core/next/nextClient.Request()
+Nov 23 07:04:04.318[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14)              ⎆ sdk/pkg/networkservice/common/mechanisms/kernel/kernelMechanismClient.Request()
+Nov 23 07:04:04.318[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14.1)                request-diff={"mechanism_preferences":{"0":{"parameters":{"+inodeURL":"file:///proc/thread-self/ns/net"}}}}
+Nov 23 07:04:04.319[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15)               ⎆ sdk/pkg/networkservice/common/mechanisms/sendfd/sendFDClient.Request()
+Nov 23 07:04:04.319[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.1)                 request-diff={"mechanism_preferences":{"0":{"parameters":{"inodeURL":"inode://4/4026536568"}}}}
+Nov 23 07:04:04.319[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(16)                ⎆ sdk/pkg/networkservice/connectioncontext/dnscontext/dnsContextClient.Request()
+Nov 23 07:04:04.320[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(16.1)                  request-diff={"connection":{"context":{"dns_context":{"configs":{"+1":{"dns_server_ips":["10.96.0.10"],"search_domains":["istio-system.svc.cluster.local","svc.cluster.local","cluster.local"]}}}}}}
+Nov 23 07:04:04.320[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(17)                 ⎆ sdk/pkg/networkservice/common/excludedprefixes/excludedPrefixesClient.Request()
+Nov 23 07:04:04.320[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(18)                  ⎆ sdk/pkg/networkservice/common/authorize/authorizeClient.Request()
+Nov 23 07:04:04.321[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(19)                   ⎆ sdk/pkg/networkservice/common/trimpath/trimpathClient.Request()
+Nov 23 07:04:04.321[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20)                    ⎆ sdk/pkg/networkservice/common/connect/connectClient.Request()
+Nov 23 07:04:04.833[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20.1)                      request-response={"id":"istiod-cd9c68bc-w42xj-0","network_service":"my-vl3-network","mechanism":{"cls":"LOCAL","type":"KERNEL","parameters":{"inodeURL":"inode://4/4026536568","name":"nsm-1"}},"context":{"ip_context":{"src_ip_addrs":["172.16.0.2/32"],"dst_ip_addrs":["172.16.0.0/32"],"src_routes":[{"prefix":"172.16.0.0/32","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/24","nextHop":"172.16.0.0"},{"prefix":"172.16.0.0/16","nextHop":"172.16.0.0"}],"dst_routes":[{"prefix":"172.16.0.2/32"}],"excluded_prefixes":["10.96.0.0/16","10.244.0.0/16"]},"dns_context":{"configs":[{"dns_server_ips":["172.16.0.1"]},{"dns_server_ips":["10.96.0.10"],"search_domains":["istio-system.svc.cluster.local","svc.cluster.local","cluster.local"]}]},"MTU":9000},"labels":{"dnsName":"istio-cp","nodeName":"kind-1-worker","podName":"istiod-cd9c68bc-w42xj"},"path":{"path_segments":[{"name":"istiod-cd9c68bc-w42xj","id":"istiod-cd9c68bc-w42xj-0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDR9.iFOBrJpo0OnWyo5mWiVwaPgSXfbesxqgkF1zKh8ZSGzhbLNTVMdDqDe0JC-sXgpqb55xy9vTg7V-CZ8gNKKkFA","expires":{"seconds":1669187644,"nanos":321775815}},{"name":"nsmgr-rs74c","id":"b1168ee4-a534-44c9-8fa2-a6be1282c392","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0NH0.IObvSb4H4SRny36zUxuadfkLI0bgEsySgxIvziR9miHri23vWiaByPJwjb7zqLQNBMSagOcxAyI2D1J4gIaLmA","expires":{"seconds":1669187644,"nanos":421879014}},{"name":"forwarder-vpp-vkvt4","id":"5a4be390-9e24-4d35-813f-d5bc4057a4d6","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.9TzCQeeneJBwuYxhZkrSnSBzFoDbM362xpFQtGqOhzjfVehLpxTx3l0k0BeKV4LAWDAbIsGOWGvmhiGYfSnyfQ","expires":{"seconds":1669187644,"nanos":618883390},"metrics":{"client_drops":"0","client_rx_bytes":"0","client_rx_packets":"0","client_tx_bytes":"0","client_tx_packets":"0","server_drops":"0","server_rx_bytes":"0","server_rx_packets":"0","server_tx_bytes":"0","server_tx_packets":"0"}},{"name":"nse-vl3-vpp-759db6cbbf-nz47l","id":"ede5ce11-2d27-45e3-89c0-37f6b9da81e0","token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.bbCxLX4UfGNhKo5ZmfP1RkhFAVe-nvorEiTlycCemkM498KQN9w50A_Ikvy_Bg6Dn7Iu9CRxGfzaW3houh53RQ","expires":{"seconds":1669187644,"nanos":621878494}}]},"network_service_endpoint_name":"nse-vl3-vpp-759db6cbbf-nz47l","payload":"IP"}
+Nov 23 07:04:04.849[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.1)                   Request excluded IPs - srcIPs: [172.16.0.2/32], dstIPs: [172.16.0.0/32], excluded prefixes: [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:04:04.849[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.2)                   Added excluded prefixes: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:04:04.849[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.2)                 request-response-diff={"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}
+Nov 23 07:04:04.854[36m [INFO] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.1)      expiration after 9m59.467411276s at 2022-11-23 07:14:04.321775815 +0000 UTC
+Nov 23 07:04:04.855[36m [INFO] [cmd:[/bin/app]] [0msuccessfully connected to my-vl3-network. Response: id:"istiod-cd9c68bc-w42xj-0" network_service:"my-vl3-network" mechanism:{cls:"LOCAL" type:"KERNEL" parameters:{key:"inodeURL" value:"file:///proc/thread-self/ns/net"} parameters:{key:"name" value:"nsm-1"}} context:{ip_context:{src_ip_addrs:"172.16.0.2/32" dst_ip_addrs:"172.16.0.0/32" src_routes:{prefix:"172.16.0.0/32" nextHop:"172.16.0.0"} src_routes:{prefix:"172.16.0.0/24" nextHop:"172.16.0.0"} src_routes:{prefix:"172.16.0.0/16" nextHop:"172.16.0.0"} dst_routes:{prefix:"172.16.0.2/32"} excluded_prefixes:"10.96.0.0/16" excluded_prefixes:"10.244.0.0/16"} dns_context:{configs:{dns_server_ips:"172.16.0.1"} configs:{dns_server_ips:"10.96.0.10" search_domains:"istio-system.svc.cluster.local" search_domains:"svc.cluster.local" search_domains:"cluster.local"}} MTU:9000} labels:{key:"dnsName" value:"istio-cp"} labels:{key:"nodeName" value:"kind-1-worker"} labels:{key:"podName" value:"istiod-cd9c68bc-w42xj"} path:{path_segments:{name:"istiod-cd9c68bc-w42xj" id:"istiod-cd9c68bc-w42xj-0" token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDR9.iFOBrJpo0OnWyo5mWiVwaPgSXfbesxqgkF1zKh8ZSGzhbLNTVMdDqDe0JC-sXgpqb55xy9vTg7V-CZ8gNKKkFA" expires:{seconds:1669187644 nanos:321775815}} path_segments:{name:"nsmgr-rs74c" id:"b1168ee4-a534-44c9-8fa2-a6be1282c392" token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0NH0.IObvSb4H4SRny36zUxuadfkLI0bgEsySgxIvziR9miHri23vWiaByPJwjb7zqLQNBMSagOcxAyI2D1J4gIaLmA" expires:{seconds:1669187644 nanos:421879014}} path_segments:{name:"forwarder-vpp-vkvt4" id:"5a4be390-9e24-4d35-813f-d5bc4057a4d6" token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.9TzCQeeneJBwuYxhZkrSnSBzFoDbM362xpFQtGqOhzjfVehLpxTx3l0k0BeKV4LAWDAbIsGOWGvmhiGYfSnyfQ" expires:{seconds:1669187644 nanos:618883390} metrics:{key:"client_drops" value:"0"} metrics:{key:"client_rx_bytes" value:"0"} metrics:{key:"client_rx_packets" value:"0"} metrics:{key:"client_tx_bytes" value:"0"} metrics:{key:"client_tx_packets" value:"0"} metrics:{key:"server_drops" value:"0"} metrics:{key:"server_rx_bytes" value:"0"} metrics:{key:"server_rx_packets" value:"0"} metrics:{key:"server_tx_bytes" value:"0"} metrics:{key:"server_tx_packets" value:"0"}} path_segments:{name:"nse-vl3-vpp-759db6cbbf-nz47l" id:"ede5ce11-2d27-45e3-89c0-37f6b9da81e0" token:"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.bbCxLX4UfGNhKo5ZmfP1RkhFAVe-nvorEiTlycCemkM498KQN9w50A_Ikvy_Bg6Dn7Iu9CRxGfzaW3houh53RQ" expires:{seconds:1669187644 nanos:621878494}}} network_service_endpoint_name:"nse-vl3-vpp-759db6cbbf-nz47l" payload:"IP"
+Nov 23 07:06:04.748[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(2.1)    request-diff={"connection":{"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}},"path":{"path_segments":{"0":{"expires":{"nanos":321775815,"seconds":1669187644},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc2NDR9.iFOBrJpo0OnWyo5mWiVwaPgSXfbesxqgkF1zKh8ZSGzhbLNTVMdDqDe0JC-sXgpqb55xy9vTg7V-CZ8gNKKkFA"},"1":{"expires":{"nanos":421879014,"seconds":1669187644},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4NzY0NH0.IObvSb4H4SRny36zUxuadfkLI0bgEsySgxIvziR9miHri23vWiaByPJwjb7zqLQNBMSagOcxAyI2D1J4gIaLmA"},"2":{"expires":{"nanos":618883390,"seconds":1669187644},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.9TzCQeeneJBwuYxhZkrSnSBzFoDbM362xpFQtGqOhzjfVehLpxTx3l0k0BeKV4LAWDAbIsGOWGvmhiGYfSnyfQ"},"3":{"expires":{"nanos":621878494,"seconds":1669187644},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NjQ0fQ.bbCxLX4UfGNhKo5ZmfP1RkhFAVe-nvorEiTlycCemkM498KQN9w50A_Ikvy_Bg6Dn7Iu9CRxGfzaW3houh53RQ"}}}}}
+Nov 23 07:06:04.748[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(3)   ⎆ sdk/pkg/networkservice/utils/metadata/metaDataClient.Request()
+Nov 23 07:06:04.749[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4)    ⎆ sdk/pkg/networkservice/common/refresh/refreshClient.Request()
+Nov 23 07:06:04.749[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5)     ⎆ sdk/pkg/networkservice/common/clienturl/clientURLClient.Request()
+Nov 23 07:06:04.749[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5.1)       passed clientURL: unix:///var/lib/networkservicemesh/nsm.io.sock
+Nov 23 07:06:04.749[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(6)      ⎆ sdk/pkg/networkservice/common/clientconn/clientConnClient.Request()
+Nov 23 07:06:04.750[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(7)       ⎆ sdk/pkg/networkservice/common/heal/healClient.Request()
+Nov 23 07:06:04.750[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [heal:eventLoop] [type:networkService] [0m(7.1)         received eventIn: <nil>, err: rpc error: code = Canceled desc = context canceled
+Nov 23 07:06:04.750[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(8)        ⎆ sdk/pkg/networkservice/common/dial/dialClient.Request()
+Nov 23 07:06:04.753[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9)         ⎆ sdk/pkg/networkservice/common/clientinfo/clientInfo.Request()
+Nov 23 07:06:04.753[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.1)           Environment variable NODE_NAME is not set. Skipping.
+Nov 23 07:06:04.753[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.2)           The label podName was already assigned to istiod-cd9c68bc-w42xj. Skipping.
+Nov 23 07:06:04.753[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.3)           Environment variable CLUSTER_NAME is not set. Skipping.
+Nov 23 07:06:04.753[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10)          ⎆ sdk/pkg/networkservice/common/upstreamrefresh/upstreamRefreshClient.Request()
+Nov 23 07:06:04.754[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(11)           ⎆ sdk-sriov/pkg/networkservice/common/token/multitoken/tokenClient.Request()
+Nov 23 07:06:04.754[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(12)            ⎆ sdk/pkg/networkservice/common/mechanisms/mechanismsClient.Request()
+Nov 23 07:06:04.754[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(13)             ⎆ sdk/pkg/networkservice/core/next/nextClient.Request()
+Nov 23 07:06:04.755[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14)              ⎆ sdk/pkg/networkservice/common/mechanisms/kernel/kernelMechanismClient.Request()
+Nov 23 07:06:04.755[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14.1)                request-diff={"mechanism_preferences":{"0":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}}
+Nov 23 07:06:04.756[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15)               ⎆ sdk/pkg/networkservice/common/mechanisms/sendfd/sendFDClient.Request()
+Nov 23 07:06:04.756[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.1)                 request-diff={"connection":{"mechanism":{"parameters":{"inodeURL":"inode://4/4026536568"}}},"mechanism_preferences":{"0":{"parameters":{"inodeURL":"inode://4/4026536568"}}}}
+Nov 23 07:06:04.756[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(16)                ⎆ sdk/pkg/networkservice/connectioncontext/dnscontext/dnsContextClient.Request()
+Nov 23 07:06:04.757[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(17)                 ⎆ sdk/pkg/networkservice/common/excludedprefixes/excludedPrefixesClient.Request()
+Nov 23 07:06:04.757[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.1)                   Adding new excluded IPs to the request: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:06:04.757[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.2)                   Excluded prefixes from request - [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:06:04.757[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(18)                  ⎆ sdk/pkg/networkservice/common/authorize/authorizeClient.Request()
+Nov 23 07:06:04.758[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(19)                   ⎆ sdk/pkg/networkservice/common/trimpath/trimpathClient.Request()
+Nov 23 07:06:04.758[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20)                    ⎆ sdk/pkg/networkservice/common/connect/connectClient.Request()
+Nov 23 07:06:05.360[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20.1)                      request-response-diff={"mechanism":{"parameters":{"inodeURL":"inode://4/4026536568"}},"path":{"path_segments":{"0":{"expires":{"nanos":758627792,"seconds":1669187764},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc3NjR9.Sc_fwVZFC9pa9vcAS1IplY8s8gDVR2wk8e1-A4ZjSRHW1ASMu6V3xo2RFJbWpY3z2guTVKAqeXws4Sg-kk9jrg"},"1":{"expires":{"nanos":793792296,"seconds":1669187764},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4Nzc2NH0.nCYwVwF99e7Ddi1qO2QBeKfPMGI8o-KrxpHR__sYAXUKMLaPVtzKB86xM4PY9qk9bcKHrgs5PXjqpDkigWR1vQ"},"2":{"expires":{"nanos":122344374,"seconds":1669187765},"metrics":{"client_rx_bytes":"24288","client_rx_packets":"552","client_tx_bytes":"24288","client_tx_packets":"552","server_drops":"6","server_rx_bytes":"24576","server_rx_packets":"558","server_tx_bytes":"24288","server_tx_packets":"552"},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NzY1fQ.cm-xkFHnqvP7kaIWG0G2Tx1P31h7qrxfChc_WGEERkh6bpWTeJWAZ_PEQ3LEstDS4MhMAIoDgjka_0qxYSMhzA"},"3":{"expires":{"nanos":125217419,"seconds":1669187765},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NzY1fQ.dUCEjLexDcAXmyEelKNfO0kA7skwaid3uyqtMTW5MXx1I7AfmAvQg1DkYS27r49leqHsXfO4Q_rgXDluUD2JOA"}}}}
+Nov 23 07:06:05.365[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.3)                   Request excluded IPs - srcIPs: [172.16.0.2/32], dstIPs: [172.16.0.0/32], excluded prefixes: [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:06:05.365[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.4)                   Added excluded prefixes: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:06:05.365[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.2)                 request-response-diff={"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}
+Nov 23 07:06:05.372[36m [INFO] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.1)      expiration after 9m59.386108534s at 2022-11-23 07:16:04.758627792 +0000 UTC
+Nov 23 07:08:05.250[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(2.2)    request-diff={"connection":{"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}},"path":{"path_segments":{"0":{"expires":{"nanos":758627792,"seconds":1669187764},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc3NjR9.Sc_fwVZFC9pa9vcAS1IplY8s8gDVR2wk8e1-A4ZjSRHW1ASMu6V3xo2RFJbWpY3z2guTVKAqeXws4Sg-kk9jrg"},"1":{"expires":{"nanos":793792296,"seconds":1669187764},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4Nzc2NH0.nCYwVwF99e7Ddi1qO2QBeKfPMGI8o-KrxpHR__sYAXUKMLaPVtzKB86xM4PY9qk9bcKHrgs5PXjqpDkigWR1vQ"},"2":{"expires":{"nanos":122344374,"seconds":1669187765},"metrics":{"client_rx_bytes":"24288","client_rx_packets":"552","client_tx_bytes":"24288","client_tx_packets":"552","server_drops":"6","server_rx_bytes":"24576","server_rx_packets":"558","server_tx_bytes":"24288","server_tx_packets":"552"},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3NzY1fQ.cm-xkFHnqvP7kaIWG0G2Tx1P31h7qrxfChc_WGEERkh6bpWTeJWAZ_PEQ3LEstDS4MhMAIoDgjka_0qxYSMhzA"},"3":{"expires":{"nanos":125217419,"seconds":1669187765},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3NzY1fQ.dUCEjLexDcAXmyEelKNfO0kA7skwaid3uyqtMTW5MXx1I7AfmAvQg1DkYS27r49leqHsXfO4Q_rgXDluUD2JOA"}}}}}
+Nov 23 07:08:05.250[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(3)   ⎆ sdk/pkg/networkservice/utils/metadata/metaDataClient.Request()
+Nov 23 07:08:05.251[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4)    ⎆ sdk/pkg/networkservice/common/refresh/refreshClient.Request()
+Nov 23 07:08:05.251[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5)     ⎆ sdk/pkg/networkservice/common/clienturl/clientURLClient.Request()
+Nov 23 07:08:05.251[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(5.1)       passed clientURL: unix:///var/lib/networkservicemesh/nsm.io.sock
+Nov 23 07:08:05.251[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(6)      ⎆ sdk/pkg/networkservice/common/clientconn/clientConnClient.Request()
+Nov 23 07:08:05.252[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(7)       ⎆ sdk/pkg/networkservice/common/heal/healClient.Request()
+Nov 23 07:08:05.252[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(8)        ⎆ sdk/pkg/networkservice/common/dial/dialClient.Request()
+Nov 23 07:08:05.252[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [heal:eventLoop] [type:networkService] [0m(7.1)         received eventIn: <nil>, err: rpc error: code = Canceled desc = context canceled
+Nov 23 07:08:05.253[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9)         ⎆ sdk/pkg/networkservice/common/clientinfo/clientInfo.Request()
+Nov 23 07:08:05.253[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.1)           Environment variable NODE_NAME is not set. Skipping.
+Nov 23 07:08:05.253[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.2)           The label podName was already assigned to istiod-cd9c68bc-w42xj. Skipping.
+Nov 23 07:08:05.253[33m [WARN] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(9.3)           Environment variable CLUSTER_NAME is not set. Skipping.
+Nov 23 07:08:05.253[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(10)          ⎆ sdk/pkg/networkservice/common/upstreamrefresh/upstreamRefreshClient.Request()
+Nov 23 07:08:05.254[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(11)           ⎆ sdk-sriov/pkg/networkservice/common/token/multitoken/tokenClient.Request()
+Nov 23 07:08:05.254[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(12)            ⎆ sdk/pkg/networkservice/common/mechanisms/mechanismsClient.Request()
+Nov 23 07:08:05.254[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(13)             ⎆ sdk/pkg/networkservice/core/next/nextClient.Request()
+Nov 23 07:08:05.254[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14)              ⎆ sdk/pkg/networkservice/common/mechanisms/kernel/kernelMechanismClient.Request()
+Nov 23 07:08:05.255[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(14.1)                request-diff={"mechanism_preferences":{"0":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}}
+Nov 23 07:08:05.255[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15)               ⎆ sdk/pkg/networkservice/common/mechanisms/sendfd/sendFDClient.Request()
+Nov 23 07:08:05.256[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.1)                 request-diff={"connection":{"mechanism":{"parameters":{"inodeURL":"inode://4/4026536568"}}},"mechanism_preferences":{"0":{"parameters":{"inodeURL":"inode://4/4026536568"}}}}
+Nov 23 07:08:05.256[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(16)                ⎆ sdk/pkg/networkservice/connectioncontext/dnscontext/dnsContextClient.Request()
+Nov 23 07:08:05.257[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(17)                 ⎆ sdk/pkg/networkservice/common/excludedprefixes/excludedPrefixesClient.Request()
+Nov 23 07:08:05.257[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.1)                   Adding new excluded IPs to the request: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:08:05.257[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.2)                   Excluded prefixes from request - [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:08:05.258[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(18)                  ⎆ sdk/pkg/networkservice/common/authorize/authorizeClient.Request()
+Nov 23 07:08:05.258[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(19)                   ⎆ sdk/pkg/networkservice/common/trimpath/trimpathClient.Request()
+Nov 23 07:08:05.258[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20)                    ⎆ sdk/pkg/networkservice/common/connect/connectClient.Request()
+Nov 23 07:08:05.727[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(20.1)                      request-response-diff={"mechanism":{"parameters":{"inodeURL":"inode://4/4026536568"}},"path":{"path_segments":{"0":{"expires":{"nanos":259086609,"seconds":1669187885},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9pc3Rpby1zeXN0ZW0vcG9kL2lzdGlvZC1jZDljNjhiYy13NDJ4aiIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyJdLCJleHAiOjE2NjkxODc4ODV9.4gpceUiY-OZJqYGj9r3TyDN2H1kSV96K8B0vLwhUo1fRN7AoJ4AKxZn5ku3RaUHikR05ppmC1-XC8O8O4NCxxQ"},"1":{"expires":{"nanos":321610832,"seconds":1669187885},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9uc21nci1yczc0YyIsImF1ZCI6WyJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0Il0sImV4cCI6MTY2OTE4Nzg4NX0.PGYU7w_R1GX-1PNVv6Op-aj-_lItlP439hUwA5__9K47aBcCrFD45BGTL-lmP-gIH0Tzg81ouej6HgQWW65Fpw"},"2":{"expires":{"nanos":536036303,"seconds":1669187885},"metrics":{"client_rx_bytes":"106145","client_rx_packets":"1215","client_tx_bytes":"69396","client_tx_packets":"1207","server_rx_bytes":"69684","server_rx_packets":"1213","server_tx_bytes":"106145","server_tx_packets":"1215"},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9uc20tc3lzdGVtL3BvZC9mb3J3YXJkZXItdnBwLXZrdnQ0IiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zLWRucy12bDMvcG9kL25zZS12bDMtdnBwLTc1OWRiNmNiYmYtbno0N2wiXSwiZXhwIjoxNjY5MTg3ODg1fQ.-OLB05OIKyKYIOERghN8XW7tpvbwmGOM8DPCFd-3_L2vtIOZPQaZpKIYl6g29-nmgCaKKYLLYWyowLYbAop0RA"},"3":{"expires":{"nanos":538517094,"seconds":1669187885},"token":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcGlmZmU6Ly9leGFtcGxlLm9yZy9ucy9ucy1kbnMtdmwzL3BvZC9uc2UtdmwzLXZwcC03NTlkYjZjYmJmLW56NDdsIiwiYXVkIjpbInNwaWZmZTovL2V4YW1wbGUub3JnL25zL25zbS1zeXN0ZW0vcG9kL2ZvcndhcmRlci12cHAtdmt2dDQiXSwiZXhwIjoxNjY5MTg3ODg1fQ.HbyGbj-zS45qzWkPaLOBCc1_5Da-XaGuQG8aPTJiKo0suW6Lvy4FX0fLnf4kg9qYM9GQad9PA-46T4LQpt7T8g"}}}}
+Nov 23 07:08:05.732[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.3)                   Request excluded IPs - srcIPs: [172.16.0.2/32], dstIPs: [172.16.0.0/32], excluded prefixes: [10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:08:05.732[37m [DEBU] [id:istiod-cd9c68bc-w42xj-0] [ExcludedPrefixesClient:Request] [type:networkService] [0m(17.4)                   Added excluded prefixes: [172.16.0.2/32 172.16.0.0/32 10.96.0.0/16 10.244.0.0/16]
+Nov 23 07:08:05.733[37m [TRAC] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(15.2)                 request-response-diff={"mechanism":{"parameters":{"inodeURL":"file:///proc/thread-self/ns/net"}}}
+Nov 23 07:08:05.741[36m [INFO] [id:istiod-cd9c68bc-w42xj-0] [type:networkService] [0m(4.1)      expiration after 9m59.517279947s at 2022-11-23 07:18:05.259086609 +0000 UTC
+==== END logs for container cmd-nsc of pod istio-system/istiod-cd9c68bc-w42xj ====

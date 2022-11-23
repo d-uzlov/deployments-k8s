@@ -1,0 +1,51 @@
+{
+    "kind": "ServiceList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "10881"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "vl3-ipam",
+                "namespace": "ns-dns-vl3",
+                "uid": "2a9587cf-871e-4df0-96c7-267e16557a09",
+                "resourceVersion": "1311",
+                "creationTimestamp": "2022-11-23T05:46:58Z",
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"vl3-ipam\",\"namespace\":\"ns-dns-vl3\"},\"spec\":{\"ports\":[{\"name\":\"vl3-ipam\",\"port\":5006,\"protocol\":\"TCP\",\"targetPort\":5006}],\"selector\":{\"app\":\"vl3-ipam\"},\"type\":\"LoadBalancer\"}}\n"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "vl3-ipam",
+                        "protocol": "TCP",
+                        "port": 5006,
+                        "targetPort": 5006,
+                        "nodePort": 32049
+                    }
+                ],
+                "selector": {
+                    "app": "vl3-ipam"
+                },
+                "clusterIP": "10.96.91.90",
+                "clusterIPs": [
+                    "10.96.91.90"
+                ],
+                "type": "LoadBalancer",
+                "sessionAffinity": "None",
+                "externalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "allocateLoadBalancerNodePorts": true,
+                "internalTrafficPolicy": "Cluster"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ]
+}

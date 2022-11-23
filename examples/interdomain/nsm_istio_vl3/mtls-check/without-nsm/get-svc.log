@@ -1,0 +1,5 @@
+NAMESPACE      NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                                 AGE
+default        kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP                                 101m
+istio-system   istiod       ClusterIP   10.96.100.103   <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP   20m
+kube-system    kube-dns     ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP                  101m
+sample         helloworld   ClusterIP   10.96.108.49    <none>        5000/TCP                                7m10s

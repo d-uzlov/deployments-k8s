@@ -1,0 +1,146 @@
+2022-11-23T05:49:54.210789Z	info	FLAG: --concurrency="0"
+2022-11-23T05:49:54.210835Z	info	FLAG: --domain=""
+2022-11-23T05:49:54.210842Z	info	FLAG: --help="false"
+2022-11-23T05:49:54.210846Z	info	FLAG: --log_as_json="false"
+2022-11-23T05:49:54.210851Z	info	FLAG: --log_caller=""
+2022-11-23T05:49:54.210855Z	info	FLAG: --log_output_level="default:info"
+2022-11-23T05:49:54.210859Z	info	FLAG: --log_rotate=""
+2022-11-23T05:49:54.210862Z	info	FLAG: --log_rotate_max_age="30"
+2022-11-23T05:49:54.210866Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-11-23T05:49:54.210870Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-11-23T05:49:54.210874Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-11-23T05:49:54.210882Z	info	FLAG: --log_target="[stdout]"
+2022-11-23T05:49:54.210886Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-11-23T05:49:54.210890Z	info	FLAG: --outlierLogPath=""
+2022-11-23T05:49:54.210893Z	info	FLAG: --proxyComponentLogLevel=""
+2022-11-23T05:49:54.210897Z	info	FLAG: --proxyLogLevel="warning,misc:error"
+2022-11-23T05:49:54.210901Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-11-23T05:49:54.210905Z	info	FLAG: --stsPort="0"
+2022-11-23T05:49:54.210908Z	info	FLAG: --templateFile=""
+2022-11-23T05:49:54.210912Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-11-23T05:49:54.210917Z	info	FLAG: --vklog="0"
+2022-11-23T05:49:54.210921Z	info	Version 1.15.2-b542583af7f8240ad0c9cab56eb9f8d55e1357ab-Clean
+2022-11-23T05:49:54.212520Z	info	Maximum file descriptors (ulimit -n): 1024
+2022-11-23T05:49:54.212997Z	info	Proxy role	ips=[10.244.1.10 172.16.0.3] type=sidecar id=ubuntu-deployment-f98b7685b-bn625.vm-ns domain=vm-ns.svc.cluster.local
+2022-11-23T05:49:54.213122Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-11-23T05:49:54.219037Z	info	Apply proxy config from env 
+serviceCluster: vm-app.vm-ns
+controlPlaneAuthPolicy: MUTUAL_TLS
+
+2022-11-23T05:49:54.220628Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: vm-app.vm-ns
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-11-23T05:49:54.220661Z	info	JWT policy is third-party-jwt
+2022-11-23T05:49:54.220674Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-11-23T05:49:54.471789Z	info	Opening status port 15020
+2022-11-23T05:49:54.471938Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2022-11-23T05:49:54.472225Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2022-11-23T05:49:54.472307Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-11-23T05:49:54.472344Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-11-23T05:49:54.472380Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
+2022-11-23T05:49:54.472556Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
+2022-11-23T05:49:54.494554Z	info	ads	All caches have been synced up in 287.498248ms, marking server ready
+2022-11-23T05:49:54.494908Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-11-23T05:49:54.494982Z	info	sds	Starting SDS grpc server
+2022-11-23T05:49:54.495369Z	info	starting Http service at 127.0.0.1:15004
+2022-11-23T05:49:54.496427Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-11-23T05:49:54.498163Z	info	Starting proxy agent
+2022-11-23T05:49:54.498183Z	info	starting
+2022-11-23T05:49:54.498205Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-11-23T05:49:54.593703Z	warn	ca	ca request failed, starting attempt 1 in 99.960157ms
+2022-11-23T05:49:54.694731Z	warn	ca	ca request failed, starting attempt 2 in 189.503562ms
+2022-11-23T05:49:54.885500Z	warn	ca	ca request failed, starting attempt 3 in 435.974373ms
+2022-11-23T05:49:55.322755Z	warn	ca	ca request failed, starting attempt 4 in 828.843264ms
+2022-11-23T05:49:56.211813Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:49:57.046467Z	warn	ca	ca request failed, starting attempt 1 in 90.453218ms
+2022-11-23T05:49:57.137939Z	warn	ca	ca request failed, starting attempt 2 in 184.444653ms
+2022-11-23T05:49:57.323311Z	warn	ca	ca request failed, starting attempt 3 in 383.583151ms
+2022-11-23T05:49:57.767818Z	warn	ca	ca request failed, starting attempt 4 in 747.024616ms
+2022-11-23T05:49:58.516054Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:49:59.731182Z	warn	ca	ca request failed, starting attempt 1 in 96.902727ms
+2022-11-23T05:49:59.828789Z	warn	ca	ca request failed, starting attempt 2 in 198.737902ms
+2022-11-23T05:50:00.028420Z	warn	ca	ca request failed, starting attempt 3 in 435.490564ms
+2022-11-23T05:50:00.539861Z	warn	ca	ca request failed, starting attempt 4 in 720.198647ms
+2022-11-23T05:50:01.260973Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:02.509761Z	warn	ca	ca request failed, starting attempt 1 in 106.324703ms
+2022-11-23T05:50:02.616249Z	warn	ca	ca request failed, starting attempt 2 in 207.10366ms
+2022-11-23T05:50:02.823752Z	warn	ca	ca request failed, starting attempt 3 in 431.188328ms
+2022-11-23T05:50:03.255437Z	warn	ca	ca request failed, starting attempt 4 in 720.649785ms
+2022-11-23T05:50:03.976453Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:05.835765Z	warn	ca	ca request failed, starting attempt 1 in 106.647924ms
+2022-11-23T05:50:05.943246Z	warn	ca	ca request failed, starting attempt 2 in 218.197351ms
+2022-11-23T05:50:06.161798Z	warn	ca	ca request failed, starting attempt 3 in 418.476384ms
+2022-11-23T05:50:06.580643Z	warn	ca	ca request failed, starting attempt 4 in 877.268362ms
+2022-11-23T05:50:07.458931Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:10.833095Z	warn	ca	ca request failed, starting attempt 1 in 107.873221ms
+2022-11-23T05:50:10.941637Z	warn	ca	ca request failed, starting attempt 2 in 202.788563ms
+2022-11-23T05:50:11.145170Z	warn	ca	ca request failed, starting attempt 3 in 367.205292ms
+2022-11-23T05:50:11.512840Z	warn	ca	ca request failed, starting attempt 4 in 830.879167ms
+2022-11-23T05:50:12.344035Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:17.351842Z	warn	ca	ca request failed, starting attempt 1 in 102.080671ms
+2022-11-23T05:50:17.454334Z	warn	ca	ca request failed, starting attempt 2 in 199.619591ms
+2022-11-23T05:50:17.654938Z	warn	ca	ca request failed, starting attempt 3 in 389.211947ms
+2022-11-23T05:50:18.044640Z	warn	ca	ca request failed, starting attempt 4 in 752.783648ms
+2022-11-23T05:50:18.797875Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:24.446876Z	warn	ca	ca request failed, starting attempt 1 in 95.400828ms
+2022-11-23T05:50:24.543028Z	warn	ca	ca request failed, starting attempt 2 in 197.312815ms
+2022-11-23T05:50:24.741542Z	warn	ca	ca request failed, starting attempt 3 in 413.703929ms
+2022-11-23T05:50:25.156345Z	warn	ca	ca request failed, starting attempt 4 in 786.25469ms
+2022-11-23T05:50:25.943456Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:32.869785Z	warn	ca	ca request failed, starting attempt 1 in 98.043891ms
+2022-11-23T05:50:32.968267Z	warn	ca	ca request failed, starting attempt 2 in 218.323447ms
+2022-11-23T05:50:33.186930Z	warn	ca	ca request failed, starting attempt 3 in 434.941879ms
+2022-11-23T05:50:33.622857Z	warn	ca	ca request failed, starting attempt 4 in 808.498215ms
+2022-11-23T05:50:34.432267Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:50:47.223828Z	warn	ca	ca request failed, starting attempt 1 in 100.085321ms
+2022-11-23T05:50:47.324341Z	warn	ca	ca request failed, starting attempt 2 in 203.481622ms
+2022-11-23T05:50:47.528869Z	warn	ca	ca request failed, starting attempt 3 in 388.32793ms
+2022-11-23T05:50:47.917576Z	warn	ca	ca request failed, starting attempt 4 in 869.101438ms
+2022-11-23T05:50:48.786943Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"
+2022-11-23T05:51:05.119806Z	warn	ca	ca request failed, starting attempt 1 in 101.198756ms
+2022-11-23T05:51:05.221221Z	warn	ca	ca request failed, starting attempt 2 in 215.677692ms
+2022-11-23T05:51:05.437971Z	warn	ca	ca request failed, starting attempt 3 in 376.110704ms
+2022-11-23T05:51:05.814761Z	warn	ca	ca request failed, starting attempt 4 in 786.334691ms
+2022-11-23T05:51:06.602099Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority (possibly because of \"crypto/rsa: verification error\" while trying to verify candidate authority certificate \"cluster.local\")"

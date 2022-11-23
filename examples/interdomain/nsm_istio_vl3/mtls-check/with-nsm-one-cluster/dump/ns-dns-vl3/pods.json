@@ -1,0 +1,453 @@
+{
+    "kind": "PodList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "10881"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "nse-vl3-vpp-759db6cbbf-nz47l",
+                "generateName": "nse-vl3-vpp-759db6cbbf-",
+                "namespace": "ns-dns-vl3",
+                "uid": "14af2b47-2aea-424f-88cd-1672acc55004",
+                "resourceVersion": "1360",
+                "creationTimestamp": "2022-11-23T05:46:58Z",
+                "labels": {
+                    "app": "nse-vl3-vpp",
+                    "pod-template-hash": "759db6cbbf",
+                    "spiffe.io/spiffe-id": "true"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "nse-vl3-vpp-759db6cbbf",
+                        "uid": "db1caf7e-c0cc-4adb-bdfc-5b84a18635da",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "spire-agent-socket",
+                        "hostPath": {
+                            "path": "/run/spire/sockets",
+                            "type": "Directory"
+                        }
+                    },
+                    {
+                        "name": "nsm-socket",
+                        "hostPath": {
+                            "path": "/var/lib/networkservicemesh",
+                            "type": "DirectoryOrCreate"
+                        }
+                    },
+                    {
+                        "name": "kube-api-access-nvb72",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "nse",
+                        "image": "ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp:be5466a",
+                        "env": [
+                            {
+                                "name": "NSM_SERVICE_NAMES",
+                                "value": "my-vl3-network"
+                            },
+                            {
+                                "name": "NSM_REGISTER_SERVICE",
+                                "value": "true"
+                            },
+                            {
+                                "name": "NSM_DNS_TEMPLATES",
+                                "value": "{{ index .Labels \"dnsName\" }}.{{ .NetworkService }}."
+                            },
+                            {
+                                "name": "SPIFFE_ENDPOINT_SOCKET",
+                                "value": "unix:///run/spire/sockets/agent.sock"
+                            },
+                            {
+                                "name": "NSM_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NSM_LOG_LEVEL",
+                                "value": "TRACE"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "400Mi"
+                            },
+                            "requests": {
+                                "cpu": "150m",
+                                "memory": "400Mi"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "name": "spire-agent-socket",
+                                "readOnly": true,
+                                "mountPath": "/run/spire/sockets"
+                            },
+                            {
+                                "name": "nsm-socket",
+                                "readOnly": true,
+                                "mountPath": "/var/lib/networkservicemesh"
+                            },
+                            {
+                                "name": "kube-api-access-nvb72",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "serviceAccountName": "default",
+                "serviceAccount": "default",
+                "nodeName": "kind-1-worker",
+                "securityContext": {},
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:46:58Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:47:03Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:47:03Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:46:58Z"
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "podIP": "10.244.1.7",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.7"
+                    }
+                ],
+                "startTime": "2022-11-23T05:46:58Z",
+                "containerStatuses": [
+                    {
+                        "name": "nse",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-23T05:47:03Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp:be5466a",
+                        "imageID": "ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp@sha256:54001dbed238e0f25b766bc2935e2daa5d0ae7f14b325650fa3d5fb41dc9e549",
+                        "containerID": "containerd://7eaf3e748872743baa1c48b061fd4c575c00ac2d91139a580e795dc3cf17ba2b",
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "metadata": {
+                "name": "vl3-ipam-7cf548964c-vlz78",
+                "generateName": "vl3-ipam-7cf548964c-",
+                "namespace": "ns-dns-vl3",
+                "uid": "9252f0c7-e57e-4c8f-8c00-bf4d499995d8",
+                "resourceVersion": "1371",
+                "creationTimestamp": "2022-11-23T05:46:58Z",
+                "labels": {
+                    "app": "vl3-ipam",
+                    "pod-template-hash": "7cf548964c",
+                    "spiffe.io/spiffe-id": "true"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "vl3-ipam-7cf548964c",
+                        "uid": "499ecf2c-9033-49ca-bba8-6f94944d2abb",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "spire-agent-socket",
+                        "hostPath": {
+                            "path": "/run/spire/sockets",
+                            "type": "Directory"
+                        }
+                    },
+                    {
+                        "name": "nsm-socket",
+                        "hostPath": {
+                            "path": "/var/lib/networkservicemesh",
+                            "type": "DirectoryOrCreate"
+                        }
+                    },
+                    {
+                        "name": "kube-api-access-m94bw",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "vl3-ipam",
+                        "image": "ghcr.io/networkservicemesh/ci/cmd-ipam-vl3:d60a1f3",
+                        "ports": [
+                            {
+                                "hostPort": 5006,
+                                "containerPort": 5006,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "SPIFFE_ENDPOINT_SOCKET",
+                                "value": "unix:///run/spire/sockets/agent.sock"
+                            },
+                            {
+                                "name": "NSM_LISTEN_ON",
+                                "value": "tcp://:5006"
+                            },
+                            {
+                                "name": "NSM_PREFIX",
+                                "value": "172.16.0.0/16"
+                            },
+                            {
+                                "name": "NSM_LOG_LEVEL",
+                                "value": "TRACE"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "40Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "40Mi"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "name": "spire-agent-socket",
+                                "mountPath": "/run/spire/sockets"
+                            },
+                            {
+                                "name": "kube-api-access-m94bw",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "serviceAccountName": "default",
+                "serviceAccount": "default",
+                "nodeName": "kind-1-worker",
+                "securityContext": {},
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:46:58Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:47:05Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:47:05Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:46:58Z"
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "podIP": "10.244.1.8",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.8"
+                    }
+                ],
+                "startTime": "2022-11-23T05:46:58Z",
+                "containerStatuses": [
+                    {
+                        "name": "vl3-ipam",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-23T05:47:05Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "ghcr.io/networkservicemesh/ci/cmd-ipam-vl3:d60a1f3",
+                        "imageID": "ghcr.io/networkservicemesh/ci/cmd-ipam-vl3@sha256:9d9c80d16468779bb279a3ade8ede3d52201494c375c929a057159710a2f1dc8",
+                        "containerID": "containerd://14a3d3bd30eb6f30d76aaafc2b5c7cc323a1571a25e56780d1db2ec84ca2fda0",
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        }
+    ]
+}

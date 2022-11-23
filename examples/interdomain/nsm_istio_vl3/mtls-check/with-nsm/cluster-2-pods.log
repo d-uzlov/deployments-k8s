@@ -1,0 +1,23 @@
+NAMESPACE            NAME                                           READY   STATUS    RESTARTS   AGE     IP            NODE                   NOMINATED NODE   READINESS GATES
+default              ubuntu-deployment-99cf8d8f7-5g2qm              2/2     Running   0          8m43s   10.244.1.10   kind-2-worker          <none>           <none>
+kube-system          coredns-6d4b75cb6d-m9zvz                       1/1     Running   0          19m     10.244.0.2    kind-2-control-plane   <none>           <none>
+kube-system          coredns-6d4b75cb6d-x779z                       1/1     Running   0          19m     10.244.0.4    kind-2-control-plane   <none>           <none>
+kube-system          etcd-kind-2-control-plane                      1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+kube-system          kindnet-2tglg                                  1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+kube-system          kindnet-52lld                                  1/1     Running   0          19m     172.18.0.5    kind-2-worker          <none>           <none>
+kube-system          kube-apiserver-kind-2-control-plane            1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+kube-system          kube-controller-manager-kind-2-control-plane   1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+kube-system          kube-proxy-59s8b                               1/1     Running   0          19m     172.18.0.5    kind-2-worker          <none>           <none>
+kube-system          kube-proxy-h7ghd                               1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+kube-system          kube-scheduler-kind-2-control-plane            1/1     Running   0          19m     172.18.0.4    kind-2-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-9cd9bd544-cf64k         1/1     Running   0          19m     10.244.0.3    kind-2-control-plane   <none>           <none>
+metallb-system       controller-7476b58756-z4668                    1/1     Running   0          16m     10.244.1.2    kind-2-worker          <none>           <none>
+metallb-system       speaker-k4ttx                                  1/1     Running   0          16m     172.18.0.5    kind-2-worker          <none>           <none>
+nsm-system           admission-webhook-k8s-5c4dd8cfb6-dn757         1/1     Running   0          12m     10.244.1.4    kind-2-worker          <none>           <none>
+nsm-system           forwarder-vpp-7b9q9                            1/1     Running   0          12m     172.18.0.5    kind-2-worker          <none>           <none>
+nsm-system           nsmgr-proxy-5c4f578d4c-fgkv6                   2/2     Running   0          12m     10.244.1.5    kind-2-worker          <none>           <none>
+nsm-system           nsmgr-tvrgm                                    2/2     Running   0          12m     10.244.1.8    kind-2-worker          <none>           <none>
+nsm-system           registry-k8s-7bfbbfcbb6-pbqlc                  1/1     Running   0          12m     10.244.1.6    kind-2-worker          <none>           <none>
+nsm-system           registry-proxy-7cbfc4f7f5-c89xf                1/1     Running   0          12m     10.244.1.7    kind-2-worker          <none>           <none>
+spire                spire-agent-w7xcn                              1/1     Running   0          15m     172.18.0.5    kind-2-worker          <none>           <none>
+spire                spire-server-0                                 2/2     Running   0          15m     10.244.1.3    kind-2-worker          <none>           <none>

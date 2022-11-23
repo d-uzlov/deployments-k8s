@@ -1,0 +1,280 @@
+{
+    "kind": "ReplicaSetList",
+    "apiVersion": "apps/v1",
+    "metadata": {
+        "resourceVersion": "10884"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "admission-webhook-k8s-5c4dd8cfb6",
+                "namespace": "nsm-system",
+                "uid": "232f733f-78c3-4ab2-a483-8b427fbd55f6",
+                "resourceVersion": "942",
+                "generation": 1,
+                "creationTimestamp": "2022-11-23T05:44:53Z",
+                "labels": {
+                    "app": "admission-webhook-k8s",
+                    "pod-template-hash": "5c4dd8cfb6"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "admission-webhook-k8s",
+                        "uid": "dfc738f5-7944-4399-b5c3-d136b32e2ebe",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "admission-webhook-k8s",
+                        "pod-template-hash": "5c4dd8cfb6"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "admission-webhook-k8s",
+                            "pod-template-hash": "5c4dd8cfb6"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "admission-webhook-k8s",
+                                "image": "thetadr/cmd-admission-webhook-k8s:fix2",
+                                "env": [
+                                    {
+                                        "name": "SPIFFE_ENDPOINT_SOCKET",
+                                        "value": "unix:///run/spire/sockets/agent.sock"
+                                    },
+                                    {
+                                        "name": "NSM_SERVICE_NAME",
+                                        "value": "admission-webhook-svc"
+                                    },
+                                    {
+                                        "name": "NSM_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NSM_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NSM_ANNOTATION",
+                                        "value": "networkservicemesh.io"
+                                    },
+                                    {
+                                        "name": "NSM_CONTAINER_IMAGES",
+                                        "value": "thetadr/cmd-nsc:dns-fix"
+                                    },
+                                    {
+                                        "name": "NSM_INIT_CONTAINER_IMAGES",
+                                        "value": "ghcr.io/networkservicemesh/ci/cmd-nsc-init:8f0a5f1"
+                                    },
+                                    {
+                                        "name": "NSM_LABELS",
+                                        "value": "spiffe.io/spiffe-id:true"
+                                    },
+                                    {
+                                        "name": "NSM_ENVS",
+                                        "value": "NSM_LOG_LEVEL=TRACE"
+                                    }
+                                ],
+                                "resources": {},
+                                "readinessProbe": {
+                                    "httpGet": {
+                                        "path": "/ready",
+                                        "port": 443,
+                                        "scheme": "HTTPS"
+                                    },
+                                    "timeoutSeconds": 1,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "failureThreshold": 3
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 30,
+                        "dnsPolicy": "ClusterFirst",
+                        "serviceAccountName": "admission-webhook-sa",
+                        "serviceAccount": "admission-webhook-sa",
+                        "securityContext": {},
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        },
+        {
+            "metadata": {
+                "name": "registry-k8s-7bd89bb799",
+                "namespace": "nsm-system",
+                "uid": "cca80bd4-7640-464b-ab95-f43e4bc80aad",
+                "resourceVersion": "953",
+                "generation": 1,
+                "creationTimestamp": "2022-11-23T05:44:54Z",
+                "labels": {
+                    "app": "registry",
+                    "pod-template-hash": "7bd89bb799",
+                    "spiffe.io/spiffe-id": "true"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "registry-k8s",
+                        "uid": "c0738ec9-02e9-4080-b72a-ae0d00f5c9db",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "registry",
+                        "pod-template-hash": "7bd89bb799"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "registry",
+                            "pod-template-hash": "7bd89bb799",
+                            "spiffe.io/spiffe-id": "true"
+                        }
+                    },
+                    "spec": {
+                        "volumes": [
+                            {
+                                "name": "spire-agent-socket",
+                                "hostPath": {
+                                    "path": "/run/spire/sockets",
+                                    "type": "Directory"
+                                }
+                            },
+                            {
+                                "name": "nsm-socket",
+                                "hostPath": {
+                                    "path": "/var/lib/networkservicemesh",
+                                    "type": "DirectoryOrCreate"
+                                }
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "registry",
+                                "image": "ghcr.io/networkservicemesh/ci/cmd-registry-k8s:078a7e8",
+                                "ports": [
+                                    {
+                                        "hostPort": 5002,
+                                        "containerPort": 5002,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "SPIFFE_ENDPOINT_SOCKET",
+                                        "value": "unix:///run/spire/sockets/agent.sock"
+                                    },
+                                    {
+                                        "name": "REGISTRY_K8S_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "REGISTRY_K8S_LOG_LEVEL",
+                                        "value": "TRACE"
+                                    },
+                                    {
+                                        "name": "REGISTRY_K8S_LISTEN_ON",
+                                        "value": "tcp://:5002"
+                                    },
+                                    {
+                                        "name": "REGISTRY_K8S_PROXY_REGISTRY_URL",
+                                        "value": "nsmgr-proxy:5004"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "200m",
+                                        "memory": "40Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "name": "spire-agent-socket",
+                                        "mountPath": "/run/spire/sockets"
+                                    }
+                                ],
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 30,
+                        "dnsPolicy": "ClusterFirst",
+                        "serviceAccountName": "registry-k8s-sa",
+                        "serviceAccount": "registry-k8s-sa",
+                        "securityContext": {},
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        }
+    ]
+}

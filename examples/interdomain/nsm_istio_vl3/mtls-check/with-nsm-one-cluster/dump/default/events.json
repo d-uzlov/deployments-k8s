@@ -1,0 +1,468 @@
+{
+    "kind": "EventList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "10862"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24cda6df1913",
+                "namespace": "default",
+                "uid": "2969bff2-9f33-48eb-beb5-c70105b6f99e",
+                "resourceVersion": "10384",
+                "creationTimestamp": "2022-11-23T07:04:37Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10379"
+            },
+            "reason": "Scheduled",
+            "message": "Successfully assigned default/ubuntu-deployment-f98b7685b-6jz4p to kind-1-worker",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "firstTimestamp": "2022-11-23T07:04:37Z",
+            "lastTimestamp": "2022-11-23T07:04:37Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24cdc60eb83c",
+                "namespace": "default",
+                "uid": "eac8d45e-6c07-45d5-a3cd-ae701bac751d",
+                "resourceVersion": "10391",
+                "creationTimestamp": "2022-11-23T07:04:38Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Pulled",
+            "message": "Container image \"ghcr.io/networkservicemesh/ci/cmd-nsc-init:8f0a5f1\" already present on machine",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:38Z",
+            "lastTimestamp": "2022-11-23T07:04:38Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24cdc6f56118",
+                "namespace": "default",
+                "uid": "b23ab19d-0ed9-4c81-948c-2a2676f8b30f",
+                "resourceVersion": "10392",
+                "creationTimestamp": "2022-11-23T07:04:38Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Created",
+            "message": "Created container cmd-nsc-init",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:38Z",
+            "lastTimestamp": "2022-11-23T07:04:38Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24cdd0b45a47",
+                "namespace": "default",
+                "uid": "724a89c6-e6e1-407f-9812-ba3ccbbc627d",
+                "resourceVersion": "10393",
+                "creationTimestamp": "2022-11-23T07:04:38Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.initContainers{cmd-nsc-init}"
+            },
+            "reason": "Started",
+            "message": "Started container cmd-nsc-init",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:38Z",
+            "lastTimestamp": "2022-11-23T07:04:38Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce6e2446b0",
+                "namespace": "default",
+                "uid": "8f85db78-15b7-435b-81c2-87f8495908e6",
+                "resourceVersion": "10400",
+                "creationTimestamp": "2022-11-23T07:04:40Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{ubuntu}"
+            },
+            "reason": "Pulling",
+            "message": "Pulling image \"ubuntu\"",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:40Z",
+            "lastTimestamp": "2022-11-23T07:04:40Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce769012c5",
+                "namespace": "default",
+                "uid": "477b7c12-ffc0-4d1e-aa9d-f7ee4df0da2b",
+                "resourceVersion": "10402",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{ubuntu}"
+            },
+            "reason": "Pulled",
+            "message": "Successfully pulled image \"ubuntu\" in 141.264133ms",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce77a2831d",
+                "namespace": "default",
+                "uid": "09129cd0-88ab-4918-bd57-25cd1c44ab65",
+                "resourceVersion": "10403",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{ubuntu}"
+            },
+            "reason": "Created",
+            "message": "Created container ubuntu",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce820198ee",
+                "namespace": "default",
+                "uid": "60d3ef3f-e20f-46b4-8551-5dea6533029a",
+                "resourceVersion": "10404",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{ubuntu}"
+            },
+            "reason": "Started",
+            "message": "Started container ubuntu",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce820f551b",
+                "namespace": "default",
+                "uid": "da1b827b-d7f4-4168-b784-a5b2a0ca0e41",
+                "resourceVersion": "10405",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Pulled",
+            "message": "Container image \"thetadr/cmd-nsc:dns-fix\" already present on machine",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce82e93d64",
+                "namespace": "default",
+                "uid": "c7a8a83d-97c0-48b6-8c6f-a9be2573fdc4",
+                "resourceVersion": "10406",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Created",
+            "message": "Created container cmd-nsc",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-6jz4p.172a24ce8da8ea88",
+                "namespace": "default",
+                "uid": "211ddad7-62f9-4e48-8c78-e0df52a3b7d6",
+                "resourceVersion": "10407",
+                "creationTimestamp": "2022-11-23T07:04:41Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-6jz4p",
+                "uid": "f40a65e7-72dd-4017-bbbf-0534ef80fa64",
+                "apiVersion": "v1",
+                "resourceVersion": "10381",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Started",
+            "message": "Started container cmd-nsc",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:04:41Z",
+            "lastTimestamp": "2022-11-23T07:04:41Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-bn625.172a24b33fde4697",
+                "namespace": "default",
+                "uid": "608a07fb-7480-4437-b15c-acc46de5a0d1",
+                "resourceVersion": "10048",
+                "creationTimestamp": "2022-11-23T07:02:44Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-bn625",
+                "uid": "3bf9e336-e041-4029-bab1-6e89a5585bb4",
+                "apiVersion": "v1",
+                "resourceVersion": "1545",
+                "fieldPath": "spec.containers{ubuntu}"
+            },
+            "reason": "Killing",
+            "message": "Stopping container ubuntu",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:02:44Z",
+            "lastTimestamp": "2022-11-23T07:02:44Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b-bn625.172a24b33fdf311b",
+                "namespace": "default",
+                "uid": "d80eff0c-e640-4586-97f7-d4647229db08",
+                "resourceVersion": "10049",
+                "creationTimestamp": "2022-11-23T07:02:44Z"
+            },
+            "involvedObject": {
+                "kind": "Pod",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b-bn625",
+                "uid": "3bf9e336-e041-4029-bab1-6e89a5585bb4",
+                "apiVersion": "v1",
+                "resourceVersion": "1545",
+                "fieldPath": "spec.containers{cmd-nsc}"
+            },
+            "reason": "Killing",
+            "message": "Stopping container cmd-nsc",
+            "source": {
+                "component": "kubelet",
+                "host": "kind-1-worker"
+            },
+            "firstTimestamp": "2022-11-23T07:02:44Z",
+            "lastTimestamp": "2022-11-23T07:02:44Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment-f98b7685b.172a24cda6801c75",
+                "namespace": "default",
+                "uid": "4a678be6-c0af-4a95-9ced-dd5b08b3f035",
+                "resourceVersion": "10382",
+                "creationTimestamp": "2022-11-23T07:04:37Z"
+            },
+            "involvedObject": {
+                "kind": "ReplicaSet",
+                "namespace": "default",
+                "name": "ubuntu-deployment-f98b7685b",
+                "uid": "de03ed89-c61a-4325-8d18-9c8ffedebc75",
+                "apiVersion": "apps/v1",
+                "resourceVersion": "10376"
+            },
+            "reason": "SuccessfulCreate",
+            "message": "Created pod: ubuntu-deployment-f98b7685b-6jz4p",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "firstTimestamp": "2022-11-23T07:04:37Z",
+            "lastTimestamp": "2022-11-23T07:04:37Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        },
+        {
+            "metadata": {
+                "name": "ubuntu-deployment.172a24cda5b1b8a6",
+                "namespace": "default",
+                "uid": "bc2f139f-72d8-4a7c-a11c-d4665f7fd5a3",
+                "resourceVersion": "10377",
+                "creationTimestamp": "2022-11-23T07:04:37Z"
+            },
+            "involvedObject": {
+                "kind": "Deployment",
+                "namespace": "default",
+                "name": "ubuntu-deployment",
+                "uid": "1249bcd7-eb20-435e-883c-517ea167c229",
+                "apiVersion": "apps/v1",
+                "resourceVersion": "10375"
+            },
+            "reason": "ScalingReplicaSet",
+            "message": "Scaled up replica set ubuntu-deployment-f98b7685b to 1",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "firstTimestamp": "2022-11-23T07:04:37Z",
+            "lastTimestamp": "2022-11-23T07:04:37Z",
+            "count": 1,
+            "type": "Normal",
+            "eventTime": null,
+            "reportingComponent": "",
+            "reportingInstance": ""
+        }
+    ]
+}

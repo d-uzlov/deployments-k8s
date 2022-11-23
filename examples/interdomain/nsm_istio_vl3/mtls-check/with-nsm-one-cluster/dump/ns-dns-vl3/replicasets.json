@@ -1,0 +1,277 @@
+{
+    "kind": "ReplicaSetList",
+    "apiVersion": "apps/v1",
+    "metadata": {
+        "resourceVersion": "10881"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "nse-vl3-vpp-759db6cbbf",
+                "namespace": "ns-dns-vl3",
+                "uid": "db1caf7e-c0cc-4adb-bdfc-5b84a18635da",
+                "resourceVersion": "1361",
+                "generation": 1,
+                "creationTimestamp": "2022-11-23T05:46:58Z",
+                "labels": {
+                    "app": "nse-vl3-vpp",
+                    "pod-template-hash": "759db6cbbf",
+                    "spiffe.io/spiffe-id": "true"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "nse-vl3-vpp",
+                        "uid": "a4739741-1739-419a-8053-4bc54f2278ff",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "nse-vl3-vpp",
+                        "pod-template-hash": "759db6cbbf"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "nse-vl3-vpp",
+                            "pod-template-hash": "759db6cbbf",
+                            "spiffe.io/spiffe-id": "true"
+                        }
+                    },
+                    "spec": {
+                        "volumes": [
+                            {
+                                "name": "spire-agent-socket",
+                                "hostPath": {
+                                    "path": "/run/spire/sockets",
+                                    "type": "Directory"
+                                }
+                            },
+                            {
+                                "name": "nsm-socket",
+                                "hostPath": {
+                                    "path": "/var/lib/networkservicemesh",
+                                    "type": "DirectoryOrCreate"
+                                }
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "nse",
+                                "image": "ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp:be5466a",
+                                "env": [
+                                    {
+                                        "name": "NSM_SERVICE_NAMES",
+                                        "value": "my-vl3-network"
+                                    },
+                                    {
+                                        "name": "NSM_REGISTER_SERVICE",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "NSM_DNS_TEMPLATES",
+                                        "value": "{{ index .Labels \"dnsName\" }}.{{ .NetworkService }}."
+                                    },
+                                    {
+                                        "name": "SPIFFE_ENDPOINT_SOCKET",
+                                        "value": "unix:///run/spire/sockets/agent.sock"
+                                    },
+                                    {
+                                        "name": "NSM_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.name"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "NSM_LOG_LEVEL",
+                                        "value": "TRACE"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "400Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "150m"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "name": "spire-agent-socket",
+                                        "readOnly": true,
+                                        "mountPath": "/run/spire/sockets"
+                                    },
+                                    {
+                                        "name": "nsm-socket",
+                                        "readOnly": true,
+                                        "mountPath": "/var/lib/networkservicemesh"
+                                    }
+                                ],
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 30,
+                        "dnsPolicy": "ClusterFirst",
+                        "securityContext": {},
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        },
+        {
+            "metadata": {
+                "name": "vl3-ipam-7cf548964c",
+                "namespace": "ns-dns-vl3",
+                "uid": "499ecf2c-9033-49ca-bba8-6f94944d2abb",
+                "resourceVersion": "1374",
+                "generation": 1,
+                "creationTimestamp": "2022-11-23T05:46:58Z",
+                "labels": {
+                    "app": "vl3-ipam",
+                    "pod-template-hash": "7cf548964c",
+                    "spiffe.io/spiffe-id": "true"
+                },
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "vl3-ipam",
+                        "uid": "36c9e6e6-ef21-461c-83e1-c1dbbea8672a",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "vl3-ipam",
+                        "pod-template-hash": "7cf548964c"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "vl3-ipam",
+                            "pod-template-hash": "7cf548964c",
+                            "spiffe.io/spiffe-id": "true"
+                        }
+                    },
+                    "spec": {
+                        "volumes": [
+                            {
+                                "name": "spire-agent-socket",
+                                "hostPath": {
+                                    "path": "/run/spire/sockets",
+                                    "type": "Directory"
+                                }
+                            },
+                            {
+                                "name": "nsm-socket",
+                                "hostPath": {
+                                    "path": "/var/lib/networkservicemesh",
+                                    "type": "DirectoryOrCreate"
+                                }
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "vl3-ipam",
+                                "image": "ghcr.io/networkservicemesh/ci/cmd-ipam-vl3:d60a1f3",
+                                "ports": [
+                                    {
+                                        "hostPort": 5006,
+                                        "containerPort": 5006,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "SPIFFE_ENDPOINT_SOCKET",
+                                        "value": "unix:///run/spire/sockets/agent.sock"
+                                    },
+                                    {
+                                        "name": "NSM_LISTEN_ON",
+                                        "value": "tcp://:5006"
+                                    },
+                                    {
+                                        "name": "NSM_PREFIX",
+                                        "value": "172.16.0.0/16"
+                                    },
+                                    {
+                                        "name": "NSM_LOG_LEVEL",
+                                        "value": "TRACE"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "200m",
+                                        "memory": "40Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "name": "spire-agent-socket",
+                                        "mountPath": "/run/spire/sockets"
+                                    }
+                                ],
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "IfNotPresent"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "terminationGracePeriodSeconds": 30,
+                        "dnsPolicy": "ClusterFirst",
+                        "securityContext": {},
+                        "schedulerName": "default-scheduler"
+                    }
+                }
+            },
+            "status": {
+                "replicas": 1,
+                "fullyLabeledReplicas": 1,
+                "readyReplicas": 1,
+                "availableReplicas": 1,
+                "observedGeneration": 1
+            }
+        }
+    ]
+}

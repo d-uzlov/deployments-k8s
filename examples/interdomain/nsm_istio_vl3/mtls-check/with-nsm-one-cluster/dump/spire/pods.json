@@ -1,0 +1,702 @@
+{
+    "kind": "PodList",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": "10904"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "spire-agent-7858m",
+                "generateName": "spire-agent-",
+                "namespace": "spire",
+                "uid": "d4ff10a3-1e43-4b43-9634-ffc806671e7f",
+                "resourceVersion": "743",
+                "creationTimestamp": "2022-11-23T05:43:21Z",
+                "labels": {
+                    "app": "spire-agent",
+                    "controller-revision-hash": "5695cf59fd",
+                    "pod-template-generation": "1"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "DaemonSet",
+                        "name": "spire-agent",
+                        "uid": "694d8d64-fb98-4b79-90de-aa424cd79bc5",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "spire-config",
+                        "configMap": {
+                            "name": "spire-agent",
+                            "defaultMode": 420
+                        }
+                    },
+                    {
+                        "name": "spire-bundle",
+                        "configMap": {
+                            "name": "spire-bundle",
+                            "defaultMode": 420
+                        }
+                    },
+                    {
+                        "name": "spire-agent-socket",
+                        "hostPath": {
+                            "path": "/run/spire/sockets",
+                            "type": "DirectoryOrCreate"
+                        }
+                    },
+                    {
+                        "name": "spire-token",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "audience": "spire-server",
+                                        "expirationSeconds": 7200,
+                                        "path": "spire-agent"
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    },
+                    {
+                        "name": "kube-api-access-22xw8",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "name": "init",
+                        "image": "gcr.io/spiffe-io/wait-for-it",
+                        "args": [
+                            "-t",
+                            "30",
+                            "spire-server:8081"
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "kube-api-access-22xw8",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    },
+                    {
+                        "name": "init-bundle",
+                        "image": "gcr.io/spiffe-io/wait-for-it",
+                        "command": [
+                            "sh",
+                            "-c",
+                            "t=0; until [ -f /run/spire/bundle/bundle.crt 2\u003e\u00261 ] || [ $t -eq 60 ]; do t=`expr $t + 1`; sleep 1; done"
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "spire-bundle",
+                                "mountPath": "/run/spire/bundle"
+                            },
+                            {
+                                "name": "kube-api-access-22xw8",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "spire-agent",
+                        "image": "gcr.io/spiffe-io/spire-agent:1.2.3",
+                        "args": [
+                            "-config",
+                            "/run/spire/config/agent.conf"
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "spire-config",
+                                "readOnly": true,
+                                "mountPath": "/run/spire/config"
+                            },
+                            {
+                                "name": "spire-bundle",
+                                "mountPath": "/run/spire/bundle"
+                            },
+                            {
+                                "name": "spire-agent-socket",
+                                "mountPath": "/run/spire/sockets"
+                            },
+                            {
+                                "name": "spire-token",
+                                "mountPath": "/var/run/secrets/tokens"
+                            },
+                            {
+                                "name": "kube-api-access-22xw8",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/opt/spire/bin/spire-agent",
+                                    "healthcheck",
+                                    "-socketPath",
+                                    "/run/spire/sockets/agent.sock"
+                                ]
+                            },
+                            "initialDelaySeconds": 15,
+                            "timeoutSeconds": 3,
+                            "periodSeconds": 60,
+                            "successThreshold": 1,
+                            "failureThreshold": 2
+                        },
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/opt/spire/bin/spire-agent",
+                                    "healthcheck",
+                                    "-socketPath",
+                                    "/run/spire/sockets/agent.sock",
+                                    "--shallow"
+                                ]
+                            },
+                            "initialDelaySeconds": 5,
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirstWithHostNet",
+                "serviceAccountName": "spire-agent",
+                "serviceAccount": "spire-agent",
+                "nodeName": "kind-1-worker",
+                "hostNetwork": true,
+                "hostPID": true,
+                "securityContext": {},
+                "affinity": {
+                    "nodeAffinity": {
+                        "requiredDuringSchedulingIgnoredDuringExecution": {
+                            "nodeSelectorTerms": [
+                                {
+                                    "matchFields": [
+                                        {
+                                            "key": "metadata.name",
+                                            "operator": "In",
+                                            "values": [
+                                                "kind-1-worker"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute"
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute"
+                    },
+                    {
+                        "key": "node.kubernetes.io/disk-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/pid-pressure",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/unschedulable",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    },
+                    {
+                        "key": "node.kubernetes.io/network-unavailable",
+                        "operator": "Exists",
+                        "effect": "NoSchedule"
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:32Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:41Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:41Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:21Z"
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "podIP": "172.18.0.2",
+                "podIPs": [
+                    {
+                        "ip": "172.18.0.2"
+                    }
+                ],
+                "startTime": "2022-11-23T05:43:21Z",
+                "initContainerStatuses": [
+                    {
+                        "name": "init",
+                        "state": {
+                            "terminated": {
+                                "exitCode": 0,
+                                "reason": "Completed",
+                                "startedAt": "2022-11-23T05:43:25Z",
+                                "finishedAt": "2022-11-23T05:43:30Z",
+                                "containerID": "containerd://74926e0315cba9c362d072a4bb324167cbd372e4a4538e8185333103080a10ce"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "gcr.io/spiffe-io/wait-for-it:latest",
+                        "imageID": "gcr.io/spiffe-io/wait-for-it@sha256:3facff26e582e57e3b994d3a3b95fc06475bb02a3dc6647ce6c91f4c3c2534b5",
+                        "containerID": "containerd://74926e0315cba9c362d072a4bb324167cbd372e4a4538e8185333103080a10ce"
+                    },
+                    {
+                        "name": "init-bundle",
+                        "state": {
+                            "terminated": {
+                                "exitCode": 0,
+                                "reason": "Completed",
+                                "startedAt": "2022-11-23T05:43:31Z",
+                                "finishedAt": "2022-11-23T05:43:31Z",
+                                "containerID": "containerd://c4239110ce3d973d9335d616caa57f3e08008d6402746c69c914a6d72659ee35"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "gcr.io/spiffe-io/wait-for-it:latest",
+                        "imageID": "gcr.io/spiffe-io/wait-for-it@sha256:3facff26e582e57e3b994d3a3b95fc06475bb02a3dc6647ce6c91f4c3c2534b5",
+                        "containerID": "containerd://c4239110ce3d973d9335d616caa57f3e08008d6402746c69c914a6d72659ee35"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "name": "spire-agent",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-23T05:43:33Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "gcr.io/spiffe-io/spire-agent:1.2.3",
+                        "imageID": "gcr.io/spiffe-io/spire-agent@sha256:e0791477303c598a77c08e63933c06805b773bf1b9c12f540cbd8682e631a510",
+                        "containerID": "containerd://9c6e785a09a06888e53d07c5c6f3ba00e58a721760b03aa4c29b661ad2075179",
+                        "started": true
+                    }
+                ],
+                "qosClass": "BestEffort"
+            }
+        },
+        {
+            "metadata": {
+                "name": "spire-server-0",
+                "generateName": "spire-server-",
+                "namespace": "spire",
+                "uid": "3280dbcd-e637-46bb-b997-c8ec730e5657",
+                "resourceVersion": "701",
+                "creationTimestamp": "2022-11-23T05:43:21Z",
+                "labels": {
+                    "app": "spire-server",
+                    "controller-revision-hash": "spire-server-56cf88f8cf",
+                    "statefulset.kubernetes.io/pod-name": "spire-server-0"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "StatefulSet",
+                        "name": "spire-server",
+                        "uid": "c4d0a9e9-c148-44d3-a89e-9ac21d7ef58f",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "spire-config",
+                        "configMap": {
+                            "name": "spire-server",
+                            "defaultMode": 420
+                        }
+                    },
+                    {
+                        "name": "spire-agent-socket",
+                        "hostPath": {
+                            "path": "/run/spire/sockets",
+                            "type": "DirectoryOrCreate"
+                        }
+                    },
+                    {
+                        "name": "k8s-workload-registrar-config",
+                        "configMap": {
+                            "name": "k8s-workload-registrar",
+                            "defaultMode": 420
+                        }
+                    },
+                    {
+                        "name": "spire-registration-socket",
+                        "emptyDir": {}
+                    },
+                    {
+                        "name": "kube-api-access-4lmfl",
+                        "projected": {
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "name": "kube-root-ca.crt",
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "path": "namespace",
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "defaultMode": 420
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "spire-server",
+                        "image": "gcr.io/spiffe-io/spire-server:1.2.3",
+                        "args": [
+                            "-config",
+                            "/run/spire/config/server.conf"
+                        ],
+                        "ports": [
+                            {
+                                "containerPort": 8081,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "spire-config",
+                                "readOnly": true,
+                                "mountPath": "/run/spire/config"
+                            },
+                            {
+                                "name": "spire-registration-socket",
+                                "mountPath": "/tmp"
+                            },
+                            {
+                                "name": "kube-api-access-4lmfl",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/opt/spire/bin/spire-server",
+                                    "healthcheck"
+                                ]
+                            },
+                            "initialDelaySeconds": 15,
+                            "timeoutSeconds": 3,
+                            "periodSeconds": 60,
+                            "successThreshold": 1,
+                            "failureThreshold": 2
+                        },
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/opt/spire/bin/spire-server",
+                                    "healthcheck",
+                                    "--shallow"
+                                ]
+                            },
+                            "timeoutSeconds": 1,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "failureThreshold": 3
+                        },
+                        "lifecycle": {
+                            "postStart": {
+                                "exec": {
+                                    "command": [
+                                        "sleep",
+                                        "2"
+                                    ]
+                                }
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    },
+                    {
+                        "name": "k8s-workload-registrar",
+                        "image": "gcr.io/spiffe-io/k8s-workload-registrar:1.2.3",
+                        "args": [
+                            "-config",
+                            "/run/spire/config/k8s-workload-registrar.conf"
+                        ],
+                        "ports": [
+                            {
+                                "name": "webhook",
+                                "containerPort": 9443,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "MY_POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            }
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "k8s-workload-registrar-config",
+                                "readOnly": true,
+                                "mountPath": "/run/spire/config"
+                            },
+                            {
+                                "name": "spire-agent-socket",
+                                "readOnly": true,
+                                "mountPath": "/run/spire/sockets"
+                            },
+                            {
+                                "name": "spire-registration-socket",
+                                "mountPath": "/tmp"
+                            },
+                            {
+                                "name": "kube-api-access-4lmfl",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "imagePullPolicy": "IfNotPresent"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "serviceAccountName": "spire-server",
+                "serviceAccount": "spire-server",
+                "nodeName": "kind-1-worker",
+                "shareProcessNamespace": true,
+                "securityContext": {},
+                "hostname": "spire-server-0",
+                "subdomain": "spire-server",
+                "schedulerName": "default-scheduler",
+                "tolerations": [
+                    {
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "effect": "NoExecute",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "priority": 0,
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:21Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:28Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:28Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2022-11-23T05:43:21Z"
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "podIP": "10.244.1.2",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.2"
+                    }
+                ],
+                "startTime": "2022-11-23T05:43:21Z",
+                "containerStatuses": [
+                    {
+                        "name": "k8s-workload-registrar",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-23T05:43:28Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "gcr.io/spiffe-io/k8s-workload-registrar:1.2.3",
+                        "imageID": "gcr.io/spiffe-io/k8s-workload-registrar@sha256:46cc26598ce10c34c67e5ee1a71f212b77d8d5c52c5723a1cebed1bca3a8f9dd",
+                        "containerID": "containerd://be8c24ae93e8b8b37021c59a5fd77b2a70c68b0cde3d5c0c914655a161eec7ab",
+                        "started": true
+                    },
+                    {
+                        "name": "spire-server",
+                        "state": {
+                            "running": {
+                                "startedAt": "2022-11-23T05:43:24Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "gcr.io/spiffe-io/spire-server:1.2.3",
+                        "imageID": "gcr.io/spiffe-io/spire-server@sha256:b02e6f3604513515fe131768be14a9c8b2e933ce56d2bdc91972bbf933e42dd6",
+                        "containerID": "containerd://d2e1b92418913d1af390ad8c093c2a28ef498f0ea59717698868a6e83cd23cdf",
+                        "started": true
+                    }
+                ],
+                "qosClass": "BestEffort"
+            }
+        }
+    ]
+}
