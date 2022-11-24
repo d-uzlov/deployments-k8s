@@ -11,12 +11,12 @@ kubectl create ns ns-kernel2vxlan2kernel-vfio2noop
 
 Deploy NSCs and NSEs:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Kernel2Vxlan2Kernel_Vfio2Noop?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Kernel2Vxlan2Kernel_Vfio2Noop?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
 ```
 
 Wait for applications ready:
 ```bash
-kubectl wait --for=condition=ready --timeout=1m pod -l app=nsc-kernel -n ns-kernel2vxlan2kernel-vfio2noop
+kubectl wait --for=condition=ready --timeout=1m pod -l app=alpine -n ns-kernel2vxlan2kernel-vfio2noop
 ```
 ```bash
 kubectl wait --for=condition=ready --timeout=1m pod -l app=nse-kernel -n ns-kernel2vxlan2kernel-vfio2noop
@@ -30,7 +30,7 @@ kubectl wait --for=condition=ready --timeout=1m pod -l app=nse-vfio -n ns-kernel
 
 Find NSC and NSE pods by labels:
 ```bash
-NSC_KERNEL=$(kubectl get pods -l app=nsc-kernel -n ns-kernel2vxlan2kernel-vfio2noop --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+NSC_KERNEL=$(kubectl get pods -l app=alpine -n ns-kernel2vxlan2kernel-vfio2noop --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 ```
 ```bash
 NSE_KERNEL=$(kubectl get pods -l app=nse-kernel -n ns-kernel2vxlan2kernel-vfio2noop --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')

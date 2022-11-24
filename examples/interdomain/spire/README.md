@@ -1,10 +1,10 @@
-## Setup spire for three clusters
+## Setup spire for two clusters
 
 This example shows how to simply configure two spire servers from different clusters to know each other.
 
 ## Run
 
-1. Make sure that you have three KUBECONFIG files.
+1. Make sure that you have two KUBECONFIG files.
 
 Check `KUBECONFIG1` env:
 ```bash
@@ -21,8 +21,8 @@ Check `KUBECONFIG2` env:
 **Apply spire resources for the clusters:**
 
 ```bash
-kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/spire/cluster1?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
-kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/spire/cluster2?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/spire/cluster1?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
+kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/networkservicemesh/deployments-k8s/examples/interdomain/spire/cluster2?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
 ```
 
 Wait for spire ready

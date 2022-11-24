@@ -27,7 +27,7 @@ The template could be changed via env variable of [cmd-nse-vl3-vpp](../../../app
 
 Deploy network service, nsc and vl3 nses (See at `kustomization.yaml`):
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-dns?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-dns?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
 ```
 
 Wait for clients to be ready:
@@ -43,13 +43,15 @@ nscs=$(kubectl  get pods -l app=alpine -o go-template --template="{{range .items
 
 Ping each client by each client via DNS:
 ```bash
+(
 for nsc in $nscs 
 do
     for pinger in $nscs
     do
-        kubectl exec $pinger -n ns-vl3-dns -- ping -c4 $nsc.vl3-dns -4
+        kubectl exec $pinger -n ns-vl3-dns -- ping -c4 $nsc.vl3-dns -4 || exit
     done
 done
+)
 ```
 
 ## Cleanup

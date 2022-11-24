@@ -16,7 +16,7 @@ kubectl create ns ns-dns
 
 Deploy alpine and nse
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/dns?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/dns?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
 ```
 
 Wait for applications ready:
@@ -45,7 +45,7 @@ kubectl exec ${NSC} -c dnsutils -n ns-dns -- ping -c 4 my.coredns.service
 
 Validate that default DNS server is working:
 ```bash
-kubectl exec ${NSC} -c dnsutils -n ns-dns -- nslookup kubernetes.default
+kubectl exec ${NSC} -c dnsutils -n ns-dns -- dig kubernetes.default A kubernetes.default AAAA | grep "kubernetes.default.svc.cluster.local"
 ```
 
 ## Cleanup

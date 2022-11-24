@@ -15,7 +15,7 @@ kubectl create ns ns-vl3-scale-from-zero
 
 Deploy NSC and supplier:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-scale-from-zero?ref=c2118bb00fb516af2903731a1d92662b5f69a7b1
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/features/vl3-scale-from-zero?ref=648da5a92eea2144c1ee2395a1ceea6ffd20efd9
 ```
 
 Wait for applications ready:
@@ -23,7 +23,7 @@ Wait for applications ready:
 kubectl wait -n ns-vl3-scale-from-zero --for=condition=ready --timeout=1m pod -l app=nse-supplier-k8s
 ```
 ```bash
-kubectl wait -n ns-vl3-scale-from-zero --for=condition=ready --timeout=1m pod -l app=nsc-kernel
+kubectl wait -n ns-vl3-scale-from-zero --for=condition=ready --timeout=1m pod -l app=alpine
 ```
 ```bash
 kubectl wait -n ns-vl3-scale-from-zero --for=condition=ready --timeout=1m pod -l app=nse-vl3-vpp
@@ -31,33 +31,37 @@ kubectl wait -n ns-vl3-scale-from-zero --for=condition=ready --timeout=1m pod -l
 
 Find all nscs:
 ```bash
-nscs=$(kubectl  get pods -l app=nsc-kernel -o go-template --template="{{range .items}}{{.metadata.name}} {{end}}" -n ns-vl3-scale-from-zero) 
+nscs=$(kubectl  get pods -l app=alpine -o go-template --template="{{range .items}}{{.metadata.name}} {{end}}" -n ns-vl3-scale-from-zero)
 [[ ! -z $nscs ]]
 ```
 
 Ping each client by each client:
 ```bash
+(
 for nsc in $nscs 
 do
-    ipAddr=$(kubectl exec -n ns-vl3-scale-from-zero $nsc -- ifconfig nsm-1)
+    ipAddr=$(kubectl exec -n ns-vl3-scale-from-zero $nsc -- ifconfig nsm-1) || exit
     ipAddr=$(echo $ipAddr | grep -Eo 'inet addr:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'| cut -c 11-)
     for pinger in $nscs
     do
         echo $pinger pings $ipAddr
-        kubectl exec $pinger -n ns-vl3-scale-from-zero -- ping -c4 $ipAddr
+        kubectl exec $pinger -n ns-vl3-scale-from-zero -- ping -c4 $ipAddr || exit
     done
 done
+)
 ```
 
 Ping each vl3-nse by each client.
 Note: By default ipam prefix is `172.16.0.0/16` and client prefix len is `24`. We also have two vl3 nses in this example. So we expect to have two vl3 addresses: `172.16.0.0` and `172.16.1.0` that should be accessible by each client.
 ```bash
+(
 for nsc in $nscs 
 do
     echo $nsc pings nses
-    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.0.0 -c4
-    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.1.0 -c4
+    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.0.0 -c4 || exit
+    kubectl exec -n ns-vl3-scale-from-zero $nsc -- ping 172.16.1.0 -c4 || exit
 done
+)
 ```
 
 ## Cleanup

@@ -22,7 +22,7 @@ kubectl apply -k nse-before-death
 
 Wait for applications ready:
 ```bash
-kubectl wait --for=condition=ready --timeout=1m pod -l app=nsc-kernel -n ns-local-nse-death
+kubectl wait --for=condition=ready --timeout=1m pod -l app=alpine -n ns-local-nse-death
 ```
 ```bash
 kubectl wait --for=condition=ready --timeout=1m pod -l app=nse-kernel -n ns-local-nse-death
@@ -30,7 +30,7 @@ kubectl wait --for=condition=ready --timeout=1m pod -l app=nse-kernel -n ns-loca
 
 Find NSC and NSE pods by labels:
 ```bash
-NSC=$(kubectl get pods -l app=nsc-kernel -n ns-local-nse-death --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+NSC=$(kubectl get pods -l app=alpine -n ns-local-nse-death --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 ```
 ```bash
 NSE=$(kubectl get pods -l app=nse-kernel -n ns-local-nse-death --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
@@ -38,12 +38,12 @@ NSE=$(kubectl get pods -l app=nse-kernel -n ns-local-nse-death --template '{{ran
 
 Ping from NSC to NSE:
 ```bash
-kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.100
+kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.100 -I 172.16.1.101
 ```
 
 Ping from NSE to NSC:
 ```bash
-kubectl exec ${NSE} -n ns-local-nse-death -- ping -c 4 172.16.1.101
+kubectl exec ${NSE} -n ns-local-nse-death -- ping -c 4 172.16.1.101 -I 172.16.1.100
 ```
 
 Stop NSE pod:
@@ -52,7 +52,7 @@ kubectl scale deployment nse-kernel -n ns-local-nse-death --replicas=0
 ```
 
 ```bash
-kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.100 | grep "100% packet loss"
+kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.100 -I 172.16.1.101 2>&1 | egrep "100% packet loss|Network unreachable|can't set multicast source"
 ```
 
 Apply patch:
@@ -80,12 +80,12 @@ Ping should pass with newly configured addresses.
 
 Ping from NSC to new NSE:
 ```bash
-kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.102
+kubectl exec ${NSC} -n ns-local-nse-death -- ping -c 4 172.16.1.102 -I 172.16.1.103
 ```
 
 Ping from new NSE to NSC:
 ```bash
-kubectl exec ${NEW_NSE} -n ns-local-nse-death -- ping -c 4 172.16.1.103
+kubectl exec ${NEW_NSE} -n ns-local-nse-death -- ping -c 4 172.16.1.103 -I 172.16.1.102
 ```
 
 ## Cleanup
