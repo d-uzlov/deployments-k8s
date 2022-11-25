@@ -5,32 +5,67 @@ istioctl  install --set profile=minimal -y --kubeconfig=$KUBECONFIG2
 ```
 
 ```bash
-k2 apply -f ubuntu.yaml
+k --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
 ```
 
 ```bash
-k2 apply -f sample-ns.yaml
+k --kubeconfig=$KUBECONFIG2 apply -f sample-ns.yaml
 ```
 
 ```bash
 istioctl proxy-status --kubeconfig=$KUBECONFIG2
 ```
 
-from ubuntu container
-
+Install curl into ubuntu container
 ```bash
-apt update
-apt install tcpdump curl
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt update
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt install tcpdump curl
+```
+
+Disable mTLS:
+```bash
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG2 -f - <<EOF
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "default"
+spec:
+  mtls:
+    mode: DISABLE
+EOF
+```
+
+Get dump:
+```bash
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >1-http.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
+```
+
+In the dump file there will be DNS query and plain http data `HTTP/1.1 200 OK  (text/html)`.
+For example: `Hello version: v1, instance: helloworld-v1-78b9f5c87f-lfxlr`.
+
+Enforce mTLS:
+```bash
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG2 -f - <<EOF
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "default"
+spec:
+  mtls:
+    mode: STRICT
+EOF
 ```
 
 ```bash
-k2 exec -n ubuntu-ns ubuntu-deployment-7575859557-d69vj -c ubuntu --  tcpdump -w - | wireshark -k -i -
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >2-mtls.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
 ```
 
-
-```bash
-curl helloworld.sample.svc:5000/hello
-curl helloworld.sample.svc:5000/hello
-```
-
-
+In the dump file there will be DNS query and TCP/RSL encrypted data.
