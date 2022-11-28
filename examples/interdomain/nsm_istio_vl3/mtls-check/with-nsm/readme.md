@@ -18,13 +18,16 @@ k1 apply -f istio-namespace.yaml
 istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 ```
 
+Patch istio deployment if using old webhook without namespace annotations support:
+kubectl --kubeconfig=$KUBECONFIG1 -n istio-system patch deployment istiod -p '{"spec": {"template":{"metadata":{"annotations":{"networkservicemesh.io":"kernel://my-vl3-network/nsm-1?dnsName=istio-cp"}}}} }'
+
 ```bash
 k2 apply -f ubuntu.yaml
 ```
 ```bash
 VM_APP="vm-app"
 VM_NAMESPACE="vm-ns"
-WORK_DIR="/Users/thetadr/work/msm/deployments-k8s/examples/interdomain/nsm_istio_vl3/mtls-check/with-nsm/istio-vm-configs"
+WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/mtls-check/with-nsm"
 SERVICE_ACCOUNT="serviceaccountvm"
 CLUSTER_NETWORK=""
 VM_NETWORK=""
