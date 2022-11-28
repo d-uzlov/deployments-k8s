@@ -63,11 +63,11 @@ istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clu
 ```
 
 ```bash
-k1 cp ./istio-vm-configs ubuntu-deployment-f98b7685b-6jz4p:/vm-dir -c ubuntu
+k1 cp ./istio-vm-configs ubuntu-deployment-f98b7685b-428c6:/vm-dir -c ubuntu
 ```
 
 ```bash
-k1 exec -it ubuntu-deployment-f98b7685b-6jz4p -c ubuntu -- bash
+k1 exec -it ubuntu-deployment-f98b7685b-428c6 -c ubuntu -- bash
 ```
 
 ```bash

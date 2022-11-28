@@ -1,0 +1,237 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeting
+  labels:
+    app: greeting
+    service: greeting
+spec:
+  ports:
+    - port: 9080
+      name: http
+  selector:
+    app: greeting
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: default
+  name: cert-file
+data:
+  root-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIC/TCCAeWgAwIBAgIRALqf6wF4bmN0ht2obcfr8zYwDQYJKoZIhvcNAQELBQAw
+    GDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDAeFw0yMjExMTgxMDQ5MzZaFw0zMjEx
+    MTUxMDQ5MzZaMBgxFjAUBgNVBAoTDWNsdXN0ZXIubG9jYWwwggEiMA0GCSqGSIb3
+    DQEBAQUAA4IBDwAwggEKAoIBAQDloURcKHxr16pM/izDzBAJ1/nlvitep/X6pOvt
+    rM4RG+z3yPbP6KKCfGn7kxu06NtQXBQ4m1xxf75koc7iP5+IpE5r8OIb8KN4MYg7
+    /H6lm7vkmSseOEZJ69KcSeWvbbCu4+XBdlE0+4E+ME4MDTRzo4VUd0scxLhkqGXa
+    iBg6pGQOcGogA/ltyFIDBdqebM7UfRuYA5hwt0bsLVPODNDBQVaJFikgFOi8hxLu
+    wvMutdbsxO31Asdfmtk87RGv4PwtS6jH6NTFS+w8aKeLXpudkMDGJEvMfiMR97R7
+    MckqBoGnqv6O+86Mrk4v0ztMXF2JTg2hTNTMkG4abjRYy9/pAgMBAAGjQjBAMA4G
+    A1UdDwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQFzMuXkQa2
+    N/algJQzbHJsVbpyRjANBgkqhkiG9w0BAQsFAAOCAQEAxCL7bCiziwOSTyO8cQ6+
+    9Bx5ZzWjs34OjAkPQUGvIJe1e8P4WrB1HkvbrN/K8wHpBWU0Bhx2uZKYQLEvBj/g
+    j/Kub/UHDTN44V1MS7Ss1ET8sGJjcGFrZpY1A8Z1O3fA130Y2our3HHACbAMalSK
+    37jqL9LyDsPX8ACVIyQ3Ez2qPZOYcZGJ40RnXGZ6L2bHHUJacbTbGOtSYyVLpL3X
+    2AwfCCseBHalPbdrj5sl/IKkatWnytroGC6BxAPSI4wCKt9WrHE41KboW0tMP3fO
+    YZuobdDHpbOyEsjVYK79s6JiIJUYzU0EeP+jvxUC7KX+OgU1zD3vfMHvo1MGz6/O
+    JQ==
+    -----END CERTIFICATE-----
+  cluster.env: |
+    CANONICAL_REVISION='latest'
+    CANONICAL_SERVICE='vm-app'
+    ISTIO_INBOUND_PORTS='*'
+    ISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'
+    ISTIO_METAJSON_LABELS='{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    ISTIO_META_CLUSTER_ID='Kubernetes'
+    ISTIO_META_DNS_CAPTURE='true'
+    ISTIO_META_MESH_ID=''
+    ISTIO_META_NETWORK=''
+    ISTIO_META_WORKLOAD_NAME='vm-app'
+    ISTIO_NAMESPACE='vm-ns'
+    ISTIO_SERVICE='vm-app.vm-ns'
+    ISTIO_SERVICE_CIDR='*'
+    POD_NAMESPACE='vm-ns'
+    SERVICE_ACCOUNT='serviceaccountvm'
+    TRUST_DOMAIN='cluster.local'
+  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6InJrVWlxNFV3c21nY1dnSzNMWk82YTlBXzh3cGJ0ajlpWDByc1JRWDd6bnMifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY4NzcyMzUxLCJpYXQiOjE2Njg3Njg3NTEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiODczNzU3N2MtOGRlYS00Y2RjLTk3MDctMTZkYTVmYTBjMDE1In19LCJuYmYiOjE2Njg3Njg3NTEsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.JXGIUKIhq9A9YinVnsNDvN23-PD_UIX1skhzb1VQaYBVwJfrfIA6qrySxwMAj3QnZ8UkVk4igLpv6qUYib85uAYtbqiz_k3UwCT14DpygEj0L3l078LlHWnLBsZBgk_RQAy11sUV4VmhPIizTssHEB-VDOI82v7GIcQCWvYGaxztqumv1KyOGLnKc3C9aR6Yh7c-yjh81C90Y5qtk1IBZuJWkmwRTei9ao-8A59wz2eGUsY3_KIMrIQ-sWsEsTNCvjtbVDjZOPUp9HZE0kUNVMgjzEJfrPqqqJnLGqmoaK4sHYMNrkNbw9wIPPr615JlZtLl7FXZmdGJ-0wkONYIag
+  mesh: |
+    defaultConfig:
+      discoveryAddress: istiod.istio-system.svc:15012
+      proxyMetadata:
+        CA_ROOT_CA: /var/run/secrets/istio/root-cert.pem
+        CANONICAL_REVISION: latest
+        CANONICAL_SERVICE: vm-app
+        ISTIO_META_CLUSTER_ID: Kubernetes
+        ISTIO_META_DNS_CAPTURE: "true"
+        ISTIO_META_MESH_ID: ""
+        ISTIO_META_NETWORK: ""
+        ISTIO_META_WORKLOAD_NAME: vm-app
+        ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+        POD_NAMESPACE: vm-ns
+        SERVICE_ACCOUNT: serviceaccountvm
+        TRUST_DOMAIN: cluster.local
+      tracing:
+        zipkin:
+          address: zipkin.istio-system:9411
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeting
+  labels:
+    app: greeting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greeting
+  template:
+    metadata:
+      labels:
+        app: greeting
+      annotations:
+        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=server
+    spec:
+      hostAliases:
+        - ip: "172.16.0.2"
+          hostnames:
+            - istiod.istio-system.svc
+      volumes:
+        - name: cert
+          configMap:
+            name: cert-file
+      containers:
+        - name: server
+          image: hashicorp/http-echo:alpine
+          args:
+            - -text="hello world from istio"
+            - -listen=:9080
+          ports:
+            - containerPort: 9080
+              name: http
+        - name: istio-proxy
+          args:
+            - proxy
+            - sidecar
+            - --domain
+            - ""
+            - --proxyLogLevel=info
+            - --proxyComponentLogLevel=misc:info
+            - --log_output_level=default:info
+            - --concurrency
+            - "0"
+          env:
+              - name: PILOT_CERT_PROVIDER
+                value: NONE
+              - name: CA_ADDR
+                value: istiod.istio-system.svc:15012
+              - name: POD_NAME
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.name
+              - name: POD_NAMESPACE
+                value: vm-ns
+              - name: INSTANCE_IP
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: status.podIP
+              - name: SERVICE_ACCOUNT
+                value: serviceaccountvm
+              - name: HOST_IP
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: status.hostIP
+              - name: ISTIO_META_CLUSTER_ID
+                value: Kubernetes
+              - name: ISTIO_META_INTERCEPTION_MODE
+                value: REDIRECT
+              - name: ISTIO_META_WORKLOAD_NAME
+                value: vm-app
+              - name: ISTIO_META_MESH_ID
+                value: cluster.local
+              - name: TRUST_DOMAIN
+                value: cluster.local
+          image: docker.io/istio/proxyv2:1.15.2
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /var/run/secrets/istio/root-cert.pem
+              name: cert
+              subPath: root-cert.pem
+            - mountPath: /var/lib/istio/envoy/cluster.env
+              name: cert
+              subPath: cluster.env
+            - mountPath: /etc/istio/config/mesh
+              name: cert
+              subPath: mesh
+            - mountPath: /var/run/secrets/tokens/istio-token
+              name: cert
+              subPath: istio-token
+          ports:
+            - containerPort: 15090
+              name: http-envoy-prom
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /healthz/ready
+              port: 15021
+              scheme: HTTP
+            initialDelaySeconds: 1
+            periodSeconds: 2
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+#      initContainers:
+#        - args:
+#                  - istio-iptables
+#                  - -p
+#                  - "15001"
+#                  - -z
+#                  - "15006"
+#                  - -u
+#                  - "1337"
+#                  - -m
+#                  - REDIRECT
+#                  - -i
+#                  - '*'
+#                  - -x
+#                  - ""
+#                  - -b
+#                  - '*'
+#                  - -d
+#                  - 15090,15021,15020
+#          image: docker.io/istio/proxyv2:1.15.2
+#          imagePullPolicy: IfNotPresent
+#          name: istio-init
+#          resources:
+#            limits:
+#                cpu: "2"
+#                memory: 1Gi
+#            requests:
+#                cpu: 100m
+#                memory: 128Mi
+#          securityContext:
+#            allowPrivilegeEscalation: false
+#            capabilities:
+#                add:
+#                  - NET_ADMIN
+#                  - NET_RAW
+#                drop:
+#                  - ALL
+#            privileged: false
+#            readOnlyRootFilesystem: false
+#            runAsGroup: 0
+#            runAsNonRoot: false
+#            runAsUser: 0
