@@ -27,12 +27,15 @@ k2 apply -f ubuntu.yaml
 ```bash
 VM_APP="vm-app"
 VM_NAMESPACE="vm-ns"
-WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/mtls-check/with-nsm"
+WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/mtls-check/with-nsm/istio-vm-configs"
 SERVICE_ACCOUNT="serviceaccountvm"
 CLUSTER_NETWORK=""
 VM_NETWORK=""
 CLUSTER="Kubernetes"
 ```
+
+If using old webhook:
+kubectl -n istio-system patch deployment istiod -p '{"spec": {"template":{"metadata":{"annotations":{"networkservicemesh.io":"kernel://my-vl3-network/nsm-1?dnsName=istio-cp"}}}} }'
 
 ```bash
 k1 create namespace "${VM_NAMESPACE}"
@@ -58,57 +61,38 @@ EOF
 
 get nsm ip
 ```bash
-k1 exec -n istio-system istiod-cd9c68bc-2lgsf -c cmd-nsc -- ip a
+k --kubeconfig $KUBECONFIG1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
 ```
 
-
+172.16.0.3
 ingressIP - istiod ip
 ```bash
-istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
+istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.3
 ```
 
 ```bash
-k2 cp ./istio-vm-configs ubuntu-deployment-99cf8d8f7-5g2qm:/vm-dir -c ubuntu
+k2 cp ./istio-vm-configs ubuntu-deployment-6855596d8-2c5sh:/vm-dir -c ubuntu
 ```
 
 ```bash
-k2 exec -it ubuntu-deployment-99cf8d8f7-5g2qm -c ubuntu -- bash
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt update
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/certs
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/root-cert.pem /etc/certs/root-cert.pem
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /var/run/secrets/tokens
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/istio-token /var/run/secrets/tokens/istio-token
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo curl -LO https://storage.googleapis.com/istio-release/releases/1.15.2/deb/istio-sidecar.deb
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo dpkg -i istio-sidecar.deb
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/cluster.env /var/lib/istio/envoy/cluster.env
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/mesh.yaml /etc/istio/config/mesh
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'cat /vm-dir/hosts >> /etc/hosts'
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
 ```
 
 ```bash
-cd vm-dir
-```
-
-```bash
-apt update
-apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo
-
-sudo mkdir -p /etc/certs
-sudo cp root-cert.pem /etc/certs/root-cert.pem
-
-
-sudo  mkdir -p /var/run/secrets/tokens
-sudo cp istio-token /var/run/secrets/tokens/istio-token
-
-
-curl -LO https://storage.googleapis.com/istio-release/releases/1.15.2/deb/istio-sidecar.deb
-sudo dpkg -i istio-sidecar.deb
-```
-
-```bash
-sudo cp cluster.env /var/lib/istio/envoy/cluster.env
-
-sudo cp mesh.yaml /etc/istio/config/mesh
-
-sudo sh -c 'cat hosts >> /etc/hosts'
-```
-
-```bash
-sudo mkdir -p /etc/istio/proxy
-sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
-```
-
-```bash
+k --kubeconfig $KUBECONFIG2 exec -it deployments/ubuntu-deployment -c ubuntu -- bash
 cd /
 sudo systemctl start istio
 cat /var/log/istio/istio.log
