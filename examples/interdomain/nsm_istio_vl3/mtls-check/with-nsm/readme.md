@@ -67,7 +67,7 @@ k --kubeconfig $KUBECONFIG1 exec -n istio-system deployments/istiod -c cmd-nsc -
 172.16.0.3
 ingressIP - istiod ip
 ```bash
-istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.3
+istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 ```
 
 ```bash
@@ -89,13 +89,7 @@ k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo
 k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
 k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
 k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
-```
-
-```bash
-k --kubeconfig $KUBECONFIG2 exec -it deployments/ubuntu-deployment -c ubuntu -- bash
-cd /
-sudo systemctl start istio
-cat /var/log/istio/istio.log
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.log
 ```
 
 in new terminal window
@@ -108,14 +102,16 @@ istioctl proxy-status --kubeconfig=$KUBECONFIG1
 k1 apply -f sample-ns.yaml
 ```
 
-from ubuntu container
-
 ```bash
-apt install tcpdump
+k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt install tcpdump
 ```
 
 ```bash
 k2 exec ubuntu-deployment-99cf8d8f7-5g2qm -c ubuntu --  tcpdump -w - | wireshark -k -i -
+```
+
+```bash
+k --kubeconfig $KUBECONFIG2 exec -it deployments/ubuntu-deployment -c ubuntu -- bash
 ```
 
 
