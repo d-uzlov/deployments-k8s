@@ -1,7 +1,6 @@
 
 ```bash
 k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt --yes install tcpdump
-k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
 ```
 
 ```bash
@@ -93,16 +92,43 @@ kill -2 $CMD_NSC_DUMP_PID
 ```
 
 ```bash
-k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i any -U -w - >7-istio-ip-ubuntu.pcap &
-UBUNTU_DUMP_PID=$!
-k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i any  -U -w - >7-istio-ip-cmd-nsc.pcap &
-CMD_NSC_DUMP_PID=$!
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i lo -U -w - >9-pure-interfaces-lo.pcap &
 sleep 1
 k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
-# k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello 2> /dev/null
 sleep 1
-kill -2 $UBUNTU_DUMP_PID
-kill -2 $CMD_NSC_DUMP_PID
+kill -2 $!
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i eth0 -U -w - >9-pure-interfaces-eth0.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >9-pure-interfaces-nsm-1.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
+```
+
+```bash
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i lo -U -w - >9-istio-interfaces-lo.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i eth0 -U -w - >9-istio-interfaces-eth0.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >9-istio-interfaces-nsm-1.pcap &
+sleep 1
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl 172.16.0.4:5000/hello 2> /dev/null
+sleep 1
+kill -2 $!
 ```
 
 ubuntu container had no new packets in wireshark after curl
