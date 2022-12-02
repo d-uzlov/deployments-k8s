@@ -18,6 +18,8 @@ spec:
   ports:
     - port: 5000
       name: http
+    - port: 80
+      name: http80
   selector:
     app: helloworld
 ---
@@ -45,12 +47,14 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: docker.io/istio/examples-helloworld-v1
+          # image: docker.io/istio/examples-helloworld-v1
+          image: docker.io/kennethreitz/httpbin
           resources:
             requests:
               cpu: "100m"
           imagePullPolicy: IfNotPresent #Always
           ports:
+            - containerPort: 80
             - containerPort: 5000
 ---
 apiVersion: apps/v1

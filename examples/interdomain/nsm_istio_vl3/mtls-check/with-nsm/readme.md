@@ -88,6 +88,28 @@ k --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt 
 
 ------------------------
 
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:80/headers 2> /dev/null
+
+➜  with-nsm git:(istio-branch) ✗ k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:80/headers 2> /dev/null
+{
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "helloworld.my-vl3-network", 
+    "User-Agent": "curl/7.81.0", 
+    "X-B3-Sampled": "0", 
+    "X-B3-Spanid": "750326757e9f1724", 
+    "X-B3-Traceid": "c3c389d616bdf268750326757e9f1724"
+  }
+}
+
+echo "ISTIO_AGENT_FLAGS=\"--log_output_level=dns:debug --proxyLogLevel=trace\"" >> /var/lib/istio/envoy/cluster.env
+systemctl restart istio
+
+
+
+
+
+
 Experiments:
 
 Check without istio:
@@ -227,3 +249,22 @@ Check connectivity:
 k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello
 ```
 Result: test is working again.
+
+
+
+
+
+enable istio telemetry:
+```bash
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG1 -f - <<EOF
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: mesh-default
+  namespace: istio-system
+spec:
+  accessLogging:
+    - providers:
+      - name: envoy
+EOF
+```
