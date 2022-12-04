@@ -108,6 +108,8 @@ systemctl restart istio
 
 
 
+задеплоить на реальной вм
+снять дамп ваейршарка
 
 
 Experiments:

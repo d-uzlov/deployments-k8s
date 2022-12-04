@@ -1,0 +1,606 @@
+2022-12-02T09:11:13.202376Z	info	FLAG: --caCertFile=""
+2022-12-02T09:11:13.202447Z	info	FLAG: --clusterAliases="[]"
+2022-12-02T09:11:13.202452Z	info	FLAG: --clusterID="Kubernetes"
+2022-12-02T09:11:13.202454Z	info	FLAG: --clusterRegistriesNamespace="istio-system"
+2022-12-02T09:11:13.202456Z	info	FLAG: --configDir=""
+2022-12-02T09:11:13.202457Z	info	FLAG: --ctrlz_address="localhost"
+2022-12-02T09:11:13.202461Z	info	FLAG: --ctrlz_port="9876"
+2022-12-02T09:11:13.202462Z	info	FLAG: --domain="cluster.local"
+2022-12-02T09:11:13.202464Z	info	FLAG: --grpcAddr=":15010"
+2022-12-02T09:11:13.202469Z	info	FLAG: --help="false"
+2022-12-02T09:11:13.202470Z	info	FLAG: --httpAddr=":8080"
+2022-12-02T09:11:13.202472Z	info	FLAG: --httpsAddr=":15017"
+2022-12-02T09:11:13.202475Z	info	FLAG: --keepaliveInterval="30s"
+2022-12-02T09:11:13.202477Z	info	FLAG: --keepaliveMaxServerConnectionAge="30m0s"
+2022-12-02T09:11:13.202478Z	info	FLAG: --keepaliveTimeout="10s"
+2022-12-02T09:11:13.202480Z	info	FLAG: --kubeconfig=""
+2022-12-02T09:11:13.202483Z	info	FLAG: --kubernetesApiBurst="160"
+2022-12-02T09:11:13.202487Z	info	FLAG: --kubernetesApiQPS="80"
+2022-12-02T09:11:13.202488Z	info	FLAG: --log_as_json="false"
+2022-12-02T09:11:13.202490Z	info	FLAG: --log_caller=""
+2022-12-02T09:11:13.202491Z	info	FLAG: --log_output_level="default:info"
+2022-12-02T09:11:13.202493Z	info	FLAG: --log_rotate=""
+2022-12-02T09:11:13.202494Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-02T09:11:13.202496Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-02T09:11:13.202497Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-02T09:11:13.202499Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-02T09:11:13.202511Z	info	FLAG: --log_target="[stdout]"
+2022-12-02T09:11:13.202513Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-02T09:11:13.202515Z	info	FLAG: --monitoringAddr=":15014"
+2022-12-02T09:11:13.202516Z	info	FLAG: --namespace="istio-system"
+2022-12-02T09:11:13.202518Z	info	FLAG: --networksConfig="./etc/istio/config/meshNetworks"
+2022-12-02T09:11:13.202520Z	info	FLAG: --profile="true"
+2022-12-02T09:11:13.202529Z	info	FLAG: --registries="[Kubernetes]"
+2022-12-02T09:11:13.202531Z	info	FLAG: --secureGRPCAddr=":15012"
+2022-12-02T09:11:13.202532Z	info	FLAG: --shutdownDuration="10s"
+2022-12-02T09:11:13.202537Z	info	FLAG: --tls-cipher-suites="[]"
+2022-12-02T09:11:13.202538Z	info	FLAG: --tlsCertFile=""
+2022-12-02T09:11:13.202540Z	info	FLAG: --tlsKeyFile=""
+2022-12-02T09:11:13.202545Z	info	FLAG: --vklog="0"
+2022-12-02T09:11:13.245371Z	info	initializing Istiod admin server
+2022-12-02T09:11:13.247987Z	info	starting HTTP service at [::]:8080
+2022-12-02T09:11:13.248549Z	info	klog	Config not found: /var/run/secrets/remote/config
+2022-12-02T09:11:13.268737Z	info	initializing mesh configuration ./etc/istio/config/mesh
+2022-12-02T09:11:13.277556Z	info	controllers	starting	controller=configmap istio
+2022-12-02T09:11:13.280481Z	info	Loaded MeshNetworks config from Kubernetes API server.
+2022-12-02T09:11:13.280574Z	info	mesh networks configuration updated to: {
+
+}
+2022-12-02T09:11:13.285234Z	info	Loaded MeshConfig config from Kubernetes API server.
+2022-12-02T09:11:13.288108Z	info	mesh configuration updated to: {
+    "proxyListenPort": 15001,
+    "connectTimeout": "10s",
+    "protocolDetectionTimeout": "0s",
+    "ingressClass": "istio",
+    "ingressService": "istio-ingressgateway",
+    "ingressControllerMode": "STRICT",
+    "enableTracing": true,
+    "defaultConfig": {
+        "configPath": "./etc/istio/proxy",
+        "binaryPath": "/usr/local/bin/envoy",
+        "serviceCluster": "istio-proxy",
+        "drainDuration": "45s",
+        "parentShutdownDuration": "60s",
+        "discoveryAddress": "istiod.istio-system.svc:15012",
+        "proxyAdminPort": 15000,
+        "controlPlaneAuthPolicy": "MUTUAL_TLS",
+        "statNameLength": 189,
+        "concurrency": 2,
+        "tracing": {
+            "zipkin": {
+                "address": "zipkin.istio-system:9411"
+            }
+        },
+        "statusPort": 15020,
+        "terminationDrainDuration": "5s",
+        "meshId": "mesh1"
+    },
+    "outboundTrafficPolicy": {
+        "mode": "ALLOW_ANY"
+    },
+    "enableAutoMtls": true,
+    "trustDomain": "cluster.local",
+    "defaultServiceExportTo": [
+        "*"
+    ],
+    "defaultVirtualServiceExportTo": [
+        "*"
+    ],
+    "defaultDestinationRuleExportTo": [
+        "*"
+    ],
+    "rootNamespace": "istio-system",
+    "localityLbSetting": {
+        "enabled": true
+    },
+    "dnsRefreshRate": "60s",
+    "thriftConfig": {
+
+    },
+    "enablePrometheusMerge": true,
+    "extensionProviders": [
+        {
+            "name": "prometheus",
+            "prometheus": {
+
+            }
+        },
+        {
+            "name": "stackdriver",
+            "stackdriver": {
+
+            }
+        },
+        {
+            "name": "envoy",
+            "envoyFileAccessLog": {
+                "path": "/dev/stdout"
+            }
+        }
+    ],
+    "defaultProviders": {
+
+    }
+}
+2022-12-02T09:11:13.302111Z	info	initializing mesh networks from mesh config watcher
+2022-12-02T09:11:13.302373Z	info	mesh configuration: {
+    "proxyListenPort": 15001,
+    "connectTimeout": "10s",
+    "protocolDetectionTimeout": "0s",
+    "ingressClass": "istio",
+    "ingressService": "istio-ingressgateway",
+    "ingressControllerMode": "STRICT",
+    "enableTracing": true,
+    "defaultConfig": {
+        "configPath": "./etc/istio/proxy",
+        "binaryPath": "/usr/local/bin/envoy",
+        "serviceCluster": "istio-proxy",
+        "drainDuration": "45s",
+        "parentShutdownDuration": "60s",
+        "discoveryAddress": "istiod.istio-system.svc:15012",
+        "proxyAdminPort": 15000,
+        "controlPlaneAuthPolicy": "MUTUAL_TLS",
+        "statNameLength": 189,
+        "concurrency": 2,
+        "tracing": {
+            "zipkin": {
+                "address": "zipkin.istio-system:9411"
+            }
+        },
+        "statusPort": 15020,
+        "terminationDrainDuration": "5s",
+        "meshId": "mesh1"
+    },
+    "outboundTrafficPolicy": {
+        "mode": "ALLOW_ANY"
+    },
+    "enableAutoMtls": true,
+    "trustDomain": "cluster.local",
+    "defaultServiceExportTo": [
+        "*"
+    ],
+    "defaultVirtualServiceExportTo": [
+        "*"
+    ],
+    "defaultDestinationRuleExportTo": [
+        "*"
+    ],
+    "rootNamespace": "istio-system",
+    "localityLbSetting": {
+        "enabled": true
+    },
+    "dnsRefreshRate": "60s",
+    "thriftConfig": {
+
+    },
+    "enablePrometheusMerge": true,
+    "extensionProviders": [
+        {
+            "name": "prometheus",
+            "prometheus": {
+
+            }
+        },
+        {
+            "name": "stackdriver",
+            "stackdriver": {
+
+            }
+        },
+        {
+            "name": "envoy",
+            "envoyFileAccessLog": {
+                "path": "/dev/stdout"
+            }
+        }
+    ],
+    "defaultProviders": {
+
+    }
+}
+2022-12-02T09:11:13.302605Z	info	version: 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-02T09:11:13.303007Z	info	flags: {
+   "ServerOptions": {
+      "HTTPAddr": ":8080",
+      "HTTPSAddr": ":15017",
+      "GRPCAddr": ":15010",
+      "MonitoringAddr": ":15014",
+      "EnableProfiling": true,
+      "TLSOptions": {
+         "CaCertFile": "",
+         "CertFile": "",
+         "KeyFile": "",
+         "TLSCipherSuites": null,
+         "CipherSuits": null
+      },
+      "SecureGRPCAddr": ":15012"
+   },
+   "InjectionOptions": {
+      "InjectionDirectory": "./var/lib/istio/inject"
+   },
+   "PodName": "istiod-5d74c58fdd-5jvpj",
+   "Namespace": "istio-system",
+   "Revision": "default",
+   "MeshConfigFile": "./etc/istio/config/mesh",
+   "NetworksConfigFile": "./etc/istio/config/meshNetworks",
+   "RegistryOptions": {
+      "FileDir": "",
+      "Registries": [
+         "Kubernetes"
+      ],
+      "KubeOptions": {
+         "SystemNamespace": "",
+         "MeshServiceController": null,
+         "DomainSuffix": "cluster.local",
+         "ClusterID": "Kubernetes",
+         "ClusterAliases": {},
+         "Metrics": null,
+         "XDSUpdater": null,
+         "NetworksWatcher": null,
+         "MeshWatcher": null,
+         "EndpointMode": 1,
+         "KubernetesAPIQPS": 80,
+         "KubernetesAPIBurst": 160,
+         "SyncTimeout": 0,
+         "DiscoveryNamespacesFilter": null
+      },
+      "ClusterRegistriesNamespace": "istio-system",
+      "KubeConfig": "",
+      "DistributionCacheRetention": 60000000000,
+      "DistributionTrackingEnabled": false
+   },
+   "CtrlZOptions": {
+      "Port": 9876,
+      "Address": "localhost"
+   },
+   "KeepaliveOptions": {
+      "Time": 30000000000,
+      "Timeout": 10000000000,
+      "MaxServerConnectionAge": 1800000000000,
+      "MaxServerConnectionAgeGrace": 10000000000
+   },
+   "ShutdownDuration": 10000000000,
+   "JwtRule": ""
+}
+2022-12-02T09:11:13.303302Z	info	initializing mesh handlers
+2022-12-02T09:11:13.303478Z	info	model	reloading network gateways
+2022-12-02T09:11:13.303578Z	info	creating CA and initializing public key
+2022-12-02T09:11:13.303656Z	info	Using istiod file format for signing ca files
+2022-12-02T09:11:13.303667Z	info	Use self-signed certificate as the CA certificate
+2022-12-02T09:11:13.307140Z	info	pkica	Failed to get secret (error: secrets "istio-ca-secret" not found), will create one
+2022-12-02T09:11:13.543796Z	info	pkica	Using self-generated public key: -----BEGIN CERTIFICATE-----
+MIIC/DCCAeSgAwIBAgIQKQpa2mqqtSQKnwkgnwLwwjANBgkqhkiG9w0BAQsFADAY
+MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTIwMjA5MTExM1oXDTMyMTEy
+OTA5MTExM1owGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBANEQ4YxBuBt+x1axJ4ozSSAlN5PBbMal7t4fJnwF
+PVqO1sEnvNBs/YRd0gaAU8Us8kF2VO4qvRlzPuZZWzQVdExknNGNnULenCbnO7PJ
+d+ZN9ItZW4T6YOKOrUbv/HmZe5TdFV44KGtuK4aRil3IYpbJ43zFp0UPOPjNFoQK
+DtXr77zZKCPu6a/3hl1SvdqBs5cuqBxozvumJwVPbmA+eUDMEdo3w8+g0Zaiqfit
+XVlQEwIjZYTb7E/ywrFJ8sAQvf+a2IC5PwMZU8Hb6QDFDe5VaaQWP2+WOTw6OoIT
+SUBiEJkPvr3Jdo1QzJs85qGOuN6/5B7vSfM2K8p15nSD5ikCAwEAAaNCMEAwDgYD
+VR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFGgPO6ryL+mD
+0RXzEjk6tEV8dEaiMA0GCSqGSIb3DQEBCwUAA4IBAQAa9Euu1Gvr3iun1fM5wX4I
+FBCbSNikKiOMo89t2MXyswFoUZuGtLHosTZ7HMKEqFaLW5Yc8mCtATl/3SDcPv7q
+SycT2e0M7ufUUBD5pVqKP2eowMSxUtU+gytcrozQ9euFL3L54qCJKiYpjKe5GPfB
+2K56ylZzkj7VZiWMqYMQMdy7mY2L7/DYRnP9F5hr+fHkbvzHg0j92/zvZpcpoDz4
+/9KZeWQ7XzRMOuE9F0ukxOM/X/2nhQ9/lLWZ4m5asHhE+KZnL7z1QfXtVk+5WwQD
+1xE38zi6AZcYChmmJqw2kY0HRPURxI9DBhDvhV//ijuCGcAfsMSUEDCqHvYvBHw6
+-----END CERTIFICATE-----
+
+2022-12-02T09:11:13.544222Z	info	rootcertrotator	Set up back off time 20m37s to start rotator.
+2022-12-02T09:11:13.544298Z	info	initializing controllers
+2022-12-02T09:11:13.544505Z	info	No certificates specified, skipping K8S DNS certificate controller
+2022-12-02T09:11:13.544541Z	info	rootcertrotator	Jitter is enabled, wait 20m37s before starting root cert rotator.
+2022-12-02T09:11:13.585456Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/ReferenceGrant as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585526Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/ReferencePolicy as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585532Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/TCPRoute as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585535Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1alpha2/TLSRoute as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585538Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1beta1/GatewayClass as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585541Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1beta1/Gateway as it is not present	controller=crd-controller
+2022-12-02T09:11:13.585544Z	warn	kube	Skipping CRD gateway.networking.k8s.io/v1beta1/HTTPRoute as it is not present	controller=crd-controller
+2022-12-02T09:11:13.586458Z	info	Adding Kubernetes registry adapter
+2022-12-02T09:11:13.586519Z	info	initializing Istiod DNS certificates host: istiod.istio-system.svc, custom host: 
+2022-12-02T09:11:13.710544Z	warn	discovery is not ready: <nil>
+2022-12-02T09:11:13.792608Z	info	Generating istiod-signed cert for [istiod.istio-system.svc istiod-remote.istio-system.svc istio-pilot.istio-system.svc]:
+ -----BEGIN CERTIFICATE-----
+MIIDajCCAlKgAwIBAgIRAICNOYA2sINvZce4osQgBXQwDQYJKoZIhvcNAQELBQAw
+GDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDAeFw0yMjEyMDIwOTA5MTNaFw0zMjEx
+MjkwOTExMTNaMAAwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDLheoY
+cQ2bCz6EtUv08ayYG5SQ+eh+Q0y5pZfNHu607eZMR5XzGx28IbInUgJ5ZShXItrx
+ztlNqin01znr+f17KFkOLrE62EPWAzlD+pD79FxrgTtqpXC2aGXoUF2nM6QMnLIl
+WG7giIEeXnDucdpqvC3ngwF3VgntomfBDhuhaA6Jw4wJNDZhMJYjw+Ln8KCU3T25
+CaxjJfsKVSiTu5sO+mvEV+hEmsd69bDwQGJJT6RhGi4A69uO3Oqz3ig/xDQ5gokX
+43jSqLp8MeKoAXFrLj32A76wR6515CSvdkcogS10M9XnnSH7P6VCpE//H5Smo4AE
+54Vc6PlA78kab7fbAgMBAAGjgcYwgcMwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQW
+MBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaA
+FGgPO6ryL+mD0RXzEjk6tEV8dEaiMGMGA1UdEQEB/wRZMFeCF2lzdGlvZC5pc3Rp
+by1zeXN0ZW0uc3Zjgh5pc3Rpb2QtcmVtb3RlLmlzdGlvLXN5c3RlbS5zdmOCHGlz
+dGlvLXBpbG90LmlzdGlvLXN5c3RlbS5zdmMwDQYJKoZIhvcNAQELBQADggEBAEea
+HABvNdJVklgoPVbU45iaV+vLZX6CbqOKCfnoX58rbUWmg1EvLmvxrIP+0yimyxzq
+krlSHQaX9Ry+slzBbzq90l1xuHeskaFrE0KsxgIJqY7sI5L+EDLBu4lcbzbXKfuh
+msOjy4vFJi9QwwV5T/4xRWSxurPzuL9rvalz694pKPhjQCEBF4tv64SGl2aBgw7I
+GXJLfDuJpGRzHlv+QOfHlrYjyF32xwI3OHq+GjXalk1CZa5vVA5etKBhQ3+8YImz
+U1+rVYvyu89kI1GanY5cFQJUx43EKGH3v+Vm0ewxq1RqEF8DUaZIDajvva/LQhD6
+YFCpj9kVjCihHJM6l3g=
+-----END CERTIFICATE-----
+
+2022-12-02T09:11:13.792681Z	info	Using istiod file format for signing ca files
+2022-12-02T09:11:13.792692Z	info	No plugged-in cert at etc/cacerts/ca-key.pem; self-signed cert is used
+2022-12-02T09:11:13.793408Z	info	x509 cert - Issuer: "O=cluster.local", Subject: "", SN: 808d398036b0836f65c7b8a2c4200574, NotBefore: "2022-12-02T09:09:13Z", NotAfter: "2032-11-29T09:11:13Z"
+2022-12-02T09:11:13.793426Z	info	Istiod certificates are reloaded
+2022-12-02T09:11:13.793475Z	info	spiffe	Added 1 certs to trust domain cluster.local in peer cert verifier
+2022-12-02T09:11:13.793479Z	info	initializing secure discovery service
+2022-12-02T09:11:13.793513Z	info	initializing secure webhook server for istiod webhooks
+2022-12-02T09:11:13.799414Z	info	initializing sidecar injector
+2022-12-02T09:11:13.828946Z	info	initializing config validator
+2022-12-02T09:11:13.829301Z	info	initializing registry event handlers
+2022-12-02T09:11:13.829388Z	info	starting discovery service
+2022-12-02T09:11:13.837665Z	info	Starting Istiod Server with primary cluster Kubernetes
+2022-12-02T09:11:13.837827Z	info	kube	Initializing Kubernetes service registry "Kubernetes"
+2022-12-02T09:11:13.838489Z	info	ControlZ available at 127.0.0.1:9876
+2022-12-02T09:11:13.839072Z	info	kube	should join leader-election for cluster Kubernetes: false
+2022-12-02T09:11:13.839116Z	info	initializing Kubernetes credential reader for cluster Kubernetes
+2022-12-02T09:11:13.853265Z	info	Starting multicluster remote secrets controller
+2022-12-02T09:11:13.853671Z	info	status	Starting status manager
+2022-12-02T09:11:13.853833Z	info	Starting validation controller
+2022-12-02T09:11:13.854219Z	info	Starting ADS server
+2022-12-02T09:11:13.854514Z	info	Starting IstioD CA
+2022-12-02T09:11:13.854614Z	info	JWT policy is third-party-jwt
+2022-12-02T09:11:13.853872Z	info	controllers	starting	controller=ingress
+2022-12-02T09:11:13.854655Z	info	controllers	starting	controller=healthcheck
+2022-12-02T09:11:13.854029Z	info	klog	attempting to acquire leader lease istio-system/istio-gateway-status-leader...
+2022-12-02T09:11:13.854103Z	info	kube	Starting Pilot K8S CRD controller	controller=crd-controller
+2022-12-02T09:11:13.855409Z	info	kube	controller "extensions.istio.io/v1alpha1/WasmPlugin" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.854148Z	info	controllers	starting	controller=webhook patcher
+2022-12-02T09:11:13.854791Z	info	controllers	starting	controller=unregister_workloadentry
+2022-12-02T09:11:13.855525Z	info	Istiod CA has started
+2022-12-02T09:11:13.855548Z	info	klog	attempting to acquire leader lease istio-system/istio-gateway-deployment-leader...
+2022-12-02T09:11:13.857555Z	info	kube	controller "extensions.istio.io/v1alpha1/WasmPlugin" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.859039Z	info	klog	attempting to acquire leader lease istio-system/istio-leader...
+2022-12-02T09:11:13.863565Z	info	kube	controller "security.istio.io/v1beta1/RequestAuthentication" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.872868Z	info	kube	controller "security.istio.io/v1beta1/AuthorizationPolicy" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.885971Z	info	multicluster remote secrets controller cache synced in 32.709263ms
+2022-12-02T09:11:13.886189Z	info	controllers	starting	controller=multicluster secret
+2022-12-02T09:11:13.888472Z	info	controllers	starting	controller=default revision
+2022-12-02T09:11:13.889610Z	info	kube	controller "networking.istio.io/v1alpha3/WorkloadEntry" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.890135Z	info	controllers	starting	controller=configmap istio-sidecar-injector
+2022-12-02T09:11:13.910920Z	info	controllers	starting	controller=default revision
+2022-12-02T09:11:13.911036Z	info	controllers	starting	controller=default revision
+2022-12-02T09:11:13.913645Z	info	klog	successfully acquired lease istio-system/istio-leader
+2022-12-02T09:11:13.913830Z	info	klog	successfully acquired lease istio-system/istio-gateway-status-leader
+2022-12-02T09:11:13.914069Z	info	klog	successfully acquired lease istio-system/istio-gateway-deployment-leader
+2022-12-02T09:11:13.914240Z	info	leader election lock obtained: istio-gateway-deployment-leader
+2022-12-02T09:11:13.914351Z	info	leader election lock obtained: istio-gateway-status-leader
+2022-12-02T09:11:13.914377Z	info	Starting gateway status writer
+2022-12-02T09:11:13.914398Z	info	leader election lock obtained: istio-leader
+2022-12-02T09:11:13.919436Z	info	ads	Full push, new service nsm-system/registry-proxy.nsm-system.svc.cluster.local
+2022-12-02T09:11:13.921131Z	info	ads	Full push, new service nsm-system/admission-webhook-svc.nsm-system.svc.cluster.local
+2022-12-02T09:11:13.921308Z	info	ads	Full push, new service kube-system/exposed-kube-dns.kube-system.svc.cluster.local
+2022-12-02T09:11:13.921381Z	info	ads	Full push, new service nsm-system/registry.nsm-system.svc.cluster.local
+2022-12-02T09:11:13.921399Z	info	ads	Full push, new service nsm-system/nsmgr-proxy.nsm-system.svc.cluster.local
+2022-12-02T09:11:13.921412Z	info	ads	Full push, new service spire/k8s-workload-registrar.spire.svc.cluster.local
+2022-12-02T09:11:13.921423Z	info	ads	Full push, new service kube-system/metrics-server.kube-system.svc.cluster.local
+2022-12-02T09:11:13.921437Z	info	ads	Full push, new service kube-system/kube-dns.kube-system.svc.cluster.local
+2022-12-02T09:11:13.921454Z	info	ads	Incremental push, service istiod.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:11:13.921464Z	info	ads	Full push, new service spire/spire-server.spire.svc.cluster.local
+2022-12-02T09:11:13.921474Z	info	ads	Full push, new service default/kubernetes.default.svc.cluster.local
+2022-12-02T09:11:13.921480Z	info	kube	kube controller for Kubernetes synced after 67.474979ms
+2022-12-02T09:11:13.921541Z	info	ads	Incremental push, service istiod.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:11:13.923306Z	info	kube	controller "networking.istio.io/v1alpha3/DestinationRule" is syncing...	controller=crd-controller
+2022-12-02T09:11:13.988601Z	info	kube	controller "networking.istio.io/v1alpha3/WorkloadEntry" is syncing...	controller=crd-controller
+2022-12-02T09:11:14.021913Z	info	ads	Push debounce stable[1] 48 for reason secret and 47 more reasons: 100.069101ms since last change, 145.753687ms since last push, full=true
+2022-12-02T09:11:14.029840Z	info	ads	XDS: Pushing:2022-12-02T09:11:14Z/1 Services:11 ConnectedEndpoints:0 Version:2022-12-02T09:11:14Z/1
+2022-12-02T09:11:14.088759Z	info	kube	controller "networking.istio.io/v1alpha3/WorkloadEntry" is syncing...	controller=crd-controller
+2022-12-02T09:11:14.189303Z	info	kube	controller "extensions.istio.io/v1alpha1/WasmPlugin" is syncing...	controller=crd-controller
+2022-12-02T09:11:14.243488Z	info	validationController	Not ready to switch validation to fail-closed: dummy invalid config not rejected
+2022-12-02T09:11:14.250411Z	info	validationController	Successfully updated validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Ignore,resourceVersion=12787)
+2022-12-02T09:11:14.259085Z	info	Waiting for caches to be synced
+2022-12-02T09:11:14.259117Z	info	kube	joining leader-election for istio-namespace-controller-election in istio-system on cluster Kubernetes
+2022-12-02T09:11:14.259614Z	info	validationController	Not ready to switch validation to fail-closed: dummy invalid config not rejected
+2022-12-02T09:11:14.260290Z	info	validationController	validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Ignore, resourceVersion=12787) is up-to-date. No change required.
+2022-12-02T09:11:14.260484Z	info	klog	attempting to acquire leader lease istio-system/istio-namespace-controller-election...
+2022-12-02T09:11:14.260848Z	info	controllers	starting	controller=default revision
+2022-12-02T09:11:14.266857Z	info	klog	successfully acquired lease istio-system/istio-namespace-controller-election
+2022-12-02T09:11:14.266985Z	info	leader election lock obtained: istio-namespace-controller-election
+2022-12-02T09:11:14.267031Z	info	kube	starting namespace controller for cluster Kubernetes
+2022-12-02T09:11:14.291953Z	info	kube	Pilot K8S CRD controller synced in 437.844824ms	controller=crd-controller
+2022-12-02T09:11:14.317017Z	info	Starting ingress controller
+2022-12-02T09:11:14.317129Z	warn	Missing ingress, skip status updates
+2022-12-02T09:11:14.322129Z	info	All controller caches have been synced up in 63.040382ms
+2022-12-02T09:11:14.370402Z	info	controllers	starting	controller=namespace controller
+2022-12-02T09:11:14.392353Z	info	ads	Push debounce stable[2] 8 for config EnvoyFilter/istio-system/stats-filter-1.16 and 7 more configs: 100.322088ms since last change, 100.813657ms since last push, full=true
+2022-12-02T09:11:14.399596Z	info	ads	XDS: Pushing:2022-12-02T09:11:14Z/2 Services:11 ConnectedEndpoints:0 Version:2022-12-02T09:11:14Z/2
+2022-12-02T09:11:14.457059Z	info	ads	All caches have been synced up in 1.277287186s, marking server ready
+2022-12-02T09:11:14.457612Z	info	starting gRPC discovery service at [::]:15010
+2022-12-02T09:11:14.457637Z	info	starting webhook service at [::]:15017
+2022-12-02T09:11:14.457711Z	info	starting secure gRPC discovery service at [::]:15012
+2022-12-02T09:11:14.851467Z	info	ads	Full push, new service istio-system/istiod.istio-system.svc.cluster.local
+2022-12-02T09:11:14.946934Z	info	validationController	Not ready to switch validation to fail-closed: dummy invalid config not rejected
+2022-12-02T09:11:14.946977Z	info	validationController	validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Ignore, resourceVersion=12787) is up-to-date. No change required.
+2022-12-02T09:11:14.952803Z	info	ads	Push debounce stable[3] 1 for config ServiceEntry/istio-system/istiod.istio-system.svc.cluster.local: 101.120188ms since last change, 101.119917ms since last push, full=true
+2022-12-02T09:11:14.953713Z	info	ads	XDS: Pushing:2022-12-02T09:11:14Z/3 Services:11 ConnectedEndpoints:0 Version:2022-12-02T09:11:14Z/3
+2022-12-02T09:11:15.261178Z	info	validationServer	configuration is invalid: gateway must have at least one server
+2022-12-02T09:11:15.262861Z	info	validationController	Endpoint successfully rejected invalid config. Switching to fail-close.
+2022-12-02T09:11:15.268363Z	info	validationController	Successfully updated validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Fail,resourceVersion=12803)
+2022-12-02T09:11:15.271432Z	info	validationController	validatingwebhookconfiguration istio-validator-istio-system (failurePolicy=Fail, resourceVersion=12803) is up-to-date. No change required.
+2022-12-02T09:11:16.674709Z	info	ads	Incremental push, service istio-ingressgateway.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:11:16.775989Z	info	ads	Push debounce stable[4] 3 for config ServiceEntry/istio-system/istio-ingressgateway.istio-system.svc.cluster.local: 100.964512ms since last change, 159.977926ms since last push, full=true
+2022-12-02T09:11:16.776775Z	info	ads	XDS: Pushing:2022-12-02T09:11:16Z/4 Services:12 ConnectedEndpoints:0 Version:2022-12-02T09:11:16Z/4
+2022-12-02T09:11:17.571123Z	info	ads	Incremental push, service istio-ingressgateway.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:11:17.672055Z	info	ads	Push debounce stable[5] 1 for config ServiceEntry/istio-system/istio-ingressgateway.istio-system.svc.cluster.local: 100.484587ms since last change, 100.484428ms since last push, full=false
+2022-12-02T09:11:17.672160Z	info	ads	XDS: Incremental Pushing:2022-12-02T09:11:16Z/4 ConnectedEndpoints:0 Version:2022-12-02T09:11:16Z/4
+2022-12-02T09:11:18.363372Z	info	ads	ADS: new connection for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system-1
+2022-12-02T09:11:18.371324Z	info	ads	CDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:20 size:19.5kB cached:0/19
+2022-12-02T09:11:18.418865Z	info	ads	EDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:19 size:3.0kB empty:3 cached:0/19
+2022-12-02T09:11:18.450513Z	info	ads	LDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:11:18.561928Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:20 size:19.5kB cached:0/19
+2022-12-02T09:11:18.562689Z	info	ads	EDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:19 size:3.0kB empty:3 cached:0/19
+2022-12-02T09:11:18.562986Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:11:18.570009Z	info	ads	Full push, new service istio-system/istio-ingressgateway.istio-system.svc.cluster.local
+2022-12-02T09:11:18.670927Z	info	ads	Push debounce stable[6] 1 for config ServiceEntry/istio-system/istio-ingressgateway.istio-system.svc.cluster.local: 100.436066ms since last change, 100.435917ms since last push, full=true
+2022-12-02T09:11:18.671600Z	info	ads	XDS: Pushing:2022-12-02T09:11:18Z/5 Services:12 ConnectedEndpoints:1 Version:2022-12-02T09:11:18Z/5
+2022-12-02T09:11:18.672246Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:20 size:19.7kB cached:16/19
+2022-12-02T09:11:18.672469Z	info	ads	EDS: PUSH INC for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:3 size:625B empty:0 cached:0/3
+2022-12-02T09:11:18.672533Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:11:21.608330Z	info	validationController	Successfully updated validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail,resourceVersion=12865)
+2022-12-02T09:11:21.618832Z	info	validationController	validatingwebhookconfiguration istiod-default-validator (failurePolicy=Fail, resourceVersion=12865) is up-to-date. No change required.
+2022-12-02T09:12:46.818130Z	info	Sidecar injection request for istio-system/istio-eastwestgateway-64b86b4c46-***** (actual name not yet known)
+2022-12-02T09:12:46.860016Z	info	ads	Incremental push, service istio-eastwestgateway.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:12:46.976670Z	info	ads	Push debounce stable[7] 3 for config ServiceEntry/istio-system/istio-eastwestgateway.istio-system.svc.cluster.local: 102.105913ms since last change, 131.062258ms since last push, full=true
+2022-12-02T09:12:46.977284Z	info	ads	XDS: Pushing:2022-12-02T09:12:46Z/6 Services:13 ConnectedEndpoints:1 Version:2022-12-02T09:12:46Z/6
+2022-12-02T09:12:46.977955Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:24 size:23.8kB cached:19/23
+2022-12-02T09:12:46.978445Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:12:46.996104Z	info	ads	EDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:4 size:280B empty:4 cached:0/4 filtered:19
+2022-12-02T09:12:49.822740Z	info	ads	ADS: new connection for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system-2
+2022-12-02T09:12:49.823699Z	info	ads	CDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:24 size:23.8kB cached:23/23
+2022-12-02T09:12:49.843454Z	info	ads	Incremental push, service istio-eastwestgateway.istio-system.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:12:49.852641Z	info	ads	EDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:23 size:3.7kB empty:0 cached:23/23
+2022-12-02T09:12:49.872758Z	info	ads	LDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:0 size:0B
+2022-12-02T09:12:49.943516Z	info	ads	Push debounce stable[8] 1 for config ServiceEntry/istio-system/istio-eastwestgateway.istio-system.svc.cluster.local: 100.016552ms since last change, 100.016402ms since last push, full=false
+2022-12-02T09:12:49.943631Z	info	ads	XDS: Incremental Pushing:2022-12-02T09:12:46Z/6 ConnectedEndpoints:2 Version:2022-12-02T09:12:46Z/6
+2022-12-02T09:12:50.845941Z	info	ads	CDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:24 size:23.8kB cached:19/23
+2022-12-02T09:12:50.846576Z	info	ads	EDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:23 size:3.7kB empty:0 cached:23/23
+2022-12-02T09:12:50.846711Z	info	ads	LDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:0 size:0B
+2022-12-02T09:12:50.855466Z	info	ads	Full push, new service istio-system/istio-eastwestgateway.istio-system.svc.cluster.local
+2022-12-02T09:12:50.956731Z	info	ads	Push debounce stable[9] 1 for config ServiceEntry/istio-system/istio-eastwestgateway.istio-system.svc.cluster.local: 100.959018ms since last change, 100.958832ms since last push, full=true
+2022-12-02T09:12:50.957114Z	info	ads	XDS: Pushing:2022-12-02T09:12:50Z/7 Services:13 ConnectedEndpoints:2 Version:2022-12-02T09:12:50Z/7
+2022-12-02T09:12:50.957485Z	info	ads	CDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:24 size:24.2kB cached:19/23
+2022-12-02T09:12:50.957590Z	info	ads	EDS: PUSH INC for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:4 size:852B empty:0 cached:0/4
+2022-12-02T09:12:50.957611Z	info	ads	LDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:0 size:0B
+2022-12-02T09:12:50.957760Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:24 size:24.2kB cached:23/23
+2022-12-02T09:12:50.957794Z	info	ads	EDS: PUSH INC for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:4 size:852B empty:0 cached:4/4
+2022-12-02T09:12:50.957835Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:12:54.236819Z	info	ads	Push debounce stable[10] 2 for config Gateway/istio-system/istiod-gateway and 1 more configs: 101.209739ms since last change, 115.653477ms since last push, full=true
+2022-12-02T09:12:54.237073Z	info	ads	XDS: Pushing:2022-12-02T09:12:54Z/8 Services:13 ConnectedEndpoints:2 Version:2022-12-02T09:12:54Z/8
+2022-12-02T09:12:54.237372Z	info	ads	CDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:24 size:24.2kB cached:23/23
+2022-12-02T09:12:54.237432Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:24 size:24.2kB cached:23/23
+2022-12-02T09:12:54.237460Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:12:54.238188Z	info	ads	LDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:1.7kB
+2022-12-02T09:15:00.226557Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns-3
+2022-12-02T09:15:00.227881Z	info	ads	CDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:26 size:26.2kB cached:0/23
+2022-12-02T09:15:00.241923Z	info	ads	EDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:23 size:4.2kB empty:0 cached:23/23
+2022-12-02T09:15:00.304181Z	info	ads	LDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:25 size:61.1kB
+2022-12-02T09:15:00.304997Z	info	ads	NDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:1 size:1.3kB
+2022-12-02T09:15:00.392951Z	info	ads	RDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:13 size:6.7kB cached:0/13
+2022-12-02T09:17:47.630660Z	info	ads	Incremental push, service helloworld.sample.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:17:47.731809Z	info	ads	Push debounce stable[11] 2 for config ServiceEntry/sample/helloworld.sample.svc.cluster.local: 101.016728ms since last change, 111.718443ms since last push, full=true
+2022-12-02T09:17:47.739329Z	info	ads	XDS: Pushing:2022-12-02T09:17:47Z/9 Services:14 ConnectedEndpoints:3 Version:2022-12-02T09:17:47Z/9
+2022-12-02T09:17:47.739394Z	warn	kube	getProxyServiceInstancesFromMetadata for ubuntu-deployment-696fdf7b4-5zh96.vm-ns failed: no instances found for ubuntu-deployment-696fdf7b4-5zh96.vm-ns
+2022-12-02T09:17:47.743835Z	info	ads	CDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:26 size:26.0kB cached:23/25
+2022-12-02T09:17:47.744038Z	info	ads	LDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:1.7kB
+2022-12-02T09:17:47.744164Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:26 size:26.0kB cached:25/25
+2022-12-02T09:17:47.744197Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:17:47.746422Z	info	ads	CDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:28 size:28.2kB cached:0/25
+2022-12-02T09:17:47.756675Z	info	ads	EDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:2 size:102B empty:2 cached:0/2 filtered:23
+2022-12-02T09:17:47.766945Z	info	ads	LDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:27 size:67.5kB
+2022-12-02T09:17:47.776252Z	info	ads	EDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:102B empty:0 cached:2/2 filtered:23
+2022-12-02T09:17:47.777691Z	info	ads	RDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:13 size:7.2kB cached:0/13
+2022-12-02T09:17:47.778135Z	info	ads	NDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:1 size:1.4kB
+2022-12-02T09:17:47.778546Z	info	ads	EDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:2 size:102B empty:0 cached:2/2 filtered:23
+2022-12-02T09:17:47.794448Z	info	ads	RDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:2 size:1.0kB cached:0/2 filtered:13
+2022-12-02T09:17:47.822824Z	info	Sidecar injection request for sample/helloworld-v1-9bfbcdd77-***** (actual name not yet known)
+2022-12-02T09:17:47.845396Z	info	Sidecar injection request for sample/helloworld-v2-65784b8c55-***** (actual name not yet known)
+2022-12-02T09:17:49.093443Z	info	ads	Incremental push, service helloworld.sample.svc.cluster.local at shard Kubernetes/Kubernetes has no endpoints
+2022-12-02T09:17:49.193811Z	info	ads	Push debounce stable[12] 1 for config ServiceEntry/sample/helloworld.sample.svc.cluster.local: 100.320325ms since last change, 100.320176ms since last push, full=false
+2022-12-02T09:17:49.194168Z	info	ads	XDS: Incremental Pushing:2022-12-02T09:17:47Z/9 ConnectedEndpoints:3 Version:2022-12-02T09:17:47Z/9
+2022-12-02T09:17:49.493609Z	info	ads	ADS: new connection for node:helloworld-v2-65784b8c55-kwww4.sample-4
+2022-12-02T09:17:49.495967Z	info	ads	CDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:28 size:28.2kB cached:0/25
+2022-12-02T09:17:49.513992Z	info	ads	EDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:25 size:4.3kB empty:0 cached:25/25
+2022-12-02T09:17:49.782304Z	info	ads	LDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:27 size:67.5kB
+2022-12-02T09:17:49.849468Z	info	ads	RDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:15 size:8.2kB cached:0/15
+2022-12-02T09:17:50.247841Z	info	ads	CDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:28 size:28.2kB cached:0/25
+2022-12-02T09:17:50.249345Z	info	ads	EDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:25 size:4.3kB empty:0 cached:25/25
+2022-12-02T09:17:50.258562Z	info	ads	LDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:27 size:67.5kB
+2022-12-02T09:17:50.259559Z	info	ads	RDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:15 size:8.2kB cached:0/15
+2022-12-02T09:17:51.284022Z	info	ads	ADS: new connection for node:helloworld-v1-9bfbcdd77-dnqm5.sample-5
+2022-12-02T09:17:51.284599Z	info	ads	CDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:30 size:28.8kB cached:25/25
+2022-12-02T09:17:51.310837Z	info	ads	EDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:25 size:4.3kB empty:0 cached:25/25
+2022-12-02T09:17:51.382182Z	info	ads	LDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:27 size:80.6kB
+2022-12-02T09:17:51.467157Z	info	ads	RDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:15 size:8.2kB cached:13/15
+2022-12-02T09:17:52.133019Z	info	ads	CDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:30 size:28.8kB cached:25/25
+2022-12-02T09:17:52.137692Z	info	ads	EDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:25 size:4.3kB empty:0 cached:25/25
+2022-12-02T09:17:52.138262Z	info	ads	Full push, new service sample/helloworld.sample.svc.cluster.local
+2022-12-02T09:17:52.166635Z	info	ads	LDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:27 size:80.6kB
+2022-12-02T09:17:52.167983Z	info	ads	RDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:15 size:8.2kB cached:10/15
+2022-12-02T09:17:52.252408Z	info	ads	Push debounce stable[13] 1 for config ServiceEntry/sample/helloworld.sample.svc.cluster.local: 100.07993ms since last change, 100.079781ms since last push, full=true
+2022-12-02T09:17:52.253171Z	info	ads	XDS: Pushing:2022-12-02T09:17:52Z/10 Services:14 ConnectedEndpoints:5 Version:2022-12-02T09:17:52Z/10
+2022-12-02T09:17:52.254220Z	warn	kube	getProxyServiceInstancesFromMetadata for ubuntu-deployment-696fdf7b4-5zh96.vm-ns failed: no instances found for ubuntu-deployment-696fdf7b4-5zh96.vm-ns
+2022-12-02T09:17:52.254556Z	info	ads	CDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:30 size:28.9kB cached:23/25
+2022-12-02T09:17:52.254665Z	info	ads	CDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:26 size:26.1kB cached:23/25
+2022-12-02T09:17:52.254737Z	info	ads	EDS: PUSH INC for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:437B empty:0 cached:2/2
+2022-12-02T09:17:52.254837Z	info	ads	LDS: PUSH for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:1.7kB
+2022-12-02T09:17:52.254699Z	info	ads	EDS: PUSH INC for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:2 size:437B empty:0 cached:0/2
+2022-12-02T09:17:52.255677Z	info	ads	CDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:28 size:28.3kB cached:23/25
+2022-12-02T09:17:52.255752Z	info	ads	EDS: PUSH INC for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:2 size:437B empty:0 cached:2/2
+2022-12-02T09:17:52.255826Z	info	ads	CDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:28 size:28.3kB cached:25/25
+2022-12-02T09:17:52.255998Z	info	ads	EDS: PUSH INC for node:helloworld-v2-65784b8c55-kwww4.sample resources:2 size:437B empty:0 cached:2/2
+2022-12-02T09:17:52.256512Z	info	ads	CDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:26 size:26.1kB cached:24/25
+2022-12-02T09:17:52.256777Z	info	ads	EDS: PUSH INC for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:2 size:437B empty:0 cached:2/2
+2022-12-02T09:17:52.256828Z	info	ads	LDS: PUSH for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:17:52.257526Z	info	ads	LDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:27 size:67.5kB
+2022-12-02T09:17:52.259137Z	info	ads	RDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:15 size:8.2kB cached:10/15
+2022-12-02T09:17:52.260068Z	info	ads	NDS: PUSH for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:1 size:1.4kB
+2022-12-02T09:17:52.266353Z	info	ads	LDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:27 size:80.6kB
+2022-12-02T09:17:52.266495Z	info	ads	LDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:27 size:67.5kB
+2022-12-02T09:17:52.266917Z	info	ads	RDS: PUSH for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:15 size:8.2kB cached:10/15
+2022-12-02T09:17:52.267065Z	info	ads	RDS: PUSH for node:helloworld-v2-65784b8c55-kwww4.sample resources:15 size:8.2kB cached:15/15
+2022-12-02T09:31:50.573061Z	info	rootcertrotator	Jitter complete, start rotator.
+2022-12-02T09:41:28.181231Z	info	ads	ADS: "10.244.1.19:43342" istio-ingressgateway-6795c6c98d-chlf2.istio-system-1 terminated
+2022-12-02T09:41:28.387149Z	info	ads	ADS: new connection for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system-6
+2022-12-02T09:41:28.387431Z	info	ads	CDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:26 size:26.1kB cached:25/25
+2022-12-02T09:41:28.388161Z	info	ads	EDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T09:41:28.388234Z	info	ads	LDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T09:42:43.252395Z	info	ads	ADS: "10.244.1.20:45862" istio-eastwestgateway-64b86b4c46-858kh.istio-system-2 terminated
+2022-12-02T09:42:43.569437Z	info	ads	ADS: new connection for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system-7
+2022-12-02T09:42:43.569894Z	info	ads	CDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:26 size:26.1kB cached:25/25
+2022-12-02T09:42:43.570146Z	info	ads	EDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T09:42:43.570502Z	info	ads	LDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:1.7kB
+2022-12-02T09:44:03.369440Z	info	ads	ADS: "10.244.1.20:52458" ubuntu-deployment-696fdf7b4-5zh96.vm-ns-3 terminated
+2022-12-02T09:44:03.856493Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns-8
+2022-12-02T09:44:03.856763Z	info	ads	CDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:28 size:28.3kB cached:25/25
+2022-12-02T09:44:03.856883Z	info	ads	EDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T09:44:03.858907Z	info	ads	LDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:27 size:67.5kB
+2022-12-02T09:44:03.859107Z	info	ads	NDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:1 size:1.4kB
+2022-12-02T09:44:03.861123Z	info	ads	RDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:15 size:8.2kB cached:15/15
+2022-12-02T09:46:19.253939Z	info	ads	ADS: "10.244.1.21:42410" helloworld-v2-65784b8c55-kwww4.sample-4 terminated
+2022-12-02T09:46:19.408015Z	info	ads	ADS: new connection for node:helloworld-v2-65784b8c55-kwww4.sample-9
+2022-12-02T09:46:19.410137Z	info	ads	CDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:28 size:28.3kB cached:25/25
+2022-12-02T09:46:19.410315Z	info	ads	EDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T09:46:19.415245Z	info	ads	LDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:27 size:67.5kB
+2022-12-02T09:46:19.416209Z	info	ads	RDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:15 size:8.2kB cached:15/15
+2022-12-02T09:49:18.838753Z	info	ads	ADS: "10.244.2.28:45716" helloworld-v1-9bfbcdd77-dnqm5.sample-5 terminated
+2022-12-02T09:49:19.129204Z	info	ads	ADS: new connection for node:helloworld-v1-9bfbcdd77-dnqm5.sample-10
+2022-12-02T09:49:19.129555Z	info	ads	CDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:30 size:28.9kB cached:25/25
+2022-12-02T09:49:19.129786Z	info	ads	EDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T09:49:19.133349Z	info	ads	LDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:27 size:80.6kB
+2022-12-02T09:49:19.139371Z	info	ads	RDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:15 size:8.2kB cached:15/15
+2022-12-02T10:10:04.425298Z	info	ads	ADS: "10.244.1.19:49388" istio-ingressgateway-6795c6c98d-chlf2.istio-system-6 terminated
+2022-12-02T10:10:04.869605Z	info	ads	ADS: new connection for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system-11
+2022-12-02T10:10:04.872046Z	info	ads	CDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:26 size:26.1kB cached:25/25
+2022-12-02T10:10:04.872202Z	info	ads	EDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T10:10:04.872249Z	info	ads	LDS: PUSH request for node:istio-ingressgateway-6795c6c98d-chlf2.istio-system resources:0 size:0B
+2022-12-02T10:13:11.298180Z	info	ads	ADS: "10.244.1.20:43326" istio-eastwestgateway-64b86b4c46-858kh.istio-system-7 terminated
+2022-12-02T10:13:11.498152Z	info	ads	ADS: new connection for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system-12
+2022-12-02T10:13:11.498405Z	info	ads	CDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:26 size:26.1kB cached:25/25
+2022-12-02T10:13:11.498495Z	info	ads	EDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T10:13:11.498650Z	info	ads	LDS: PUSH request for node:istio-eastwestgateway-64b86b4c46-858kh.istio-system resources:2 size:1.7kB
+2022-12-02T10:16:00.479085Z	info	ads	ADS: "10.244.1.20:36190" ubuntu-deployment-696fdf7b4-5zh96.vm-ns-8 terminated
+2022-12-02T10:16:00.750399Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns-13
+2022-12-02T10:16:00.750799Z	info	ads	CDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:28 size:28.3kB cached:25/25
+2022-12-02T10:16:00.751049Z	info	ads	EDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T10:16:00.753792Z	info	ads	LDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:27 size:67.5kB
+2022-12-02T10:16:00.754383Z	info	ads	NDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:1 size:1.4kB
+2022-12-02T10:16:00.754770Z	info	ads	RDS: PUSH request for node:ubuntu-deployment-696fdf7b4-5zh96.vm-ns resources:15 size:8.2kB cached:15/15
+2022-12-02T10:16:03.213451Z	info	ads	ADS: "10.244.1.21:43666" helloworld-v2-65784b8c55-kwww4.sample-9 terminated
+2022-12-02T10:16:03.509363Z	info	ads	ADS: new connection for node:helloworld-v2-65784b8c55-kwww4.sample-14
+2022-12-02T10:16:03.509747Z	info	ads	CDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:28 size:28.3kB cached:25/25
+2022-12-02T10:16:03.509887Z	info	ads	EDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T10:16:03.511423Z	info	ads	LDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:27 size:67.5kB
+2022-12-02T10:16:03.512251Z	info	ads	RDS: PUSH request for node:helloworld-v2-65784b8c55-kwww4.sample resources:15 size:8.2kB cached:15/15
+2022-12-02T10:17:09.269837Z	info	ads	ADS: "10.244.1.21:60714" helloworld-v2-65784b8c55-kwww4.sample-14 terminated
+2022-12-02T10:18:41.929303Z	info	ads	ADS: "10.244.2.28:51992" helloworld-v1-9bfbcdd77-dnqm5.sample-10 terminated
+2022-12-02T10:18:42.071588Z	info	ads	ADS: new connection for node:helloworld-v1-9bfbcdd77-dnqm5.sample-15
+2022-12-02T10:18:42.071937Z	info	ads	CDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:30 size:28.9kB cached:25/25
+2022-12-02T10:18:42.072284Z	info	ads	EDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:25 size:4.7kB empty:0 cached:25/25
+2022-12-02T10:18:42.075057Z	info	ads	LDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:27 size:80.6kB
+2022-12-02T10:18:42.075413Z	info	ads	RDS: PUSH request for node:helloworld-v1-9bfbcdd77-dnqm5.sample resources:15 size:8.2kB cached:15/15

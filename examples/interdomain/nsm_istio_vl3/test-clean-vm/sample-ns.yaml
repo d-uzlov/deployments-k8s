@@ -32,7 +32,7 @@ metadata:
     app: helloworld
     version: v1
   annotations:
-    networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=helloworld
+    # networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=helloworld
 spec:
   replicas: 1
   selector:
@@ -47,8 +47,8 @@ spec:
     spec:
       containers:
         - name: helloworld
-          # image: docker.io/istio/examples-helloworld-v1
-          image: docker.io/kennethreitz/httpbin
+          image: docker.io/istio/examples-helloworld-v1
+          # image: docker.io/kennethreitz/httpbin
           resources:
             requests:
               cpu: "100m"
@@ -66,25 +66,27 @@ metadata:
     app: helloworld
     version: v2
   annotations:
-    networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=hello2
+    # networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=hello2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: helloworld
+      app: httpbin
       version: v2
   template:
     metadata:
       labels:
-        app: helloworld
+        app: httpbin
         version: v2
     spec:
       containers:
         - name: helloworld
-          image: docker.io/istio/examples-helloworld-v2
+          # image: docker.io/istio/examples-helloworld-v2
+          image: docker.io/kennethreitz/httpbin
           resources:
             requests:
               cpu: "100m"
           imagePullPolicy: IfNotPresent #Always
           ports:
+            - containerPort: 80
             - containerPort: 5000

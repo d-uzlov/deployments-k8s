@@ -1,4 +1,37 @@
 
+kubectl --kubeconfig=$KUBECONFIG1 apply -k vl3-dns
+k1 apply -f sample-ns.yaml
+
+```bash
+kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
+kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+```
+
+```bash
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt update
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo
+```
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl -s helloworld.my-vl3-network:5000/hello
+
+
+
+install istio
+```bash
+kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
+istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
+```
+
+Prepare configuration for istio
+```bash
+WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/clean/istio-vm-configs"
+VM_APP="vm-app"
+VM_NAMESPACE="vm-ns"
+SERVICE_ACCOUNT="serviceaccountvm"
+CLUSTER_NETWORK=""
+VM_NETWORK=""
+CLUSTER="Kubernetes"
+```
 
 ```bash
 cat <<EOF > ./vm-cluster.yaml
@@ -16,7 +49,7 @@ spec:
 EOF
 ```
 
-istioctl install -f vm-cluster.yaml --kubeconfig=$KUBECONFIG1
+istioctl install -f vm-cluster.yaml --kubeconfig=$KUBECONFIG1 -y
 
 curl -O https://raw.githubusercontent.com/istio/istio/release-1.16/samples/multicluster/gen-eastwest-gateway.sh
 chmod +x gen-eastwest-gateway.sh
@@ -47,27 +80,34 @@ EOF
 
 istioctl --kubeconfig=$KUBECONFIG1 x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}"
 
-
-kubectl --kubeconfig=$KUBECONFIG1 apply -k vl3-dns
-k1 apply -f sample-ns.yaml
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
-```
-
 ```bash
 UBUNTU_POD_NAME=$(kubectl --kubeconfig=$KUBECONFIG2 get pods -l app=ubuntu -n default --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 ```
 
-kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 ```bash
 kubectl --kubeconfig=$KUBECONFIG2 cp "$WORK_DIR" $UBUNTU_POD_NAME:/vm-dir -c ubuntu
 ```
 
-
 ```bash
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt update
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/certs
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/root-cert.pem /etc/certs/root-cert.pem
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /var/run/secrets/tokens
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/istio-token /var/run/secrets/tokens/istio-token
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo curl -LO https://storage.googleapis.com/istio-release/releases/1.15.2/deb/istio-sidecar.deb
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo dpkg -i istio-sidecar.deb
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/cluster.env /var/lib/istio/envoy/cluster.env
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/mesh.yaml /etc/istio/config/mesh
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'cat /vm-dir/hosts >> /etc/hosts'
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
+sleep 5
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.log
 ```
 
-k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl hello2.my-vl3-network:5000/hello 2> /dev/null
+
+kubectl --kubeconfig $KUBECONFIG1 exec deployments/ubuntu-deployment -c ubuntu -- apt update
+kubectl --kubeconfig $KUBECONFIG1 exec deployments/ubuntu-deployment -c ubuntu -- apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo
+kubectl --kubeconfig $KUBECONFIG1 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello
+
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello
