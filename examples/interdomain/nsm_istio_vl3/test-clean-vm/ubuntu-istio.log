@@ -1,0 +1,116 @@
+2022-12-04T20:10:28.325429Z	info	FLAG: --concurrency="0"
+2022-12-04T20:10:28.325476Z	info	FLAG: --domain=""
+2022-12-04T20:10:28.325483Z	info	FLAG: --help="false"
+2022-12-04T20:10:28.325486Z	info	FLAG: --log_as_json="false"
+2022-12-04T20:10:28.325489Z	info	FLAG: --log_caller=""
+2022-12-04T20:10:28.325492Z	info	FLAG: --log_output_level="default:info"
+2022-12-04T20:10:28.325495Z	info	FLAG: --log_rotate=""
+2022-12-04T20:10:28.325498Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-04T20:10:28.325501Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-04T20:10:28.325504Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-04T20:10:28.325506Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-04T20:10:28.325517Z	info	FLAG: --log_target="[stdout]"
+2022-12-04T20:10:28.325521Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-04T20:10:28.325524Z	info	FLAG: --outlierLogPath=""
+2022-12-04T20:10:28.325527Z	info	FLAG: --proxyComponentLogLevel=""
+2022-12-04T20:10:28.325534Z	info	FLAG: --proxyLogLevel="warning,misc:error"
+2022-12-04T20:10:28.325537Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-04T20:10:28.325540Z	info	FLAG: --stsPort="0"
+2022-12-04T20:10:28.325543Z	info	FLAG: --templateFile=""
+2022-12-04T20:10:28.325546Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-04T20:10:28.325550Z	info	FLAG: --vklog="0"
+2022-12-04T20:10:28.325556Z	info	Version 1.15.2-b542583af7f8240ad0c9cab56eb9f8d55e1357ab-Clean
+2022-12-04T20:10:28.327984Z	info	Maximum file descriptors (ulimit -n): 1024
+2022-12-04T20:10:28.328161Z	info	Proxy role	ips=[10.244.0.5] type=sidecar id=ubuntu-deployment-6855596d8-cwgdf.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-04T20:10:28.328230Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  meshId: mesh1
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: mesh1
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-04T20:10:28.332710Z	info	Apply proxy config from env 
+serviceCluster: vm-app.vm-ns
+controlPlaneAuthPolicy: MUTUAL_TLS
+
+2022-12-04T20:10:28.333419Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+meshId: mesh1
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: mesh1
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: vm-app.vm-ns
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-04T20:10:28.333482Z	info	JWT policy is third-party-jwt
+2022-12-04T20:10:28.333492Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-04T20:10:28.434092Z	info	Opening status port 15020
+2022-12-04T20:10:28.434259Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2022-12-04T20:10:28.434502Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2022-12-04T20:10:28.434646Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-04T20:10:28.434668Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-04T20:10:28.434683Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
+2022-12-04T20:10:28.434816Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
+2022-12-04T20:10:28.441837Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-04T20:10:28.452448Z	info	ads	All caches have been synced up in 134.631885ms, marking server ready
+2022-12-04T20:10:28.453868Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-04T20:10:28.454035Z	info	sds	Starting SDS grpc server
+2022-12-04T20:10:28.454535Z	info	starting Http service at 127.0.0.1:15004
+2022-12-04T20:10:28.455710Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-04T20:10:28.458225Z	info	Starting proxy agent
+2022-12-04T20:10:28.458253Z	info	starting
+2022-12-04T20:10:28.458280Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-12-04T20:10:28.521404Z	info	cache	generated new workload certificate	latency=68.415567ms ttl=23h59m59.478613851s
+2022-12-04T20:10:28.521460Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-04T20:10:28.521479Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-04T20:10:28.522226Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.477781992s
+2022-12-04T20:10:28.564556Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-04T20:10:28.584137Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-cwgdf.vm-ns-1
+2022-12-04T20:10:28.584252Z	info	cache	returned workload certificate from cache	ttl=23h59m59.415753772s
+2022-12-04T20:10:28.584653Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-cwgdf.vm-ns resources:1 size:4.0kB resource:default
+2022-12-04T20:10:28.624197Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-cwgdf.vm-ns-2
+2022-12-04T20:10:28.624336Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.375669562s
+2022-12-04T20:10:28.624667Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-cwgdf.vm-ns resources:1 size:1.1kB resource:ROOTCA
+2022-12-04T20:39:16.420137Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-04T20:49:22.129319Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+[2022-12-04T20:53:32.896Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1002 - "-" "curl/7.81.0" "225f4cdd-fec2-46d6-820d-eb8d3e4d1b81" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:50076 - allow_any
+[2022-12-04T21:06:47.412Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1001 - "-" "curl/7.81.0" "f9685f67-4001-4b91-8123-f11e87239bf6" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:47548 - allow_any
+[2022-12-04T21:07:45.334Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "44bde945-009c-40bb-b43e-fc82a1e7e6c2" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:56118 - allow_any
+[2022-12-04T21:08:17.509Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1001 - "-" "curl/7.81.0" "892f0220-223b-4129-b393-cd0aaa8f82bb" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:51982 - allow_any
+[2022-12-04T21:08:41.254Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "83ec8ed4-a350-4af1-b605-910e006eaed0" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:51344 - allow_any
+[2022-12-04T21:10:38.768Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "f5fc02f0-6dab-4fec-8d2d-133e722acd97" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:55226 - allow_any
+[2022-12-04T21:12:32.365Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "cd9692e0-74a6-459d-ab6e-d3697a4386d1" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:40628 - allow_any
+[2022-12-04T21:17:59.101Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "fb1393e2-d009-4277-82f1-c3124d44d5d9" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:53398 - allow_any
+[2022-12-04T21:19:06.174Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 999 - "-" "curl/7.81.0" "343d20af-a6ef-4133-9d74-059ef7dddcc4" "10.96.22.180:5000" "-" PassthroughCluster - 10.96.22.180:5000 10.244.0.5:41138 - allow_any
