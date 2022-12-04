@@ -9,3 +9,5 @@ spec:
       multiCluster:
         clusterName: "Kubernetes"
       network: ""
+  meshConfig:
+    accessLogFile: /dev/stdout

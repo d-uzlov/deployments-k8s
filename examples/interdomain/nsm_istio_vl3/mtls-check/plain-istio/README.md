@@ -1,30 +1,30 @@
-k1 - kubectl --kubeconfig=$KUBECONFIG1  
+k1 - kubectl --kubeconfig=$KUBECONFIG1
 
 ```bash
-istioctl  install --set profile=minimal -y --kubeconfig=$KUBECONFIG2
+istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 ```
 
 ```bash
-k --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
+k --kubeconfig=$KUBECONFIG1 apply -f ubuntu.yaml
 ```
 
 ```bash
-k --kubeconfig=$KUBECONFIG2 apply -f sample-ns.yaml
+k --kubeconfig=$KUBECONFIG1 apply -f sample-ns.yaml
 ```
 
 ```bash
-istioctl proxy-status --kubeconfig=$KUBECONFIG2
+istioctl proxy-status --kubeconfig=$KUBECONFIG1
 ```
 
 Install curl into ubuntu container
 ```bash
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt update
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt install tcpdump curl
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt update
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- apt --yes install tcpdump curl
 ```
 
 Disable mTLS:
 ```bash
-kubectl apply -n istio-system --kubeconfig $KUBECONFIG2 -f - <<EOF
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG1 -f - <<EOF
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
@@ -37,9 +37,9 @@ EOF
 
 Get dump:
 ```bash
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >1-http.pcap &
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >1-http.pcap &
 sleep 1
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello 2> /dev/null
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello -s
 sleep 1
 kill -2 $!
 ```
@@ -49,7 +49,7 @@ For example: `Hello version: v1, instance: helloworld-v1-78b9f5c87f-lfxlr`.
 
 Enforce mTLS:
 ```bash
-kubectl apply -n istio-system --kubeconfig $KUBECONFIG2 -f - <<EOF
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG1 -f - <<EOF
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
@@ -61,9 +61,9 @@ EOF
 ```
 
 ```bash
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >2-mtls.pcap &
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- tcpdump -U -w - >2-mtls.pcap &
 sleep 1
-k --kubeconfig=$KUBECONFIG2 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello 2> /dev/null
+k --kubeconfig=$KUBECONFIG1 exec -n ubuntu-ns deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello -s
 sleep 1
 kill -2 $!
 ```
