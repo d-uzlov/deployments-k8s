@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+items:
+- count: 2
+  eventTime: null
+  firstTimestamp: "2022-12-05T07:17:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{spire-agent}
+    kind: Pod
+    name: spire-agent-ww4w7
+    namespace: spire
+    resourceVersion: "646"
+    uid: 2c61353c-85f1-4807-8eec-e1916ed7dc8d
+  lastTimestamp: "2022-12-05T07:58:36Z"
+  message: 'Readiness probe failed: command "/opt/spire/bin/spire-agent healthcheck
+    -socketPath /run/spire/sockets/agent.sock --shallow" timed out'
+  metadata:
+    creationTimestamp: "2022-12-05T07:17:21Z"
+    name: spire-agent-ww4w7.172dd47670087f21
+    namespace: spire
+    resourceVersion: "5882"
+    uid: 740fbe74-a24c-4230-8d31-2544805c1eec
+  reason: Unhealthy
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-2-control-plane
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-05T08:02:01Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{spire-server}
+    kind: Pod
+    name: spire-server-0
+    namespace: spire
+    resourceVersion: "650"
+    uid: d92d96a5-82c5-4cd5-a12d-f2425997fcd2
+  lastTimestamp: "2022-12-05T08:02:01Z"
+  message: 'Readiness probe failed: command "/opt/spire/bin/spire-server healthcheck
+    --shallow" timed out'
+  metadata:
+    creationTimestamp: "2022-12-05T08:02:01Z"
+    name: spire-server-0.172dd6e6555d6827
+    namespace: spire
+    resourceVersion: "6135"
+    uid: 399b604d-6c5e-4d34-8023-6470728c57ad
+  reason: Unhealthy
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-2-control-plane
+  type: Warning
+kind: EventList
+metadata:
+  resourceVersion: "9750"

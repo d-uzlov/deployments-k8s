@@ -1,0 +1,22 @@
+==== START logs for container kube-proxy of pod kube-system/kube-proxy-bwwck ====
+I1205 06:50:23.589165       1 node.go:163] Successfully retrieved node IP: 172.18.0.5
+I1205 06:50:23.589231       1 server_others.go:138] "Detected node IP" address="172.18.0.5"
+I1205 06:50:23.618510       1 server_others.go:206] "Using iptables Proxier"
+I1205 06:50:23.618545       1 server_others.go:213] "kube-proxy running in dual-stack mode" ipFamily=IPv4
+I1205 06:50:23.618554       1 server_others.go:214] "Creating dualStackProxier for iptables"
+I1205 06:50:23.618570       1 server_others.go:501] "Detect-local-mode set to ClusterCIDR, but no IPv6 cluster CIDR defined, , defaulting to no-op detect-local for IPv6"
+I1205 06:50:23.618606       1 proxier.go:262] "Setting route_localnet=1, use nodePortAddresses to filter loopback addresses for NodePorts to skip it https://issues.k8s.io/90259"
+I1205 06:50:23.618958       1 proxier.go:262] "Setting route_localnet=1, use nodePortAddresses to filter loopback addresses for NodePorts to skip it https://issues.k8s.io/90259"
+I1205 06:50:23.620124       1 server.go:661] "Version info" version="v1.25.3"
+I1205 06:50:23.620169       1 server.go:663] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1205 06:50:23.620599       1 conntrack.go:100] "Set sysctl" entry="net/netfilter/nf_conntrack_tcp_timeout_close_wait" value=3600
+I1205 06:50:23.620894       1 config.go:317] "Starting service config controller"
+I1205 06:50:23.620911       1 shared_informer.go:255] Waiting for caches to sync for service config
+I1205 06:50:23.621444       1 config.go:226] "Starting endpoint slice config controller"
+I1205 06:50:23.621485       1 shared_informer.go:255] Waiting for caches to sync for endpoint slice config
+I1205 06:50:23.621522       1 config.go:444] "Starting node config controller"
+I1205 06:50:23.621559       1 shared_informer.go:255] Waiting for caches to sync for node config
+I1205 06:50:23.721735       1 shared_informer.go:262] Caches are synced for node config
+I1205 06:50:23.721788       1 shared_informer.go:262] Caches are synced for service config
+I1205 06:50:23.721787       1 shared_informer.go:262] Caches are synced for endpoint slice config
+==== END logs for container kube-proxy of pod kube-system/kube-proxy-bwwck ====

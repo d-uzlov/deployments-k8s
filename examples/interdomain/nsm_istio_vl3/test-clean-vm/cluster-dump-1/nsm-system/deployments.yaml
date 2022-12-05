@@ -1,0 +1,435 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"admission-webhook-k8s"},"name":"admission-webhook-k8s","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"admission-webhook-k8s"}},"template":{"metadata":{"labels":{"app":"admission-webhook-k8s"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"NSM_SERVICE_NAME","value":"admission-webhook-svc"},{"name":"NSM_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"NSM_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"NSM_ANNOTATION","value":"networkservicemesh.io"},{"name":"NSM_CONTAINER_IMAGES","value":"ghcr.io/networkservicemesh/ci/cmd-nsc:b5ab50c"},{"name":"NSM_INIT_CONTAINER_IMAGES","value":"ghcr.io/networkservicemesh/ci/cmd-nsc-init:756f69a"},{"name":"NSM_LABELS","value":"spiffe.io/spiffe-id:true"},{"name":"NSM_ENVS","value":"NSM_LOG_LEVEL=TRACE"}],"image":"ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s:56d3ab8","imagePullPolicy":"IfNotPresent","name":"admission-webhook-k8s","readinessProbe":{"httpGet":{"path":"/ready","port":443,"scheme":"HTTPS"}}}],"serviceAccount":"admission-webhook-sa"}}}}
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: admission-webhook-k8s
+    name: admission-webhook-k8s
+    namespace: nsm-system
+    resourceVersion: "1186"
+    uid: ddee9dc3-ad85-46a9-aeff-e1bae6e26213
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: admission-webhook-k8s
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: admission-webhook-k8s
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_SERVICE_NAME
+            value: admission-webhook-svc
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: NSM_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: NSM_ANNOTATION
+            value: networkservicemesh.io
+          - name: NSM_CONTAINER_IMAGES
+            value: ghcr.io/networkservicemesh/ci/cmd-nsc:b5ab50c
+          - name: NSM_INIT_CONTAINER_IMAGES
+            value: ghcr.io/networkservicemesh/ci/cmd-nsc-init:756f69a
+          - name: NSM_LABELS
+            value: spiffe.io/spiffe-id:true
+          - name: NSM_ENVS
+            value: NSM_LOG_LEVEL=TRACE
+          image: ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s:56d3ab8
+          imagePullPolicy: IfNotPresent
+          name: admission-webhook-k8s
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /ready
+              port: 443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: admission-webhook-sa
+        serviceAccountName: admission-webhook-sa
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-12-05T06:52:49Z"
+      lastUpdateTime: "2022-12-05T06:52:49Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-12-05T06:52:39Z"
+      lastUpdateTime: "2022-12-05T06:52:49Z"
+      message: ReplicaSet "admission-webhook-k8s-6664486479" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"nsmgr-proxy"},"name":"nsmgr-proxy","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"nsmgr-proxy"}},"template":{"metadata":{"annotations":{"spiffe.io/federatesWith":"nsm.cluster2"},"labels":{"app":"nsmgr-proxy","spiffe.io/spiffe-id":"true"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"NSM_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"NSM_LOG_LEVEL","value":"TRACE"},{"name":"NSM_REGISTRY_URL","value":"registry:5002"},{"name":"NSM_REGISTRY_PROXY_URL","value":"registry-proxy:5005"},{"name":"NSM_LISTEN_ON","value":"tcp://:5004"},{"name":"NSM_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"NSM_MAP_IP_FILE_PATH","value":"/etc/mapip/config.yaml"}],"image":"ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy:309ae69","imagePullPolicy":"IfNotPresent","name":"nsmgr-proxy","ports":[{"containerPort":5004,"hostPort":5004}],"resources":{"limits":{"cpu":"400m","memory":"100Mi"},"requests":{"cpu":"200m"}},"volumeMounts":[{"mountPath":"/run/spire/sockets","name":"spire-agent-socket","readOnly":true},{"mountPath":"/etc/mapip","name":"mapip-volume"}]},{"env":[{"name":"NSM_OUTPUTPATH","value":"/etc/mapip/config.yaml"},{"name":"NSM_NODENAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}}],"image":"ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s:c6087be","imagePullPolicy":"IfNotPresent","name":"map-ip-k8s","resources":{"limits":{"cpu":"50m","memory":"25Mi"}},"volumeMounts":[{"mountPath":"/etc/mapip","name":"mapip-volume"}]}],"serviceAccount":"nsmgr-proxy-sa","volumes":[{"hostPath":{"path":"/run/spire/sockets","type":"Directory"},"name":"spire-agent-socket"},{"hostPath":{"path":"/var/lib/networkservicemesh","type":"DirectoryOrCreate"},"name":"nsm-socket"},{"emptyDir":{},"name":"mapip-volume"}]}}}}
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: nsmgr-proxy
+    name: nsmgr-proxy
+    namespace: nsm-system
+    resourceVersion: "1316"
+    uid: 334366d9-63fc-44e4-bbee-c872391d270d
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: nsmgr-proxy
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: nsmgr-proxy
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          - name: NSM_REGISTRY_URL
+            value: registry:5002
+          - name: NSM_REGISTRY_PROXY_URL
+            value: registry-proxy:5005
+          - name: NSM_LISTEN_ON
+            value: tcp://:5004
+          - name: NSM_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: NSM_MAP_IP_FILE_PATH
+            value: /etc/mapip/config.yaml
+          image: ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy:309ae69
+          imagePullPolicy: IfNotPresent
+          name: nsmgr-proxy
+          ports:
+          - containerPort: 5004
+            hostPort: 5004
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 400m
+              memory: 100Mi
+            requests:
+              cpu: 200m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+            readOnly: true
+          - mountPath: /etc/mapip
+            name: mapip-volume
+        - env:
+          - name: NSM_OUTPUTPATH
+            value: /etc/mapip/config.yaml
+          - name: NSM_NODENAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s:c6087be
+          imagePullPolicy: IfNotPresent
+          name: map-ip-k8s
+          resources:
+            limits:
+              cpu: 50m
+              memory: 25Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/mapip
+            name: mapip-volume
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: nsmgr-proxy-sa
+        serviceAccountName: nsmgr-proxy-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+        - emptyDir: {}
+          name: mapip-volume
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-12-05T06:53:40Z"
+      lastUpdateTime: "2022-12-05T06:53:40Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-12-05T06:52:39Z"
+      lastUpdateTime: "2022-12-05T06:53:40Z"
+      message: ReplicaSet "nsmgr-proxy-f6f56b957" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"registry"},"name":"registry-k8s","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"registry"}},"template":{"metadata":{"annotations":{"spiffe.io/federatesWith":"nsm.cluster2"},"labels":{"app":"registry","spiffe.io/spiffe-id":"true"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"REGISTRY_K8S_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"REGISTRY_K8S_LOG_LEVEL","value":"TRACE"},{"name":"REGISTRY_K8S_LISTEN_ON","value":"tcp://:5002"},{"name":"REGISTRY_K8S_PROXY_REGISTRY_URL","value":"nsmgr-proxy:5004"}],"image":"ghcr.io/networkservicemesh/ci/cmd-registry-k8s:70f2ef2","imagePullPolicy":"IfNotPresent","name":"registry","ports":[{"containerPort":5002,"hostPort":5002}],"resources":{"limits":{"cpu":"200m","memory":"40Mi"},"requests":{"cpu":"100m"}},"volumeMounts":[{"mountPath":"/run/spire/sockets","name":"spire-agent-socket"}]}],"serviceAccountName":"registry-k8s-sa","volumes":[{"hostPath":{"path":"/run/spire/sockets","type":"Directory"},"name":"spire-agent-socket"},{"hostPath":{"path":"/var/lib/networkservicemesh","type":"DirectoryOrCreate"},"name":"nsm-socket"}]}}}}
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: registry
+    name: registry-k8s
+    namespace: nsm-system
+    resourceVersion: "1195"
+    uid: 265b86c7-4917-4955-8ac2-a5b41a3c3f14
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: registry
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: registry
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: REGISTRY_K8S_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: REGISTRY_K8S_LOG_LEVEL
+            value: TRACE
+          - name: REGISTRY_K8S_LISTEN_ON
+            value: tcp://:5002
+          - name: REGISTRY_K8S_PROXY_REGISTRY_URL
+            value: nsmgr-proxy:5004
+          image: ghcr.io/networkservicemesh/ci/cmd-registry-k8s:70f2ef2
+          imagePullPolicy: IfNotPresent
+          name: registry
+          ports:
+          - containerPort: 5002
+            hostPort: 5002
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 40Mi
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: registry-k8s-sa
+        serviceAccountName: registry-k8s-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-12-05T06:52:51Z"
+      lastUpdateTime: "2022-12-05T06:52:51Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-12-05T06:52:39Z"
+      lastUpdateTime: "2022-12-05T06:52:51Z"
+      message: ReplicaSet "registry-k8s-7689d6659d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"registry-proxy"},"name":"registry-proxy","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"registry-proxy"}},"template":{"metadata":{"annotations":{"spiffe.io/federatesWith":"nsm.cluster2"},"labels":{"app":"registry-proxy","spiffe.io/spiffe-id":"true"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"NSM_LISTEN_ON","value":"tcp://:5005"},{"name":"NSM_LOG_LEVEL","value":"TRACE"}],"image":"ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns:eee664f","imagePullPolicy":"IfNotPresent","name":"registry","ports":[{"containerPort":5005,"hostPort":5005}],"resources":{"limits":{"cpu":"200m","memory":"40Mi"},"requests":{"cpu":"100m"}},"volumeMounts":[{"mountPath":"/run/spire/sockets","name":"spire-agent-socket"}]}],"volumes":[{"hostPath":{"path":"/run/spire/sockets","type":"Directory"},"name":"spire-agent-socket"},{"hostPath":{"path":"/var/lib/networkservicemesh","type":"DirectoryOrCreate"},"name":"nsm-socket"}]}}}}
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: registry-proxy
+    name: registry-proxy
+    namespace: nsm-system
+    resourceVersion: "1214"
+    uid: 72769c31-cb4a-4cc3-9e81-fdd540b01452
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: registry-proxy
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: registry-proxy
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_LISTEN_ON
+            value: tcp://:5005
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          image: ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns:eee664f
+          imagePullPolicy: IfNotPresent
+          name: registry
+          ports:
+          - containerPort: 5005
+            hostPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 40Mi
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-12-05T06:52:57Z"
+      lastUpdateTime: "2022-12-05T06:52:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-12-05T06:52:39Z"
+      lastUpdateTime: "2022-12-05T06:52:57Z"
+      message: ReplicaSet "registry-proxy-dd4fdd9fd" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: DeploymentList
+metadata:
+  resourceVersion: "15788"

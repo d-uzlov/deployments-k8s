@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-05T07:13:00Z"
+    generation: 1
+    labels:
+      app: ubuntu
+      pod-template-hash: 696fdf7b4
+    name: ubuntu-deployment-696fdf7b4
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: ubuntu-deployment
+      uid: 43178f7a-4067-4575-b14a-ffff5328ece0
+    resourceVersion: "2536"
+    uid: 3258d80c-850d-4676-afbc-2e11c590b990
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: ubuntu
+        pod-template-hash: 696fdf7b4
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: ubuntu
+          pod-template-hash: 696fdf7b4
+      spec:
+        containers:
+        - command:
+          - sleep
+          - "123456"
+          image: ubuntu
+          imagePullPolicy: Always
+          name: ubuntu
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+kind: ReplicaSetList
+metadata:
+  resourceVersion: "9742"

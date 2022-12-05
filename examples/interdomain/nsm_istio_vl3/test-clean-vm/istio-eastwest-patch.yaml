@@ -1,0 +1,11 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: istio-proxy
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+          readOnlyRootFilesystem: false
+          capabilities:
+            drop:

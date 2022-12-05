@@ -1,0 +1,168 @@
+==== START logs for container kube-apiserver of pod kube-system/kube-apiserver-kind-2-control-plane ====
+I1205 06:49:59.762352       1 server.go:563] external host was not specified, using 172.18.0.5
+I1205 06:49:59.762987       1 server.go:161] Version: v1.25.3
+I1205 06:49:59.763034       1 server.go:163] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1205 06:50:00.069949       1 shared_informer.go:255] Waiting for caches to sync for node_authorizer
+I1205 06:50:00.070790       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1205 06:50:00.070830       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+I1205 06:50:00.073279       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1205 06:50:00.073322       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+W1205 06:50:00.084887       1 logging.go:59] [core] [Channel #1 SubChannel #2] grpc: addrConn.createTransport failed to connect to {
+  "Addr": "127.0.0.1:2379",
+  "ServerName": "127.0.0.1",
+  "Attributes": null,
+  "BalancerAttributes": null,
+  "Type": 0,
+  "Metadata": null
+}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused"
+W1205 06:50:01.071894       1 logging.go:59] [core] [Channel #3 SubChannel #4] grpc: addrConn.createTransport failed to connect to {
+  "Addr": "127.0.0.1:2379",
+  "ServerName": "127.0.0.1",
+  "Attributes": null,
+  "BalancerAttributes": null,
+  "Type": 0,
+  "Metadata": null
+}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused"
+W1205 06:50:01.072292       1 logging.go:59] [core] [Channel #5 SubChannel #6] grpc: addrConn.createTransport failed to connect to {
+  "Addr": "127.0.0.1:2379",
+  "ServerName": "127.0.0.1",
+  "Attributes": null,
+  "BalancerAttributes": null,
+  "Type": 0,
+  "Metadata": null
+}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused"
+W1205 06:50:01.087158       1 logging.go:59] [core] [Channel #1 SubChannel #2] grpc: addrConn.createTransport failed to connect to {
+  "Addr": "127.0.0.1:2379",
+  "ServerName": "127.0.0.1",
+  "Attributes": null,
+  "BalancerAttributes": null,
+  "Type": 0,
+  "Metadata": null
+}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused"
+W1205 06:50:02.997978       1 genericapiserver.go:656] Skipping API apiextensions.k8s.io/v1beta1 because it has no resources.
+I1205 06:50:02.998728       1 instance.go:261] Using reconciler: lease
+I1205 06:50:03.209752       1 instance.go:574] API group "internal.apiserver.k8s.io" is not enabled, skipping.
+W1205 06:50:03.570223       1 genericapiserver.go:656] Skipping API authentication.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.571738       1 genericapiserver.go:656] Skipping API authorization.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.574662       1 genericapiserver.go:656] Skipping API autoscaling/v2beta1 because it has no resources.
+W1205 06:50:03.577903       1 genericapiserver.go:656] Skipping API batch/v1beta1 because it has no resources.
+W1205 06:50:03.579397       1 genericapiserver.go:656] Skipping API certificates.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.580682       1 genericapiserver.go:656] Skipping API coordination.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.580743       1 genericapiserver.go:656] Skipping API discovery.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.583836       1 genericapiserver.go:656] Skipping API networking.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.583877       1 genericapiserver.go:656] Skipping API networking.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.584984       1 genericapiserver.go:656] Skipping API node.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.585021       1 genericapiserver.go:656] Skipping API node.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.585055       1 genericapiserver.go:656] Skipping API policy/v1beta1 because it has no resources.
+W1205 06:50:03.588346       1 genericapiserver.go:656] Skipping API rbac.authorization.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.588389       1 genericapiserver.go:656] Skipping API rbac.authorization.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.590198       1 genericapiserver.go:656] Skipping API scheduling.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.590245       1 genericapiserver.go:656] Skipping API scheduling.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.595472       1 genericapiserver.go:656] Skipping API storage.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.598509       1 genericapiserver.go:656] Skipping API flowcontrol.apiserver.k8s.io/v1alpha1 because it has no resources.
+W1205 06:50:03.601651       1 genericapiserver.go:656] Skipping API apps/v1beta2 because it has no resources.
+W1205 06:50:03.601698       1 genericapiserver.go:656] Skipping API apps/v1beta1 because it has no resources.
+W1205 06:50:03.603670       1 genericapiserver.go:656] Skipping API admissionregistration.k8s.io/v1beta1 because it has no resources.
+W1205 06:50:03.605107       1 genericapiserver.go:656] Skipping API events.k8s.io/v1beta1 because it has no resources.
+I1205 06:50:03.606061       1 plugins.go:158] Loaded 12 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionWebhook.
+I1205 06:50:03.606086       1 plugins.go:161] Loaded 11 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,ValidatingAdmissionWebhook,ResourceQuota.
+W1205 06:50:03.623084       1 genericapiserver.go:656] Skipping API apiregistration.k8s.io/v1beta1 because it has no resources.
+I1205 06:50:04.902324       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1205 06:50:04.902605       1 secure_serving.go:210] Serving securely on [::]:6443
+I1205 06:50:04.902678       1 dynamic_serving_content.go:132] "Starting controller" name="serving-cert::/etc/kubernetes/pki/apiserver.crt::/etc/kubernetes/pki/apiserver.key"
+I1205 06:50:04.902730       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I1205 06:50:04.902957       1 available_controller.go:491] Starting AvailableConditionController
+I1205 06:50:04.902993       1 cache.go:32] Waiting for caches to sync for AvailableConditionController controller
+I1205 06:50:04.903036       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1205 06:50:04.905431       1 apf_controller.go:300] Starting API Priority and Fairness config controller
+I1205 06:50:04.905794       1 apiservice_controller.go:97] Starting APIServiceRegistrationController
+I1205 06:50:04.905829       1 cache.go:32] Waiting for caches to sync for APIServiceRegistrationController controller
+I1205 06:50:04.906414       1 customresource_discovery_controller.go:209] Starting DiscoveryController
+I1205 06:50:04.906677       1 dynamic_serving_content.go:132] "Starting controller" name="aggregator-proxy-cert::/etc/kubernetes/pki/front-proxy-client.crt::/etc/kubernetes/pki/front-proxy-client.key"
+I1205 06:50:04.914389       1 controller.go:80] Starting OpenAPI V3 AggregationController
+I1205 06:50:04.915967       1 cluster_authentication_trust_controller.go:440] Starting cluster_authentication_trust_controller controller
+I1205 06:50:04.916144       1 shared_informer.go:255] Waiting for caches to sync for cluster_authentication_trust_controller
+I1205 06:50:04.946469       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I1205 06:50:04.947599       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1205 06:50:04.949397       1 crdregistration_controller.go:111] Starting crd-autoregister controller
+I1205 06:50:04.949506       1 shared_informer.go:255] Waiting for caches to sync for crd-autoregister
+I1205 06:50:04.916857       1 controller.go:83] Starting OpenAPI AggregationController
+I1205 06:50:04.917345       1 autoregister_controller.go:141] Starting autoregister controller
+I1205 06:50:04.950757       1 cache.go:32] Waiting for caches to sync for autoregister controller
+I1205 06:50:04.951830       1 controller.go:85] Starting OpenAPI controller
+I1205 06:50:04.952019       1 controller.go:85] Starting OpenAPI V3 controller
+I1205 06:50:04.952262       1 naming_controller.go:291] Starting NamingConditionController
+I1205 06:50:04.952499       1 establishing_controller.go:76] Starting EstablishingController
+I1205 06:50:04.952627       1 nonstructuralschema_controller.go:192] Starting NonStructuralSchemaConditionController
+I1205 06:50:04.952773       1 apiapproval_controller.go:186] Starting KubernetesAPIApprovalPolicyConformantConditionController
+I1205 06:50:04.953074       1 crd_finalizer.go:266] Starting CRDFinalizer
+I1205 06:50:04.972717       1 shared_informer.go:262] Caches are synced for node_authorizer
+I1205 06:50:05.003497       1 cache.go:39] Caches are synced for AvailableConditionController controller
+I1205 06:50:05.005921       1 cache.go:39] Caches are synced for APIServiceRegistrationController controller
+I1205 06:50:05.005990       1 apf_controller.go:305] Running API Priority and Fairness config worker
+I1205 06:50:05.017483       1 shared_informer.go:262] Caches are synced for cluster_authentication_trust_controller
+I1205 06:50:05.021477       1 controller.go:616] quota admission added evaluator for: namespaces
+I1205 06:50:05.049789       1 shared_informer.go:262] Caches are synced for crd-autoregister
+I1205 06:50:05.051112       1 cache.go:39] Caches are synced for autoregister controller
+I1205 06:50:05.688327       1 controller.go:132] OpenAPI AggregationController: action for item k8s_internal_local_delegation_chain_0000000000: Nothing (removed from the queue).
+I1205 06:50:05.922469       1 storage_scheduling.go:95] created PriorityClass system-node-critical with value 2000001000
+I1205 06:50:05.925933       1 storage_scheduling.go:95] created PriorityClass system-cluster-critical with value 2000000000
+I1205 06:50:05.925979       1 storage_scheduling.go:111] all system priority classes are created successfully or already exist.
+I1205 06:50:06.346590       1 controller.go:616] quota admission added evaluator for: roles.rbac.authorization.k8s.io
+I1205 06:50:06.379273       1 controller.go:616] quota admission added evaluator for: rolebindings.rbac.authorization.k8s.io
+I1205 06:50:06.492276       1 alloc.go:327] "allocated clusterIPs" service="default/kubernetes" clusterIPs=map[IPv4:10.96.0.1]
+W1205 06:50:06.498996       1 lease.go:250] Resetting endpoints for master service "kubernetes" to [172.18.0.5]
+I1205 06:50:06.499923       1 controller.go:616] quota admission added evaluator for: endpoints
+I1205 06:50:06.504090       1 controller.go:616] quota admission added evaluator for: endpointslices.discovery.k8s.io
+I1205 06:50:07.802123       1 controller.go:616] quota admission added evaluator for: serviceaccounts
+I1205 06:50:07.813080       1 controller.go:616] quota admission added evaluator for: deployments.apps
+I1205 06:50:07.822358       1 alloc.go:327] "allocated clusterIPs" service="kube-system/kube-dns" clusterIPs=map[IPv4:10.96.0.10]
+I1205 06:50:07.831570       1 controller.go:616] quota admission added evaluator for: daemonsets.apps
+I1205 06:50:07.903923       1 controller.go:616] quota admission added evaluator for: leases.coordination.k8s.io
+I1205 06:50:21.534350       1 controller.go:616] quota admission added evaluator for: replicasets.apps
+I1205 06:50:22.329474       1 controller.go:616] quota admission added evaluator for: controllerrevisions.apps
+I1205 06:51:37.476970       1 alloc.go:327] "allocated clusterIPs" service="kube-system/exposed-kube-dns" clusterIPs=map[IPv4:10.96.203.185]
+I1205 06:51:49.520486       1 alloc.go:327] "allocated clusterIPs" service="spire/k8s-workload-registrar" clusterIPs=map[IPv4:10.96.145.69]
+I1205 06:51:49.561603       1 alloc.go:327] "allocated clusterIPs" service="spire/spire-server" clusterIPs=map[IPv4:10.96.248.172]
+I1205 06:51:49.590795       1 controller.go:616] quota admission added evaluator for: statefulsets.apps
+W1205 06:52:06.619629       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.628783       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.642626       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.668697       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.712700       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.796487       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:06.960354       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:07.284345       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+W1205 06:52:07.929226       1 dispatcher.go:185] Failed calling webhook, failing closed k8s-workload-registrar.spire.svc: failed calling webhook "k8s-workload-registrar.spire.svc": failed to call webhook: Post "https://k8s-workload-registrar.spire.svc:443/validate-spiffeid-spiffe-io-v1beta1-spiffeid?timeout=10s": dial tcp 10.96.145.69:443: connect: connection refused
+I1205 06:52:09.259507       1 controller.go:616] quota admission added evaluator for: spiffeids.spiffeid.spiffe.io
+I1205 06:52:59.533416       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/admission-webhook-svc" clusterIPs=map[IPv4:10.96.190.255]
+I1205 06:52:59.576662       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/nsmgr-proxy" clusterIPs=map[IPv4:10.96.246.79]
+I1205 06:52:59.645422       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/registry" clusterIPs=map[IPv4:10.96.179.95]
+I1205 06:52:59.681998       1 alloc.go:327] "allocated clusterIPs" service="nsm-system/registry-proxy" clusterIPs=map[IPv4:10.96.1.212]
+I1205 06:53:01.071365       1 trace.go:205] Trace[1509837761]: "Call validating webhook" configuration:k8s-workload-registrar,webhook:k8s-workload-registrar.spire.svc,resource:spiffeid.spiffe.io/v1beta1, Resource=spiffeids,subresource:,operation:CREATE,UID:53df118f-2dae-47b1-bcda-338c1edd616d (05-Dec-2022 06:53:00.136) (total time: 934ms):
+Trace[1509837761]: ---"Request completed" 934ms (06:53:01.071)
+Trace[1509837761]: [934.377173ms] [934.377173ms] END
+I1205 06:53:01.076715       1 trace.go:205] Trace[264011050]: "Create" url:/apis/spiffeid.spiffe.io/v1beta1/namespaces/nsm-system/spiffeids,user-agent:k8s-workload-registrar/v0.0.0 (linux/amd64) kubernetes/$Format,audit-id:44582e33-2da2-4151-8ec9-2e9f8e2c3879,client:10.244.0.6,accept:application/json, */*,protocol:HTTP/2.0 (05-Dec-2022 06:53:00.135) (total time: 941ms):
+Trace[264011050]: ---"Write to database call finished" len:800,err:<nil> 940ms (06:53:01.076)
+Trace[264011050]: [941.0671ms] [941.0671ms] END
+I1205 06:53:50.928063       1 alloc.go:327] "allocated clusterIPs" service="kube-system/metrics-server" clusterIPs=map[IPv4:10.96.243.49]
+W1205 06:53:52.124198       1 handler_proxy.go:105] no RequestInfo found in the context
+E1205 06:53:52.124283       1 controller.go:116] loading OpenAPI spec for "v1beta1.metrics.k8s.io" failed with: failed to retrieve openAPI spec, http error: ResponseCode: 503, Body: service unavailable
+, Header: map[Content-Type:[text/plain; charset=utf-8] X-Content-Type-Options:[nosniff]]
+I1205 06:53:52.124297       1 controller.go:129] OpenAPI AggregationController: action for item v1beta1.metrics.k8s.io: Rate Limited Requeue.
+W1205 06:53:52.124343       1 handler_proxy.go:105] no RequestInfo found in the context
+E1205 06:53:52.124635       1 controller.go:113] loading OpenAPI spec for "v1beta1.metrics.k8s.io" failed with: Error, could not get list of group versions for APIService
+I1205 06:53:52.127027       1 controller.go:126] OpenAPI AggregationController: action for item v1beta1.metrics.k8s.io: Rate Limited Requeue.
+I1205 06:54:14.646437       1 controller.go:616] quota admission added evaluator for: networkserviceendpoints.networkservicemesh.io
+E1205 06:54:31.439893       1 available_controller.go:524] v1beta1.metrics.k8s.io failed with: failing or missing response from https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1: Get "https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1": dial tcp 10.96.243.49:443: connect: connection refused
+E1205 06:54:31.440691       1 available_controller.go:524] v1beta1.metrics.k8s.io failed with: failing or missing response from https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1: Get "https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1": dial tcp 10.96.243.49:443: connect: connection refused
+E1205 06:54:31.445895       1 available_controller.go:524] v1beta1.metrics.k8s.io failed with: failing or missing response from https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1: Get "https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1": dial tcp 10.96.243.49:443: connect: connection refused
+E1205 06:54:31.468082       1 available_controller.go:524] v1beta1.metrics.k8s.io failed with: failing or missing response from https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1: Get "https://10.96.243.49:443/apis/metrics.k8s.io/v1beta1": dial tcp 10.96.243.49:443: connect: connection refused
+I1205 06:55:14.405034       1 trace.go:205] Trace[556448464]: "Update" url:/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/kube-controller-manager,user-agent:kube-controller-manager/v1.25.3 (linux/amd64) kubernetes/434bfd8/leader-election,audit-id:7c9890a7-c6df-486b-a206-a9b9d849fb4d,client:172.18.0.5,accept:application/vnd.kubernetes.protobuf, */*,protocol:HTTP/2.0 (05-Dec-2022 06:55:13.883) (total time: 521ms):
+Trace[556448464]: ---"Write to database call finished" len:446,err:<nil> 317ms (06:55:14.201)
+Trace[556448464]: ---"Writing http response done" 203ms (06:55:14.404)
+Trace[556448464]: [521.624554ms] [521.624554ms] END
+I1205 07:17:45.280087       1 trace.go:205] Trace[1882351483]: "Get" url:/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/kube-controller-manager,user-agent:kube-controller-manager/v1.25.3 (linux/amd64) kubernetes/434bfd8/leader-election,audit-id:83967e67-6f41-4ec7-9836-ee2f8f0e9e02,client:172.18.0.5,accept:application/vnd.kubernetes.protobuf, */*,protocol:HTTP/2.0 (05-Dec-2022 07:17:44.693) (total time: 585ms):
+Trace[1882351483]: ---"About to write a response" 585ms (07:17:45.279)
+Trace[1882351483]: [585.824988ms] [585.824988ms] END
+==== END logs for container kube-apiserver of pod kube-system/kube-apiserver-kind-2-control-plane ====

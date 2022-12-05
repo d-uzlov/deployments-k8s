@@ -1,0 +1,1083 @@
+---
+apiVersion: v1
+items:
+- metadata:
+    creationTimestamp: "2022-12-05T06:52:59Z"
+    generateName: admission-webhook-k8s-6664486479-
+    labels:
+      app: admission-webhook-k8s
+      pod-template-hash: "6664486479"
+    name: admission-webhook-k8s-6664486479-jxdnz
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: admission-webhook-k8s-6664486479
+      uid: 8e5cfb72-5217-4c4d-a1b6-507170140f37
+    resourceVersion: "1024"
+    uid: ffb8c17a-e3fe-4cce-bc42-545924f75374
+  spec:
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_SERVICE_NAME
+        value: admission-webhook-svc
+      - name: NSM_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: NSM_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: NSM_ANNOTATION
+        value: networkservicemesh.io
+      - name: NSM_CONTAINER_IMAGES
+        value: ghcr.io/networkservicemesh/ci/cmd-nsc:b5ab50c
+      - name: NSM_INIT_CONTAINER_IMAGES
+        value: ghcr.io/networkservicemesh/ci/cmd-nsc-init:756f69a
+      - name: NSM_LABELS
+        value: spiffe.io/spiffe-id:true
+      - name: NSM_ENVS
+        value: NSM_LOG_LEVEL=TRACE
+      image: ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s:56d3ab8
+      imagePullPolicy: IfNotPresent
+      name: admission-webhook-k8s
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /ready
+          port: 443
+          scheme: HTTPS
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m4twz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: admission-webhook-sa
+    serviceAccountName: admission-webhook-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-m4twz
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:52:59Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:52:59Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://d34a362f065b3cd56972e90d03317e46894354a14d4e7f27d615ccdf4b4a274b
+      image: ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s:56d3ab8
+      imageID: ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s@sha256:aef19cc26dbe736abc15b6a558b606858f9d49c759acb45d6da77a2ff856a974
+      lastState: {}
+      name: admission-webhook-k8s
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:47Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 10.244.0.7
+    podIPs:
+    - ip: 10.244.0.7
+    qosClass: BestEffort
+    startTime: "2022-12-05T06:52:59Z"
+- metadata:
+    creationTimestamp: "2022-12-05T06:53:00Z"
+    generateName: forwarder-vpp-
+    labels:
+      app: forwarder-vpp
+      controller-revision-hash: 644b69ff8d
+      pod-template-generation: "1"
+      spiffe.io/spiffe-id: "true"
+    name: forwarder-vpp-zj2bf
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: forwarder-vpp
+      uid: acc95cb4-437e-47f6-b9e0-63d72234b4a5
+    resourceVersion: "1012"
+    uid: d4c1ca48-0d6a-4f07-a084-08c74fdc1236
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - kind-2-control-plane
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      - name: NSM_TUNNEL_IP
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.podIP
+      - name: NSM_CONNECT_TO
+        value: unix:///var/lib/networkservicemesh/nsm.io.sock
+      - name: NSM_LISTEN_ON
+        value: unix:///listen.on.sock
+      - name: NSM_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:29d1661
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///listen.on.sock
+        failureThreshold: 25
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 2
+      name: forwarder-vpp
+      readinessProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///listen.on.sock
+        failureThreshold: 120
+        initialDelaySeconds: 1
+        periodSeconds: 1
+        successThreshold: 1
+        timeoutSeconds: 2
+      resources:
+        limits:
+          cpu: 525m
+          memory: 500Mi
+        requests:
+          cpu: 150m
+          memory: 500Mi
+      securityContext:
+        privileged: true
+      startupProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///listen.on.sock
+        failureThreshold: 25
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 1
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+        readOnly: true
+      - mountPath: /var/lib/networkservicemesh
+        name: nsm-socket
+      - mountPath: /var/lib/kubelet
+        name: kubelet-socket
+      - mountPath: /host/sys/fs/cgroup
+        name: cgroup
+      - mountPath: /host/dev/vfio
+        name: vfio
+      - mountPath: /var/run/vpp/external
+        name: vpp
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xcnkc
+        readOnly: true
+    dnsPolicy: ClusterFirstWithHostNet
+    enableServiceLinks: true
+    hostNetwork: true
+    hostPID: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - hostPath:
+        path: /var/lib/kubelet
+        type: Directory
+      name: kubelet-socket
+    - hostPath:
+        path: /sys/fs/cgroup
+        type: Directory
+      name: cgroup
+    - hostPath:
+        path: /dev/vfio
+        type: DirectoryOrCreate
+      name: vfio
+    - hostPath:
+        path: /var/run/vpp
+        type: DirectoryOrCreate
+      name: vpp
+    - name: kube-api-access-xcnkc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:46Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:46Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://6309b34ffa9325798fbaa3af6b2f58fcdde120c3ccf3dc3b59f0a7454a0d1a17
+      image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:29d1661
+      imageID: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp@sha256:450b457ea5bb1064b61ece292a8df924d71362a1f2dc73bfaa9a222235d6768c
+      lastState: {}
+      name: forwarder-vpp
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:41Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 172.18.0.5
+    podIPs:
+    - ip: 172.18.0.5
+    qosClass: Burstable
+    startTime: "2022-12-05T06:53:00Z"
+- metadata:
+    creationTimestamp: "2022-12-05T06:53:00Z"
+    generateName: nsmgr-
+    labels:
+      app: nsmgr
+      controller-revision-hash: 5fdfc4b69d
+      pod-template-generation: "1"
+      spiffe.io/spiffe-id: "true"
+    name: nsmgr-25hdp
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: nsmgr
+      uid: 7ca81751-ff95-484a-98bc-0eceeabaa909
+    resourceVersion: "1120"
+    uid: 318e980a-94db-4f31-987c-ff20edd55450
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - kind-2-control-plane
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      - name: NSM_REGISTRY_URL
+        value: registry:5002
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.podIP
+      - name: NSM_LISTEN_ON
+        value: unix:///var/lib/networkservicemesh/nsm.io.sock,tcp://[$(POD_IP)]:5001
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: ghcr.io/networkservicemesh/ci/cmd-nsmgr:2a714f3
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+        failureThreshold: 25
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 2
+      name: nsmgr
+      ports:
+      - containerPort: 5001
+        hostPort: 5001
+        protocol: TCP
+      readinessProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+        failureThreshold: 120
+        initialDelaySeconds: 1
+        periodSeconds: 1
+        successThreshold: 1
+        timeoutSeconds: 2
+      resources:
+        limits:
+          cpu: 400m
+          memory: 200Mi
+        requests:
+          cpu: 200m
+          memory: 100Mi
+      startupProbe:
+        exec:
+          command:
+          - /bin/grpc-health-probe
+          - -spiffe
+          - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+        failureThreshold: 25
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 1
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+        readOnly: true
+      - mountPath: /var/lib/networkservicemesh
+        name: nsm-socket
+      - mountPath: /var/lib/networkservicemesh/config/
+        name: exclude-prefixes-volume
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cf6cb
+        readOnly: true
+    - env:
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      image: ghcr.io/networkservicemesh/ci/cmd-exclude-prefixes-k8s:fb943ec
+      imagePullPolicy: IfNotPresent
+      name: exclude-prefixes
+      resources:
+        limits:
+          cpu: 75m
+          memory: 40Mi
+        requests:
+          cpu: 75m
+          memory: 40Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/networkservicemesh/config/
+        name: exclude-prefixes-volume
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cf6cb
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: nsmgr-sa
+    serviceAccountName: nsmgr-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - emptyDir: {}
+      name: exclude-prefixes-volume
+    - name: kube-api-access-cf6cb
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:54:17Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:54:17Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://353df6540b845da57a8a9c128900bad16dd72dd0bb45e6eb4dead43f19e3f15f
+      image: ghcr.io/networkservicemesh/ci/cmd-exclude-prefixes-k8s:fb943ec
+      imageID: ghcr.io/networkservicemesh/ci/cmd-exclude-prefixes-k8s@sha256:944153b42c10ba6120e3e6d4f38914ded19fe7e0dfab87b0a7f8fc2b1f1287d3
+      lastState: {}
+      name: exclude-prefixes
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:54:13Z"
+    - containerID: containerd://891a766f13eeecfa59e740072414bc94c9f9eae86da85c36b6d6aaf07739ba42
+      image: ghcr.io/networkservicemesh/ci/cmd-nsmgr:2a714f3
+      imageID: ghcr.io/networkservicemesh/ci/cmd-nsmgr@sha256:90da25a41020b11fec9b6360f21e8b9f100d293d3903529b476fb7e99c903358
+      lastState: {}
+      name: nsmgr
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:57Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 10.244.0.11
+    podIPs:
+    - ip: 10.244.0.11
+    qosClass: Burstable
+    startTime: "2022-12-05T06:53:00Z"
+- metadata:
+    annotations:
+      spiffe.io/federatesWith: nsm.cluster1
+    creationTimestamp: "2022-12-05T06:52:59Z"
+    generateName: nsmgr-proxy-697c66994d-
+    labels:
+      app: nsmgr-proxy
+      pod-template-hash: 697c66994d
+      spiffe.io/spiffe-id: "true"
+    name: nsmgr-proxy-697c66994d-t48nz
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: nsmgr-proxy-697c66994d
+      uid: b6093fc4-90a3-4816-b464-8c1baec7071c
+    resourceVersion: "1084"
+    uid: 3753a4c6-5958-462f-9f91-e7f5eb75639a
+  spec:
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      - name: NSM_REGISTRY_URL
+        value: registry:5002
+      - name: NSM_REGISTRY_PROXY_URL
+        value: registry-proxy:5005
+      - name: NSM_LISTEN_ON
+        value: tcp://:5004
+      - name: NSM_IP
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.podIP
+      - name: NSM_MAP_IP_FILE_PATH
+        value: /etc/mapip/config.yaml
+      image: ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy:309ae69
+      imagePullPolicy: IfNotPresent
+      name: nsmgr-proxy
+      ports:
+      - containerPort: 5004
+        hostPort: 5004
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 400m
+          memory: 100Mi
+        requests:
+          cpu: 200m
+          memory: 100Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+        readOnly: true
+      - mountPath: /etc/mapip
+        name: mapip-volume
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hhpxm
+        readOnly: true
+    - env:
+      - name: NSM_OUTPUTPATH
+        value: /etc/mapip/config.yaml
+      - name: NSM_NODENAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s:c6087be
+      imagePullPolicy: IfNotPresent
+      name: map-ip-k8s
+      resources:
+        limits:
+          cpu: 50m
+          memory: 25Mi
+        requests:
+          cpu: 50m
+          memory: 25Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/mapip
+        name: mapip-volume
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hhpxm
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: nsmgr-proxy-sa
+    serviceAccountName: nsmgr-proxy-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - emptyDir: {}
+      name: mapip-volume
+    - name: kube-api-access-hhpxm
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:52:59Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:54:03Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:54:03Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:52:59Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://305b0dbd08d68589b2dd371754581a3356aaff7268b8d91528b0205b098d0cf3
+      image: ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s:c6087be
+      imageID: ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s@sha256:e84dd0370db81d864f6f022f1b6d09f79f47527623563c1d697a78eecd9e612e
+      lastState: {}
+      name: map-ip-k8s
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:54:03Z"
+    - containerID: containerd://7251d2b93c86790fc5a9f1291c7d1808b8d0beb232c65da8d6b847991eba61df
+      image: ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy:309ae69
+      imageID: ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy@sha256:4771e429944ce770c342dd8be82003a461941d82e271aa36018e9a415baafa75
+      lastState: {}
+      name: nsmgr-proxy
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:10Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 10.244.0.8
+    podIPs:
+    - ip: 10.244.0.8
+    qosClass: Burstable
+    startTime: "2022-12-05T06:52:59Z"
+- metadata:
+    annotations:
+      spiffe.io/federatesWith: nsm.cluster1
+    creationTimestamp: "2022-12-05T06:52:59Z"
+    generateName: registry-k8s-599f555cf-
+    labels:
+      app: registry
+      pod-template-hash: 599f555cf
+      spiffe.io/spiffe-id: "true"
+    name: registry-k8s-599f555cf-dnsnz
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: registry-k8s-599f555cf
+      uid: 8d64e211-6570-4869-9e07-d26c24f23ffc
+    resourceVersion: "955"
+    uid: 21f17276-9959-419b-8cfe-5fb99f7fa029
+  spec:
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: REGISTRY_K8S_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: REGISTRY_K8S_LOG_LEVEL
+        value: TRACE
+      - name: REGISTRY_K8S_LISTEN_ON
+        value: tcp://:5002
+      - name: REGISTRY_K8S_PROXY_REGISTRY_URL
+        value: nsmgr-proxy:5004
+      image: ghcr.io/networkservicemesh/ci/cmd-registry-k8s:70f2ef2
+      imagePullPolicy: IfNotPresent
+      name: registry
+      ports:
+      - containerPort: 5002
+        hostPort: 5002
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 200m
+          memory: 40Mi
+        requests:
+          cpu: 100m
+          memory: 40Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-c6rpl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: registry-k8s-sa
+    serviceAccountName: registry-k8s-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - name: kube-api-access-c6rpl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:17Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:17Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://37aa161312101dbb3ed28aee4d00595cfa24d4b78c276f7ac02165b39544a035
+      image: ghcr.io/networkservicemesh/ci/cmd-registry-k8s:70f2ef2
+      imageID: ghcr.io/networkservicemesh/ci/cmd-registry-k8s@sha256:b843c288c6d7f6068eccf18b8bd5192802174fe7cb807ac9ca0250ac32a90b1a
+      lastState: {}
+      name: registry
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:17Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 10.244.0.9
+    podIPs:
+    - ip: 10.244.0.9
+    qosClass: Burstable
+    startTime: "2022-12-05T06:53:00Z"
+- metadata:
+    annotations:
+      spiffe.io/federatesWith: nsm.cluster1
+    creationTimestamp: "2022-12-05T06:53:00Z"
+    generateName: registry-proxy-7fbbf5cfd7-
+    labels:
+      app: registry-proxy
+      pod-template-hash: 7fbbf5cfd7
+      spiffe.io/spiffe-id: "true"
+    name: registry-proxy-7fbbf5cfd7-tz8c8
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: registry-proxy-7fbbf5cfd7
+      uid: 5495bbf5-a49a-4592-aa1a-aaf2497d2a6c
+    resourceVersion: "972"
+    uid: d6dc347f-3a87-4e93-a77e-936d2b323e20
+  spec:
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_LISTEN_ON
+        value: tcp://:5005
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      image: ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns:eee664f
+      imagePullPolicy: IfNotPresent
+      name: registry
+      ports:
+      - containerPort: 5005
+        hostPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 200m
+          memory: 40Mi
+        requests:
+          cpu: 100m
+          memory: 40Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gj557
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-2-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - name: kube-api-access-gj557
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:23Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:23Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-05T06:53:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://3fb9609c5bd73d2a9bc35f8495c3dbb918a99cf03786936169a8c8ec5867d5a5
+      image: ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns:eee664f
+      imageID: ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns@sha256:8a1d0761007ade91ffdf4a9ce80d0620ea1bd5e77a144c09f5dc748148e3a4b0
+      lastState: {}
+      name: registry
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-05T06:53:23Z"
+    hostIP: 172.18.0.5
+    phase: Running
+    podIP: 10.244.0.10
+    podIPs:
+    - ip: 10.244.0.10
+    qosClass: Burstable
+    startTime: "2022-12-05T06:53:00Z"
+kind: PodList
+metadata:
+  resourceVersion: "9748"

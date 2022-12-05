@@ -1,0 +1,13 @@
+==== START logs for container registry of pod nsm-system/registry-proxy-dd4fdd9fd-d777h ====
+Dec  5 06:52:56.619[36m [INFO] [cmd:/bin/registry-proxy-dns] [0mSetting env variable DLV_LISTEN_REGISTRY_PROXY_DNS to a valid dlv '--listen' value will cause the dlv debugger to execute this binary and listen as directed.
+Dec  5 06:52:56.620[36m [INFO] [cmd:/bin/registry-proxy-dns] [0mConfig: &main.Config{ListenOn:[]url.URL{url.URL{Scheme:"tcp", Opaque:"", User:(*url.Userinfo)(nil), Host:":5005", Path:"", RawPath:"", ForceQuery:false, RawQuery:"", Fragment:"", RawFragment:""}}, LogLevel:"TRACE", OpenTelemetryEndpoint:"otel-collector.observability.svc.cluster.local:4317"}
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE                           DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_LISTEN_ON                Comma-separated list of URL    unix:///listen.on.socket                                           url to listen on.
+NSM_LOG_LEVEL                String                         INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String                         otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+Dec  5 06:52:57.663[36m [INFO] [0mSVID: "spiffe://nsm.cluster1/ns/nsm-system/pod/registry-proxy-dd4fdd9fd-d777h"
+Dec  5 06:52:57.664[36m [INFO] [cmd:/bin/registry-proxy-dns] [0mStartup completed in 1.044437416s
+==== END logs for container registry of pod nsm-system/registry-proxy-dd4fdd9fd-d777h ====

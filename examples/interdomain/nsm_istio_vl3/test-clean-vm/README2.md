@@ -276,3 +276,16 @@ Check gateway logs:
 2022-12-05T07:43:45.215777Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
 
 Seems like ingress gateway is not used at all.
+
+
+Patch eastwestgateway and get tcpdump from there:
+k1 -n istio-system patch deployments.apps istio-eastwestgateway --patch-file istio-eastwest-patch.yaml
+
+k1 -n istio-system exec deployments/istio-eastwestgateway -c istio-proxy -- sudo tcpdump -i any -U -w - >2-eastwest-any.pcap &
+sleep 1
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello --max-time 1
+sleep 1
+kill -2 $!
+k1 -n istio-system logs pods/istio-eastwestgateway-64b86b4c46-cz4dc | tail
+
+There are no new logs in pods/istio-eastwestgateway-64b86b4c46-cz4dc

@@ -1,0 +1,398 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: admission-webhook-k8s
+      pod-template-hash: "6664486479"
+    name: admission-webhook-k8s-6664486479
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: admission-webhook-k8s
+      uid: ddee9dc3-ad85-46a9-aeff-e1bae6e26213
+    resourceVersion: "1185"
+    uid: e99b6e49-196d-499e-a212-144aa01dcac0
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: admission-webhook-k8s
+        pod-template-hash: "6664486479"
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: admission-webhook-k8s
+          pod-template-hash: "6664486479"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_SERVICE_NAME
+            value: admission-webhook-svc
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: NSM_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: NSM_ANNOTATION
+            value: networkservicemesh.io
+          - name: NSM_CONTAINER_IMAGES
+            value: ghcr.io/networkservicemesh/ci/cmd-nsc:b5ab50c
+          - name: NSM_INIT_CONTAINER_IMAGES
+            value: ghcr.io/networkservicemesh/ci/cmd-nsc-init:756f69a
+          - name: NSM_LABELS
+            value: spiffe.io/spiffe-id:true
+          - name: NSM_ENVS
+            value: NSM_LOG_LEVEL=TRACE
+          image: ghcr.io/networkservicemesh/ci/cmd-admission-webhook-k8s:56d3ab8
+          imagePullPolicy: IfNotPresent
+          name: admission-webhook-k8s
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /ready
+              port: 443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: admission-webhook-sa
+        serviceAccountName: admission-webhook-sa
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: nsmgr-proxy
+      pod-template-hash: f6f56b957
+      spiffe.io/spiffe-id: "true"
+    name: nsmgr-proxy-f6f56b957
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: nsmgr-proxy
+      uid: 334366d9-63fc-44e4-bbee-c872391d270d
+    resourceVersion: "1313"
+    uid: 54a0fa67-8593-494e-bdf7-69b40e1f81e1
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: nsmgr-proxy
+        pod-template-hash: f6f56b957
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: nsmgr-proxy
+          pod-template-hash: f6f56b957
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          - name: NSM_REGISTRY_URL
+            value: registry:5002
+          - name: NSM_REGISTRY_PROXY_URL
+            value: registry-proxy:5005
+          - name: NSM_LISTEN_ON
+            value: tcp://:5004
+          - name: NSM_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: NSM_MAP_IP_FILE_PATH
+            value: /etc/mapip/config.yaml
+          image: ghcr.io/networkservicemesh/ci/cmd-nsmgr-proxy:309ae69
+          imagePullPolicy: IfNotPresent
+          name: nsmgr-proxy
+          ports:
+          - containerPort: 5004
+            hostPort: 5004
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 400m
+              memory: 100Mi
+            requests:
+              cpu: 200m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+            readOnly: true
+          - mountPath: /etc/mapip
+            name: mapip-volume
+        - env:
+          - name: NSM_OUTPUTPATH
+            value: /etc/mapip/config.yaml
+          - name: NSM_NODENAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: ghcr.io/networkservicemesh/ci/cmd-map-ip-k8s:c6087be
+          imagePullPolicy: IfNotPresent
+          name: map-ip-k8s
+          resources:
+            limits:
+              cpu: 50m
+              memory: 25Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/mapip
+            name: mapip-volume
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: nsmgr-proxy-sa
+        serviceAccountName: nsmgr-proxy-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+        - emptyDir: {}
+          name: mapip-volume
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: registry
+      pod-template-hash: 7689d6659d
+      spiffe.io/spiffe-id: "true"
+    name: registry-k8s-7689d6659d
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: registry-k8s
+      uid: 265b86c7-4917-4955-8ac2-a5b41a3c3f14
+    resourceVersion: "1194"
+    uid: 278b548a-c422-4150-b6be-9c6a2f17a192
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: registry
+        pod-template-hash: 7689d6659d
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: registry
+          pod-template-hash: 7689d6659d
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: REGISTRY_K8S_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: REGISTRY_K8S_LOG_LEVEL
+            value: TRACE
+          - name: REGISTRY_K8S_LISTEN_ON
+            value: tcp://:5002
+          - name: REGISTRY_K8S_PROXY_REGISTRY_URL
+            value: nsmgr-proxy:5004
+          image: ghcr.io/networkservicemesh/ci/cmd-registry-k8s:70f2ef2
+          imagePullPolicy: IfNotPresent
+          name: registry
+          ports:
+          - containerPort: 5002
+            hostPort: 5002
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 40Mi
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: registry-k8s-sa
+        serviceAccountName: registry-k8s-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-05T06:52:39Z"
+    generation: 1
+    labels:
+      app: registry-proxy
+      pod-template-hash: dd4fdd9fd
+      spiffe.io/spiffe-id: "true"
+    name: registry-proxy-dd4fdd9fd
+    namespace: nsm-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: registry-proxy
+      uid: 72769c31-cb4a-4cc3-9e81-fdd540b01452
+    resourceVersion: "1211"
+    uid: a3822f8b-67fc-442c-9854-68f39f400ce2
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: registry-proxy
+        pod-template-hash: dd4fdd9fd
+    template:
+      metadata:
+        annotations:
+          spiffe.io/federatesWith: nsm.cluster2
+        creationTimestamp: null
+        labels:
+          app: registry-proxy
+          pod-template-hash: dd4fdd9fd
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_LISTEN_ON
+            value: tcp://:5005
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          image: ghcr.io/networkservicemesh/ci/cmd-registry-proxy-dns:eee664f
+          imagePullPolicy: IfNotPresent
+          name: registry
+          ports:
+          - containerPort: 5005
+            hostPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 40Mi
+            requests:
+              cpu: 100m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+kind: ReplicaSetList
+metadata:
+  resourceVersion: "15788"

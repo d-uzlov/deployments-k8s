@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-05T07:58:36Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{spire-server}
+    kind: Pod
+    name: spire-server-0
+    namespace: spire
+    resourceVersion: "843"
+    uid: 6f77a4c9-a73f-46d3-a2c4-265e9c76a58f
+  lastTimestamp: "2022-12-05T07:58:36Z"
+  message: 'Readiness probe failed: command "/opt/spire/bin/spire-server healthcheck
+    --shallow" timed out'
+  metadata:
+    creationTimestamp: "2022-12-05T07:58:36Z"
+    name: spire-server-0.172dd6b683460d91
+    namespace: spire
+    resourceVersion: "9206"
+    uid: 55ed6f46-9c64-4a33-9bae-5719e6908ded
+  reason: Unhealthy
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-worker2
+  type: Warning
+kind: EventList
+metadata:
+  resourceVersion: "15803"

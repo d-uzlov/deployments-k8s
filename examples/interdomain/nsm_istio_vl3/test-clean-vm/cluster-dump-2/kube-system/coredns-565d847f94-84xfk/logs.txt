@@ -1,0 +1,10 @@
+==== START logs for container coredns of pod kube-system/coredns-565d847f94-84xfk ====
+.:53
+[INFO] plugin/reload: Running configuration SHA512 = 591cf328cccc12bc490481273e738df59329c62c0b729d94e8b61db9961c2fa5f046dd37f1cf888b953814040d180f52594972691cd6ff41be96639138a43908
+CoreDNS-1.9.3
+linux/amd64, go1.18.2, 45b0a11
+[INFO] Reloading
+[INFO] plugin/health: Going into lameduck mode for 5s
+[INFO] plugin/reload: Running configuration SHA512 = c342ff2cc1a11835939f9b2be0e5cadc6c708d43f4509161e888fd02d1c41a2380a568c6cb0f1b6c933352e6f4365b3b25414d1d309700b0382b66bcb9aef8bd
+[INFO] Reloading complete
+==== END logs for container coredns of pod kube-system/coredns-565d847f94-84xfk ====

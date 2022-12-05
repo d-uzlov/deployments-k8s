@@ -1,0 +1,14 @@
+==== START logs for container controller of pod metallb-system/controller-6658b8446c-tsw6g ====
+{"branch":"HEAD","caller":"level.go:63","commit":"v0.12.1","goversion":"gc / go1.16.14 / amd64","level":"info","msg":"MetalLB controller starting version 0.12.1 (commit v0.12.1, branch HEAD)","ts":"2022-12-05T06:51:12.30411031Z","version":"0.12.1"}
+{"caller":"level.go:63","level":"info","msg":"secret succesfully created","op":"CreateMlSecret","ts":"2022-12-05T06:51:12.32528699Z"}
+{"caller":"level.go:63","configmap":"metallb-system/config","event":"configLoaded","level":"info","msg":"config (re)loaded","ts":"2022-12-05T06:51:12.426664559Z"}
+{"caller":"level.go:63","event":"stateSynced","level":"info","msg":"controller synced, can allocate IPs now","ts":"2022-12-05T06:51:12.427070544Z"}
+{"caller":"level.go:63","event":"ipAllocated","ip":["172.18.202.0"],"level":"info","msg":"IP address assigned by controller","service":"kube-system/exposed-kube-dns","ts":"2022-12-05T06:51:37.48085193Z"}
+{"caller":"level.go:63","event":"serviceUpdated","level":"info","msg":"updated service object","service":"kube-system/exposed-kube-dns","ts":"2022-12-05T06:51:37.498607048Z"}
+{"caller":"level.go:63","event":"ipAllocated","ip":["172.18.202.1"],"level":"info","msg":"IP address assigned by controller","service":"spire/spire-server","ts":"2022-12-05T06:51:49.572675538Z"}
+{"caller":"level.go:63","event":"serviceUpdated","level":"info","msg":"updated service object","service":"spire/spire-server","ts":"2022-12-05T06:51:49.591500965Z"}
+{"caller":"level.go:63","event":"ipAllocated","ip":["172.18.202.2"],"level":"info","msg":"IP address assigned by controller","service":"nsm-system/nsmgr-proxy","ts":"2022-12-05T06:52:59.582981257Z"}
+{"caller":"level.go:63","event":"serviceUpdated","level":"info","msg":"updated service object","service":"nsm-system/nsmgr-proxy","ts":"2022-12-05T06:52:59.61769045Z"}
+{"caller":"level.go:63","event":"ipAllocated","ip":["172.18.202.3"],"level":"info","msg":"IP address assigned by controller","service":"nsm-system/registry","ts":"2022-12-05T06:52:59.659536596Z"}
+{"caller":"level.go:63","event":"serviceUpdated","level":"info","msg":"updated service object","service":"nsm-system/registry","ts":"2022-12-05T06:52:59.709965848Z"}
+==== END logs for container controller of pod metallb-system/controller-6658b8446c-tsw6g ====

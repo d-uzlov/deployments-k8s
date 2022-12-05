@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-05T08:02:01Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{forwarder-vpp}
+    kind: Pod
+    name: forwarder-vpp-qfmzk
+    namespace: nsm-system
+    resourceVersion: "1114"
+    uid: faeff68c-8f32-49af-b046-8f5d172b217b
+  lastTimestamp: "2022-12-05T08:02:01Z"
+  message: |
+    Liveness probe failed: failed to initialize tls credentials with spiffe. error=context deadline exceeded
+  metadata:
+    creationTimestamp: "2022-12-05T08:02:01Z"
+    name: forwarder-vpp-qfmzk.172dd6e64fe22127
+    namespace: nsm-system
+    resourceVersion: "9644"
+    uid: 5967fc19-d5fe-4100-be9b-4eb9d5a40753
+  reason: Unhealthy
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-worker2
+  type: Warning
+kind: EventList
+metadata:
+  resourceVersion: "15785"
