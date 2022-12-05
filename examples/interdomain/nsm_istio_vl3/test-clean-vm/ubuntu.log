@@ -1,28 +1,28 @@
-2022-12-04T22:33:58.984098Z	info	FLAG: --concurrency="0"
-2022-12-04T22:33:58.984145Z	info	FLAG: --domain=""
-2022-12-04T22:33:58.984151Z	info	FLAG: --help="false"
-2022-12-04T22:33:58.984155Z	info	FLAG: --log_as_json="false"
-2022-12-04T22:33:58.984157Z	info	FLAG: --log_caller=""
-2022-12-04T22:33:58.984160Z	info	FLAG: --log_output_level="default:info"
-2022-12-04T22:33:58.984163Z	info	FLAG: --log_rotate=""
-2022-12-04T22:33:58.984166Z	info	FLAG: --log_rotate_max_age="30"
-2022-12-04T22:33:58.984169Z	info	FLAG: --log_rotate_max_backups="1000"
-2022-12-04T22:33:58.984172Z	info	FLAG: --log_rotate_max_size="104857600"
-2022-12-04T22:33:58.984174Z	info	FLAG: --log_stacktrace_level="default:none"
-2022-12-04T22:33:58.984182Z	info	FLAG: --log_target="[stdout]"
-2022-12-04T22:33:58.984187Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
-2022-12-04T22:33:58.984190Z	info	FLAG: --outlierLogPath=""
-2022-12-04T22:33:58.984193Z	info	FLAG: --proxyComponentLogLevel=""
-2022-12-04T22:33:58.984196Z	info	FLAG: --proxyLogLevel="warning,misc:error"
-2022-12-04T22:33:58.984198Z	info	FLAG: --serviceCluster="istio-proxy"
-2022-12-04T22:33:58.984201Z	info	FLAG: --stsPort="0"
-2022-12-04T22:33:58.984204Z	info	FLAG: --templateFile=""
-2022-12-04T22:33:58.984207Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
-2022-12-04T22:33:58.984216Z	info	FLAG: --vklog="0"
-2022-12-04T22:33:58.984223Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
-2022-12-04T22:33:58.986071Z	info	Maximum file descriptors (ulimit -n): 1024
-2022-12-04T22:33:58.986224Z	info	Proxy role	ips=[10.244.0.5] type=sidecar id=ubuntu-deployment-696fdf7b4-jf5pq.vm-ns domain=vm-ns.svc.cluster.local
-2022-12-04T22:33:58.986280Z	info	Apply mesh config from file defaultConfig:
+2022-12-05T07:14:23.690187Z	info	FLAG: --concurrency="0"
+2022-12-05T07:14:23.690230Z	info	FLAG: --domain=""
+2022-12-05T07:14:23.690236Z	info	FLAG: --help="false"
+2022-12-05T07:14:23.690239Z	info	FLAG: --log_as_json="false"
+2022-12-05T07:14:23.690242Z	info	FLAG: --log_caller=""
+2022-12-05T07:14:23.690245Z	info	FLAG: --log_output_level="dns:debug"
+2022-12-05T07:14:23.690248Z	info	FLAG: --log_rotate=""
+2022-12-05T07:14:23.690251Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-05T07:14:23.690254Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-05T07:14:23.690257Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-05T07:14:23.690260Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-05T07:14:23.690357Z	info	FLAG: --log_target="[stdout]"
+2022-12-05T07:14:23.690368Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-05T07:14:23.690371Z	info	FLAG: --outlierLogPath=""
+2022-12-05T07:14:23.690374Z	info	FLAG: --proxyComponentLogLevel=""
+2022-12-05T07:14:23.690377Z	info	FLAG: --proxyLogLevel="trace"
+2022-12-05T07:14:23.690380Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-05T07:14:23.690383Z	info	FLAG: --stsPort="0"
+2022-12-05T07:14:23.690385Z	info	FLAG: --templateFile=""
+2022-12-05T07:14:23.690388Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-05T07:14:23.690401Z	info	FLAG: --vklog="0"
+2022-12-05T07:14:23.690408Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-05T07:14:23.692251Z	info	Maximum file descriptors (ulimit -n): 1024
+2022-12-05T07:14:23.692464Z	info	Proxy role	ips=[10.244.0.13] type=sidecar id=ubuntu-deployment-696fdf7b4-nsdhk.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-05T07:14:23.692529Z	info	Apply mesh config from file defaultConfig:
   discoveryAddress: istiod.istio-system.svc:15012
   meshId: mesh1
   proxyMetadata:
@@ -41,11 +41,11 @@
     zipkin:
       address: zipkin.istio-system:9411
 
-2022-12-04T22:33:58.988299Z	info	Apply proxy config from env 
+2022-12-05T07:14:23.694320Z	info	Apply proxy config from env 
 serviceCluster: vm-app.vm-ns
 controlPlaneAuthPolicy: MUTUAL_TLS
 
-2022-12-04T22:33:58.988798Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+2022-12-05T07:14:23.694847Z	info	Effective config: binaryPath: /usr/local/bin/envoy
 concurrency: 2
 configPath: ./etc/istio/proxy
 controlPlaneAuthPolicy: MUTUAL_TLS
@@ -74,286 +74,59 @@ tracing:
   zipkin:
     address: zipkin.istio-system:9411
 
-2022-12-04T22:33:58.988814Z	info	JWT policy is third-party-jwt
-2022-12-04T22:33:58.988818Z	info	using credential fetcher of JWT type in cluster.local trust domain
-2022-12-04T22:33:59.089803Z	info	Opening status port 15020
-2022-12-04T22:33:59.089894Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
-2022-12-04T22:33:59.090419Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
-2022-12-04T22:33:59.090477Z	info	Workload SDS socket not found. Starting Istio SDS Server
-2022-12-04T22:33:59.090495Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
-2022-12-04T22:33:59.090509Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
-2022-12-04T22:33:59.090604Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
-2022-12-04T22:33:59.098143Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
-2022-12-04T22:33:59.109876Z	info	ads	All caches have been synced up in 132.529714ms, marking server ready
-2022-12-04T22:33:59.110282Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
-2022-12-04T22:33:59.110336Z	info	sds	Starting SDS grpc server
-2022-12-04T22:33:59.110833Z	info	starting Http service at 127.0.0.1:15004
-2022-12-04T22:33:59.111890Z	info	Pilot SAN: [istiod.istio-system.svc]
-2022-12-04T22:33:59.114186Z	info	Starting proxy agent
-2022-12-04T22:33:59.114236Z	info	starting
-2022-12-04T22:33:59.114259Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
-2022-12-04T22:33:59.202039Z	warn	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
-2022-12-04T22:33:59.206280Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
-2022-12-04T22:33:59.226741Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-1
-2022-12-04T22:33:59.226776Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-2
-2022-12-04T22:33:59.313656Z	info	cache	generated new workload certificate	latency=203.443265ms ttl=23h59m59.686356033s
-2022-12-04T22:33:59.313720Z	info	cache	Root cert has changed, start rotating root cert
-2022-12-04T22:33:59.313740Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
-2022-12-04T22:33:59.313933Z	info	cache	returned workload certificate from cache	ttl=23h59m59.686075154s
-2022-12-04T22:33:59.314172Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.685830857s
-2022-12-04T22:33:59.313968Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.686033285s
-2022-12-04T22:33:59.315040Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:1.1kB resource:ROOTCA
-2022-12-04T22:33:59.315065Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:4.0kB resource:default
-2022-12-04T22:33:59.315101Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.684902408s
-2022-12-04T22:34:59.777928Z	info	Agent draining Proxy
-2022-12-04T22:34:59.777920Z	info	Status server has successfully terminated
-2022-12-04T22:34:59.778312Z	error	accept tcp [::]:15020: use of closed network connection
-2022-12-04T22:34:59.779671Z	info	Graceful termination period is 5s, starting...
-2022-12-04T22:35:04.781454Z	info	Graceful termination period complete, terminating remaining proxies.
-2022-12-04T22:35:04.781543Z	warn	Aborted proxy instance
-2022-12-04T22:35:04.781557Z	warn	Aborting proxy
-2022-12-04T22:35:04.781942Z	info	Envoy aborted normally
-2022-12-04T22:35:04.781956Z	info	Agent has successfully terminated
-2022-12-04T22:35:06.326188Z	info	FLAG: --concurrency="0"
-2022-12-04T22:35:06.326219Z	info	FLAG: --domain=""
-2022-12-04T22:35:06.326225Z	info	FLAG: --help="false"
-2022-12-04T22:35:06.326228Z	info	FLAG: --log_as_json="false"
-2022-12-04T22:35:06.326231Z	info	FLAG: --log_caller=""
-2022-12-04T22:35:06.326234Z	info	FLAG: --log_output_level="default:info"
-2022-12-04T22:35:06.326237Z	info	FLAG: --log_rotate=""
-2022-12-04T22:35:06.326240Z	info	FLAG: --log_rotate_max_age="30"
-2022-12-04T22:35:06.326243Z	info	FLAG: --log_rotate_max_backups="1000"
-2022-12-04T22:35:06.326246Z	info	FLAG: --log_rotate_max_size="104857600"
-2022-12-04T22:35:06.326249Z	info	FLAG: --log_stacktrace_level="default:none"
-2022-12-04T22:35:06.326259Z	info	FLAG: --log_target="[stdout]"
-2022-12-04T22:35:06.326263Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
-2022-12-04T22:35:06.326274Z	info	FLAG: --outlierLogPath=""
-2022-12-04T22:35:06.326277Z	info	FLAG: --proxyComponentLogLevel=""
-2022-12-04T22:35:06.326280Z	info	FLAG: --proxyLogLevel="warning,misc:error"
-2022-12-04T22:35:06.326283Z	info	FLAG: --serviceCluster="istio-proxy"
-2022-12-04T22:35:06.326286Z	info	FLAG: --stsPort="0"
-2022-12-04T22:35:06.326288Z	info	FLAG: --templateFile=""
-2022-12-04T22:35:06.326291Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
-2022-12-04T22:35:06.326300Z	info	FLAG: --vklog="0"
-2022-12-04T22:35:06.326308Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
-2022-12-04T22:35:06.328072Z	info	Maximum file descriptors (ulimit -n): 1048576
-2022-12-04T22:35:06.328216Z	info	Proxy role	ips=[10.244.0.5] type=sidecar id=ubuntu-deployment-696fdf7b4-jf5pq.vm-ns domain=vm-ns.svc.cluster.local
-2022-12-04T22:35:06.328266Z	info	Apply mesh config from file defaultConfig:
-  discoveryAddress: istiod.istio-system.svc:15012
-  meshId: mesh1
-  proxyMetadata:
-    CANONICAL_REVISION: latest
-    CANONICAL_SERVICE: vm-app
-    ISTIO_META_CLUSTER_ID: Kubernetes
-    ISTIO_META_DNS_CAPTURE: "true"
-    ISTIO_META_MESH_ID: mesh1
-    ISTIO_META_NETWORK: ""
-    ISTIO_META_WORKLOAD_NAME: vm-app
-    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-    POD_NAMESPACE: vm-ns
-    SERVICE_ACCOUNT: serviceaccountvm
-    TRUST_DOMAIN: cluster.local
-  tracing:
-    zipkin:
-      address: zipkin.istio-system:9411
-
-2022-12-04T22:35:06.332374Z	info	Apply proxy config from env 
-serviceCluster: vm-app.vm-ns
-controlPlaneAuthPolicy: MUTUAL_TLS
-
-2022-12-04T22:35:06.332941Z	info	Effective config: binaryPath: /usr/local/bin/envoy
-concurrency: 2
-configPath: ./etc/istio/proxy
-controlPlaneAuthPolicy: MUTUAL_TLS
-discoveryAddress: istiod.istio-system.svc:15012
-drainDuration: 45s
-meshId: mesh1
-parentShutdownDuration: 60s
-proxyAdminPort: 15000
-proxyMetadata:
-  CANONICAL_REVISION: latest
-  CANONICAL_SERVICE: vm-app
-  ISTIO_META_CLUSTER_ID: Kubernetes
-  ISTIO_META_DNS_CAPTURE: "true"
-  ISTIO_META_MESH_ID: mesh1
-  ISTIO_META_NETWORK: ""
-  ISTIO_META_WORKLOAD_NAME: vm-app
-  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-  POD_NAMESPACE: vm-ns
-  SERVICE_ACCOUNT: serviceaccountvm
-  TRUST_DOMAIN: cluster.local
-serviceCluster: vm-app.vm-ns
-statNameLength: 189
-statusPort: 15020
-terminationDrainDuration: 5s
-tracing:
-  zipkin:
-    address: zipkin.istio-system:9411
-
-2022-12-04T22:35:06.332964Z	info	JWT policy is third-party-jwt
-2022-12-04T22:35:06.332968Z	info	using credential fetcher of JWT type in cluster.local trust domain
-2022-12-04T22:35:06.433755Z	info	Opening status port 15020
-2022-12-04T22:35:06.433908Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
-2022-12-04T22:35:06.434381Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
-2022-12-04T22:35:06.435107Z	info	Workload SDS socket not found. Starting Istio SDS Server
-2022-12-04T22:35:06.435125Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
-2022-12-04T22:35:06.435135Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
-2022-12-04T22:35:06.435198Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
-2022-12-04T22:35:06.450837Z	info	ads	All caches have been synced up in 130.966019ms, marking server ready
-2022-12-04T22:35:06.451086Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
-2022-12-04T22:35:06.451102Z	info	sds	Starting SDS grpc server
-2022-12-04T22:35:06.451600Z	info	starting Http service at 127.0.0.1:15004
-2022-12-04T22:35:06.452625Z	info	Pilot SAN: [istiod.istio-system.svc]
-2022-12-04T22:35:06.454706Z	info	Starting proxy agent
-2022-12-04T22:35:06.454755Z	info	starting
-2022-12-04T22:35:06.454780Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
-2022-12-04T22:35:06.546604Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
-2022-12-04T22:35:06.571083Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-1
-2022-12-04T22:35:06.571149Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-2
-2022-12-04T22:35:06.664758Z	info	cache	generated new workload certificate	latency=213.608301ms ttl=23h59m59.335251362s
-2022-12-04T22:35:06.664793Z	info	cache	Root cert has changed, start rotating root cert
-2022-12-04T22:35:06.664805Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
-2022-12-04T22:35:06.664934Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.335071731s
-2022-12-04T22:35:06.664990Z	info	cache	returned workload certificate from cache	ttl=23h59m59.335013201s
-2022-12-04T22:35:06.665696Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.334306557s
-2022-12-04T22:35:06.666145Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:1.1kB resource:ROOTCA
-2022-12-04T22:35:06.666196Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.333806485s
-2022-12-04T22:35:06.666467Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:4.0kB resource:default
-2022-12-04T22:35:55.532461Z	info	Agent draining Proxy
-2022-12-04T22:35:55.532530Z	info	Status server has successfully terminated
-2022-12-04T22:35:55.532784Z	error	accept tcp [::]:15020: use of closed network connection
-2022-12-04T22:35:55.534496Z	info	Graceful termination period is 5s, starting...
-2022-12-04T22:36:00.535471Z	info	Graceful termination period complete, terminating remaining proxies.
-2022-12-04T22:36:00.535553Z	warn	Aborted proxy instance
-2022-12-04T22:36:00.535570Z	warn	Aborting proxy
-2022-12-04T22:36:00.536289Z	info	Envoy aborted normally
-2022-12-04T22:36:00.536319Z	info	Agent has successfully terminated
-2022-12-04T22:36:02.007416Z	info	FLAG: --concurrency="0"
-2022-12-04T22:36:02.007450Z	info	FLAG: --domain=""
-2022-12-04T22:36:02.007456Z	info	FLAG: --help="false"
-2022-12-04T22:36:02.007459Z	info	FLAG: --log_as_json="false"
-2022-12-04T22:36:02.007462Z	info	FLAG: --log_caller=""
-2022-12-04T22:36:02.007465Z	info	FLAG: --log_output_level="dns:debug"
-2022-12-04T22:36:02.007468Z	info	FLAG: --log_rotate=""
-2022-12-04T22:36:02.007471Z	info	FLAG: --log_rotate_max_age="30"
-2022-12-04T22:36:02.007474Z	info	FLAG: --log_rotate_max_backups="1000"
-2022-12-04T22:36:02.007477Z	info	FLAG: --log_rotate_max_size="104857600"
-2022-12-04T22:36:02.007479Z	info	FLAG: --log_stacktrace_level="default:none"
-2022-12-04T22:36:02.007495Z	info	FLAG: --log_target="[stdout]"
-2022-12-04T22:36:02.007502Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
-2022-12-04T22:36:02.007505Z	info	FLAG: --outlierLogPath=""
-2022-12-04T22:36:02.007510Z	info	FLAG: --proxyComponentLogLevel=""
-2022-12-04T22:36:02.007514Z	info	FLAG: --proxyLogLevel="trace"
-2022-12-04T22:36:02.007516Z	info	FLAG: --serviceCluster="istio-proxy"
-2022-12-04T22:36:02.007520Z	info	FLAG: --stsPort="0"
-2022-12-04T22:36:02.007522Z	info	FLAG: --templateFile=""
-2022-12-04T22:36:02.007525Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
-2022-12-04T22:36:02.007534Z	info	FLAG: --vklog="0"
-2022-12-04T22:36:02.007541Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
-2022-12-04T22:36:02.009285Z	info	Maximum file descriptors (ulimit -n): 1048576
-2022-12-04T22:36:02.009472Z	info	Proxy role	ips=[10.244.0.5] type=sidecar id=ubuntu-deployment-696fdf7b4-jf5pq.vm-ns domain=vm-ns.svc.cluster.local
-2022-12-04T22:36:02.009521Z	info	Apply mesh config from file defaultConfig:
-  discoveryAddress: istiod.istio-system.svc:15012
-  meshId: mesh1
-  proxyMetadata:
-    CANONICAL_REVISION: latest
-    CANONICAL_SERVICE: vm-app
-    ISTIO_META_CLUSTER_ID: Kubernetes
-    ISTIO_META_DNS_CAPTURE: "true"
-    ISTIO_META_MESH_ID: mesh1
-    ISTIO_META_NETWORK: ""
-    ISTIO_META_WORKLOAD_NAME: vm-app
-    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-    POD_NAMESPACE: vm-ns
-    SERVICE_ACCOUNT: serviceaccountvm
-    TRUST_DOMAIN: cluster.local
-  tracing:
-    zipkin:
-      address: zipkin.istio-system:9411
-
-2022-12-04T22:36:02.013389Z	info	Apply proxy config from env 
-serviceCluster: vm-app.vm-ns
-controlPlaneAuthPolicy: MUTUAL_TLS
-
-2022-12-04T22:36:02.013945Z	info	Effective config: binaryPath: /usr/local/bin/envoy
-concurrency: 2
-configPath: ./etc/istio/proxy
-controlPlaneAuthPolicy: MUTUAL_TLS
-discoveryAddress: istiod.istio-system.svc:15012
-drainDuration: 45s
-meshId: mesh1
-parentShutdownDuration: 60s
-proxyAdminPort: 15000
-proxyMetadata:
-  CANONICAL_REVISION: latest
-  CANONICAL_SERVICE: vm-app
-  ISTIO_META_CLUSTER_ID: Kubernetes
-  ISTIO_META_DNS_CAPTURE: "true"
-  ISTIO_META_MESH_ID: mesh1
-  ISTIO_META_NETWORK: ""
-  ISTIO_META_WORKLOAD_NAME: vm-app
-  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-  POD_NAMESPACE: vm-ns
-  SERVICE_ACCOUNT: serviceaccountvm
-  TRUST_DOMAIN: cluster.local
-serviceCluster: vm-app.vm-ns
-statNameLength: 189
-statusPort: 15020
-terminationDrainDuration: 5s
-tracing:
-  zipkin:
-    address: zipkin.istio-system:9411
-
-2022-12-04T22:36:02.013965Z	info	JWT policy is third-party-jwt
-2022-12-04T22:36:02.013969Z	info	using credential fetcher of JWT type in cluster.local trust domain
-2022-12-04T22:36:02.114977Z	debug	dns	initialized DNS	search=[default.svc.cluster.local svc.cluster.local cluster.local] servers=[10.96.0.10:53]
-2022-12-04T22:36:02.114965Z	info	Opening status port 15020
-2022-12-04T22:36:02.115140Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
-2022-12-04T22:36:02.115567Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
-2022-12-04T22:36:02.116467Z	info	Workload SDS socket not found. Starting Istio SDS Server
-2022-12-04T22:36:02.116488Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
-2022-12-04T22:36:02.116516Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
-2022-12-04T22:36:02.116602Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
-2022-12-04T22:36:02.141560Z	info	ads	All caches have been synced up in 140.602867ms, marking server ready
-2022-12-04T22:36:02.142197Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
-2022-12-04T22:36:02.142232Z	info	sds	Starting SDS grpc server
-2022-12-04T22:36:02.143964Z	info	starting Http service at 127.0.0.1:15004
-2022-12-04T22:36:02.146239Z	info	Pilot SAN: [istiod.istio-system.svc]
-2022-12-04T22:36:02.148829Z	info	Starting proxy agent
-2022-12-04T22:36:02.148855Z	info	starting
-2022-12-04T22:36:02.148872Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l trace --concurrency 2]
-2022-12-04T22:36:02.225759Z	info	cache	generated new workload certificate	latency=83.440026ms ttl=23h59m59.774257065s
-2022-12-04T22:36:02.225822Z	info	cache	Root cert has changed, start rotating root cert
-2022-12-04T22:36:02.225847Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
-2022-12-04T22:36:02.226787Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.773218919s
-2022-12-04T22:36:02.278849Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
-2022-12-04T22:36:02.318899Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-1
-2022-12-04T22:36:02.319143Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.680863917s
-2022-12-04T22:36:02.319582Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:1.1kB resource:ROOTCA
-2022-12-04T22:36:02.320127Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns-2
-2022-12-04T22:36:02.320482Z	info	cache	returned workload certificate from cache	ttl=23h59m59.679529537s
-2022-12-04T22:36:02.320807Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-jf5pq.vm-ns resources:1 size:4.0kB resource:default
-2022-12-04T22:36:02.334572Z	debug	dns	updated lookup table with 30 hosts
-2022-12-04T22:36:45.108567Z	debug	dns	updated lookup table with 36 hosts
-2022-12-04T22:36:51.144429Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 12516
+2022-12-05T07:14:23.694866Z	info	JWT policy is third-party-jwt
+2022-12-05T07:14:23.694871Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-05T07:14:23.797605Z	debug	dns	initialized DNS	search=[default.svc.cluster.local svc.cluster.local cluster.local] servers=[10.96.0.10:53]
+2022-12-05T07:14:23.797611Z	info	Opening status port 15020
+2022-12-05T07:14:23.797759Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2022-12-05T07:14:23.799104Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2022-12-05T07:14:23.799233Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-05T07:14:23.799260Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-05T07:14:23.799278Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
+2022-12-05T07:14:23.799643Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
+2022-12-05T07:14:23.807759Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-05T07:14:23.821634Z	info	ads	All caches have been synced up in 136.72307ms, marking server ready
+2022-12-05T07:14:23.822314Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-05T07:14:23.822512Z	info	sds	Starting SDS grpc server
+2022-12-05T07:14:23.824393Z	info	starting Http service at 127.0.0.1:15004
+2022-12-05T07:14:23.824992Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-05T07:14:23.827487Z	info	Starting proxy agent
+2022-12-05T07:14:23.827565Z	info	starting
+2022-12-05T07:14:23.827640Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l trace --concurrency 2]
+2022-12-05T07:14:23.965889Z	warn	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-05T07:14:23.966918Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-05T07:14:23.990132Z	info	cache	generated new workload certificate	latency=166.89981ms ttl=23h59m59.00988038s
+2022-12-05T07:14:23.990723Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-05T07:14:23.990762Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-05T07:14:23.991223Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.008783896s
+2022-12-05T07:14:24.001474Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns-1
+2022-12-05T07:14:24.001559Z	info	ads	ADS: new connection for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns-2
+2022-12-05T07:14:24.001597Z	info	cache	returned workload trust anchor from cache	ttl=23h59m58.998408629s
+2022-12-05T07:14:24.001633Z	info	cache	returned workload certificate from cache	ttl=23h59m58.998369983s
+2022-12-05T07:14:24.001921Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns resources:1 size:1.1kB resource:ROOTCA
+2022-12-05T07:14:24.001932Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns resources:1 size:4.0kB resource:default
+2022-12-05T07:14:24.019795Z	debug	dns	updated lookup table with 78 hosts
+2022-12-05T07:16:44.655495Z	debug	dns	updated lookup table with 84 hosts
+2022-12-05T07:17:36.651409Z	debug	dns	updated lookup table with 84 hosts
+2022-12-05T07:18:37.469232Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 50482
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=f77727e6-adf7-4a9e-8f8f-2b0b406b7c04
-2022-12-04T22:36:51.144476Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 12516
+	protocol=udp edns=false id=e9799301-4fa6-4c1b-8094-7e9ef80ce161
+2022-12-05T07:18:37.469287Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 50482
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=f77727e6-adf7-4a9e-8f8f-2b0b406b7c04
-2022-12-04T22:36:51.144642Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 25315
+	protocol=udp edns=false id=e9799301-4fa6-4c1b-8094-7e9ef80ce161
+2022-12-05T07:18:37.469380Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 55092
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
-	protocol=udp edns=false id=7928297d-8b8e-4fbe-a962-b236aa40ee78
-2022-12-04T22:36:51.144702Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 25315
+	protocol=udp edns=false id=978b309e-64ac-4ca2-b5fc-a0b37a50c815
+2022-12-05T07:18:37.469663Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 55092
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
@@ -361,16 +134,168 @@ tracing:
 
 ;; ANSWER SECTION:
 helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
-helloworld.sample.svc.	30	IN	A	10.96.105.83
-	protocol=udp edns=false id=7928297d-8b8e-4fbe-a962-b236aa40ee78
-[2022-12-04T22:36:51.146Z] "GET /hello HTTP/1.1" 503 UH no_healthy_upstream - "-" 0 19 0 - "-" "curl/7.81.0" "58dc4477-d6c7-4983-a793-044f117b7497" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:35092 - default
-2022-12-04T22:36:53.612807Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 26486
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=978b309e-64ac-4ca2-b5fc-a0b37a50c815
+[2022-12-05T07:18:37.471Z] "GET /hello HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure} - "-" 0 114 30031 - "-" "curl/7.81.0" "dcbe5373-4113-40f8-8f35-41c00a1f4085" "helloworld.sample.svc:5000" "10.244.1.9:5000" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:50428 - default
+2022-12-05T07:21:08.672180Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 11065
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_http._tcp.archive.ubuntu.com.	IN	 SRV
+	protocol=udp edns=false id=5a871bbd-ae57-4d0d-96f9-19d5f0eefbce
+2022-12-05T07:21:08.672227Z	debug	dns	response for hostname "_http._tcp.archive.ubuntu.com." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.313086Z	debug	dns	upstream response for hostname "_http._tcp.archive.ubuntu.com." : ;; opcode: QUERY, status: NOERROR, id: 11065
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_http._tcp.archive.ubuntu.com.	IN	 SRV
+
+2022-12-05T07:21:09.315833Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 38583
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=8debd483-d4f7-4e6c-95cd-064c97d63435
+2022-12-05T07:21:09.316537Z	debug	dns	response for hostname "archive.ubuntu.com.default.svc.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.315826Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 36273
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.default.svc.cluster.local.	IN	 A
+	protocol=udp edns=false id=3f4a1a35-c3c4-4a07-9520-66adeef55381
+2022-12-05T07:21:09.316593Z	debug	dns	response for hostname "archive.ubuntu.com.default.svc.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.317061Z	debug	dns	upstream response for hostname "archive.ubuntu.com.default.svc.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 36273
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.default.svc.cluster.local.	IN	 A
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.317218Z	debug	dns	upstream response for hostname "archive.ubuntu.com.default.svc.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 38583
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.default.svc.cluster.local.	IN	 AAAA
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.317533Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 63279
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=ed850408-23f2-41de-b93e-9fc9eb74d4c9
+2022-12-05T07:21:09.317552Z	debug	dns	response for hostname "archive.ubuntu.com.svc.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.317590Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 10285
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.svc.cluster.local.	IN	 A
+	protocol=udp edns=false id=6a7d7814-aa97-4742-88ee-f3d02bf6c138
+2022-12-05T07:21:09.317610Z	debug	dns	response for hostname "archive.ubuntu.com.svc.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.317949Z	debug	dns	upstream response for hostname "archive.ubuntu.com.svc.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 63279
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.svc.cluster.local.	IN	 AAAA
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.317950Z	debug	dns	upstream response for hostname "archive.ubuntu.com.svc.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 10285
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.svc.cluster.local.	IN	 A
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.318354Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 15585
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.cluster.local.	IN	 A
+	protocol=udp edns=false id=1f3ed264-bf3f-4e22-a858-9ebae130d2a6
+2022-12-05T07:21:09.318370Z	debug	dns	response for hostname "archive.ubuntu.com.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.318366Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 51614
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=44559eca-e1e6-401e-aafc-3906cafaa4d7
+2022-12-05T07:21:09.318396Z	debug	dns	response for hostname "archive.ubuntu.com.cluster.local." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.318751Z	debug	dns	upstream response for hostname "archive.ubuntu.com.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 51614
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.cluster.local.	IN	 AAAA
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.319667Z	debug	dns	upstream response for hostname "archive.ubuntu.com.cluster.local." : ;; opcode: QUERY, status: NXDOMAIN, id: 15585
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.cluster.local.	IN	 A
+
+;; AUTHORITY SECTION:
+cluster.local.	30	IN	SOA	ns.dns.cluster.local. hostmaster.cluster.local. 1670223271 7200 1800 86400 30
+
+2022-12-05T07:21:09.319923Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 27297
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.	IN	 AAAA
+	protocol=udp edns=false id=739385bc-9cd9-4bab-b3ad-c2220c3bdefa
+2022-12-05T07:21:09.319938Z	debug	dns	response for hostname "archive.ubuntu.com." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.320045Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 32416
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.	IN	 A
+	protocol=udp edns=false id=268f2003-e753-4c80-8129-b655c01ce480
+2022-12-05T07:21:09.320057Z	debug	dns	response for hostname "archive.ubuntu.com." not found in dns proxy, querying upstream
+2022-12-05T07:21:09.385902Z	debug	dns	upstream response for hostname "archive.ubuntu.com." : ;; opcode: QUERY, status: NOERROR, id: 27297
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.	IN	 AAAA
+
+;; ANSWER SECTION:
+archive.ubuntu.com.	50	IN	AAAA	2620:2d:4000:1::19
+archive.ubuntu.com.	50	IN	AAAA	2620:2d:4000:1::16
+archive.ubuntu.com.	50	IN	AAAA	2001:67c:1562::15
+archive.ubuntu.com.	50	IN	AAAA	2001:67c:1562::18
+
+2022-12-05T07:21:09.434787Z	debug	dns	upstream response for hostname "archive.ubuntu.com." : ;; opcode: QUERY, status: NOERROR, id: 32416
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;archive.ubuntu.com.	IN	 A
+
+;; ANSWER SECTION:
+archive.ubuntu.com.	58	IN	A	185.125.190.36
+archive.ubuntu.com.	58	IN	A	185.125.190.39
+archive.ubuntu.com.	58	IN	A	91.189.91.38
+archive.ubuntu.com.	58	IN	A	91.189.91.39
+
+[2022-12-05T07:21:09.437Z] "GET /ubuntu/pool/main/a/apparmor/libapparmor1_3.0.4-2ubuntu2.1_amd64.deb HTTP/1.1" 200 - via_upstream - "-" 0 38730 337 192 "-" "Debian APT-HTTP/1.3 (2.4.8)" "6226b5f7-3e43-42fe-abbf-70afe92fbf59" "archive.ubuntu.com" "185.125.190.36:80" PassthroughCluster 10.244.0.13:45040 185.125.190.36:80 10.244.0.13:45038 - allow_any
+[2022-12-05T07:21:09.797Z] "GET /ubuntu/pool/main/d/dbus/libdbus-1-3_1.12.20-2ubuntu4.1_amd64.deb HTTP/1.1" 200 - via_upstream - "-" 0 188562 353 96 "-" "Debian APT-HTTP/1.3 (2.4.8)" "d12596ca-42f4-4a35-87ea-8d48c1b91726" "archive.ubuntu.com" "185.125.190.36:80" PassthroughCluster 10.244.0.13:45040 185.125.190.36:80 10.244.0.13:45038 - allow_any
+[2022-12-05T07:21:10.151Z] "GET /ubuntu/pool/main/d/dbus/dbus_1.12.20-2ubuntu4.1_amd64.deb HTTP/1.1" 200 - via_upstream - "-" 0 158098 150 95 "-" "Debian APT-HTTP/1.3 (2.4.8)" "3f0306f2-dd13-41c4-94d0-7a1537c01020" "archive.ubuntu.com" "185.125.190.36:80" PassthroughCluster 10.244.0.13:45040 185.125.190.36:80 10.244.0.13:45038 - allow_any
+[2022-12-05T07:21:10.302Z] "GET /ubuntu/pool/main/libp/libpcap/libpcap0.8_1.10.1-4build1_amd64.deb HTTP/1.1" 200 - via_upstream - "-" 0 145100 142 95 "-" "Debian APT-HTTP/1.3 (2.4.8)" "65d13506-3dbb-453f-bb28-d0d8dbb14e0d" "archive.ubuntu.com" "185.125.190.36:80" PassthroughCluster 10.244.0.13:45040 185.125.190.36:80 10.244.0.13:45038 - allow_any
+[2022-12-05T07:21:10.446Z] "GET /ubuntu/pool/main/t/tcpdump/tcpdump_4.99.1-3build2_amd64.deb HTTP/1.1" 200 - via_upstream - "-" 0 501232 257 97 "-" "Debian APT-HTTP/1.3 (2.4.8)" "f2261a3d-ce98-4211-8705-3b5dd4b65c93" "archive.ubuntu.com" "185.125.190.36:80" PassthroughCluster 10.244.0.13:45040 185.125.190.36:80 10.244.0.13:45038 - allow_any
+2022-12-05T07:22:31.959020Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 15038
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
-	protocol=udp edns=false id=a58f9ff1-3d6d-44b6-9f3e-6657bba6e2d6
-2022-12-04T22:36:53.612871Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 26486
+	protocol=udp edns=false id=21e7f042-84fd-4e1e-b796-c81bb3b20554
+2022-12-05T07:22:31.959087Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 15038
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
@@ -378,28 +303,39 @@ helloworld.sample.svc.	30	IN	A	10.96.105.83
 
 ;; ANSWER SECTION:
 helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
-helloworld.sample.svc.	30	IN	A	10.96.105.83
-	protocol=udp edns=false id=a58f9ff1-3d6d-44b6-9f3e-6657bba6e2d6
-2022-12-04T22:36:53.612959Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 46203
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=21e7f042-84fd-4e1e-b796-c81bb3b20554
+2022-12-05T07:22:31.960040Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 9102
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=37cbae3d-14e5-4b18-be2d-3ec333cbf674
-2022-12-04T22:36:53.612987Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 46203
+;helloworld.sample.svc.	IN	 AAAA
+	protocol=udp edns=false id=b566fa6b-1198-4514-9cd3-bf505dfe6cbc
+2022-12-05T07:22:31.960064Z	debug	dns	response for hostname "helloworld.sample.svc." (found=true): ;; opcode: QUERY, status: NOERROR, id: 9102
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=37cbae3d-14e5-4b18-be2d-3ec333cbf674
-[2022-12-04T22:36:53.614Z] "GET /hello HTTP/1.1" 503 UH no_healthy_upstream - "-" 0 19 1 - "-" "curl/7.81.0" "0ae44d52-be62-4754-9bc4-90ebfd23a0ea" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:40794 - default
-2022-12-04T22:36:57.154497Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 29068
+;helloworld.sample.svc.	IN	 AAAA
+	protocol=udp edns=false id=b566fa6b-1198-4514-9cd3-bf505dfe6cbc
+2022-12-05T07:25:43.605058Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 18915
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
-	protocol=udp edns=false id=27d27c46-f7d0-4255-b868-c84632a09391
-2022-12-04T22:36:57.155213Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 29068
+	protocol=udp edns=false id=bd8b7c34-136d-41e4-829b-5d2a57c422fa
+2022-12-05T07:25:43.604819Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 29665
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=4e5aa01a-958b-486f-8a4c-403d7b6d4ca4
+2022-12-05T07:25:43.605445Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 29665
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=4e5aa01a-958b-486f-8a4c-403d7b6d4ca4
+2022-12-05T07:25:43.605773Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 18915
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
@@ -407,29 +343,28 @@ helloworld.sample.svc.	30	IN	A	10.96.105.83
 
 ;; ANSWER SECTION:
 helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
-helloworld.sample.svc.	30	IN	A	10.96.105.83
-	protocol=udp edns=false id=27d27c46-f7d0-4255-b868-c84632a09391
-2022-12-04T22:36:57.155892Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 39823
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=bd8b7c34-136d-41e4-829b-5d2a57c422fa
+[2022-12-05T07:25:43.609Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 994 - "-" "curl/7.81.0" "2b95aa61-a17d-499a-a4ed-4d3c01785d13" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:57022 - default
+2022-12-05T07:26:13.732206Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 10841
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=13571c12-8686-45d0-8c2a-bb79e4f59986
-2022-12-04T22:36:57.155950Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 39823
+	protocol=udp edns=false id=9db77abf-973f-4227-91e8-08d3e4f944d0
+2022-12-05T07:26:13.732267Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 10841
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=13571c12-8686-45d0-8c2a-bb79e4f59986
-[2022-12-04T22:36:57.162Z] "GET /hello HTTP/1.1" 503 UH no_healthy_upstream - "-" 0 19 2 - "-" "curl/7.81.0" "27ad06da-37a5-463e-9ae4-133bf4a72e8c" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:40796 - default
-2022-12-04T22:37:19.732735Z	debug	dns	updated lookup table with 36 hosts
-2022-12-04T22:38:11.271531Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 16715
+	protocol=udp edns=false id=9db77abf-973f-4227-91e8-08d3e4f944d0
+2022-12-05T07:26:13.732334Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 55127
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
-	protocol=udp edns=false id=e42a848a-e36b-405a-ad71-ffa8e4fe5ec5
-2022-12-04T22:38:11.271623Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 16715
+	protocol=udp edns=false id=8f59daf2-acff-48a3-9b5e-e6b212936b03
+2022-12-05T07:26:13.732365Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 55127
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
@@ -437,40 +372,16 @@ helloworld.sample.svc.	30	IN	A	10.96.105.83
 
 ;; ANSWER SECTION:
 helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
-helloworld.sample.svc.	30	IN	A	10.96.105.83
-	protocol=udp edns=false id=e42a848a-e36b-405a-ad71-ffa8e4fe5ec5
-2022-12-04T22:38:11.271835Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 32581
-;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=7fd5910f-2c0a-4c61-8520-f24c30babc23
-2022-12-04T22:38:11.271878Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 32581
-;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=7fd5910f-2c0a-4c61-8520-f24c30babc23
-[2022-12-04T22:38:11.272Z] "GET /hello HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure} - "-" 0 114 30056 - "-" "curl/7.81.0" "7eda967e-acec-4fda-a467-c84cc14ef3f5" "helloworld.sample.svc:5000" "10.244.2.5:5000" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:47482 - default
-2022-12-04T22:41:12.695313Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 39708
-;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=04369ac0-a3cb-4b95-83f2-c6a43abb050e
-2022-12-04T22:41:12.695438Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 39708
-;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
-	protocol=udp edns=false id=04369ac0-a3cb-4b95-83f2-c6a43abb050e
-2022-12-04T22:41:12.695582Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 36126
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=8f59daf2-acff-48a3-9b5e-e6b212936b03
+[2022-12-05T07:26:13.743Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 987 - "-" "curl/7.81.0" "d417d7a0-9fec-4ae3-872c-70813f6fa30d" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:60940 - default
+2022-12-05T07:31:59.432850Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 20934
 ;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
 ;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
-	protocol=udp edns=false id=61937b7e-8308-4e19-a412-f5ef43530a51
-2022-12-04T22:41:12.695604Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 36126
+	protocol=udp edns=false id=f7e1f3b9-4f26-4b88-ab8b-e9f54fc8bf89
+2022-12-05T07:31:59.432975Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 20934
 ;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
 
 ;; QUESTION SECTION:
@@ -478,8 +389,76 @@ helloworld.sample.svc.	30	IN	A	10.96.105.83
 
 ;; ANSWER SECTION:
 helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
-helloworld.sample.svc.	30	IN	A	10.96.105.83
-	protocol=udp edns=false id=61937b7e-8308-4e19-a412-f5ef43530a51
-[2022-12-04T22:41:12.696Z] "GET /hello HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure} - "-" 0 114 30044 - "-" "curl/7.81.0" "dd8648d4-8838-4635-9d4b-7a16267ffc5b" "helloworld.sample.svc:5000" "10.244.2.5:5000" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:37272 - default
-[2022-12-04T22:42:54.712Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1001 - "-" "curl/7.81.0" "6fe76f4f-d161-4865-bd83-84d45b109754" "10.96.105.83:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:55984 - default
-[2022-12-04T22:42:45.612Z] "GET /hello HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure} - "-" 0 114 20016 - "-" "curl/7.81.0" "9df23c85-220e-4376-85de-4ecab4707e43" "10.96.105.83:5000" "10.244.2.5:5000" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.105.83:5000 10.244.0.5:47520 - default
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=f7e1f3b9-4f26-4b88-ab8b-e9f54fc8bf89
+2022-12-05T07:31:59.432850Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 52419
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=f7ccc5d4-6827-4e06-a0e9-fc932e88db5e
+2022-12-05T07:31:59.433098Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 52419
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=f7ccc5d4-6827-4e06-a0e9-fc932e88db5e
+[2022-12-05T07:31:59.433Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 1000 - "-" "curl/7.81.0" "39b01de4-5002-4737-a686-53eaa10e3ed9" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:44214 - default
+2022-12-05T07:32:02.588035Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 21646
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=ee0e6b7f-59fb-4e00-9230-ed0eff05ead0
+2022-12-05T07:32:02.588077Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 21646
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=ee0e6b7f-59fb-4e00-9230-ed0eff05ead0
+2022-12-05T07:32:02.588191Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 1170
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
+	protocol=udp edns=false id=7697e396-e24f-466d-9b6b-cc8c63cf90f9
+2022-12-05T07:32:02.588413Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 1170
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
+
+;; ANSWER SECTION:
+helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=7697e396-e24f-466d-9b6b-cc8c63cf90f9
+[2022-12-05T07:32:02.589Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 998 - "-" "curl/7.81.0" "7b1c143e-9d25-41f7-8409-5b7a87b3bdd6" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:45582 - default
+2022-12-05T07:32:05.786608Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 60267
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
+	protocol=udp edns=false id=9cd69155-1d28-4924-a9e4-5e0ab0afd0df
+2022-12-05T07:32:05.786793Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 60267
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 A
+
+;; ANSWER SECTION:
+helloworld.sample.svc.default.svc.cluster.local.	30	IN	CNAME	helloworld.sample.svc.
+helloworld.sample.svc.	30	IN	A	10.96.137.147
+	protocol=udp edns=false id=9cd69155-1d28-4924-a9e4-5e0ab0afd0df
+2022-12-05T07:32:05.786536Z	debug	dns	request ;; opcode: QUERY, status: NOERROR, id: 44398
+;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=cfc08b8d-0a57-4633-8aa9-448f632c2f48
+2022-12-05T07:32:05.786968Z	debug	dns	response for hostname "helloworld.sample.svc.default.svc.cluster.local." (found=true): ;; opcode: QUERY, status: NOERROR, id: 44398
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;helloworld.sample.svc.default.svc.cluster.local.	IN	 AAAA
+	protocol=udp edns=false id=cfc08b8d-0a57-4633-8aa9-448f632c2f48
+[2022-12-05T07:32:05.788Z] "GET /hello HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 999 - "-" "curl/7.81.0" "29a2f777-744a-4b3e-acc2-72d434cceb78" "helloworld.sample.svc:5000" "-" outbound|5000||helloworld.sample.svc.cluster.local - 10.96.137.147:5000 10.244.0.13:45588 - default

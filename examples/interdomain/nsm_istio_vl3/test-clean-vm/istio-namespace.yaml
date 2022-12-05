@@ -1,7 +1,0 @@
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: istio-system
-  annotations:
-    networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=istio-cp

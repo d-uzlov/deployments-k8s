@@ -1,7 +1,16 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ubuntu-ns
+  labels:
+    istio-injection: enabled
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ubuntu-deployment
+  namespace: ubuntu-ns
   labels:
     app: ubuntu
 spec:
@@ -13,8 +22,6 @@ spec:
     metadata:
       labels:
         app: ubuntu
-      annotations:
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
     spec:
       containers:
         - name: ubuntu
