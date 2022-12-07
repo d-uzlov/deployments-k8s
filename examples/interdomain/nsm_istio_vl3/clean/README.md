@@ -105,9 +105,9 @@ istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clu
 4. Copy-paste info from WORK_DIR to configmap values in [server.yaml](./greeting/server.yaml)
 5. Start the deployment
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -f ./greeting/server.yaml
+kubectl --kubeconfig=$KUBECONFIG2 apply -k ./greeting/
 ```
 6. Check logs
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 logs deployment.apps greeting -c istio-proxy
+kubectl --kubeconfig=$KUBECONFIG2 logs deployment.apps/greeting -c istio-proxy
 ```

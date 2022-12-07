@@ -1,0 +1,67 @@
+apiVersion: v1
+data:
+  cluster.env: |
+    CANONICAL_REVISION='latest'
+    CANONICAL_SERVICE='vm-app'
+    ISTIO_INBOUND_PORTS='*'
+    ISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'
+    ISTIO_METAJSON_LABELS='{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    ISTIO_META_CLUSTER_ID='Kubernetes'
+    ISTIO_META_DNS_CAPTURE='true'
+    ISTIO_META_MESH_ID=''
+    ISTIO_META_NETWORK=''
+    ISTIO_META_WORKLOAD_NAME='vm-app'
+    ISTIO_NAMESPACE='vm-ns'
+    ISTIO_SERVICE='vm-app.vm-ns'
+    ISTIO_SERVICE_CIDR='*'
+    POD_NAMESPACE='vm-ns'
+    SERVICE_ACCOUNT='serviceaccountvm'
+    TRUST_DOMAIN='cluster.local'
+  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6InJ4blU5UDVoWUtJZmFLSmk4a2FOQ0NvVUoycDNXXy00LTBTaHFxU0drWDQifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjcwMzk3NTkyLCJpYXQiOjE2NzAzOTM5OTIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiNTcxOGZkZmQtYWI5Mi00MDhjLTg4NDYtZTliMjI5ZDA4ZjljIn19LCJuYmYiOjE2NzAzOTM5OTIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.WowOSpFMODBKDFtHK1qoy2HS6i8mXET3zdEoVAGEKzDoCoDj00q7v7V3XDw0tD_fb8YvllTcrt0g1g98vU5qPWT1SxEiPKgu4SXNGHYjW68zUjJG-9y5W8aMLdOH6hevlkL9akQ2rgoyh7TClmZb9_-HcoawPE1BknqtkJzPMf5cRfgFIOQcbJjJkgZEAaaa3NrSCb2TXzQnt2HCMuO3wLJAPnjT-BCPJ-9FgBkzS-aJUmOUFWCts5g9Rstke608d9sCG5Y1rODZYqsao0XCvTwUvNfLfVYK2TRT0X34O6vbjsto2hlDhjwijKvmyR5IKHjowNB1qIo40NkCW-hqlA
+  mesh.yaml: |
+    defaultConfig:
+      discoveryAddress: istiod.istio-system.svc:15012
+      proxyMetadata:
+        CANONICAL_REVISION: latest
+        CANONICAL_SERVICE: vm-app
+        ISTIO_META_CLUSTER_ID: Kubernetes
+        ISTIO_META_DNS_CAPTURE: "true"
+        ISTIO_META_MESH_ID: ""
+        ISTIO_META_NETWORK: ""
+        ISTIO_META_WORKLOAD_NAME: vm-app
+        ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+        POD_NAMESPACE: vm-ns
+        SERVICE_ACCOUNT: serviceaccountvm
+        TRUST_DOMAIN: cluster.local
+      tracing:
+        zipkin:
+          address: zipkin.istio-system:9411
+  root-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIC/DCCAeSgAwIBAgIQePWD4MtImMJuAefFgpWB7zANBgkqhkiG9w0BAQsFADAY
+    MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTIwNzA2MTc1NFoXDTMyMTIw
+    NDA2MTc1NFowGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN
+    AQEBBQADggEPADCCAQoCggEBAKEdAEae3jp1MjuIpRn2UXQjE7IzmCA/y0rRZ/ab
+    va5RczXC5/317IAYRdWkcE5ryNXH5E9wIYxYW7ZbiKdZTCfsqouStAUW8Go5A/0G
+    0Mton0VnCVb3x60H0hJ5jv4HmSUjdnVriSLqj1NbiocPAvTvQ/91ARi6ORH32dVs
+    n/+pwmDALstFU18SitKk+npoN32/21dhWqrWWgBolTJqoXfYha/zXWFASEe/5fwY
+    AP6ficIaLKUuDlbVsxiCa7qqxu21JGAqrhNhghT3Li8qC5svFRPCAdrY2TKnlQXA
+    lytdUhz+Hz3bLQiVUyMX1Gkyol+mhkkE+aeu1CtPHHIoYrsCAwEAAaNCMEAwDgYD
+    VR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFLr0I3CiabVA
+    8HxGihmz1FIoIrjgMA0GCSqGSIb3DQEBCwUAA4IBAQBeU7MSGux8L/Dk5EfdaSOb
+    m5oIebtaq0XE8BASod6+EhzOlYn5rHjjAhXOYwc6yol/AzBlo63CPChkIe1ocU9X
+    jQ5MCLHr6Qsg8VN7/SakdP4qoHW4NyEZ4WysU7INfLzUYx9h/T6u8wZ81qIDgroJ
+    QbpbiUirp8z9YVZSmaeZ7KULi6WaMUB/05RyurdtINoZgNY/pHfXXtG80rbOA+/i
+    Ls2syt+//kz7s3f1XKEF0MyABVmNYoQhv33dZiNfPTaU1nMckDy7zTykTsCzPwSm
+    mEcCAGk91EZtDxfIycfEt+vVGnw9sf0IGOfeVfmqZBSylD0IyH/6+r33hBHoC+0R
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"cluster.env":"CANONICAL_REVISION='latest'\nCANONICAL_SERVICE='vm-app'\nISTIO_INBOUND_PORTS='*'\nISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'\nISTIO_METAJSON_LABELS='{\"app\":\"vm-app\",\"service.istio.io/canonical-name\":\"vm-app\",\"service.istio.io/canonical-revision\":\"latest\"}'\nISTIO_META_CLUSTER_ID='Kubernetes'\nISTIO_META_DNS_CAPTURE='true'\nISTIO_META_MESH_ID=''\nISTIO_META_NETWORK=''\nISTIO_META_WORKLOAD_NAME='vm-app'\nISTIO_NAMESPACE='vm-ns'\nISTIO_SERVICE='vm-app.vm-ns'\nISTIO_SERVICE_CIDR='*'\nPOD_NAMESPACE='vm-ns'\nSERVICE_ACCOUNT='serviceaccountvm'\nTRUST_DOMAIN='cluster.local'\n","istio-token":"eyJhbGciOiJSUzI1NiIsImtpZCI6InJ4blU5UDVoWUtJZmFLSmk4a2FOQ0NvVUoycDNXXy00LTBTaHFxU0drWDQifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjcwMzk3NTkyLCJpYXQiOjE2NzAzOTM5OTIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiNTcxOGZkZmQtYWI5Mi00MDhjLTg4NDYtZTliMjI5ZDA4ZjljIn19LCJuYmYiOjE2NzAzOTM5OTIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.WowOSpFMODBKDFtHK1qoy2HS6i8mXET3zdEoVAGEKzDoCoDj00q7v7V3XDw0tD_fb8YvllTcrt0g1g98vU5qPWT1SxEiPKgu4SXNGHYjW68zUjJG-9y5W8aMLdOH6hevlkL9akQ2rgoyh7TClmZb9_-HcoawPE1BknqtkJzPMf5cRfgFIOQcbJjJkgZEAaaa3NrSCb2TXzQnt2HCMuO3wLJAPnjT-BCPJ-9FgBkzS-aJUmOUFWCts5g9Rstke608d9sCG5Y1rODZYqsao0XCvTwUvNfLfVYK2TRT0X34O6vbjsto2hlDhjwijKvmyR5IKHjowNB1qIo40NkCW-hqlA","mesh.yaml":"defaultConfig:\n  discoveryAddress: istiod.istio-system.svc:15012\n  proxyMetadata:\n    CANONICAL_REVISION: latest\n    CANONICAL_SERVICE: vm-app\n    ISTIO_META_CLUSTER_ID: Kubernetes\n    ISTIO_META_DNS_CAPTURE: \"true\"\n    ISTIO_META_MESH_ID: \"\"\n    ISTIO_META_NETWORK: \"\"\n    ISTIO_META_WORKLOAD_NAME: vm-app\n    ISTIO_METAJSON_LABELS: '{\"app\":\"vm-app\",\"service.istio.io/canonical-name\":\"vm-app\",\"service.istio.io/canonical-revision\":\"latest\"}'\n    POD_NAMESPACE: vm-ns\n    SERVICE_ACCOUNT: serviceaccountvm\n    TRUST_DOMAIN: cluster.local\n  tracing:\n    zipkin:\n      address: zipkin.istio-system:9411\n","root-cert.pem":"-----BEGIN CERTIFICATE-----\nMIIC/DCCAeSgAwIBAgIQePWD4MtImMJuAefFgpWB7zANBgkqhkiG9w0BAQsFADAY\nMRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTIwNzA2MTc1NFoXDTMyMTIw\nNDA2MTc1NFowGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN\nAQEBBQADggEPADCCAQoCggEBAKEdAEae3jp1MjuIpRn2UXQjE7IzmCA/y0rRZ/ab\nva5RczXC5/317IAYRdWkcE5ryNXH5E9wIYxYW7ZbiKdZTCfsqouStAUW8Go5A/0G\n0Mton0VnCVb3x60H0hJ5jv4HmSUjdnVriSLqj1NbiocPAvTvQ/91ARi6ORH32dVs\nn/+pwmDALstFU18SitKk+npoN32/21dhWqrWWgBolTJqoXfYha/zXWFASEe/5fwY\nAP6ficIaLKUuDlbVsxiCa7qqxu21JGAqrhNhghT3Li8qC5svFRPCAdrY2TKnlQXA\nlytdUhz+Hz3bLQiVUyMX1Gkyol+mhkkE+aeu1CtPHHIoYrsCAwEAAaNCMEAwDgYD\nVR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFLr0I3CiabVA\n8HxGihmz1FIoIrjgMA0GCSqGSIb3DQEBCwUAA4IBAQBeU7MSGux8L/Dk5EfdaSOb\nm5oIebtaq0XE8BASod6+EhzOlYn5rHjjAhXOYwc6yol/AzBlo63CPChkIe1ocU9X\njQ5MCLHr6Qsg8VN7/SakdP4qoHW4NyEZ4WysU7INfLzUYx9h/T6u8wZ81qIDgroJ\nQbpbiUirp8z9YVZSmaeZ7KULi6WaMUB/05RyurdtINoZgNY/pHfXXtG80rbOA+/i\nLs2syt+//kz7s3f1XKEF0MyABVmNYoQhv33dZiNfPTaU1nMckDy7zTykTsCzPwSm\nmEcCAGk91EZtDxfIycfEt+vVGnw9sf0IGOfeVfmqZBSylD0IyH/6+r33hBHoC+0R\n-----END CERTIFICATE-----\n"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"cert-file","namespace":"vl3-test"}}
+  creationTimestamp: "2022-12-07T06:58:32Z"
+  name: cert-file
+  namespace: vl3-test
+  resourceVersion: "4256"
+  uid: 48d3c045-457b-4f2e-8db9-44069dc46e4d

@@ -12,9 +12,7 @@ SERVICE_ACCOUNT="serviceaccountvm"
 CLUSTER_NETWORK=""
 VM_NETWORK=""
 CLUSTER="Kubernetes"
-```
 
-```bash
 cat <<EOF > ./vm-cluster.yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -30,19 +28,14 @@ spec:
   meshConfig:
     accessLogFile: /dev/stdout
 EOF
-```
-Deploy istio:
-```bash
+
 istioctl install -f vm-cluster.yaml --kubeconfig=$KUBECONFIG1 -y
 ```
 
 Add gateways:
 ```bash
-curl -O https://raw.githubusercontent.com/istio/istio/release-1.16/samples/multicluster/gen-eastwest-gateway.sh
-chmod +x gen-eastwest-gateway.sh
-./gen-eastwest-gateway.sh --single-cluster | istioctl --kubeconfig=$KUBECONFIG1 install -y -f -
-curl -O https://raw.githubusercontent.com/istio/istio/release-1.16/samples/multicluster/expose-istiod.yaml
-kubectl --kubeconfig=$KUBECONFIG1 apply -n istio-system -f expose-istiod.yaml
+curl https://raw.githubusercontent.com/istio/istio/release-1.16/samples/multicluster/gen-eastwest-gateway.sh | sh -s - --single-cluster | istioctl --kubeconfig=$KUBECONFIG1 install -y -f -
+kubectl --kubeconfig=$KUBECONFIG1 apply -n istio-system -f https://raw.githubusercontent.com/istio/istio/release-1.16/samples/multicluster/expose-istiod.yaml
 ```
 
 Deploy ubuntu on another cluster (will be used instead of VM):
@@ -58,8 +51,6 @@ Add vm config to cluster:
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 create namespace "${VM_NAMESPACE}"
 kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n "${VM_NAMESPACE}"
-```
-```bash
 cat <<EOF > workloadgroup.yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: WorkloadGroup
@@ -108,6 +99,7 @@ You should see messages like these in logs:
 Root cert has changed, start rotating root cert
 ADS: new connection for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns-1
 SDS: PUSH request for node:ubuntu-deployment-696fdf7b4-nsdhk.vm-ns resources:1 size:4.0kB resource:default
+dns     updated lookup table with 78 hosts
 
 ```bash
 istioctl proxy-status --kubeconfig=$KUBECONFIG1
@@ -122,6 +114,8 @@ kubectl --kubeconfig $KUBECONFIG1 apply -n sample -f helloworld.yaml
 kubectl --kubeconfig $KUBECONFIG1 -n sample delete deployment.apps/helloworld-v2
 kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=1m pod -l app=helloworld
 ```
+
+k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl -s localhost:15000/config_dump | istioctl proxy-config clusters --file -
 
 Check istio DNS:
 ```bash
@@ -180,7 +174,7 @@ helloworld   ClusterIP   10.96.137.147   <none>        5000/TCP   22m
     2   0.083122  10.244.0.13 → 10.244.1.9   TCP 74 54292 → 5000 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=1056154647 TSecr=0 WS=128
     3   1.088024  10.244.0.13 → 10.244.1.9   TCP 74 [TCP Retransmission] [TCP Port numbers reused] 54292 → 5000 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=1056155652 TSecr=0 WS=128
 
-✗ tshark -r 1-lo.pcap  
+✗ tshark -r 1-lo.pcap
     1   0.000000  10.244.0.13 → 127.0.0.1    DNS 107 Standard query 0x51c6 A helloworld.sample.svc.default.svc.cluster.local
     2   0.000054  10.244.0.13 → 127.0.0.1    DNS 107 Standard query 0xccc3 AAAA helloworld.sample.svc.default.svc.cluster.local
     3   0.000564   10.96.0.10 → 10.244.0.13  DNS 226 Standard query response 0x51c6 A helloworld.sample.svc.default.svc.cluster.local CNAME helloworld.sample.svc A 10.96.137.147
@@ -289,3 +283,9 @@ kill -2 $!
 k1 -n istio-system logs pods/istio-eastwestgateway-64b86b4c46-cz4dc | tail
 
 There are no new logs in pods/istio-eastwestgateway-64b86b4c46-cz4dc
+
+docker inspect kind-1-control-plane -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+docker inspect kind-2-control-plane -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+172.18.0.4
+
+systemctl status istio

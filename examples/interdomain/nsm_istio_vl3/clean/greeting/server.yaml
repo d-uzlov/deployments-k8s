@@ -13,69 +13,67 @@ spec:
   selector:
     app: greeting
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: default
-  name: cert-file
-data:
-  root-cert.pem: |
-    -----BEGIN CERTIFICATE-----
-    MIIC/TCCAeWgAwIBAgIRALqf6wF4bmN0ht2obcfr8zYwDQYJKoZIhvcNAQELBQAw
-    GDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDAeFw0yMjExMTgxMDQ5MzZaFw0zMjEx
-    MTUxMDQ5MzZaMBgxFjAUBgNVBAoTDWNsdXN0ZXIubG9jYWwwggEiMA0GCSqGSIb3
-    DQEBAQUAA4IBDwAwggEKAoIBAQDloURcKHxr16pM/izDzBAJ1/nlvitep/X6pOvt
-    rM4RG+z3yPbP6KKCfGn7kxu06NtQXBQ4m1xxf75koc7iP5+IpE5r8OIb8KN4MYg7
-    /H6lm7vkmSseOEZJ69KcSeWvbbCu4+XBdlE0+4E+ME4MDTRzo4VUd0scxLhkqGXa
-    iBg6pGQOcGogA/ltyFIDBdqebM7UfRuYA5hwt0bsLVPODNDBQVaJFikgFOi8hxLu
-    wvMutdbsxO31Asdfmtk87RGv4PwtS6jH6NTFS+w8aKeLXpudkMDGJEvMfiMR97R7
-    MckqBoGnqv6O+86Mrk4v0ztMXF2JTg2hTNTMkG4abjRYy9/pAgMBAAGjQjBAMA4G
-    A1UdDwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQFzMuXkQa2
-    N/algJQzbHJsVbpyRjANBgkqhkiG9w0BAQsFAAOCAQEAxCL7bCiziwOSTyO8cQ6+
-    9Bx5ZzWjs34OjAkPQUGvIJe1e8P4WrB1HkvbrN/K8wHpBWU0Bhx2uZKYQLEvBj/g
-    j/Kub/UHDTN44V1MS7Ss1ET8sGJjcGFrZpY1A8Z1O3fA130Y2our3HHACbAMalSK
-    37jqL9LyDsPX8ACVIyQ3Ez2qPZOYcZGJ40RnXGZ6L2bHHUJacbTbGOtSYyVLpL3X
-    2AwfCCseBHalPbdrj5sl/IKkatWnytroGC6BxAPSI4wCKt9WrHE41KboW0tMP3fO
-    YZuobdDHpbOyEsjVYK79s6JiIJUYzU0EeP+jvxUC7KX+OgU1zD3vfMHvo1MGz6/O
-    JQ==
-    -----END CERTIFICATE-----
-  cluster.env: |
-    CANONICAL_REVISION='latest'
-    CANONICAL_SERVICE='vm-app'
-    ISTIO_INBOUND_PORTS='*'
-    ISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'
-    ISTIO_METAJSON_LABELS='{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-    ISTIO_META_CLUSTER_ID='Kubernetes'
-    ISTIO_META_DNS_CAPTURE='true'
-    ISTIO_META_MESH_ID=''
-    ISTIO_META_NETWORK=''
-    ISTIO_META_WORKLOAD_NAME='vm-app'
-    ISTIO_NAMESPACE='vm-ns'
-    ISTIO_SERVICE='vm-app.vm-ns'
-    ISTIO_SERVICE_CIDR='*'
-    POD_NAMESPACE='vm-ns'
-    SERVICE_ACCOUNT='serviceaccountvm'
-    TRUST_DOMAIN='cluster.local'
-  istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6InJrVWlxNFV3c21nY1dnSzNMWk82YTlBXzh3cGJ0ajlpWDByc1JRWDd6bnMifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjY4NzcyMzUxLCJpYXQiOjE2Njg3Njg3NTEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiODczNzU3N2MtOGRlYS00Y2RjLTk3MDctMTZkYTVmYTBjMDE1In19LCJuYmYiOjE2Njg3Njg3NTEsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.JXGIUKIhq9A9YinVnsNDvN23-PD_UIX1skhzb1VQaYBVwJfrfIA6qrySxwMAj3QnZ8UkVk4igLpv6qUYib85uAYtbqiz_k3UwCT14DpygEj0L3l078LlHWnLBsZBgk_RQAy11sUV4VmhPIizTssHEB-VDOI82v7GIcQCWvYGaxztqumv1KyOGLnKc3C9aR6Yh7c-yjh81C90Y5qtk1IBZuJWkmwRTei9ao-8A59wz2eGUsY3_KIMrIQ-sWsEsTNCvjtbVDjZOPUp9HZE0kUNVMgjzEJfrPqqqJnLGqmoaK4sHYMNrkNbw9wIPPr615JlZtLl7FXZmdGJ-0wkONYIag
-  mesh: |
-    defaultConfig:
-      discoveryAddress: istiod.istio-system.svc:15012
-      proxyMetadata:
-        CA_ROOT_CA: /var/run/secrets/istio/root-cert.pem
-        CANONICAL_REVISION: latest
-        CANONICAL_SERVICE: vm-app
-        ISTIO_META_CLUSTER_ID: Kubernetes
-        ISTIO_META_DNS_CAPTURE: "true"
-        ISTIO_META_MESH_ID: ""
-        ISTIO_META_NETWORK: ""
-        ISTIO_META_WORKLOAD_NAME: vm-app
-        ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
-        POD_NAMESPACE: vm-ns
-        SERVICE_ACCOUNT: serviceaccountvm
-        TRUST_DOMAIN: cluster.local
-      tracing:
-        zipkin:
-          address: zipkin.istio-system:9411
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   namespace: default
+#   name: cert-file
+# data:
+#   root-cert.pem: |
+#     -----BEGIN CERTIFICATE-----
+#     MIIC/DCCAeSgAwIBAgIQePWD4MtImMJuAefFgpWB7zANBgkqhkiG9w0BAQsFADAY
+#     MRYwFAYDVQQKEw1jbHVzdGVyLmxvY2FsMB4XDTIyMTIwNzA2MTc1NFoXDTMyMTIw
+#     NDA2MTc1NFowGDEWMBQGA1UEChMNY2x1c3Rlci5sb2NhbDCCASIwDQYJKoZIhvcN
+#     AQEBBQADggEPADCCAQoCggEBAKEdAEae3jp1MjuIpRn2UXQjE7IzmCA/y0rRZ/ab
+#     va5RczXC5/317IAYRdWkcE5ryNXH5E9wIYxYW7ZbiKdZTCfsqouStAUW8Go5A/0G
+#     0Mton0VnCVb3x60H0hJ5jv4HmSUjdnVriSLqj1NbiocPAvTvQ/91ARi6ORH32dVs
+#     n/+pwmDALstFU18SitKk+npoN32/21dhWqrWWgBolTJqoXfYha/zXWFASEe/5fwY
+#     AP6ficIaLKUuDlbVsxiCa7qqxu21JGAqrhNhghT3Li8qC5svFRPCAdrY2TKnlQXA
+#     lytdUhz+Hz3bLQiVUyMX1Gkyol+mhkkE+aeu1CtPHHIoYrsCAwEAAaNCMEAwDgYD
+#     VR0PAQH/BAQDAgIEMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFLr0I3CiabVA
+#     8HxGihmz1FIoIrjgMA0GCSqGSIb3DQEBCwUAA4IBAQBeU7MSGux8L/Dk5EfdaSOb
+#     m5oIebtaq0XE8BASod6+EhzOlYn5rHjjAhXOYwc6yol/AzBlo63CPChkIe1ocU9X
+#     jQ5MCLHr6Qsg8VN7/SakdP4qoHW4NyEZ4WysU7INfLzUYx9h/T6u8wZ81qIDgroJ
+#     QbpbiUirp8z9YVZSmaeZ7KULi6WaMUB/05RyurdtINoZgNY/pHfXXtG80rbOA+/i
+#     Ls2syt+//kz7s3f1XKEF0MyABVmNYoQhv33dZiNfPTaU1nMckDy7zTykTsCzPwSm
+#     mEcCAGk91EZtDxfIycfEt+vVGnw9sf0IGOfeVfmqZBSylD0IyH/6+r33hBHoC+0R
+#     -----END CERTIFICATE-----
+#   cluster.env: |
+#     CANONICAL_REVISION='latest'
+#     CANONICAL_SERVICE='vm-app'
+#     ISTIO_INBOUND_PORTS='*'
+#     ISTIO_LOCAL_EXCLUDE_PORTS='22,15090,15021,15020'
+#     ISTIO_METAJSON_LABELS='{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+#     ISTIO_META_CLUSTER_ID='Kubernetes'
+#     ISTIO_META_DNS_CAPTURE='true'
+#     ISTIO_META_MESH_ID=''
+#     ISTIO_META_NETWORK=''
+#     ISTIO_META_WORKLOAD_NAME='vm-app'
+#     ISTIO_NAMESPACE='vm-ns'
+#     ISTIO_SERVICE='vm-app.vm-ns'
+#     ISTIO_SERVICE_CIDR='*'
+#     POD_NAMESPACE='vm-ns'
+#     SERVICE_ACCOUNT='serviceaccountvm'
+#     TRUST_DOMAIN='cluster.local'
+#   istio-token: eyJhbGciOiJSUzI1NiIsImtpZCI6InJ4blU5UDVoWUtJZmFLSmk4a2FOQ0NvVUoycDNXXy00LTBTaHFxU0drWDQifQ.eyJhdWQiOlsiaXN0aW8tY2EiXSwiZXhwIjoxNjcwMzk3NTkyLCJpYXQiOjE2NzAzOTM5OTIsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJ2bS1ucyIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJzZXJ2aWNlYWNjb3VudHZtIiwidWlkIjoiNTcxOGZkZmQtYWI5Mi00MDhjLTg4NDYtZTliMjI5ZDA4ZjljIn19LCJuYmYiOjE2NzAzOTM5OTIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDp2bS1uczpzZXJ2aWNlYWNjb3VudHZtIn0.WowOSpFMODBKDFtHK1qoy2HS6i8mXET3zdEoVAGEKzDoCoDj00q7v7V3XDw0tD_fb8YvllTcrt0g1g98vU5qPWT1SxEiPKgu4SXNGHYjW68zUjJG-9y5W8aMLdOH6hevlkL9akQ2rgoyh7TClmZb9_-HcoawPE1BknqtkJzPMf5cRfgFIOQcbJjJkgZEAaaa3NrSCb2TXzQnt2HCMuO3wLJAPnjT-BCPJ-9FgBkzS-aJUmOUFWCts5g9Rstke608d9sCG5Y1rODZYqsao0XCvTwUvNfLfVYK2TRT0X34O6vbjsto2hlDhjwijKvmyR5IKHjowNB1qIo40NkCW-hqlA
+#   mesh: |
+#     defaultConfig:
+#       discoveryAddress: istiod.istio-system.svc:15012
+#       proxyMetadata:
+#         CANONICAL_REVISION: latest
+#         CANONICAL_SERVICE: vm-app
+#         ISTIO_META_CLUSTER_ID: Kubernetes
+#         ISTIO_META_DNS_CAPTURE: "true"
+#         ISTIO_META_MESH_ID: ""
+#         ISTIO_META_NETWORK: ""
+#         ISTIO_META_WORKLOAD_NAME: vm-app
+#         ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+#         POD_NAMESPACE: vm-ns
+#         SERVICE_ACCOUNT: serviceaccountvm
+#         TRUST_DOMAIN: cluster.local
+#       tracing:
+#         zipkin:
+#           address: zipkin.istio-system:9411
 ---
 apiVersion: apps/v1
 kind: Deployment

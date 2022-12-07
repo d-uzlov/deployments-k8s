@@ -1,1 +1,4 @@
-*/istio-vm-configs/
+
+*/istio-vm-configs
+*/*/istio-vm-configs
+*/*/*/istio-vm-configs
