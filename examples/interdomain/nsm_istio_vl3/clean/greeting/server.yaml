@@ -166,7 +166,7 @@ spec:
               subPath: cluster.env
             - mountPath: /etc/istio/config/mesh
               name: cert
-              subPath: mesh
+              subPath: mesh.yaml
             - mountPath: /var/run/secrets/tokens/istio-token
               name: cert
               subPath: istio-token

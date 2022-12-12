@@ -81,8 +81,8 @@ spec:
     spec:
       containers:
         - name: helloworld
-          # image: docker.io/istio/examples-helloworld-v2
-          image: docker.io/kennethreitz/httpbin
+          image: docker.io/istio/examples-helloworld-v2
+          # image: docker.io/kennethreitz/httpbin
           resources:
             requests:
               cpu: "100m"

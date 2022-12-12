@@ -18,7 +18,7 @@ istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 
 4. Prepare configuration for istio
 ```bash
-WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/clean/istio-vm-configs"
+WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/clean/greeting/istio-vm-configs"
 VM_APP="vm-app"
 VM_NAMESPACE="vm-ns"
 SERVICE_ACCOUNT="serviceaccountvm"
@@ -89,19 +89,6 @@ k1 apply -f sample-ns.yaml
 
 ## To run manual istio-proxy container follow this:
 
-2. Copy/paste istiod pod name
-```bash
-ISTIOD_NAME=
-```
-```bash
-kubectl --kubeconfig=$KUBECONFIG1 exec -n istio-system $ISTIOD_NAME -c cmd-nsc -- ip a
-```
-
-3. ingressIP - istiod ip
-```bash
-istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
-```
-
 4. Copy-paste info from WORK_DIR to configmap values in [server.yaml](./greeting/server.yaml)
 5. Start the deployment
 ```bash
@@ -109,5 +96,12 @@ kubectl --kubeconfig=$KUBECONFIG2 apply -k ./greeting/
 ```
 6. Check logs
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 logs deployment.apps/greeting -c istio-proxy
+kubectl --kubeconfig=$KUBECONFIG2 -n vl3-test logs deployment.apps/greeting -c istio-proxy
 ```
+
+k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- ip a | grep nsm
+k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- ping 172.16.0.2 -c4
+k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- apk add netcat-openbsd
+k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- nc -v 172.16.0.2 15012
+ps -aef --forest
+
