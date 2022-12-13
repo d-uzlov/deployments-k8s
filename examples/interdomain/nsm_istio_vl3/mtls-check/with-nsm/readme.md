@@ -77,6 +77,7 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sh -c "echo \"ISTIO_AGENT_FLAGS=\\\"--log_output_level=all:debug --proxyLogLevel=trace\\\"\" >> /var/lib/istio/envoy/cluster.env"
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo cp /vm-dir/mesh.yaml /etc/istio/config/mesh
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'cat /vm-dir/hosts >> /etc/hosts'
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'echo "172.16.0.4 helloworld.sample.svc" >> /etc/hosts'
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm /usr/local/bin/istio-start.sh
@@ -117,12 +118,12 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 
 Dump envoy state:
 ```bash
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/certs' > envoy-certs.json  
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/certs' > envoy-certs.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/clusters?format=json' >envoy-clusters.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/listeners?format=json' >envoy-listeners.json  
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/listeners?format=json' >envoy-listeners.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/server_info' >envoy-server-info.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/clusters?format=json' >envoy-clusters.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json' >envoy-stats.json  
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json' >envoy-stats.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json&usedonly' >envoy-stats-usedonly.json
 ```
