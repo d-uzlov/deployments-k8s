@@ -1,0 +1,578 @@
+[
+    {
+        "Attributes": {
+            "ServiceRegistry": "External",
+            "Name": "helloworld.my-vl3-network",
+            "Namespace": "default",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": null,
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "hw",
+                "port": 5000,
+                "protocol": "HTTP"
+            }
+        ],
+        "creationTime": "2022-12-14T08:03:23Z",
+        "hostname": "helloworld.my-vl3-network",
+        "clusterVIPs": {
+            "Addresses": null
+        },
+        "defaultAddress": "172.16.0.4/24",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": ""
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "admission-webhook-svc",
+            "Namespace": "nsm-system",
+            "Labels": {
+                "app": "admission-webhook-k8s"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "admission-webhook-k8s"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "port": 443,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:55:13Z",
+        "hostname": "admission-webhook-svc.nsm-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.48.208"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.48.208",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "832"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "exposed-kube-dns",
+            "Namespace": "kube-system",
+            "Labels": {
+                "k8s-app": "kube-dns",
+                "kubernetes.io/cluster-service": "true",
+                "kubernetes.io/name": "CoreDNS"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "k8s-app": "kube-dns"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": {
+                    "Kubernetes": [
+                        "172.18.201.0"
+                    ]
+                }
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "port": 53,
+                "protocol": "TCP"
+            }
+        ],
+        "creationTime": "2022-12-14T04:54:05Z",
+        "hostname": "exposed-kube-dns.kube-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.143.112"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.143.112",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "624"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "helloworld",
+            "Namespace": "sample",
+            "Labels": {
+                "app": "helloworld",
+                "service": "helloworld"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "helloworld"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "http",
+                "port": 5000,
+                "protocol": "HTTP"
+            },
+            {
+                "name": "http80",
+                "port": 80,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T08:01:21Z",
+        "hostname": "helloworld.sample.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.170.206"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.170.206",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "22387"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "istiod",
+            "Namespace": "istio-system",
+            "Labels": {
+                "app": "istiod",
+                "install.operator.istio.io/owning-resource": "unknown",
+                "install.operator.istio.io/owning-resource-namespace": "istio-system",
+                "istio": "pilot",
+                "istio.io/rev": "default",
+                "operator.istio.io/component": "Pilot",
+                "operator.istio.io/managed": "Reconcile",
+                "operator.istio.io/version": "1.16.0",
+                "release": "istio"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "istiod",
+                "istio": "pilot"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "grpc-xds",
+                "port": 15010,
+                "protocol": "GRPC"
+            },
+            {
+                "name": "https-dns",
+                "port": 15012,
+                "protocol": "HTTPS"
+            },
+            {
+                "name": "https-webhook",
+                "port": 443,
+                "protocol": "HTTPS"
+            },
+            {
+                "name": "http-monitoring",
+                "port": 15014,
+                "protocol": "HTTP"
+            }
+        ],
+        "creationTime": "2022-12-14T07:57:48Z",
+        "hostname": "istiod.istio-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.1.32"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.1.32",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "21929"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "k8s-workload-registrar",
+            "Namespace": "spire",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "spire-server"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "webhook",
+                "port": 443,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:54:12Z",
+        "hostname": "k8s-workload-registrar.spire.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.165.104"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.165.104",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "656"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "kube-dns",
+            "Namespace": "kube-system",
+            "Labels": {
+                "k8s-app": "kube-dns",
+                "kubernetes.io/cluster-service": "true",
+                "kubernetes.io/name": "CoreDNS"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "k8s-app": "kube-dns"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "dns",
+                "port": 53,
+                "protocol": "UDP"
+            },
+            {
+                "name": "dns-tcp",
+                "port": 53,
+                "protocol": "TCP"
+            },
+            {
+                "name": "metrics",
+                "port": 9153,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:52:17Z",
+        "hostname": "kube-dns.kube-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.0.10"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.0.10",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "225"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "kubernetes",
+            "Namespace": "default",
+            "Labels": {
+                "component": "apiserver",
+                "provider": "kubernetes"
+            },
+            "ExportTo": null,
+            "LabelSelectors": null,
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "https",
+                "port": 443,
+                "protocol": "HTTPS"
+            }
+        ],
+        "creationTime": "2022-12-14T04:52:16Z",
+        "hostname": "kubernetes.default.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.0.1"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.0.1",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "194"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "metrics-server",
+            "Namespace": "kube-system",
+            "Labels": {
+                "k8s-app": "metrics-server"
+            },
+            "ExportTo": null,
+            "LabelSelectors": {
+                "k8s-app": "metrics-server"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "https",
+                "port": 443,
+                "protocol": "HTTPS"
+            }
+        ],
+        "creationTime": "2022-12-14T04:55:53Z",
+        "hostname": "metrics-server.kube-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.73.60"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.73.60",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "1026"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "nsmgr-proxy",
+            "Namespace": "nsm-system",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "nsmgr-proxy"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": {
+                    "Kubernetes": [
+                        "172.18.201.2"
+                    ]
+                }
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "port": 5004,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:55:13Z",
+        "hostname": "nsmgr-proxy.nsm-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.242.138"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.242.138",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "840"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "registry-proxy",
+            "Namespace": "nsm-system",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "registry-proxy"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": null
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "port": 5005,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:55:13Z",
+        "hostname": "registry-proxy.nsm-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.88.211"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.88.211",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "850"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "registry",
+            "Namespace": "nsm-system",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "registry"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": {
+                    "Kubernetes": [
+                        "172.18.201.3"
+                    ]
+                }
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "registry",
+                "port": 5002,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:55:13Z",
+        "hostname": "registry.nsm-system.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.105.46"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.105.46",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "848"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "spire-server",
+            "Namespace": "spire",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "spire-server"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": {
+                    "Kubernetes": [
+                        "172.18.201.1"
+                    ]
+                }
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "spire-server",
+                "port": 8081,
+                "protocol": "UnsupportedProtocol"
+            },
+            {
+                "name": "spire-federation",
+                "port": 8443,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T04:54:12Z",
+        "hostname": "spire-server.spire.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.207.21"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.207.21",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "666"
+    },
+    {
+        "Attributes": {
+            "ServiceRegistry": "Kubernetes",
+            "Name": "vl3-ipam",
+            "Namespace": "ns-dns-vl3",
+            "Labels": null,
+            "ExportTo": null,
+            "LabelSelectors": {
+                "app": "vl3-ipam"
+            },
+            "ClusterExternalAddresses": {
+                "Addresses": {
+                    "Kubernetes": [
+                        "172.18.201.4"
+                    ]
+                }
+            },
+            "ClusterExternalPorts": null
+        },
+        "ports": [
+            {
+                "name": "vl3-ipam",
+                "port": 5006,
+                "protocol": "UnsupportedProtocol"
+            }
+        ],
+        "creationTime": "2022-12-14T07:57:37Z",
+        "hostname": "vl3-ipam.ns-dns-vl3.svc.cluster.local",
+        "clusterVIPs": {
+            "Addresses": {
+                "Kubernetes": [
+                    "10.96.112.138"
+                ]
+            }
+        },
+        "defaultAddress": "10.96.112.138",
+        "Resolution": 0,
+        "MeshExternal": false,
+        "ResourceVersion": "21777"
+    }
+]

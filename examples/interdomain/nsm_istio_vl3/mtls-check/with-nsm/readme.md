@@ -178,3 +178,8 @@ cat envoy-config-dump-w-eds-disable.json | grep PassthroughCluster172
 ```
 expected output:
            "hostname": "PassthroughCluster172.16.0.1:53"
+
+check istio services:
+```bash
+k1 -n istio-system exec deployments/istiod -c discovery -- curl 'localhost:8080/debug/registryz' >registryz.json
+```
