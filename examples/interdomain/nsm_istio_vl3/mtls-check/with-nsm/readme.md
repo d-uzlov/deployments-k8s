@@ -1,13 +1,14 @@
-1. install interdomain 
+1. install interdomain
 
 2. install vl3
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 apply -k ./vl3-dns
+sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=1m pod -l app=nse-vl3-vpp
 kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=1m pod -l app=vl3-ipam
 ```
 
-install namespace
+install istio
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
 istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
@@ -42,16 +43,7 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo curl -LO https://storage.googleapis.com/istio-release/releases/1.16.0/deb/istio-sidecar.deb
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo dpkg -i istio-sidecar.deb
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- wget -L "https://go.dev/dl/go1.19.4.linux-amd64.tar.gz"
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -rf /usr/local/go
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'GOBIN=/usr/local/bin /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@v1.20.0'
 ```
-
-Rebuild istio proxy-agent:
-Download istio repository and execute:
-sudo make build-linux DEBUG=1
-
-Copy result binary from `<istio-repo>/out/linux_amd64/pilot-agent` into `./pilot-agent-debug`
 
 Get istio config
 ```bash
@@ -78,10 +70,6 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'echo "172.16.0.4 helloworld.sample.svc" >> /etc/hosts'
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
-# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm /usr/local/bin/istio-start.sh
-# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/istio-start.sh /usr/local/bin/istio-start.sh
-# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/pilot-agent-debug /usr/local/bin/pilot-agent
-# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- chmod +x /usr/local/bin/istio-start.sh
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.log
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.err.log
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
@@ -102,6 +90,28 @@ k1 apply -f sample-ns.yaml
 sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
 ```
+
+Check mtls
+```bash
+k2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >10-default.pcap &
+sleep 1
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 1
+kill -2 $!
+tshark -r 10-default.pcap | grep HTTP
+```
+Expected output:
+  112   1.156252   172.16.0.3 → 172.16.0.4   HTTP 990 GET /hello HTTP/1.1 
+  115   1.361133   172.16.0.4 → 172.16.0.3   HTTP 1281 HTTP/1.1 200 OK  (text/html)
+
+
+check envoy config
+```bash
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-default.json
+cat envoy-config-dump-w-eds-default.json | grep PassthroughCluster172
+```
+expected output:
+           "hostname": "PassthroughCluster172.16.0.4:5000"
 
 Enforce mTLS:
 ```bash
@@ -124,8 +134,16 @@ sleep 1
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
 sleep 1
 kill -2 $!
-tshark -r 10-mtls.pcap | grep HTTP
+! tshark -r 10-mtls.pcap | grep HTTP
 ```
+expected output: empty
+
+check envoy config
+```bash
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-mtls.json
+! cat envoy-config-dump-w-eds-mtls.json | grep PassthroughCluster172
+```
+expected output: empty
 
 Disable mTLS:
 ```bash
@@ -149,18 +167,14 @@ sleep 1
 kill -2 $!
 tshark -r 10-disable.pcap | grep HTTP
 ```
+expected output:
+   98   1.079007   172.16.0.3 → 172.16.0.4   HTTP 1053 GET /hello HTTP/1.1 
+  103   1.232405   172.16.0.4 → 172.16.0.3   HTTP 1208 HTTP/1.1 200 OK  (text/html)
 
-Dump envoy state:
+check envoy config
 ```bash
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/certs' > envoy-certs.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/clusters?format=json' >envoy-clusters.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/listeners?format=json' >envoy-listeners.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/server_info' >envoy-server-info.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/clusters?format=json' >envoy-clusters.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json' >envoy-stats.json
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json&usedonly' >envoy-stats-usedonly.json
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-disable.json
+cat envoy-config-dump-w-eds-disable.json | grep PassthroughCluster172
 ```
-
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-mtls.json
-cat envoy-config-dump-w-eds-mtls.json | grep PassthroughCluster172
+expected output:
+           "hostname": "PassthroughCluster172.16.0.1:53"
