@@ -1,28 +1,30 @@
-2022-12-01T07:00:03.211516Z	info	FLAG: --concurrency="0"
-2022-12-01T07:00:03.211571Z	info	FLAG: --domain=""
-2022-12-01T07:00:03.211583Z	info	FLAG: --help="false"
-2022-12-01T07:00:03.211589Z	info	FLAG: --log_as_json="false"
-2022-12-01T07:00:03.211592Z	info	FLAG: --log_caller=""
-2022-12-01T07:00:03.211596Z	info	FLAG: --log_output_level="default:info"
-2022-12-01T07:00:03.211599Z	info	FLAG: --log_rotate=""
-2022-12-01T07:00:03.211602Z	info	FLAG: --log_rotate_max_age="30"
-2022-12-01T07:00:03.211605Z	info	FLAG: --log_rotate_max_backups="1000"
-2022-12-01T07:00:03.211609Z	info	FLAG: --log_rotate_max_size="104857600"
-2022-12-01T07:00:03.211612Z	info	FLAG: --log_stacktrace_level="default:none"
-2022-12-01T07:00:03.211624Z	info	FLAG: --log_target="[stdout]"
-2022-12-01T07:00:03.211631Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
-2022-12-01T07:00:03.211635Z	info	FLAG: --outlierLogPath=""
-2022-12-01T07:00:03.211655Z	info	FLAG: --proxyComponentLogLevel=""
-2022-12-01T07:00:03.211659Z	info	FLAG: --proxyLogLevel="warning,misc:error"
-2022-12-01T07:00:03.211663Z	info	FLAG: --serviceCluster="istio-proxy"
-2022-12-01T07:00:03.211666Z	info	FLAG: --stsPort="0"
-2022-12-01T07:00:03.211669Z	info	FLAG: --templateFile=""
-2022-12-01T07:00:03.211673Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
-2022-12-01T07:00:03.211685Z	info	FLAG: --vklog="0"
-2022-12-01T07:00:03.211695Z	info	Version 1.15.2-b542583af7f8240ad0c9cab56eb9f8d55e1357ab-Clean
-2022-12-01T07:00:03.214082Z	info	Maximum file descriptors (ulimit -n): 1024
-2022-12-01T07:00:03.214316Z	info	Proxy role	ips=[10.244.0.12 172.16.0.3] type=sidecar id=ubuntu-deployment-6855596d8-mzgpp.vm-ns domain=vm-ns.svc.cluster.local
-2022-12-01T07:00:03.214391Z	info	Apply mesh config from file defaultConfig:
+API server listening at: [::]:40000
+2022-12-14T05:12:45.989846Z	info	FLAG: --concurrency="0"
+2022-12-14T05:12:45.989885Z	info	FLAG: --domain=""
+2022-12-14T05:12:45.989894Z	info	FLAG: --help="false"
+2022-12-14T05:12:45.989900Z	info	FLAG: --log_as_json="false"
+2022-12-14T05:12:45.989905Z	info	FLAG: --log_caller=""
+2022-12-14T05:12:45.989911Z	info	FLAG: --log_output_level="all:debug"
+2022-12-14T05:12:45.989916Z	info	FLAG: --log_rotate=""
+2022-12-14T05:12:45.989921Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-14T05:12:45.989927Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-14T05:12:45.989932Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-14T05:12:45.989938Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-14T05:12:45.989957Z	info	FLAG: --log_target="[stdout]"
+2022-12-14T05:12:45.989971Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-14T05:12:45.989976Z	info	FLAG: --outlierLogPath=""
+2022-12-14T05:12:45.989981Z	info	FLAG: --proxyComponentLogLevel=""
+2022-12-14T05:12:45.989986Z	info	FLAG: --proxyLogLevel="trace"
+2022-12-14T05:12:45.989992Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-14T05:12:45.989997Z	info	FLAG: --stsPort="0"
+2022-12-14T05:12:45.990002Z	info	FLAG: --templateFile=""
+2022-12-14T05:12:45.990008Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-14T05:12:45.990026Z	info	FLAG: --vklog="0"
+2022-12-14T05:12:45.990038Z	info	Version 1.16-dev-cf5a13f5156c0cfda96047b4ac50da17686d5611-dirty-Modified
+2022-12-14T05:12:45.992370Z	info	Maximum file descriptors (ulimit -n): 1024
+2022-12-14T05:12:45.992613Z	info	Proxy role	ips=[10.244.0.14 172.16.0.3] type=sidecar id=ubuntu-deployment-6855596d8-g5jmz.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-14T05:12:45.992660Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-14T05:12:45.992708Z	info	Apply mesh config from file defaultConfig:
   discoveryAddress: istiod.istio-system.svc:15012
   proxyMetadata:
     CANONICAL_REVISION: latest
@@ -40,11 +42,11 @@
     zipkin:
       address: zipkin.istio-system:9411
 
-2022-12-01T07:00:03.217662Z	info	Apply proxy config from env 
+2022-12-14T05:12:46.012692Z	info	Apply proxy config from env 
 serviceCluster: vm-app.vm-ns
 controlPlaneAuthPolicy: MUTUAL_TLS
 
-2022-12-01T07:00:03.218547Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+2022-12-14T05:12:46.013838Z	info	Effective config: binaryPath: /usr/local/bin/envoy
 concurrency: 2
 configPath: ./etc/istio/proxy
 controlPlaneAuthPolicy: MUTUAL_TLS
@@ -72,32 +74,81 @@ tracing:
   zipkin:
     address: zipkin.istio-system:9411
 
-2022-12-01T07:00:03.218575Z	info	JWT policy is third-party-jwt
-2022-12-01T07:00:03.218580Z	info	using credential fetcher of JWT type in cluster.local trust domain
-2022-12-01T07:00:03.443015Z	info	Opening status port 15020
-2022-12-01T07:00:03.443106Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
-2022-12-01T07:00:03.445414Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
-2022-12-01T07:00:03.445643Z	info	Workload SDS socket not found. Starting Istio SDS Server
-2022-12-01T07:00:03.445682Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
-2022-12-01T07:00:03.445710Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
-2022-12-01T07:00:03.445876Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
-2022-12-01T07:00:03.481138Z	info	ads	All caches have been synced up in 273.898734ms, marking server ready
-2022-12-01T07:00:03.481916Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
-2022-12-01T07:00:03.482924Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
-2022-12-01T07:00:03.483244Z	info	sds	Starting SDS grpc server
-2022-12-01T07:00:03.483438Z	info	starting Http service at 127.0.0.1:15004
-2022-12-01T07:00:03.483719Z	info	Pilot SAN: [istiod.istio-system.svc]
-2022-12-01T07:00:03.486522Z	info	Starting proxy agent
-2022-12-01T07:00:03.486555Z	info	starting
-2022-12-01T07:00:03.486576Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
-2022-12-01T07:00:03.856362Z	info	cache	generated new workload certificate	latency=374.366759ms ttl=23h59m59.143649251s
-2022-12-01T07:00:03.856406Z	info	cache	Root cert has changed, start rotating root cert
-2022-12-01T07:00:03.856426Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
-2022-12-01T07:00:03.856833Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.143170493s
-2022-12-01T07:00:04.159438Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
-2022-12-01T07:00:04.304076Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-mzgpp.vm-ns-1
-2022-12-01T07:00:04.304206Z	info	cache	returned workload trust anchor from cache	ttl=23h59m58.695801663s
-2022-12-01T07:00:04.305091Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-mzgpp.vm-ns resources:1 size:1.1kB resource:ROOTCA
-2022-12-01T07:00:04.350859Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-mzgpp.vm-ns-2
-2022-12-01T07:00:04.351218Z	info	cache	returned workload certificate from cache	ttl=23h59m58.648789919s
-2022-12-01T07:00:04.351454Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-mzgpp.vm-ns resources:1 size:4.0kB resource:default
+2022-12-14T05:12:46.013870Z	info	JWT policy is third-party-jwt
+2022-12-14T05:12:46.013878Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-14T05:12:46.015250Z	debug	Error reading sys_vendor in Azure platform detection: open /sys/class/dmi/id/sys_vendor: no such file or directory
+2022-12-14T05:12:46.115843Z	debug	error in getting aws info for iam/info : Get "http://169.254.169.254/latest/meta-data/iam/info": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2022-12-14T05:12:46.261073Z	debug	dns	initialized DNS	search=[] servers=[127.0.0.1:53]
+2022-12-14T05:12:46.261296Z	info	Opening status port 15020
+2022-12-14T05:12:46.261734Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2022-12-14T05:12:46.261780Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2022-12-14T05:12:46.261862Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-14T05:12:46.261885Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-14T05:12:46.261902Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
+2022-12-14T05:12:46.262016Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
+2022-12-14T05:12:46.304106Z	info	ads	All caches have been synced up in 322.243306ms, marking server ready
+2022-12-14T05:12:46.304475Z	debug	cache	generate secret "default"
+2022-12-14T05:12:46.304540Z	debug	cache	constructed host name for CSR: spiffe://cluster.local/ns/vm-ns/sa/serviceaccountvm
+2022-12-14T05:12:46.305344Z	debug	wasm	LocalFileCache is created with the option
+wasm.Options{PurgeInterval:3600000000000, ModuleExpiry:86400000000000, InsecureRegistries:sets.Set[string]{"":struct {}{}}, HTTPRequestTimeout:15000000000, HTTPRequestMaxRetries:5}
+2022-12-14T05:12:46.305381Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-14T05:12:46.305427Z	info	sds	Starting SDS grpc server
+2022-12-14T05:12:46.306091Z	info	starting Http service at 127.0.0.1:15004
+2022-12-14T05:12:46.306407Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-14T05:12:46.306435Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-14T05:12:46.308081Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-14T05:12:46.308104Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-14T05:12:46.308114Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-14T05:12:46.308293Z	debug	Add file ./etc/certs/root-cert.pem watcher
+2022-12-14T05:12:46.310767Z	info	Starting proxy agent
+2022-12-14T05:12:46.310829Z	info	starting
+2022-12-14T05:12:46.310866Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l trace --concurrency 2]
+2022-12-14T05:12:46.361804Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-14T05:12:46.511639Z	debug	xdsproxy	accepted XDS connection from Envoy, forwarding to upstream XDS server
+2022-12-14T05:12:46.550325Z	warn	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-14T05:12:46.568574Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-14T05:12:46.797402Z	info	cache	generated new workload certificate	latency=492.11267ms ttl=23h59m59.202614139s
+2022-12-14T05:12:46.797444Z	debug	cache	scheduled certificate for rotation in 11h59m59.601282668s	resource=default
+2022-12-14T05:12:46.797454Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-14T05:12:46.797482Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-14T05:12:46.797728Z	debug	cache	output the resource to ./etc/certs	resource=default
+2022-12-14T05:12:46.797740Z	debug	cache	generate secret "ROOTCA"
+2022-12-14T05:12:46.797801Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.202202983s
+2022-12-14T05:12:46.798716Z	debug	cache	output the resource to ./etc/certs	resource=ROOTCA
+2022-12-14T05:12:46.799185Z	debug	Receive file ./etc/certs/root-cert.pem event "etc/certs/key.pem.tmp.1071540759": RENAME
+2022-12-14T05:12:46.956620Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-14T05:12:47.034739Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-14T05:12:47.051321Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-14T05:12:47.051365Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-14T05:12:47.070228Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-14T05:12:47.074179Z	debug	ads	Unauthenticated XDS: @
+2022-12-14T05:12:47.075608Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-g5jmz.vm-ns-1
+2022-12-14T05:12:47.075639Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-g5jmz.vm-ns-1 resources:1 nonce: version: 
+2022-12-14T05:12:47.075647Z	debug	ads	ADS:SDS: INIT/RECONNECT ubuntu-deployment-6855596d8-g5jmz.vm-ns-1  
+2022-12-14T05:12:47.075658Z	debug	cache	generate secret "ROOTCA"
+2022-12-14T05:12:47.075742Z	info	cache	returned workload trust anchor from cache	ttl=23h59m58.924264978s
+2022-12-14T05:12:47.075782Z	debug	cache	output the resource to ./etc/certs	resource=ROOTCA
+2022-12-14T05:12:47.076294Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-g5jmz.vm-ns resources:1 size:1.1kB resource:ROOTCA nonce:9b5a0316-ed05-480c-ad0b-b973b9707f91 version:
+2022-12-14T05:12:47.076388Z	debug	ads	Unauthenticated XDS: @
+2022-12-14T05:12:47.077169Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-14T05:12:47.077821Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-g5jmz.vm-ns-2
+2022-12-14T05:12:47.077844Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-g5jmz.vm-ns-2 resources:1 nonce: version: 
+2022-12-14T05:12:47.077869Z	debug	ads	ADS:SDS: INIT/RECONNECT ubuntu-deployment-6855596d8-g5jmz.vm-ns-2  
+2022-12-14T05:12:47.077879Z	debug	cache	generate secret "default"
+2022-12-14T05:12:47.078027Z	info	cache	returned workload certificate from cache	ttl=23h59m58.921979951s
+2022-12-14T05:12:47.078078Z	debug	cache	output the resource to ./etc/certs	resource=default
+2022-12-14T05:12:47.078244Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-g5jmz.vm-ns resources:1 size:4.0kB resource:default nonce:c344f1ce-f559-4d53-973c-daa3d86fcaa5 version:
+2022-12-14T05:12:47.085244Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-14T05:12:47.085351Z	debug	xdsproxy	request for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-14T05:12:47.085517Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-g5jmz.vm-ns-2 resources:1 nonce:c344f1ce-f559-4d53-973c-daa3d86fcaa5 version: 
+2022-12-14T05:12:47.085539Z	debug	ads	ADS:SDS: ACK ubuntu-deployment-6855596d8-g5jmz.vm-ns-2  c344f1ce-f559-4d53-973c-daa3d86fcaa5
+2022-12-14T05:12:47.085634Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-g5jmz.vm-ns-1 resources:1 nonce:9b5a0316-ed05-480c-ad0b-b973b9707f91 version: 
+2022-12-14T05:12:47.085648Z	debug	ads	ADS:SDS: ACK ubuntu-deployment-6855596d8-g5jmz.vm-ns-1  9b5a0316-ed05-480c-ad0b-b973b9707f91
+2022-12-14T05:12:47.125461Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-14T05:12:47.133598Z	debug	xdsproxy	response for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-14T05:12:47.135080Z	debug	dns	updated lookup table with 36 hosts
+2022-12-14T05:12:47.135113Z	debug	xdsproxy	request for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-14T05:12:47.183314Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+2022-12-14T05:12:47.183369Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-14T05:12:47.195651Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+2022-12-14T05:12:47.204242Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration

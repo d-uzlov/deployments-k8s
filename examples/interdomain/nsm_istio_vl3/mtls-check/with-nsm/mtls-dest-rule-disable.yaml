@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: my-vl3-network
+  namespace: istio-system
+spec:
+  host: '*.my-vl3-network'
+  trafficPolicy:
+    tls:
+      mode: DISABLE

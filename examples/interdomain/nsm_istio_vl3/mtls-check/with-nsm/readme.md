@@ -3,15 +3,13 @@
 2. install vl3
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 apply -k ./vl3-dns
+kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=1m pod -l app=nse-vl3-vpp
+kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=1m pod -l app=vl3-ipam
 ```
 
 install namespace
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
-```
-
-install istio
-```bash
 istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 ```
 
@@ -35,7 +33,7 @@ kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n 
 ```bash
 kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
 sleep 0.5
-kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu
 ```
 
 ```bash
@@ -80,16 +78,19 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo sh -c 'echo "172.16.0.4 helloworld.sample.svc" >> /etc/hosts'
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo mkdir -p /etc/istio/proxy
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm /usr/local/bin/istio-start.sh
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/istio-start.sh /usr/local/bin/istio-start.sh
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/pilot-agent-debug /usr/local/bin/pilot-agent
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- chmod +x /usr/local/bin/istio-start.sh
+# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm /usr/local/bin/istio-start.sh
+# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/istio-start.sh /usr/local/bin/istio-start.sh
+# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cp /vm-dir/pilot-agent-debug /usr/local/bin/pilot-agent
+# kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- chmod +x /usr/local/bin/istio-start.sh
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.log
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.err.log
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
 sleep 5
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.log
 ```
+
+You can also check the second log:
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.err.log
 
 check that ubuntu is visible to istiod
 ```bash
@@ -99,21 +100,54 @@ istioctl proxy-status --kubeconfig=$KUBECONFIG1 | grep vm-ns
 ```bash
 k1 apply -f sample-ns.yaml
 sleep 0.5
-kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=1m pod -l app=helloworld
+kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
 ```
 
-Start port-forwarding for debug connection:
+Enforce mTLS:
 ```bash
-k2 port-forward deployments/ubuntu-deployment 40000:40000
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG1 -f - <<EOF
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "default"
+spec:
+  mtls:
+    mode: STRICT
+EOF
+k1 apply -f mtls-service-entry-hw1.yaml
+k1 apply -f mtls-dest-rule.yaml
 ```
-Open VSCode, run Go debugger with "Connect to server" settings.
 
-Test connectivity:
 ```bash
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- nslookup helloworld.sample.svc
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- nslookup helloworld.my-vl3-network
-k --kubeconfig=$KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl -s helloworld.my-vl3-network:5000/hello
-kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.sample.svc:5000/hello
+k2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >10-mtls.pcap &
+sleep 1
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 1
+kill -2 $!
+tshark -r 10-mtls.pcap | grep HTTP
+```
+
+Disable mTLS:
+```bash
+k1 apply -f mtls-dest-rule-disable.yaml
+kubectl apply -n istio-system --kubeconfig $KUBECONFIG1 -f - <<EOF
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "default"
+spec:
+  mtls:
+    mode: DISABLE
+EOF
+```
+
+```bash
+k2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >10-disable.pcap &
+sleep 1
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 1
+kill -2 $!
+tshark -r 10-disable.pcap | grep HTTP
 ```
 
 Dump envoy state:
@@ -127,3 +161,6 @@ k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/cluster
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json' >envoy-stats.json
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/stats?format=json&usedonly' >envoy-stats-usedonly.json
 ```
+
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-mtls.json
+cat envoy-config-dump-w-eds-mtls.json | grep PassthroughCluster172

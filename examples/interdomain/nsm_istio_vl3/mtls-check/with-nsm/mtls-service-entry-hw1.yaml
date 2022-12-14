@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: se-hw1
+spec:
+  hosts:
+  - helloworld.my-vl3-network # not used
+  addresses:
+  - 172.16.0.4/24 # VIPs
+  ports:
+  - number: 5000
+    name: hw
+    protocol: HTTP
+  location: MESH_INTERNAL
+  resolution: STATIC
+  endpoints:
+  - address: 172.16.0.4
