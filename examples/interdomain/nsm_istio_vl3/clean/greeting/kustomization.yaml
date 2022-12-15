@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: vl3-test
 
 resources:
+- namespace.yaml
 - ubuntu-ic.yaml
 # - ./server.yaml
 
