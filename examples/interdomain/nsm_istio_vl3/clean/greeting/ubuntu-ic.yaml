@@ -41,7 +41,8 @@ spec:
         - proxy
         - sidecar
         - --domain
-        - $(POD_NAMESPACE).svc.cluster.local
+        # - $(POD_NAMESPACE).svc.cluster.local
+        - ""
         - --proxyLogLevel=warning
         - --proxyComponentLogLevel=misc:error
         - --log_output_level=default:info
@@ -58,18 +59,18 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        - name: POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
+        # - name: POD_NAMESPACE
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: metadata.namespace
         - name: INSTANCE_IP
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name: SERVICE_ACCOUNT
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.serviceAccountName
+        # - name: SERVICE_ACCOUNT
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: spec.serviceAccountName
         - name: HOST_IP
           valueFrom:
             fieldRef:
@@ -123,22 +124,34 @@ spec:
           runAsNonRoot: true
           runAsUser: 1337
         volumeMounts:
+        - mountPath: /var/run/secrets/istio/root-cert.pem
+          name: cert
+          subPath: root-cert.pem
+        - mountPath: /var/lib/istio/envoy/cluster.env
+          name: cert
+          subPath: cluster.env
+        - mountPath: /etc/istio/config/mesh
+          name: cert
+          subPath: mesh.yaml
+        - mountPath: /var/run/secrets/tokens/istio-token
+          name: cert
+          subPath: istio-token
         - mountPath: /var/run/secrets/workload-spiffe-uds
           name: workload-socket
         - mountPath: /var/run/secrets/credential-uds
           name: credential-socket
         - mountPath: /var/run/secrets/workload-spiffe-credentials
           name: workload-certs
-        - mountPath: /var/run/secrets/istio
-          name: istiod-ca-cert
+        # - mountPath: /var/run/secrets/istio
+        #   name: istiod-ca-cert
         - mountPath: /var/lib/istio/data
           name: istio-data
         - mountPath: /etc/istio/proxy
           name: istio-envoy
-        - mountPath: /var/run/secrets/tokens
-          name: istio-token
-        - mountPath: /etc/istio/pod
-          name: istio-podinfo
+        # - mountPath: /var/run/secrets/tokens
+        #   name: istio-token
+        # - mountPath: /etc/istio/pod
+        #   name: istio-podinfo
       initContainers:
       - args:
         - istio-iptables
@@ -182,6 +195,9 @@ spec:
           runAsNonRoot: false
           runAsUser: 0
       volumes:
+      - name: cert
+        configMap:
+          name: cert-file
       - name: workload-socket
       - name: credential-socket
       - name: workload-certs
@@ -190,24 +206,24 @@ spec:
         name: istio-envoy
       - emptyDir: {}
         name: istio-data
-      - downwardAPI:
-          items:
-          - fieldRef:
-              fieldPath: metadata.labels
-            path: labels
-          - fieldRef:
-              fieldPath: metadata.annotations
-            path: annotations
-        name: istio-podinfo
-      - name: istio-token
-        projected:
-          sources:
-          - serviceAccountToken:
-              audience: istio-ca
-              expirationSeconds: 43200
-              path: istio-token
-      - configMap:
-          name: istio-ca-root-cert
-        name: istiod-ca-cert
+      # - downwardAPI:
+      #     items:
+      #     - fieldRef:
+      #         fieldPath: metadata.labels
+      #       path: labels
+      #     - fieldRef:
+      #         fieldPath: metadata.annotations
+      #       path: annotations
+      #   name: istio-podinfo
+      # - name: istio-token
+      #   projected:
+      #     sources:
+      #     - serviceAccountToken:
+      #         audience: istio-ca
+      #         expirationSeconds: 43200
+      #         path: istio-token
+      # - configMap:
+      #     name: istio-ca-root-cert
+      #   name: istiod-ca-cert
 status: {}
 ---
