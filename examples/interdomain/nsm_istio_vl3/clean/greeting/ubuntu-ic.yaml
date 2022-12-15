@@ -16,7 +16,7 @@ spec:
       annotations:
         kubectl.kubernetes.io/default-container: ubuntu
         kubectl.kubernetes.io/default-logs-container: ubuntu
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
+        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
         prometheus.io/path: /stats/prometheus
         prometheus.io/port: "15020"
         prometheus.io/scrape: "true"

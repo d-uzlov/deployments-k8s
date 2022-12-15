@@ -9,13 +9,9 @@ kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --tim
 kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=1m pod -l app=vl3-ipam
 ```
 
-2. install namespace
-```bash
-kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
-```
-
 3. install istio
 ```bash
+kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
 istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1
 ```
 
@@ -66,4 +62,7 @@ k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- apk add netcat-openbsd
 k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- nc -v 172.16.0.2 15012
 ps -aef --forest
 
-istioctl kube-inject -f ubuntu.yaml >ubuntu-ic.yaml
+```bash
+istioctl kube-inject -f ubuntu.yaml >greeting/ubuntu-ic.yaml
+k1 apply -k greeting
+```

@@ -14,7 +14,7 @@ spec:
       labels:
         app: ubuntu
       annotations:
-        networkservicemesh.io: kernel://my-vl3-network@my.cluster1/nsm-1?dnsName=ubuntu
+        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
     spec:
       containers:
         - name: ubuntu

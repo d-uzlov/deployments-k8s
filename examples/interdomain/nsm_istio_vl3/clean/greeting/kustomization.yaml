@@ -5,7 +5,8 @@ kind: Kustomization
 namespace: vl3-test
 
 resources:
-- ./server.yaml
+- ubuntu-ic.yaml
+# - ./server.yaml
 
 configMapGenerator:
   - name: cert-file
