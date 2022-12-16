@@ -76,6 +76,12 @@ k1 -n vl3-test-w-hosts wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 k1 -n vl3-test-w-hosts logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual-w-hosts-w-discovery.log
 ```
 
+```bash
+k1 apply -k greeting
+k1 -n vl3-test-w-hosts-wo-init wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test-w-hosts-wo-init logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual-w-hosts-wo-init.log
+```
+
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- apk add tcpdump
 
 ```bash
