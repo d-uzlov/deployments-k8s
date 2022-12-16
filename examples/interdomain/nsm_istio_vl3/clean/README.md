@@ -54,6 +54,28 @@ k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 k1 -n vl3-test logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual.log
 ```
 
+```bash
+k1 apply -k greeting
+k1 -n vl3-test-w-env wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test-w-env logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual-w-env.log
+```
+
+```bash
+k1 apply -k greeting
+k1 -n vl3-test-w-hosts wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test-w-hosts logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual-w-hosts.log
+```
+error reading from server: read tcp 172.16.0.6:46704->172.16.0.2:15012: read: connection timed out
+The following command indicates that connection should be possible:
+k1 exec -n vl3-test-w-hosts deployments/ubuntu-deployment -c istio-proxy -- curl https://172.16.0.2:15012 --insecure
+curl: (92) HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)
+
+```bash
+k1 apply -k greeting
+k1 -n vl3-test-w-hosts wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test-w-hosts logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual-w-hosts-w-discovery.log
+```
+
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- apk add tcpdump
 
 ```bash

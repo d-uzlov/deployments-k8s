@@ -1,0 +1,142 @@
+2022-12-16T07:55:52.602469Z	info	FLAG: --concurrency="2"
+2022-12-16T07:55:52.602516Z	info	FLAG: --domain=""
+2022-12-16T07:55:52.602525Z	info	FLAG: --help="false"
+2022-12-16T07:55:52.602529Z	info	FLAG: --log_as_json="false"
+2022-12-16T07:55:52.602531Z	info	FLAG: --log_caller=""
+2022-12-16T07:55:52.602535Z	info	FLAG: --log_output_level="default:info"
+2022-12-16T07:55:52.602537Z	info	FLAG: --log_rotate=""
+2022-12-16T07:55:52.602539Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-16T07:55:52.602541Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-16T07:55:52.602544Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-16T07:55:52.602546Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-16T07:55:52.602573Z	info	FLAG: --log_target="[stdout]"
+2022-12-16T07:55:52.602580Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-16T07:55:52.602582Z	info	FLAG: --outlierLogPath=""
+2022-12-16T07:55:52.602584Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2022-12-16T07:55:52.602586Z	info	FLAG: --proxyLogLevel="warning"
+2022-12-16T07:55:52.602588Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-16T07:55:52.602591Z	info	FLAG: --stsPort="0"
+2022-12-16T07:55:52.602593Z	info	FLAG: --templateFile=""
+2022-12-16T07:55:52.602595Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-16T07:55:52.602607Z	info	FLAG: --vklog="0"
+2022-12-16T07:55:52.602612Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-16T07:55:52.607289Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-12-16T07:55:52.607614Z	info	Proxy role	ips=[10.244.0.23 172.16.0.6] type=sidecar id=ubuntu-deployment-856ccdbb5d-2b7lm.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-16T07:55:52.607726Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-16T07:55:52.611527Z	info	Apply proxy config from env {}
+
+2022-12-16T07:55:52.612706Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-16T07:55:52.612790Z	info	JWT policy is third-party-jwt
+2022-12-16T07:55:52.612798Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-16T07:55:52.716115Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-16T07:55:52.716172Z	info	CA Endpoint 172.16.0.2:15012, provider Citadel
+2022-12-16T07:55:52.716190Z	info	Using CA 172.16.0.2:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-12-16T07:55:52.716282Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-12-16T07:55:52.729580Z	info	Opening status port 15020
+2022-12-16T07:55:52.835809Z	info	ads	All caches have been synced up in 250.934047ms, marking server ready
+2022-12-16T07:55:52.836186Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-16T07:55:52.837451Z	info	sds	Starting SDS grpc server
+2022-12-16T07:55:52.849806Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-16T07:55:52.850144Z	info	starting Http service at 127.0.0.1:15004
+2022-12-16T07:55:52.852463Z	info	Starting proxy agent
+2022-12-16T07:55:52.852526Z	info	starting
+2022-12-16T07:55:52.852571Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-12-16T07:55:53.080940Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T07:55:53.356308Z	warn	ca	ca request failed, starting attempt 1 in 98.662572ms
+2022-12-16T07:55:53.456828Z	warn	ca	ca request failed, starting attempt 2 in 185.772312ms
+2022-12-16T07:55:53.643890Z	warn	ca	ca request failed, starting attempt 3 in 391.797396ms
+2022-12-16T07:55:54.069285Z	warn	ca	ca request failed, starting attempt 4 in 857.645136ms
+2022-12-16T07:55:54.927835Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:55:55.735690Z	warn	ca	ca request failed, starting attempt 1 in 93.767772ms
+2022-12-16T07:55:55.830913Z	warn	ca	ca request failed, starting attempt 2 in 195.15429ms
+2022-12-16T07:55:56.064173Z	warn	ca	ca request failed, starting attempt 3 in 409.934316ms
+2022-12-16T07:55:56.475251Z	warn	ca	ca request failed, starting attempt 4 in 805.363248ms
+2022-12-16T07:55:57.288952Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:55:58.480678Z	warn	ca	ca request failed, starting attempt 1 in 103.100723ms
+2022-12-16T07:55:58.584184Z	warn	ca	ca request failed, starting attempt 2 in 217.067352ms
+2022-12-16T07:55:58.809680Z	warn	ca	ca request failed, starting attempt 3 in 390.920331ms
+2022-12-16T07:55:59.240336Z	warn	ca	ca request failed, starting attempt 4 in 806.177168ms
+2022-12-16T07:56:00.048287Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:01.609125Z	warn	ca	ca request failed, starting attempt 1 in 97.859002ms
+2022-12-16T07:56:01.707811Z	warn	ca	ca request failed, starting attempt 2 in 209.147683ms
+2022-12-16T07:56:01.917827Z	warn	ca	ca request failed, starting attempt 3 in 369.693807ms
+2022-12-16T07:56:02.288781Z	warn	ca	ca request failed, starting attempt 4 in 789.036962ms
+2022-12-16T07:56:03.109260Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:03.368480Z	warn	xdsproxy	upstream [1] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.6:51080->172.16.0.2:15012: read: connection timed out
+2022-12-16T07:56:03.467795Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T07:56:06.022115Z	warn	ca	ca request failed, starting attempt 1 in 94.714509ms
+2022-12-16T07:56:06.118154Z	warn	ca	ca request failed, starting attempt 2 in 189.817105ms
+2022-12-16T07:56:06.309177Z	warn	ca	ca request failed, starting attempt 3 in 399.415791ms
+2022-12-16T07:56:06.708922Z	warn	ca	ca request failed, starting attempt 4 in 789.316205ms
+2022-12-16T07:56:07.498500Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:09.830388Z	warn	ca	ca request failed, starting attempt 1 in 106.51937ms
+2022-12-16T07:56:09.937841Z	warn	ca	ca request failed, starting attempt 2 in 202.333352ms
+2022-12-16T07:56:10.140985Z	warn	ca	ca request failed, starting attempt 3 in 389.305676ms
+2022-12-16T07:56:10.573366Z	warn	ca	ca request failed, starting attempt 4 in 875.13031ms
+2022-12-16T07:56:11.450218Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:13.738337Z	warn	xdsproxy	upstream [2] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.6:50584->172.16.0.2:15012: read: connection timed out
+2022-12-16T07:56:14.557957Z	warn	ca	ca request failed, starting attempt 1 in 101.771294ms
+2022-12-16T07:56:14.660635Z	warn	ca	ca request failed, starting attempt 2 in 182.27202ms
+2022-12-16T07:56:14.756356Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T07:56:14.847165Z	warn	ca	ca request failed, starting attempt 3 in 361.732427ms
+2022-12-16T07:56:15.212897Z	warn	ca	ca request failed, starting attempt 4 in 803.834254ms
+2022-12-16T07:56:16.017424Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:24.517098Z	warn	ca	ca request failed, starting attempt 1 in 106.011474ms
+2022-12-16T07:56:24.623921Z	warn	ca	ca request failed, starting attempt 2 in 200.44999ms
+2022-12-16T07:56:24.834143Z	warn	ca	ca request failed, starting attempt 3 in 428.018344ms
+2022-12-16T07:56:25.066494Z	warn	xdsproxy	upstream [3] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.6:58722->172.16.0.2:15012: read: connection timed out
+2022-12-16T07:56:25.276318Z	warn	ca	ca request failed, starting attempt 4 in 763.113655ms
+2022-12-16T07:56:26.040144Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"
+2022-12-16T07:56:26.304337Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T07:56:36.393115Z	warn	xdsproxy	upstream [4] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.6:55978->172.16.0.2:15012: read: connection timed out
+2022-12-16T07:56:36.394328Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 33s ago: 14, error reading from server: read tcp 172.16.0.6:55978->172.16.0.2:15012: read: connection timed out
+2022-12-16T07:56:37.688305Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T07:56:37.803382Z	warn	ca	ca request failed, starting attempt 1 in 97.176102ms
+2022-12-16T07:56:37.900857Z	warn	ca	ca request failed, starting attempt 2 in 180.987189ms
+2022-12-16T07:56:38.082778Z	warn	ca	ca request failed, starting attempt 3 in 417.242951ms
+2022-12-16T07:56:38.529341Z	warn	ca	ca request failed, starting attempt 4 in 740.309156ms
+2022-12-16T07:56:39.270727Z	warn	sds	failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: cannot validate certificate for 172.16.0.2 because it doesn't contain any IP SANs"

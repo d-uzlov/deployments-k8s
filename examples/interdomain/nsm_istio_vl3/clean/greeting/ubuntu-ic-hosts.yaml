@@ -28,10 +28,10 @@ spec:
         service.istio.io/canonical-name: ubuntu
         service.istio.io/canonical-revision: latest
     spec:
-      # hostAliases:
-      # - ip: "172.16.0.2"
-      #   hostnames:
-      #   - istiod.istio-system.svc
+      hostAliases:
+      - ip: "172.16.0.2"
+        hostnames:
+        - istiod.istio-system.svc
       containers:
       - command:
         - sleep

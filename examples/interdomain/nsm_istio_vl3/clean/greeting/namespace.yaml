@@ -2,4 +2,4 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: vl3-test
+  name: vl3-test-w-hosts
