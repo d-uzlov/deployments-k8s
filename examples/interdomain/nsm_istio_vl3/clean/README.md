@@ -31,6 +31,14 @@ kubectl --kubeconfig=$KUBECONFIG1 create namespace "${VM_NAMESPACE}"
 kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n "${VM_NAMESPACE}"
 ```
 
+```bash
+istioctl kube-inject -f ubuntu.yaml >ubuntu-ic.yaml
+k1 create ns vl3-test-vanilla
+k1 apply -n vl3-test-vanilla -f ubuntu-ic.yaml
+k1 -n vl3-test-vanilla wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test-vanilla logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-vanilla.log
+```
+
 Get istio config
 ```bash
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
@@ -38,6 +46,12 @@ k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
 ingressIP - copy from nsm interface ip
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
+```
+
+```bash
+k1 apply -k greeting
+k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual.log
 ```
 
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- apk add tcpdump
@@ -67,5 +81,5 @@ k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- nc -v 172.16.0.2 15012
 ps -aef --forest
 
 ```bash
-istioctl kube-inject -f ubuntu.yaml >ubuntu-ic.yaml
+istioctl kube-inject -f ubuntu.yaml >greeting/ubuntu-ic.yaml
 ```

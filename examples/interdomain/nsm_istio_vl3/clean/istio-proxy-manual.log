@@ -1,0 +1,100 @@
+2022-12-16T06:56:27.143996Z	info	FLAG: --concurrency="2"
+2022-12-16T06:56:27.144034Z	info	FLAG: --domain=""
+2022-12-16T06:56:27.144041Z	info	FLAG: --help="false"
+2022-12-16T06:56:27.144044Z	info	FLAG: --log_as_json="false"
+2022-12-16T06:56:27.144047Z	info	FLAG: --log_caller=""
+2022-12-16T06:56:27.144050Z	info	FLAG: --log_output_level="default:info"
+2022-12-16T06:56:27.144052Z	info	FLAG: --log_rotate=""
+2022-12-16T06:56:27.144055Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-16T06:56:27.144058Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-16T06:56:27.144061Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-16T06:56:27.144063Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-16T06:56:27.144086Z	info	FLAG: --log_target="[stdout]"
+2022-12-16T06:56:27.144093Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-16T06:56:27.144096Z	info	FLAG: --outlierLogPath=""
+2022-12-16T06:56:27.144099Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2022-12-16T06:56:27.144101Z	info	FLAG: --proxyLogLevel="warning"
+2022-12-16T06:56:27.144117Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-16T06:56:27.144123Z	info	FLAG: --stsPort="0"
+2022-12-16T06:56:27.144126Z	info	FLAG: --templateFile=""
+2022-12-16T06:56:27.144131Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-16T06:56:27.144152Z	info	FLAG: --vklog="0"
+2022-12-16T06:56:27.144163Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-16T06:56:27.150655Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-12-16T06:56:27.158279Z	info	Proxy role	ips=[10.244.0.18 172.16.0.4] type=sidecar id=ubuntu-deployment-57cfc468cd-rvcfm. domain=.svc.cluster.local
+2022-12-16T06:56:27.158643Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-16T06:56:27.167267Z	info	Apply proxy config from env {}
+
+2022-12-16T06:56:27.168823Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-16T06:56:27.168913Z	info	JWT policy is third-party-jwt
+2022-12-16T06:56:27.168929Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-16T06:56:27.269834Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-16T06:56:27.269923Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-16T06:56:27.269957Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-12-16T06:56:27.270087Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-12-16T06:56:27.288377Z	info	Opening status port 15020
+2022-12-16T06:56:27.362241Z	info	ads	All caches have been synced up in 250.506216ms, marking server ready
+2022-12-16T06:56:27.372884Z	info	sds	Starting SDS grpc server
+2022-12-16T06:56:27.373091Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-16T06:56:27.374382Z	info	starting Http service at 127.0.0.1:15004
+2022-12-16T06:56:27.378073Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-16T06:56:27.381604Z	info	Starting proxy agent
+2022-12-16T06:56:27.381717Z	info	starting
+2022-12-16T06:56:27.381796Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-12-16T06:56:27.571142Z	info	cache	generated new workload certificate	latency=208.310401ms ttl=23h59m59.428870137s
+2022-12-16T06:56:27.571598Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-16T06:56:27.571778Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-16T06:56:27.572270Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.427738969s
+2022-12-16T06:56:27.571676Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-16T06:56:27.611170Z	info	ads	ADS: new connection for node:ubuntu-deployment-57cfc468cd-rvcfm.-1
+2022-12-16T06:56:27.611332Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.388675262s
+2022-12-16T06:56:27.611783Z	info	ads	ADS: new connection for node:ubuntu-deployment-57cfc468cd-rvcfm.-2
+2022-12-16T06:56:27.612501Z	info	cache	returned workload certificate from cache	ttl=23h59m59.388010672s
+2022-12-16T06:56:27.613375Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-57cfc468cd-rvcfm. resources:1 size:4.0kB resource:default
+2022-12-16T06:56:27.614738Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-57cfc468cd-rvcfm. resources:1 size:1.1kB resource:ROOTCA
+2022-12-16T06:56:27.822426Z	info	Readiness succeeded in 802.174294ms
+2022-12-16T06:56:27.823201Z	info	Envoy proxy is ready

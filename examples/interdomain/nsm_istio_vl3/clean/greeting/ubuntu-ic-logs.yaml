@@ -47,9 +47,9 @@ spec:
         - --domain
         # - $(POD_NAMESPACE).svc.cluster.local
         - ""
-        - --proxyLogLevel=warning
-        - --proxyComponentLogLevel=misc:error
-        - --log_output_level=default:info
+        - --proxyLogLevel=debug
+        - --proxyComponentLogLevel=misc:debug
+        - --log_output_level=default:debug
         - --concurrency
         - "2"
         env:
