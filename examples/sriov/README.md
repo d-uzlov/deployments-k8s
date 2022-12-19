@@ -1,6 +1,6 @@
 ## Requires
 
-- [spire](../spire)
+- [spire](../spire/single_cluster)
 
 ## Includes
 
@@ -36,7 +36,7 @@ kubectl create ns nsm-system
 
 Apply NSM resources for basic tests:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/sriov?ref=9eeff3941ac2efd87d1e3775e7c4803474078192
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/sriov?ref=v1.7.0-rc.2
 ```
 
 ## Cleanup

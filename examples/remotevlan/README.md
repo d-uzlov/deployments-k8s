@@ -4,7 +4,7 @@ This setup can be used to check remote vlan mechanism with both OVS and VPP forw
 
 ## Requires
 
-- [spire](../spire)
+- [spire](../spire/single_cluster)
 
 ## Includes
 
@@ -30,9 +30,11 @@ ifw2=$(docker exec kind-worker2 ip -o link | grep ${MACS[@]/#/-e } | cut -f1 -d"
 
 (docker exec kind-worker ip link set $ifw1 down &&
 docker exec kind-worker ip link set $ifw1 name ext_net1 &&
+docker exec kind-worker ip link set dev ext_net1 mtu 1450 &&
 docker exec kind-worker ip link set ext_net1 up &&
 docker exec kind-worker2 ip link set $ifw2 down &&
 docker exec kind-worker2 ip link set $ifw2 name ext_net1 &&
+docker exec kind-worker2 ip link set dev ext_net1 mtu 1450 &&
 docker exec kind-worker2 ip link set ext_net1 up)
 ```
 
@@ -42,36 +44,10 @@ Create ns for deployments:
 kubectl create ns nsm-system
 ```
 
-Create NSE patch:
-
-```bash
-cat > patch-nse.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-    name: nse-remote-vlan
-spec:
-  template:
-    spec:
-      containers:
-        - name: nse
-          env:
-          - name: NSM_CONNECT_TO
-            value: "registry:5002"
-          - name: NSM_SERVICES
-            value: "finance-bridge { vlan: 100; via: gw1}"
-          - name: NSM_CIDR_PREFIX
-            value: 172.10.0.0/24,100:200::/64
-          - name: NSM_MAX_TOKEN_LIFETIME
-            value: "60s"
-EOF
-```
-
 Apply NSM resources for basic tests:
 
 ```bash
-kubectl apply -k .
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/remotevlan?ref=v1.7.0-rc.2
 ```
 
 Wait for NSE application:

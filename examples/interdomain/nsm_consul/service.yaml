@@ -13,4 +13,4 @@ spec:
     pod_type: proxy
   ports:
     - protocol: TCP
-      port: 9090
+      port: 9002

@@ -17,284 +17,20 @@ kubectl create ns ns-kernel2vlan-multins-1
 kubectl create ns ns-kernel2vlan-multins-2
 ```
 
-Create example directories to separate deployments:
-
-```bash
-mkdir -p ns-1 ns-2
-```
-
-Create first client:
-
-```bash
-cat > ns-1/first-client.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: alpine-1
-  labels:
-    app: alpine-1
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: alpine-1
-  template:
-    metadata:
-      labels:
-        app: alpine-1
-      annotations:
-        networkservicemesh.io: kernel://private-bridge.ns-kernel2vlan-multins-1/nsm-1
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - alpine-1
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: alpine
-        image: alpine:3.15.0
-        imagePullPolicy: IfNotPresent
-        stdin: true
-        tty: true
-EOF
-```
-
-Create NSE patch:
-
-```bash
-cat > ns-1/patch-nse.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nse-remote-vlan
-spec:
-  template:
-    spec:
-      containers:
-      - name: nse
-        env:
-          - name: NSM_CONNECT_TO
-            value: "registry.nsm-system:5002"
-          - name: NSM_SERVICES
-            value: "private-bridge.ns-kernel2vlan-multins-1 { vlan: 0; via: gw1 }"
-          - name: NSM_CIDR_PREFIX
-            value: 172.10.1.0/24
-EOF
-```
-
-Create customization file:
-
-```bash
-cat > ns-1/kustomization.yaml <<EOF
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-namespace: ns-kernel2vlan-multins-1
-
-resources:
-- first-client.yaml
-
-bases:
-- ../../../../apps/nse-remote-vlan
-
-patchesStrategicMerge:
-- patch-nse.yaml
-EOF
-```
-
 Deployment in first namespace
-
 ```bash
- kubectl apply -k ./ns-1
-```
-
-Create second and third client:
-
-```bash
-cat > ns-2/second-client.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: alpine-2
-  labels:
-    app: alpine-2
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: alpine-2
-  template:
-    metadata:
-      labels:
-        app: alpine-2
-      annotations:
-        networkservicemesh.io: kernel://blue-bridge.ns-kernel2vlan-multins-2/nsm-1
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - alpine-2
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: alpine
-        image: alpine:3.15.0
-        imagePullPolicy: IfNotPresent
-        stdin: true
-        tty: true
-EOF
-cat > ns-2/third-client.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: alpine-3
-  labels:
-    app: alpine-3
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: alpine-3
-  template:
-    metadata:
-      labels:
-        app: alpine-3
-      annotations:
-        networkservicemesh.io: kernel://green-bridge.ns-kernel2vlan-multins-2/nsm-1
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - alpine-3
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: alpine
-        image: alpine:3.15.0
-        imagePullPolicy: IfNotPresent
-        stdin: true
-        tty: true
-EOF
-```
-
-Create NSE patch:
-
-```bash
-cat > ns-2/patch-nse.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nse-remote-vlan
-spec:
-  template:
-    spec:
-      containers:
-      - name: nse
-        env:
-          - name: NSM_CONNECT_TO
-            value: "registry.nsm-system:5002"
-          - name: NSM_SERVICES
-            value: "blue-bridge.ns-kernel2vlan-multins-2 { vlan: 300; via: gw1 }, green-bridge.ns-kernel2vlan-multins-2 { vlan: 400; via: gw1 }"
-          - name: NSM_CIDR_PREFIX
-            value: 172.10.2.0/24
-EOF
-```
-
-Create customization file:
-
-```bash
-cat > ns-2/kustomization.yaml <<EOF
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-namespace: ns-kernel2vlan-multins-2
-
-resources:
-- second-client.yaml
-- third-client.yaml
-
-bases:
-- https://github.com/networkservicemesh/deployments-k8s/apps/nse-remote-vlan?ref=9eeff3941ac2efd87d1e3775e7c4803474078192
-
-nameSuffix: -bg
-
-patchesStrategicMerge:
-- patch-nse.yaml
-EOF
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-1?ref=v1.7.0-rc.2
 ```
 
 Deployment in second namespace:
-
 ```bash
- kubectl apply -k ./ns-2
-```
-
-Create the last client:
-
-```bash
-cat > client.yaml <<EOF
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: alpine-4
-  labels:
-    app: alpine-4
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: alpine-4
-  template:
-    metadata:
-      labels:
-        app: alpine-4
-      annotations:
-        networkservicemesh.io: kernel://finance-bridge/nsm-1
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - alpine-4
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: alpine
-        image: alpine:3.15.0
-        imagePullPolicy: IfNotPresent
-        stdin: true
-        tty: true
-EOF
+kubectl apply -f https://raw.githubusercontent.com/networkservicemesh/deployments-k8s/v1.7.0-rc.2/examples/use-cases/Kernel2RVlanMultiNS/ns-2/netsvc.yaml
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-2?ref=v1.7.0-rc.2
 ```
 
 Deploy the last client
-
 ```bash
- kubectl apply -n nsm-system -f client.yaml
+kubectl apply -n nsm-system -f https://raw.githubusercontent.com/networkservicemesh/deployments-k8s/v1.7.0-rc.2/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
 ```
 
 Wait for applications ready:
@@ -329,7 +65,7 @@ Create a docker image for test external connections:
 cat > Dockerfile <<EOF
 FROM alpine:3.15.0
 
-RUN apk add ethtool
+RUN apk add ethtool tcpdump iproute2
 
 ENTRYPOINT [ "tail", "-f", "/dev/null" ]
 EOF
@@ -343,12 +79,10 @@ docker run --cap-add=NET_ADMIN --rm -d --network bridge-2 --name rvm-tester rvm-
 docker exec rvm-tester ip link set eth0 down
 docker exec rvm-tester ip link add link eth0 name eth0.100 type vlan id 100
 docker exec rvm-tester ip link add link eth0 name eth0.300 type vlan id 300
-docker exec rvm-tester ip link add link eth0 name eth0.400 type vlan id 400
 docker exec rvm-tester ip link set eth0 up
 docker exec rvm-tester ip addr add 172.10.0.254/24 dev eth0.100
 docker exec rvm-tester ip addr add 172.10.1.254/24 dev eth0
 docker exec rvm-tester ip addr add 172.10.2.254/24 dev eth0.300
-docker exec rvm-tester ip addr add 172.10.2.253/24 dev eth0.400
 docker exec rvm-tester ethtool -K eth0 tx off
 ```
 
@@ -356,6 +90,32 @@ Get the NSC pods from first k8s namespace:
 
 ```bash
 NSCS=($(kubectl get pods -l app=alpine-1 -n ns-kernel2vlan-multins-1 --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'))
+```
+
+Check the MTU adjustment for the NSC pods from first k8s namespace::
+
+```bash
+status=0
+LINK_MTU=$(docker exec kind-worker cat /sys/class/net/ext_net1/mtu)
+for nsc in "${NSCS[@]}"
+do
+  MTU=$(kubectl exec ${nsc} -c cmd-nsc -n ns-kernel2vlan-multins-1 -- cat /sys/class/net/nsm-1/mtu)
+
+  echo "$LINK_MTU vs $MTU"
+
+  if test "${MTU}" = ""
+    then
+      status=1
+  fi
+  if test $MTU -ne $LINK_MTU
+    then
+      status=2
+  fi
+done
+if test ${status} -ne 0
+  then
+    false
+fi
 ```
 
 Get the IP addresses for NSCs from first k8s namespace:
@@ -374,7 +134,7 @@ Check first vlan from tester container:
 status=0
 for nsc in "${NSCS[@]}"
 do
-  for vlan_if_name in eth0.100 eth0.300 eth0.400
+  for vlan_if_name in eth0.100 eth0.300
   do
     docker exec rvm-tester ping -w 1 -c 1 ${IP_ADDR[$nsc]} -I ${vlan_if_name}
     if test $? -eq 0
@@ -401,6 +161,31 @@ NSCS_BLUE=($(kubectl get pods -l app=alpine-2 -n ns-kernel2vlan-multins-2 --temp
 NSCS_GREEN=($(kubectl get pods -l app=alpine-3 -n ns-kernel2vlan-multins-2 --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'))
 ```
 
+Check the MTU adjustment for the NSC pods from second k8s namespace::
+
+```bash
+status=0
+for nsc in "${NSCS_BLUE[@]} ${NSCS_GREEN[@]}"
+do
+  MTU=$(kubectl exec ${nsc} -c cmd-nsc -n ns-kernel2vlan-multins-2 -- cat /sys/class/net/nsm-1/mtu)
+
+  echo "$LINK_MTU vs $MTU"
+
+  if test "${MTU}" = ""
+    then
+      status=1
+  fi
+  if test $MTU -ne $LINK_MTU
+    then
+      status=2
+  fi
+done
+if test ${status} -ne 0
+  then
+    false
+fi
+```
+
 Get the IP addresses for NSCs from second k8s namespace:
 
 ```bash
@@ -416,13 +201,13 @@ do
 done
 ```
 
-Check vlan (300 and 400) from tester container:
+Check vlan (300) from tester container:
 
 ```bash
 status=0
 for nsc in "${NSCS_BLUE[@]}"
 do
-  for vlan_if_name in eth0.100 eth0 eth0.400
+  for vlan_if_name in eth0.100 eth0
   do
     docker exec rvm-tester ping -w 1 -c 1 ${IP_ADDR_BLUE[$nsc]} -I ${vlan_if_name}
     if test $? -eq 0
@@ -438,7 +223,7 @@ do
 done
 for nsc in "${NSCS_GREEN[@]}"
 do
-  for vlan_if_name in eth0.100 eth0 eth0.300
+  for vlan_if_name in eth0.100 eth0
   do
     docker exec rvm-tester ping -w 1 -c 1 ${IP_ADDR_GREEN[$nsc]} -I ${vlan_if_name}
     if test $? -eq 0
@@ -446,7 +231,31 @@ do
         status=2
     fi
   done
-  docker exec rvm-tester ping -c 1 ${IP_ADDR_GREEN[$nsc]} -I eth0.400
+  docker exec rvm-tester ping -c 1 ${IP_ADDR_GREEN[$nsc]} -I eth0.300
+  if test $? -ne 0
+    then
+      status=1
+  fi
+done
+if test ${status} -eq 1
+  then
+    false
+fi
+```
+
+Delete the NSCs connected to blue-bridge network service:
+
+```bash
+kubectl delete deployment alpine-2-bg -n ns-kernel2vlan-multins-2
+```
+
+Check vlan (300) from tester container:
+
+```bash
+status=0
+for nsc in "${NSCS_GREEN[@]}"
+do
+  docker exec rvm-tester ping -c 1 ${IP_ADDR_GREEN[$nsc]} -I eth0.300
   if test $? -ne 0
     then
       status=1
@@ -462,6 +271,31 @@ Get the NSC pods from nsm-system k8s namespace:
 
 ```bash
 NSCS=($(kubectl get pods -l app=alpine-4 -n nsm-system --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'))
+```
+
+Check the MTU adjustment for the NSC pods from nsm-system k8s namespace::
+
+```bash
+status=0
+for nsc in "${NSCS[@]}"
+do
+  MTU=$(kubectl exec ${nsc} -c cmd-nsc -n nsm-system -- cat /sys/class/net/nsm-1/mtu)
+
+  echo "$LINK_MTU vs $MTU"
+
+  if test "${MTU}" = ""
+    then
+      status=1
+  fi
+  if test $MTU -ne $LINK_MTU
+    then
+      status=2
+  fi
+done
+if test ${status} -ne 0
+  then
+    false
+fi
 ```
 
 Get the IP addresses for NSCs from first k8s namespace:
@@ -480,7 +314,7 @@ Check first vlan from tester container:
 status=0
 for nsc in "${NSCS[@]}"
 do
-  for vlan_if_name in eth0 eth0.300 eth0.400
+  for vlan_if_name in eth0 eth0.300
   do
     docker exec rvm-tester ping -w 1 -c 1 ${IP_ADDR[$nsc]} -I ${vlan_if_name}
     if test $? -eq 0
@@ -513,7 +347,7 @@ true
 Delete the last client:
 
 ```bash
-kubectl delete --namespace=nsm-system -f client.yaml
+kubectl delete --namespace=nsm-system -f https://raw.githubusercontent.com/networkservicemesh/deployments-k8s/v1.7.0-rc.2/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
 ```
 
 Delete the test namespace:
@@ -524,10 +358,4 @@ kubectl delete ns ns-kernel2vlan-multins-1
 
 ```bash
 kubectl delete ns ns-kernel2vlan-multins-2
-```
-
-Delete the directories:
-
-```bash
-rm -rf ns-1 ns-2
 ```

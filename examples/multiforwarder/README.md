@@ -1,6 +1,6 @@
 ## Requires
 
-- [spire](../spire)
+- [spire](../spire/single_cluster)
 
 ## Includes
 
@@ -8,9 +8,9 @@
 - [Kernel Connection](../use-cases/SriovKernel2Noop)
 - [Memif to Memif Connection](../use-cases/Memif2Memif)
 - [Kernel to Kernel Connection](../use-cases/Kernel2Kernel)
-- [Kernel to VXLAN to Kernel Connection](../use-cases/Kernel2Vxlan2Kernel)
+- [Kernel to Ethernet to Kernel Connection](../use-cases/Kernel2Ethernet2Kernel)
 - [Kernel to Kernel Connection & VFIO Connection](../use-cases/Kernel2Kernel_Vfio2Noop)
-- [Kernel to VXLAN to Kernel Connection & VFIO Connection](../use-cases/Kernel2Vxlan2Kernel_Vfio2Noop)
+- [Kernel to Ethernet to Kernel Connection & VFIO Connection](../use-cases/Kernel2Ethernet2Kernel_Vfio2Noop)
 
 ## SR-IOV config
 
@@ -41,7 +41,7 @@ kubectl create ns nsm-system
 
 2. Apply NSM resources for basic tests:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/multiforwarder?ref=9eeff3941ac2efd87d1e3775e7c4803474078192
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/multiforwarder?ref=v1.7.0-rc.2
 ```
 
 3. Wait for admission-webhook-k8s:

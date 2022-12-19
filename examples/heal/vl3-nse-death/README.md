@@ -12,7 +12,7 @@ kubectl create ns ns-vl3-nse-death
 
 Deploy nsc and vl3 nses:
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/heal/vl3-nse-death?ref=9eeff3941ac2efd87d1e3775e7c4803474078192
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/heal/vl3-nse-death?ref=v1.7.0-rc.2
 ```
 
 Wait for clients to be ready:
@@ -36,7 +36,7 @@ do
     for pinger in $nscs
     do
         echo $pinger pings $ipAddr
-        kubectl exec $pinger -n ns-vl3-nse-death -- ping -c4 $ipAddr || exit
+        kubectl exec $pinger -n ns-vl3-nse-death -- ping -c2 -i 0.5 $ipAddr || exit
     done
 done
 )
@@ -65,7 +65,7 @@ do
     for pinger in $nscs
     do
         echo $pinger pings $ipAddr
-        kubectl exec $pinger -n ns-vl3-nse-death -- ping -c4 $ipAddr || exit
+        kubectl exec $pinger -n ns-vl3-nse-death -- ping -c2 -i 0.5 $ipAddr || exit
     done
 done
 )

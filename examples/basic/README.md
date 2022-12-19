@@ -4,7 +4,7 @@ Contain basic setup for NSM that includes `nsmgr`, `forwarder-vpp`, `registry-k8
 
 ## Requires
 
-- [spire](../spire)
+- [spire](../spire/single_cluster/)
 
 ## Includes
 
@@ -12,14 +12,14 @@ Contain basic setup for NSM that includes `nsmgr`, `forwarder-vpp`, `registry-k8
 - [Kernel to Kernel Connection](../use-cases/Kernel2Kernel)
 - [Kernel to Memif Connection](../use-cases/Kernel2Memif)
 - [Memif to Kernel Connection](../use-cases/Memif2Kernel)
-- [Kernel to VXLAN to Kernel Connection](../use-cases/Kernel2Vxlan2Kernel)
-- [Memif to VXLAN to Memif Connection](../use-cases/Memif2Vxlan2Memif)
-- [Kernel to VXLAN to Memif Connection](../use-cases/Kernel2Vxlan2Memif)
-- [Memif to VXLAN to Kernel Connection](../use-cases/Memif2Vxlan2Kernel)
-- [Kernel to Wireguard to Kernel Connection](../use-cases/Kernel2Wireguard2Kernel)
-- [Memif to Wireguard to Memif Connection](../use-cases/Memif2Wireguard2Memif)
-- [Kernel to Wireguard to Memif Connection](../use-cases/Kernel2Wireguard2Memif)
-- [Memif to Wireguard to Kernel Connection](../use-cases/Memif2Wireguard2Kernel)
+- [Kernel to Ethernet to Kernel Connection](../use-cases/Kernel2Ethernet2Kernel)
+- [Memif to Ethernet to Memif Connection](../use-cases/Memif2Ethernet2Memif)
+- [Kernel to Ethernet to Memif Connection](../use-cases/Kernel2Ethernet2Memif)
+- [Memif to Ethernet to Kernel Connection](../use-cases/Memif2Ethernet2Kernel)
+- [Kernel to IP to Kernel Connection](../use-cases/Kernel2IP2Kernel)
+- [Memif to IP to Memif Connection](../use-cases/Memif2IP2Memif)
+- [Kernel to IP to Memif Connection](../use-cases/Kernel2IP2Memif)
+- [Memif to IP to Kernel Connection](../use-cases/Memif2IP2Kernel)
 
 ## Run
 
@@ -31,7 +31,7 @@ kubectl create ns nsm-system
 2. Apply NSM resources for basic tests:
 
 ```bash
-kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/basic?ref=9eeff3941ac2efd87d1e3775e7c4803474078192
+kubectl apply -k https://github.com/networkservicemesh/deployments-k8s/examples/basic?ref=v1.7.0-rc.2
 ```
 
 3. Wait for admission-webhook-k8s:
