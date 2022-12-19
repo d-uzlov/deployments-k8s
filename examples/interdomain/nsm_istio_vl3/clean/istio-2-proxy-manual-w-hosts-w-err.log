@@ -1,0 +1,556 @@
+2022-12-19T08:47:33.855775Z	info	FLAG: --concurrency="2"
+2022-12-19T08:47:33.855821Z	info	FLAG: --domain=""
+2022-12-19T08:47:33.855878Z	info	FLAG: --help="false"
+2022-12-19T08:47:33.855888Z	info	FLAG: --log_as_json="false"
+2022-12-19T08:47:33.855890Z	info	FLAG: --log_caller=""
+2022-12-19T08:47:33.855892Z	info	FLAG: --log_output_level="default:debug"
+2022-12-19T08:47:33.855894Z	info	FLAG: --log_rotate=""
+2022-12-19T08:47:33.855895Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-19T08:47:33.855897Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-19T08:47:33.855899Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-19T08:47:33.855900Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-19T08:47:33.855905Z	info	FLAG: --log_target="[stdout]"
+2022-12-19T08:47:33.855907Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-19T08:47:33.855909Z	info	FLAG: --outlierLogPath=""
+2022-12-19T08:47:33.855910Z	info	FLAG: --proxyComponentLogLevel="misc:debug"
+2022-12-19T08:47:33.855916Z	info	FLAG: --proxyLogLevel="debug"
+2022-12-19T08:47:33.855918Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-19T08:47:33.855920Z	info	FLAG: --stsPort="0"
+2022-12-19T08:47:33.855921Z	info	FLAG: --templateFile=""
+2022-12-19T08:47:33.855923Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-19T08:47:33.855926Z	info	FLAG: --vklog="0"
+2022-12-19T08:47:33.855928Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-19T08:47:33.858833Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-12-19T08:47:33.859184Z	info	Proxy role	ips=[10.244.0.25 172.16.0.3] type=sidecar id=ubuntu-deployment-55bc874f76-s98mt.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-19T08:47:33.859254Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T08:47:33.859306Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-19T08:47:33.862353Z	info	Apply proxy config from env {}
+
+2022-12-19T08:47:33.863118Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-19T08:47:33.863162Z	info	JWT policy is third-party-jwt
+2022-12-19T08:47:33.863167Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-19T08:47:33.867860Z	debug	Error reading sys_vendor in Azure platform detection: open /sys/class/dmi/id/sys_vendor: no such file or directory
+2022-12-19T08:47:33.965637Z	debug	error in getting aws info for iam/info : Get "http://169.254.169.254/latest/meta-data/iam/info": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2022-12-19T08:47:33.966082Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-19T08:47:33.966117Z	info	Opening status port 15020
+2022-12-19T08:47:33.966455Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-19T08:47:33.966552Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-12-19T08:47:33.966823Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-12-19T08:47:33.989219Z	info	ads	All caches have been synced up in 137.672827ms, marking server ready
+2022-12-19T08:47:33.989715Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-19T08:47:33.989871Z	info	sds	Starting SDS grpc server
+2022-12-19T08:47:33.990604Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-19T08:47:33.991051Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T08:47:33.992414Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-19T08:47:33.992458Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T08:47:33.992464Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-19T08:47:33.994556Z	debug	Add file var/run/secrets/istio/root-cert.pem watcher
+2022-12-19T08:47:33.990896Z	info	starting Http service at 127.0.0.1:15004
+2022-12-19T08:47:33.997039Z	info	Starting proxy agent
+2022-12-19T08:47:33.997234Z	info	starting
+2022-12-19T08:47:33.997318Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l debug --component-log-level misc:debug --concurrency 2]
+2022-12-19T08:47:34.028828Z	info	envoy main	initializing epoch 0 (base id=0, hot restart version=disabled)
+2022-12-19T08:47:34.028883Z	info	envoy main	statically linked extensions:
+2022-12-19T08:47:34.028888Z	info	envoy main	  envoy.http.header_validators: envoy.http.header_validators.envoy_default
+2022-12-19T08:47:34.028890Z	info	envoy main	  envoy.network.dns_resolver: envoy.network.dns_resolver.cares
+2022-12-19T08:47:34.028894Z	info	envoy main	  envoy.filters.listener: envoy.filters.listener.http_inspector, envoy.filters.listener.metadata_to_peer_node, envoy.filters.listener.original_dst, envoy.filters.listener.original_src, envoy.filters.listener.proxy_protocol, envoy.filters.listener.tls_inspector, envoy.filters.listener.workload_metadata, envoy.listener.http_inspector, envoy.listener.original_dst, envoy.listener.original_src, envoy.listener.proxy_protocol, envoy.listener.tls_inspector, istio.set_internal_dst_address
+2022-12-19T08:47:34.028897Z	info	envoy main	  envoy.matching.action: composite-action, skip
+2022-12-19T08:47:34.028899Z	info	envoy main	  envoy.wasm.runtime: envoy.wasm.runtime.null, envoy.wasm.runtime.v8
+2022-12-19T08:47:34.028903Z	info	envoy main	  envoy.access_loggers: envoy.access_loggers.file, envoy.access_loggers.http_grpc, envoy.access_loggers.open_telemetry, envoy.access_loggers.stderr, envoy.access_loggers.stdout, envoy.access_loggers.tcp_grpc, envoy.access_loggers.wasm, envoy.file_access_log, envoy.http_grpc_access_log, envoy.open_telemetry_access_log, envoy.stderr_access_log, envoy.stdout_access_log, envoy.tcp_grpc_access_log, envoy.wasm_access_log
+2022-12-19T08:47:34.028905Z	info	envoy main	  envoy.matching.input_matchers: envoy.matching.matchers.consistent_hashing, envoy.matching.matchers.ip
+2022-12-19T08:47:34.028907Z	info	envoy main	  envoy.sip_proxy.filters: envoy.filters.sip.router
+2022-12-19T08:47:34.028961Z	info	envoy main	  envoy.request_id: envoy.request_id.uuid
+2022-12-19T08:47:34.028984Z	info	envoy main	  envoy.matching.common_inputs: envoy.matching.common_inputs.environment_variable
+2022-12-19T08:47:34.029004Z	info	envoy main	  envoy.filters.http: envoy.bandwidth_limit, envoy.buffer, envoy.cors, envoy.csrf, envoy.ext_authz, envoy.ext_proc, envoy.fault, envoy.filters.http.adaptive_concurrency, envoy.filters.http.admission_control, envoy.filters.http.alternate_protocols_cache, envoy.filters.http.aws_lambda, envoy.filters.http.aws_request_signing, envoy.filters.http.bandwidth_limit, envoy.filters.http.buffer, envoy.filters.http.cache, envoy.filters.http.cdn_loop, envoy.filters.http.composite, envoy.filters.http.compressor, envoy.filters.http.cors, envoy.filters.http.csrf, envoy.filters.http.decompressor, envoy.filters.http.dynamic_forward_proxy, envoy.filters.http.ext_authz, envoy.filters.http.ext_proc, envoy.filters.http.fault, envoy.filters.http.grpc_http1_bridge, envoy.filters.http.grpc_http1_reverse_bridge, envoy.filters.http.grpc_json_transcoder, envoy.filters.http.grpc_stats, envoy.filters.http.grpc_web, envoy.filters.http.header_to_metadata, envoy.filters.http.health_check, envoy.filters.http.ip_tagging, envoy.filters.http.istio_stats, envoy.filters.http.jwt_authn, envoy.filters.http.local_ratelimit, envoy.filters.http.lua, envoy.filters.http.match_delegate, envoy.filters.http.oauth2, envoy.filters.http.on_demand, envoy.filters.http.original_src, envoy.filters.http.ratelimit, envoy.filters.http.rbac, envoy.filters.http.router, envoy.filters.http.set_metadata, envoy.filters.http.stateful_session, envoy.filters.http.tap, envoy.filters.http.wasm, envoy.grpc_http1_bridge, envoy.grpc_json_transcoder, envoy.grpc_web, envoy.health_check, envoy.ip_tagging, envoy.local_rate_limit, envoy.lua, envoy.rate_limit, envoy.router, istio.alpn, istio.filters.http.baggage_handler, istio_authn
+2022-12-19T08:47:34.029035Z	info	envoy main	  envoy.route.early_data_policy: envoy.route.early_data_policy.default
+2022-12-19T08:47:34.029045Z	info	envoy main	  network.connection.client: default, envoy_internal
+2022-12-19T08:47:34.029058Z	info	envoy main	  envoy.tracers: envoy.dynamic.ot, envoy.tracers.datadog, envoy.tracers.dynamic_ot, envoy.tracers.opencensus, envoy.tracers.skywalking, envoy.tracers.xray, envoy.tracers.zipkin, envoy.zipkin
+2022-12-19T08:47:34.029185Z	info	envoy main	  envoy.formatter: envoy.formatter.metadata, envoy.formatter.req_without_query
+2022-12-19T08:47:34.029250Z	info	envoy main	  envoy.grpc_credentials: envoy.grpc_credentials.aws_iam, envoy.grpc_credentials.default, envoy.grpc_credentials.file_based_metadata
+2022-12-19T08:47:34.029265Z	info	envoy main	  envoy.retry_priorities: envoy.retry_priorities.previous_priorities
+2022-12-19T08:47:34.029275Z	info	envoy main	  envoy.upstreams: envoy.filters.connection_pools.tcp.generic
+2022-12-19T08:47:34.029286Z	info	envoy main	  envoy.transport_sockets.upstream: envoy.transport_sockets.alts, envoy.transport_sockets.internal_upstream, envoy.transport_sockets.quic, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.starttls, envoy.transport_sockets.tap, envoy.transport_sockets.tls, envoy.transport_sockets.upstream_proxy_protocol, raw_buffer, starttls, tls
+2022-12-19T08:47:34.029296Z	info	envoy main	  envoy.compression.compressor: envoy.compression.brotli.compressor, envoy.compression.gzip.compressor
+2022-12-19T08:47:34.029307Z	info	envoy main	  envoy.matching.http.input: envoy.matching.inputs.destination_ip, envoy.matching.inputs.destination_port, envoy.matching.inputs.direct_source_ip, envoy.matching.inputs.dns_san, envoy.matching.inputs.request_headers, envoy.matching.inputs.request_trailers, envoy.matching.inputs.response_headers, envoy.matching.inputs.response_trailers, envoy.matching.inputs.server_name, envoy.matching.inputs.source_ip, envoy.matching.inputs.source_port, envoy.matching.inputs.source_type, envoy.matching.inputs.subject, envoy.matching.inputs.uri_san
+2022-12-19T08:47:34.029317Z	info	envoy main	  envoy.tls.cert_validator: envoy.tls.cert_validator.default, envoy.tls.cert_validator.spiffe
+2022-12-19T08:47:34.029327Z	info	envoy main	  envoy.path.match: envoy.path.match.uri_template.uri_template_matcher
+2022-12-19T08:47:34.029367Z	info	envoy main	  envoy.upstream_options: envoy.extensions.upstreams.http.v3.HttpProtocolOptions, envoy.upstreams.http.http_protocol_options
+2022-12-19T08:47:34.029432Z	info	envoy main	  envoy.clusters: envoy.cluster.eds, envoy.cluster.logical_dns, envoy.cluster.original_dst, envoy.cluster.static, envoy.cluster.strict_dns, envoy.clusters.aggregate, envoy.clusters.dynamic_forward_proxy, envoy.clusters.redis
+2022-12-19T08:47:34.029447Z	info	envoy main	  envoy.filters.http.upstream: envoy.buffer, envoy.filters.http.admission_control, envoy.filters.http.buffer, envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.029457Z	info	envoy main	  envoy.health_checkers: envoy.health_checkers.redis
+2022-12-19T08:47:34.029466Z	info	envoy main	  envoy.dubbo_proxy.protocols: dubbo
+2022-12-19T08:47:34.029475Z	info	envoy main	  envoy.thrift_proxy.filters: envoy.filters.thrift.header_to_metadata, envoy.filters.thrift.rate_limit, envoy.filters.thrift.router
+2022-12-19T08:47:34.029487Z	info	envoy main	  envoy.rbac.matchers: envoy.rbac.matchers.upstream_ip_port
+2022-12-19T08:47:34.029497Z	info	envoy main	  envoy.thrift_proxy.protocols: auto, binary, binary/non-strict, compact, twitter
+2022-12-19T08:47:34.029506Z	info	envoy main	  envoy.guarddog_actions: envoy.watchdog.abort_action, envoy.watchdog.profile_action
+2022-12-19T08:47:34.029567Z	info	envoy main	  envoy.http.original_ip_detection: envoy.http.original_ip_detection.custom_header, envoy.http.original_ip_detection.xff
+2022-12-19T08:47:34.029585Z	info	envoy main	  envoy.resolvers: envoy.ip
+2022-12-19T08:47:34.029595Z	info	envoy main	  envoy.path.rewrite: envoy.path.rewrite.uri_template.uri_template_rewriter
+2022-12-19T08:47:34.029624Z	info	envoy main	  envoy.regex_engines: envoy.regex_engines.google_re2
+2022-12-19T08:47:34.029628Z	info	envoy main	  envoy.bootstrap: envoy.bootstrap.internal_listener, envoy.bootstrap.wasm, envoy.extensions.network.socket_interface.default_socket_interface
+2022-12-19T08:47:34.029630Z	info	envoy main	  envoy.http.stateful_header_formatters: envoy.http.stateful_header_formatters.preserve_case, preserve_case
+2022-12-19T08:47:34.029633Z	info	envoy main	  envoy.retry_host_predicates: envoy.retry_host_predicates.omit_canary_hosts, envoy.retry_host_predicates.omit_host_metadata, envoy.retry_host_predicates.previous_hosts
+2022-12-19T08:47:34.029635Z	info	envoy main	  envoy.rate_limit_descriptors: envoy.rate_limit_descriptors.expr
+2022-12-19T08:47:34.029637Z	info	envoy main	  envoy.resource_monitors: envoy.resource_monitors.fixed_heap, envoy.resource_monitors.injected_resource
+2022-12-19T08:47:34.029640Z	info	envoy main	  envoy.http.stateful_session: envoy.http.stateful_session.cookie
+2022-12-19T08:47:34.029641Z	info	envoy main	  envoy.dubbo_proxy.serializers: dubbo.hessian2
+2022-12-19T08:47:34.029643Z	info	envoy main	  envoy.thrift_proxy.transports: auto, framed, header, unframed
+2022-12-19T08:47:34.029646Z	info	envoy main	  envoy.udp_packet_writer: envoy.udp_packet_writer.default, envoy.udp_packet_writer.gso
+2022-12-19T08:47:34.029648Z	info	envoy main	  envoy.tls.key_providers: cryptomb
+2022-12-19T08:47:34.029650Z	info	envoy main	  envoy.compression.decompressor: envoy.compression.brotli.decompressor, envoy.compression.gzip.decompressor
+2022-12-19T08:47:34.029652Z	info	envoy main	  envoy.http.cache: envoy.extensions.http.cache.simple
+2022-12-19T08:47:34.029654Z	info	envoy main	  envoy.access_loggers.extension_filters: envoy.access_loggers.extension_filters.cel
+2022-12-19T08:47:34.029656Z	info	envoy main	  envoy.dubbo_proxy.filters: envoy.filters.dubbo.router
+2022-12-19T08:47:34.029659Z	info	envoy main	  envoy.stats_sinks: envoy.dog_statsd, envoy.graphite_statsd, envoy.metrics_service, envoy.stat_sinks.dog_statsd, envoy.stat_sinks.graphite_statsd, envoy.stat_sinks.hystrix, envoy.stat_sinks.metrics_service, envoy.stat_sinks.statsd, envoy.stat_sinks.wasm, envoy.statsd
+2022-12-19T08:47:34.029662Z	info	envoy main	  envoy.matching.network.input: envoy.matching.inputs.application_protocol, envoy.matching.inputs.destination_ip, envoy.matching.inputs.destination_port, envoy.matching.inputs.direct_source_ip, envoy.matching.inputs.dns_san, envoy.matching.inputs.server_name, envoy.matching.inputs.source_ip, envoy.matching.inputs.source_port, envoy.matching.inputs.source_type, envoy.matching.inputs.subject, envoy.matching.inputs.transport_protocol, envoy.matching.inputs.uri_san
+2022-12-19T08:47:34.029665Z	info	envoy main	  envoy.quic.server.crypto_stream: envoy.quic.crypto_stream.server.quiche
+2022-12-19T08:47:34.029673Z	info	envoy main	  envoy.filters.network: envoy.echo, envoy.ext_authz, envoy.filters.network.connection_limit, envoy.filters.network.direct_response, envoy.filters.network.dubbo_proxy, envoy.filters.network.echo, envoy.filters.network.ext_authz, envoy.filters.network.http_connection_manager, envoy.filters.network.istio_stats, envoy.filters.network.local_ratelimit, envoy.filters.network.metadata_exchange, envoy.filters.network.mongo_proxy, envoy.filters.network.mysql_proxy, envoy.filters.network.ratelimit, envoy.filters.network.rbac, envoy.filters.network.redis_proxy, envoy.filters.network.sip_proxy, envoy.filters.network.sni_cluster, envoy.filters.network.sni_dynamic_forward_proxy, envoy.filters.network.tcp_cluster_rewrite, envoy.filters.network.tcp_proxy, envoy.filters.network.thrift_proxy, envoy.filters.network.wasm, envoy.filters.network.zookeeper_proxy, envoy.http_connection_manager, envoy.mongo_proxy, envoy.ratelimit, envoy.redis_proxy, envoy.tcp_proxy, forward_downstream_sni, istio.capture_tls, istio.restore_tls, sni_verifier
+2022-12-19T08:47:34.029699Z	info	envoy main	  envoy.filters.upstream_network: envoy.filters.network.upstream.metadata_exchange
+2022-12-19T08:47:34.029703Z	info	envoy main	  envoy.quic.proof_source: envoy.quic.proof_source.filter_chain
+2022-12-19T08:47:34.029705Z	info	envoy main	  envoy.filters.udp_listener: envoy.filters.udp.dns_filter, envoy.filters.udp_listener.udp_proxy
+2022-12-19T08:47:34.029708Z	info	envoy main	  envoy.transport_sockets.downstream: envoy.transport_sockets.alts, envoy.transport_sockets.quic, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.starttls, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, starttls, tls
+2022-12-19T08:47:34.029710Z	info	envoy main	  envoy.common.key_value: envoy.key_value.file_based
+2022-12-19T08:47:34.029712Z	info	envoy main	  envoy.internal_redirect_predicates: envoy.internal_redirect_predicates.allow_listed_routes, envoy.internal_redirect_predicates.previous_routes, envoy.internal_redirect_predicates.safe_cross_scheme
+2022-12-19T08:47:34.033577Z	warning	envoy misc	Deprecated field: type envoy.config.cluster.v3.Cluster Using deprecated option 'envoy.config.cluster.v3.Cluster.max_requests_per_connection' from file cluster.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-12-19T08:47:34.033779Z	warning	envoy misc	Deprecated field: type envoy.type.matcher.v3.RegexMatcher Using deprecated option 'envoy.type.matcher.v3.RegexMatcher.google_re2' from file regex.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-12-19T08:47:34.033916Z	warning	envoy misc	Deprecated field: type envoy.config.bootstrap.v3.Bootstrap Using deprecated option 'envoy.config.bootstrap.v3.Bootstrap.tracing' from file bootstrap.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/version_history/version_history for details. If continued use of this field is absolutely necessary, see https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime#using-runtime-overrides-for-deprecated-features for how to apply a temporary and highly discouraged override.
+2022-12-19T08:47:34.034174Z	info	envoy main	HTTP header map info:
+2022-12-19T08:47:34.035768Z	info	envoy main	  request header map: 664 bytes: :authority,:method,:path,:protocol,:scheme,accept,accept-encoding,access-control-request-headers,access-control-request-method,access-control-request-private-network,authentication,authorization,cache-control,cdn-loop,connection,content-encoding,content-length,content-type,expect,grpc-accept-encoding,grpc-timeout,if-match,if-modified-since,if-none-match,if-range,if-unmodified-since,keep-alive,origin,pragma,proxy-connection,proxy-status,referer,te,transfer-encoding,upgrade,user-agent,via,x-client-trace-id,x-envoy-attempt-count,x-envoy-decorator-operation,x-envoy-downstream-service-cluster,x-envoy-downstream-service-node,x-envoy-expected-rq-timeout-ms,x-envoy-external-address,x-envoy-force-trace,x-envoy-hedge-on-per-try-timeout,x-envoy-internal,x-envoy-ip-tags,x-envoy-max-retries,x-envoy-original-path,x-envoy-original-url,x-envoy-retriable-header-names,x-envoy-retriable-status-codes,x-envoy-retry-grpc-on,x-envoy-retry-on,x-envoy-upstream-alt-stat-name,x-envoy-upstream-rq-per-try-timeout-ms,x-envoy-upstream-rq-timeout-alt-response,x-envoy-upstream-rq-timeout-ms,x-envoy-upstream-stream-duration-ms,x-forwarded-client-cert,x-forwarded-for,x-forwarded-host,x-forwarded-proto,x-ot-span-context,x-request-id
+2022-12-19T08:47:34.035806Z	info	envoy main	  request trailer map: 128 bytes: 
+2022-12-19T08:47:34.035811Z	info	envoy main	  response header map: 440 bytes: :status,access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin,access-control-allow-private-network,access-control-expose-headers,access-control-max-age,age,cache-control,connection,content-encoding,content-length,content-type,date,etag,expires,grpc-message,grpc-status,keep-alive,last-modified,location,proxy-connection,proxy-status,server,transfer-encoding,upgrade,vary,via,x-envoy-attempt-count,x-envoy-decorator-operation,x-envoy-degraded,x-envoy-immediate-health-check-fail,x-envoy-ratelimited,x-envoy-upstream-canary,x-envoy-upstream-healthchecked-cluster,x-envoy-upstream-service-time,x-request-id
+2022-12-19T08:47:34.035813Z	info	envoy main	  response trailer map: 152 bytes: grpc-message,grpc-status
+2022-12-19T08:47:34.040631Z	debug	envoy filter	Called AuthnFilterConfig : createEmptyConfigProto
+2022-12-19T08:47:34.040699Z	debug	envoy filter	Called AuthnFilterConfig : createEmptyConfigProto
+2022-12-19T08:47:34.043344Z	debug	envoy main	No overload action is configured for envoy.overload_actions.shrink_heap.
+2022-12-19T08:47:34.043431Z	warning	envoy misc	message 'envoy.extensions.bootstrap.internal_listener.v3.InternalListener' is contained in proto file 'envoy/extensions/bootstrap/internal_listener/v3/internal_listener.proto' marked as work-in-progress. API features marked as work-in-progress are not considered stable, are not covered by the threat model, are not supported by the security team, and are subject to breaking changes. Do not use this feature without understanding each of the previous points.
+2022-12-19T08:47:34.045707Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reduce_timeouts.
+2022-12-19T08:47:34.045748Z	debug	envoy main	No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+2022-12-19T08:47:34.045752Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reject_incoming_connections.
+2022-12-19T08:47:34.045754Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reset_high_memory_stream.
+2022-12-19T08:47:34.045775Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reduce_timeouts.
+2022-12-19T08:47:34.045778Z	debug	envoy main	No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+2022-12-19T08:47:34.045780Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reject_incoming_connections.
+2022-12-19T08:47:34.045781Z	debug	envoy main	No overload action is configured for envoy.overload_actions.reset_high_memory_stream.
+2022-12-19T08:47:34.046273Z	info	envoy main	runtime: layers:
+  - name: global config
+    static_layer:
+      re2.max_program_size.error_level: 32768
+      envoy.reloadable_features.no_extension_lookup_by_name: false
+      overload.global_downstream_max_connections: 2147483647
+      envoy.deprecated_features:envoy.config.listener.v3.Listener.hidden_envoy_deprecated_use_original_dst: true
+      envoy.reloadable_features.http_reject_path_with_fragment: false
+  - name: admin
+    admin_layer:
+      {}
+2022-12-19T08:47:34.046715Z	info	envoy admin	admin address: 127.0.0.1:15000
+2022-12-19T08:47:34.046839Z	debug	envoy misc	create DNS resolver type: envoy.network.dns_resolver.cares
+2022-12-19T08:47:34.046860Z	debug	envoy dns	c-ares library initialized.
+2022-12-19T08:47:34.047036Z	info	envoy config	loading tracing configuration
+2022-12-19T08:47:34.047070Z	info	envoy config	  validating default server-wide tracing driver: envoy.tracers.zipkin
+2022-12-19T08:47:34.047079Z	info	envoy config	loading 0 static secret(s)
+2022-12-19T08:47:34.047081Z	info	envoy config	loading 5 cluster(s)
+2022-12-19T08:47:34.049038Z	debug	envoy config	    upstream http filter #0
+2022-12-19T08:47:34.049149Z	debug	envoy config	      name: envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.049190Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.upstream_codec.v3.UpstreamCodec"}
+2022-12-19T08:47:34.049214Z	debug	envoy upstream	transport socket match, socket default selected for host with address 127.0.0.1:15000
+2022-12-19T08:47:34.049471Z	debug	envoy config	    upstream http filter #0
+2022-12-19T08:47:34.049572Z	debug	envoy config	      name: envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.049608Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.upstream_codec.v3.UpstreamCodec"}
+2022-12-19T08:47:34.049618Z	debug	envoy upstream	transport socket match, socket default selected for host with address 127.0.0.1:15020
+2022-12-19T08:47:34.050068Z	debug	envoy config	    upstream http filter #0
+2022-12-19T08:47:34.050103Z	debug	envoy config	      name: envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.050111Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.upstream_codec.v3.UpstreamCodec"}
+2022-12-19T08:47:34.050118Z	debug	envoy upstream	transport socket match, socket default selected for host with address ./var/run/secrets/workload-spiffe-uds/socket
+2022-12-19T08:47:34.062078Z	debug	envoy grpc	completionThread running
+2022-12-19T08:47:34.071935Z	debug	envoy config	    upstream http filter #0
+2022-12-19T08:47:34.071983Z	debug	envoy config	      name: envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.071999Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.upstream_codec.v3.UpstreamCodec"}
+2022-12-19T08:47:34.072011Z	debug	envoy upstream	transport socket match, socket default selected for host with address ./etc/istio/proxy/XDS
+2022-12-19T08:47:34.072242Z	debug	envoy config	    upstream http filter #0
+2022-12-19T08:47:34.072278Z	debug	envoy config	      name: envoy.filters.http.upstream_codec
+2022-12-19T08:47:34.072292Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.upstream_codec.v3.UpstreamCodec"}
+2022-12-19T08:47:34.074100Z	debug	envoy upstream	initializing Primary cluster agent completed
+2022-12-19T08:47:34.074134Z	debug	envoy init	init manager Cluster agent contains no targets
+2022-12-19T08:47:34.074144Z	debug	envoy init	init manager Cluster agent initialized, notifying ClusterImplBase
+2022-12-19T08:47:34.074161Z	debug	envoy upstream	adding TLS cluster agent
+2022-12-19T08:47:34.074258Z	debug	envoy upstream	membership update for TLS cluster agent added 1 removed 0
+2022-12-19T08:47:34.074297Z	debug	envoy upstream	cm init: init complete: cluster=agent primary=0 secondary=0
+2022-12-19T08:47:34.074300Z	debug	envoy upstream	maybe finish initialize state: 0
+2022-12-19T08:47:34.074303Z	debug	envoy upstream	cm init: adding: cluster=agent primary=0 secondary=0
+2022-12-19T08:47:34.074310Z	debug	envoy upstream	initializing Primary cluster prometheus_stats completed
+2022-12-19T08:47:34.074311Z	debug	envoy init	init manager Cluster prometheus_stats contains no targets
+2022-12-19T08:47:34.074313Z	debug	envoy init	init manager Cluster prometheus_stats initialized, notifying ClusterImplBase
+2022-12-19T08:47:34.074317Z	debug	envoy upstream	adding TLS cluster prometheus_stats
+2022-12-19T08:47:34.074323Z	debug	envoy upstream	membership update for TLS cluster prometheus_stats added 1 removed 0
+2022-12-19T08:47:34.074326Z	debug	envoy upstream	cm init: init complete: cluster=prometheus_stats primary=0 secondary=0
+2022-12-19T08:47:34.074327Z	debug	envoy upstream	maybe finish initialize state: 0
+2022-12-19T08:47:34.074329Z	debug	envoy upstream	cm init: adding: cluster=prometheus_stats primary=0 secondary=0
+2022-12-19T08:47:34.074333Z	debug	envoy upstream	initializing Primary cluster sds-grpc completed
+2022-12-19T08:47:34.074335Z	debug	envoy init	init manager Cluster sds-grpc contains no targets
+2022-12-19T08:47:34.074336Z	debug	envoy init	init manager Cluster sds-grpc initialized, notifying ClusterImplBase
+2022-12-19T08:47:34.074349Z	debug	envoy upstream	adding TLS cluster sds-grpc
+2022-12-19T08:47:34.074353Z	debug	envoy upstream	membership update for TLS cluster sds-grpc added 1 removed 0
+2022-12-19T08:47:34.074356Z	debug	envoy upstream	cm init: init complete: cluster=sds-grpc primary=0 secondary=0
+2022-12-19T08:47:34.074358Z	debug	envoy upstream	maybe finish initialize state: 0
+2022-12-19T08:47:34.074360Z	debug	envoy upstream	cm init: adding: cluster=sds-grpc primary=0 secondary=0
+2022-12-19T08:47:34.074364Z	debug	envoy upstream	initializing Primary cluster xds-grpc completed
+2022-12-19T08:47:34.074365Z	debug	envoy init	init manager Cluster xds-grpc contains no targets
+2022-12-19T08:47:34.074367Z	debug	envoy init	init manager Cluster xds-grpc initialized, notifying ClusterImplBase
+2022-12-19T08:47:34.074370Z	debug	envoy upstream	adding TLS cluster xds-grpc
+2022-12-19T08:47:34.074374Z	debug	envoy upstream	membership update for TLS cluster xds-grpc added 1 removed 0
+2022-12-19T08:47:34.074395Z	debug	envoy upstream	cm init: init complete: cluster=xds-grpc primary=0 secondary=0
+2022-12-19T08:47:34.074405Z	debug	envoy upstream	maybe finish initialize state: 0
+2022-12-19T08:47:34.074603Z	debug	envoy upstream	cm init: adding: cluster=xds-grpc primary=0 secondary=0
+2022-12-19T08:47:34.074649Z	debug	envoy dns	dns resolution for zipkin.istio-system started
+2022-12-19T08:47:34.075053Z	debug	envoy upstream	cm init: adding: cluster=zipkin primary=1 secondary=0
+2022-12-19T08:47:34.075138Z	debug	envoy upstream	maybe finish initialize state: 1
+2022-12-19T08:47:34.075176Z	debug	envoy upstream	maybe finish initialize primary init clusters empty: false
+2022-12-19T08:47:34.075556Z	debug	envoy config	Establishing new gRPC bidi stream to xds-grpc for rpc StreamAggregatedResources(stream .envoy.service.discovery.v3.DiscoveryRequest) returns (stream .envoy.service.discovery.v3.DiscoveryResponse);
+
+2022-12-19T08:47:34.075802Z	debug	envoy router	[C0][S6398000308987268396] cluster 'xds-grpc' match for URL '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+2022-12-19T08:47:34.076089Z	debug	envoy router	[C0][S6398000308987268396] router decoding headers:
+':method', 'POST'
+':path', '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+':authority', 'xds-grpc'
+':scheme', 'http'
+'te', 'trailers'
+'content-type', 'application/grpc'
+'x-envoy-internal', 'true'
+'x-forwarded-for', '10.244.0.25'
+
+2022-12-19T08:47:34.076134Z	debug	envoy pool	queueing stream due to no available connections (ready=0 busy=0 connecting=0)
+2022-12-19T08:47:34.076138Z	debug	envoy pool	trying to create new connection
+2022-12-19T08:47:34.076141Z	debug	envoy pool	creating a new connection (connecting=0)
+2022-12-19T08:47:34.080794Z	debug	envoy http2	[C0] updating connection-level initial window size to 268435456
+2022-12-19T08:47:34.080839Z	debug	envoy connection	[C0] current connecting state: true
+2022-12-19T08:47:34.080844Z	debug	envoy client	[C0] connecting
+2022-12-19T08:47:34.080848Z	debug	envoy connection	[C0] connecting to ./etc/istio/proxy/XDS
+2022-12-19T08:47:34.081277Z	info	envoy config	loading 2 listener(s)
+2022-12-19T08:47:34.081355Z	debug	envoy config	listener #0:
+2022-12-19T08:47:34.081691Z	debug	envoy config	begin add/update listener: name=e47bb167-a6df-48f4-b483-3a55655afd0f hash=2200412303323231031
+2022-12-19T08:47:34.081724Z	debug	envoy config	use full listener update path for listener name=e47bb167-a6df-48f4-b483-3a55655afd0f hash=2200412303323231031
+2022-12-19T08:47:34.081933Z	debug	envoy config	  filter #0:
+2022-12-19T08:47:34.082057Z	debug	envoy config	    name: envoy.filters.network.http_connection_manager
+2022-12-19T08:47:34.082325Z	debug	envoy config	  config: {"@type":"type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager","codec_type":"AUTO","stat_prefix":"stats","route_config":{"virtual_hosts":[{"name":"backend","domains":["*"],"routes":[{"match":{"prefix":"/stats/prometheus"},"route":{"cluster":"prometheus_stats"}}]}]},"http_filters":[{"name":"envoy.filters.http.router","typed_config":{"@type":"type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"}}]}
+2022-12-19T08:47:34.082709Z	debug	envoy config	    http filter #0
+2022-12-19T08:47:34.082797Z	debug	envoy config	      name: envoy.filters.http.router
+2022-12-19T08:47:34.082834Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"}
+2022-12-19T08:47:34.083247Z	debug	envoy config	new fc_contexts has 1 filter chains, including 1 newly built
+2022-12-19T08:47:34.083305Z	debug	envoy init	added target Listener-init-target e47bb167-a6df-48f4-b483-3a55655afd0f to init manager Server
+2022-12-19T08:47:34.083323Z	debug	envoy config	Create listen socket for listener e47bb167-a6df-48f4-b483-3a55655afd0f on address 0.0.0.0:15090
+2022-12-19T08:47:34.083325Z	debug	envoy config	e47bb167-a6df-48f4-b483-3a55655afd0f: Setting socket options succeeded
+2022-12-19T08:47:34.083328Z	debug	envoy config	Set listener e47bb167-a6df-48f4-b483-3a55655afd0f socket factory local address to 0.0.0.0:15090
+2022-12-19T08:47:34.083333Z	debug	envoy config	Create listen socket for listener e47bb167-a6df-48f4-b483-3a55655afd0f on address 0.0.0.0:15090
+2022-12-19T08:47:34.083335Z	debug	envoy config	e47bb167-a6df-48f4-b483-3a55655afd0f: Setting socket options succeeded
+2022-12-19T08:47:34.083339Z	debug	envoy config	add active listener: name=e47bb167-a6df-48f4-b483-3a55655afd0f, hash=2200412303323231031, tag=1, address=0.0.0.0:15090
+2022-12-19T08:47:34.083436Z	debug	envoy config	listener #1:
+2022-12-19T08:47:34.083536Z	debug	envoy config	begin add/update listener: name=46aa2583-e960-48aa-9d20-1f5a4b35d7dc hash=9872086206848846795
+2022-12-19T08:47:34.083539Z	debug	envoy config	use full listener update path for listener name=46aa2583-e960-48aa-9d20-1f5a4b35d7dc hash=9872086206848846795
+2022-12-19T08:47:34.083655Z	debug	envoy config	  filter #0:
+2022-12-19T08:47:34.083693Z	debug	envoy config	    name: envoy.filters.network.http_connection_manager
+2022-12-19T08:47:34.083903Z	debug	envoy config	  config: {"@type":"type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager","codec_type":"AUTO","stat_prefix":"agent","route_config":{"virtual_hosts":[{"name":"backend","domains":["*"],"routes":[{"match":{"prefix":"/healthz/ready"},"route":{"cluster":"agent"}}]}]},"http_filters":[{"name":"envoy.filters.http.router","typed_config":{"@type":"type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"}}]}
+2022-12-19T08:47:34.084283Z	debug	envoy config	    http filter #0
+2022-12-19T08:47:34.084414Z	debug	envoy config	      name: envoy.filters.http.router
+2022-12-19T08:47:34.084471Z	debug	envoy config	    config: {"@type":"type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"}
+2022-12-19T08:47:34.084716Z	debug	envoy config	new fc_contexts has 1 filter chains, including 1 newly built
+2022-12-19T08:47:34.084750Z	debug	envoy init	added target Listener-init-target 46aa2583-e960-48aa-9d20-1f5a4b35d7dc to init manager Server
+2022-12-19T08:47:34.084764Z	debug	envoy config	Create listen socket for listener 46aa2583-e960-48aa-9d20-1f5a4b35d7dc on address 0.0.0.0:15021
+2022-12-19T08:47:34.084766Z	debug	envoy config	46aa2583-e960-48aa-9d20-1f5a4b35d7dc: Setting socket options succeeded
+2022-12-19T08:47:34.084769Z	debug	envoy config	Set listener 46aa2583-e960-48aa-9d20-1f5a4b35d7dc socket factory local address to 0.0.0.0:15021
+2022-12-19T08:47:34.084775Z	debug	envoy config	Create listen socket for listener 46aa2583-e960-48aa-9d20-1f5a4b35d7dc on address 0.0.0.0:15021
+2022-12-19T08:47:34.084777Z	debug	envoy config	46aa2583-e960-48aa-9d20-1f5a4b35d7dc: Setting socket options succeeded
+2022-12-19T08:47:34.084780Z	debug	envoy config	add active listener: name=46aa2583-e960-48aa-9d20-1f5a4b35d7dc, hash=9872086206848846795, tag=2, address=0.0.0.0:15021
+2022-12-19T08:47:34.084783Z	info	envoy config	loading stats configuration
+2022-12-19T08:47:34.086738Z	debug	envoy init	added target LDS to init manager Server
+2022-12-19T08:47:34.089766Z	info	envoy main	starting main dispatch loop
+2022-12-19T08:47:34.090503Z	debug	envoy connection	[C0] connected
+2022-12-19T08:47:34.090588Z	debug	envoy client	[C0] connected
+2022-12-19T08:47:34.090907Z	debug	envoy pool	[C0] attaching to next stream
+2022-12-19T08:47:34.090956Z	debug	envoy pool	[C0] creating stream
+2022-12-19T08:47:34.090988Z	debug	envoy pool	[C0] maximum streams per connection, start draining
+2022-12-19T08:47:34.091005Z	debug	envoy router	[C0][S6398000308987268396] pool ready
+2022-12-19T08:47:34.098233Z	debug	envoy dns	dns resolution for zipkin.istio-system completed with status 0
+2022-12-19T08:47:34.098348Z	debug	envoy upstream	DNS refresh rate reset for zipkin.istio-system, refresh rate 30000 ms
+2022-12-19T08:47:34.098477Z	debug	envoy upstream	initializing Primary cluster zipkin completed
+2022-12-19T08:47:34.098492Z	debug	envoy init	init manager Cluster zipkin contains no targets
+2022-12-19T08:47:34.098501Z	debug	envoy init	init manager Cluster zipkin initialized, notifying ClusterImplBase
+2022-12-19T08:47:34.098673Z	debug	envoy upstream	adding TLS cluster zipkin
+2022-12-19T08:47:34.098719Z	debug	envoy upstream	cm init: init complete: cluster=zipkin primary=0 secondary=0
+2022-12-19T08:47:34.098722Z	debug	envoy upstream	maybe finish initialize state: 1
+2022-12-19T08:47:34.098724Z	debug	envoy upstream	maybe finish initialize primary init clusters empty: true
+2022-12-19T08:47:34.098727Z	debug	envoy init	init manager RTDS contains no targets
+2022-12-19T08:47:34.098728Z	debug	envoy init	init manager RTDS initialized, notifying RTDS
+2022-12-19T08:47:34.098732Z	info	envoy runtime	RTDS has finished initialization
+2022-12-19T08:47:34.098991Z	debug	envoy upstream	continue initializing secondary clusters
+2022-12-19T08:47:34.098995Z	debug	envoy upstream	maybe finish initialize state: 2
+2022-12-19T08:47:34.098997Z	debug	envoy upstream	maybe finish initialize primary init clusters empty: true
+2022-12-19T08:47:34.098998Z	debug	envoy upstream	maybe finish initialize secondary init clusters empty: true
+2022-12-19T08:47:34.099049Z	debug	envoy upstream	maybe finish initialize cds api ready: true
+2022-12-19T08:47:34.099053Z	info	envoy upstream	cm init: initializing cds
+2022-12-19T08:47:34.099062Z	debug	envoy config	gRPC mux addWatch for type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-19T08:47:34.128293Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T08:47:34.343702Z	info	cache	generated new workload certificate	latency=353.949513ms ttl=23h59m59.656310303s
+2022-12-19T08:47:34.343850Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-19T08:47:34.343922Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-19T08:47:34.343978Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.656024489s
+2022-12-19T08:47:39.086683Z	debug	envoy main	flushing stats
+2022-12-19T08:47:39.086733Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:47:44.086393Z	debug	envoy main	flushing stats
+2022-12-19T08:47:44.086444Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:47:44.387869Z	warn	xdsproxy	upstream [1] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:49546->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:47:44.388592Z	debug	envoy client	[C0] response complete
+2022-12-19T08:47:44.388650Z	debug	envoy client	[C0] waiting for encode to complete
+2022-12-19T08:47:44.388685Z	debug	envoy router	[C0][S6398000308987268396] upstream headers complete: end_stream=true
+2022-12-19T08:47:44.389987Z	debug	envoy router	[C0][S6398000308987268396] resetting pool request
+2022-12-19T08:47:44.390060Z	debug	envoy client	[C0] request reset
+2022-12-19T08:47:44.390074Z	debug	envoy pool	[C0] destroying stream: 0 remaining
+2022-12-19T08:47:44.390084Z	debug	envoy connection	[C0] closing data_to_write=0 type=1
+2022-12-19T08:47:44.390089Z	debug	envoy connection	[C0] closing socket: 1
+2022-12-19T08:47:44.390307Z	debug	envoy client	[C0] disconnect. resetting 0 pending requests
+2022-12-19T08:47:44.390317Z	debug	envoy pool	[C0] client disconnected, failure reason: 
+2022-12-19T08:47:44.390970Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:47:44.391028Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:47:44.391160Z	debug	envoy http	async http request response headers (end_stream=true):
+':status', '200'
+'content-type', 'application/grpc'
+'grpc-status', '14'
+'grpc-message', 'error reading from server: read tcp 172.16.0.3:49546->172.16.0.2:15012: read: connection timed out'
+
+2022-12-19T08:47:44.391259Z	debug	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 14, error reading from server: read tcp 172.16.0.3:49546->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:47:44.391329Z	debug	envoy config	gRPC update for type.googleapis.com/envoy.config.cluster.v3.Cluster failed
+2022-12-19T08:47:44.391396Z	debug	envoy client	[C0] Error dispatching received data: Connection was closed while dispatching frames
+2022-12-19T08:47:44.523027Z	debug	envoy config	Establishing new gRPC bidi stream to xds-grpc for rpc StreamAggregatedResources(stream .envoy.service.discovery.v3.DiscoveryRequest) returns (stream .envoy.service.discovery.v3.DiscoveryResponse);
+
+2022-12-19T08:47:44.523167Z	debug	envoy router	[C0][S3307908411420602895] cluster 'xds-grpc' match for URL '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+2022-12-19T08:47:44.523265Z	debug	envoy router	[C0][S3307908411420602895] router decoding headers:
+':method', 'POST'
+':path', '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+':authority', 'xds-grpc'
+':scheme', 'http'
+'te', 'trailers'
+'content-type', 'application/grpc'
+'x-envoy-internal', 'true'
+'x-forwarded-for', '10.244.0.25'
+
+2022-12-19T08:47:44.523314Z	debug	envoy pool	queueing stream due to no available connections (ready=0 busy=0 connecting=0)
+2022-12-19T08:47:44.523320Z	debug	envoy pool	trying to create new connection
+2022-12-19T08:47:44.523323Z	debug	envoy pool	creating a new connection (connecting=0)
+2022-12-19T08:47:44.523390Z	debug	envoy http2	[C1] updating connection-level initial window size to 268435456
+2022-12-19T08:47:44.523395Z	debug	envoy connection	[C1] current connecting state: true
+2022-12-19T08:47:44.523398Z	debug	envoy client	[C1] connecting
+2022-12-19T08:47:44.523401Z	debug	envoy connection	[C1] connecting to ./etc/istio/proxy/XDS
+2022-12-19T08:47:44.523806Z	debug	envoy connection	[C1] connected
+2022-12-19T08:47:44.523846Z	debug	envoy client	[C1] connected
+2022-12-19T08:47:44.523857Z	debug	envoy pool	[C1] attaching to next stream
+2022-12-19T08:47:44.523860Z	debug	envoy pool	[C1] creating stream
+2022-12-19T08:47:44.523862Z	debug	envoy pool	[C1] maximum streams per connection, start draining
+2022-12-19T08:47:44.523874Z	debug	envoy router	[C0][S3307908411420602895] pool ready
+2022-12-19T08:47:44.590418Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T08:47:49.087395Z	debug	envoy main	flushing stats
+2022-12-19T08:47:49.087450Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:47:54.088159Z	debug	envoy main	flushing stats
+2022-12-19T08:47:54.088216Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:47:54.627547Z	warn	xdsproxy	upstream [2] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:37102->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:47:54.628199Z	debug	envoy client	[C1] response complete
+2022-12-19T08:47:54.628281Z	debug	envoy client	[C1] waiting for encode to complete
+2022-12-19T08:47:54.628323Z	debug	envoy router	[C0][S3307908411420602895] upstream headers complete: end_stream=true
+2022-12-19T08:47:54.628350Z	debug	envoy router	[C0][S3307908411420602895] resetting pool request
+2022-12-19T08:47:54.628404Z	debug	envoy client	[C1] request reset
+2022-12-19T08:47:54.628447Z	debug	envoy pool	[C1] destroying stream: 0 remaining
+2022-12-19T08:47:54.628543Z	debug	envoy connection	[C1] closing data_to_write=0 type=1
+2022-12-19T08:47:54.628593Z	debug	envoy connection	[C1] closing socket: 1
+2022-12-19T08:47:54.628663Z	debug	envoy client	[C1] disconnect. resetting 0 pending requests
+2022-12-19T08:47:54.628708Z	debug	envoy pool	[C1] client disconnected, failure reason: 
+2022-12-19T08:47:54.628758Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:47:54.628776Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:47:54.628857Z	debug	envoy http	async http request response headers (end_stream=true):
+':status', '200'
+'content-type', 'application/grpc'
+'grpc-status', '14'
+'grpc-message', 'error reading from server: read tcp 172.16.0.3:37102->172.16.0.2:15012: read: connection timed out'
+
+2022-12-19T08:47:54.628919Z	debug	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 14, error reading from server: read tcp 172.16.0.3:37102->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:47:54.629048Z	debug	envoy config	gRPC update for type.googleapis.com/envoy.config.cluster.v3.Cluster failed
+2022-12-19T08:47:54.629072Z	debug	envoy client	[C1] Error dispatching received data: Connection was closed while dispatching frames
+2022-12-19T08:47:54.973987Z	debug	envoy config	Establishing new gRPC bidi stream to xds-grpc for rpc StreamAggregatedResources(stream .envoy.service.discovery.v3.DiscoveryRequest) returns (stream .envoy.service.discovery.v3.DiscoveryResponse);
+
+2022-12-19T08:47:54.974076Z	debug	envoy router	[C0][S11125709490893654477] cluster 'xds-grpc' match for URL '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+2022-12-19T08:47:54.974159Z	debug	envoy router	[C0][S11125709490893654477] router decoding headers:
+':method', 'POST'
+':path', '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+':authority', 'xds-grpc'
+':scheme', 'http'
+'te', 'trailers'
+'content-type', 'application/grpc'
+'x-envoy-internal', 'true'
+'x-forwarded-for', '10.244.0.25'
+
+2022-12-19T08:47:54.974208Z	debug	envoy pool	queueing stream due to no available connections (ready=0 busy=0 connecting=0)
+2022-12-19T08:47:54.974252Z	debug	envoy pool	trying to create new connection
+2022-12-19T08:47:54.974271Z	debug	envoy pool	creating a new connection (connecting=0)
+2022-12-19T08:47:54.974412Z	debug	envoy http2	[C2] updating connection-level initial window size to 268435456
+2022-12-19T08:47:54.974451Z	debug	envoy connection	[C2] current connecting state: true
+2022-12-19T08:47:54.974463Z	debug	envoy client	[C2] connecting
+2022-12-19T08:47:54.974468Z	debug	envoy connection	[C2] connecting to ./etc/istio/proxy/XDS
+2022-12-19T08:47:54.974969Z	debug	envoy connection	[C2] connected
+2022-12-19T08:47:54.975008Z	debug	envoy client	[C2] connected
+2022-12-19T08:47:54.975018Z	debug	envoy pool	[C2] attaching to next stream
+2022-12-19T08:47:54.975022Z	debug	envoy pool	[C2] creating stream
+2022-12-19T08:47:54.975024Z	debug	envoy pool	[C2] maximum streams per connection, start draining
+2022-12-19T08:47:54.975037Z	debug	envoy router	[C0][S11125709490893654477] pool ready
+2022-12-19T08:47:55.012072Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T08:47:59.087928Z	debug	envoy main	flushing stats
+2022-12-19T08:47:59.087980Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:48:04.087592Z	debug	envoy main	flushing stats
+2022-12-19T08:48:04.087647Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:48:04.099013Z	debug	envoy dns	dns resolution for zipkin.istio-system started
+2022-12-19T08:48:04.106834Z	debug	envoy dns	dns resolution for zipkin.istio-system completed with status 0
+2022-12-19T08:48:04.106922Z	debug	envoy upstream	DNS refresh rate reset for zipkin.istio-system, refresh rate 30000 ms
+2022-12-19T08:48:05.059582Z	warn	xdsproxy	upstream [3] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:50390->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:48:05.059809Z	debug	envoy client	[C2] response complete
+2022-12-19T08:48:05.059856Z	debug	envoy client	[C2] waiting for encode to complete
+2022-12-19T08:48:05.059871Z	debug	envoy router	[C0][S11125709490893654477] upstream headers complete: end_stream=true
+2022-12-19T08:48:05.059896Z	debug	envoy router	[C0][S11125709490893654477] resetting pool request
+2022-12-19T08:48:05.059956Z	debug	envoy client	[C2] request reset
+2022-12-19T08:48:05.059964Z	debug	envoy pool	[C2] destroying stream: 0 remaining
+2022-12-19T08:48:05.059971Z	debug	envoy connection	[C2] closing data_to_write=0 type=1
+2022-12-19T08:48:05.059974Z	debug	envoy connection	[C2] closing socket: 1
+2022-12-19T08:48:05.060040Z	debug	envoy client	[C2] disconnect. resetting 0 pending requests
+2022-12-19T08:48:05.060074Z	debug	envoy pool	[C2] client disconnected, failure reason: 
+2022-12-19T08:48:05.060083Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:48:05.060089Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:48:05.060101Z	debug	envoy http	async http request response headers (end_stream=true):
+':status', '200'
+'content-type', 'application/grpc'
+'grpc-status', '14'
+'grpc-message', 'error reading from server: read tcp 172.16.0.3:50390->172.16.0.2:15012: read: connection timed out'
+
+2022-12-19T08:48:05.060139Z	debug	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 14, error reading from server: read tcp 172.16.0.3:50390->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:48:05.060144Z	debug	envoy config	gRPC update for type.googleapis.com/envoy.config.cluster.v3.Cluster failed
+2022-12-19T08:48:05.060152Z	debug	envoy client	[C2] Error dispatching received data: Connection was closed while dispatching frames
+2022-12-19T08:48:05.107696Z	debug	envoy config	Establishing new gRPC bidi stream to xds-grpc for rpc StreamAggregatedResources(stream .envoy.service.discovery.v3.DiscoveryRequest) returns (stream .envoy.service.discovery.v3.DiscoveryResponse);
+
+2022-12-19T08:48:05.107769Z	debug	envoy router	[C0][S2030482344911163262] cluster 'xds-grpc' match for URL '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+2022-12-19T08:48:05.107822Z	debug	envoy router	[C0][S2030482344911163262] router decoding headers:
+':method', 'POST'
+':path', '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+':authority', 'xds-grpc'
+':scheme', 'http'
+'te', 'trailers'
+'content-type', 'application/grpc'
+'x-envoy-internal', 'true'
+'x-forwarded-for', '10.244.0.25'
+
+2022-12-19T08:48:05.108080Z	debug	envoy pool	queueing stream due to no available connections (ready=0 busy=0 connecting=0)
+2022-12-19T08:48:05.108115Z	debug	envoy pool	trying to create new connection
+2022-12-19T08:48:05.108119Z	debug	envoy pool	creating a new connection (connecting=0)
+2022-12-19T08:48:05.108174Z	debug	envoy http2	[C3] updating connection-level initial window size to 268435456
+2022-12-19T08:48:05.108178Z	debug	envoy connection	[C3] current connecting state: true
+2022-12-19T08:48:05.108180Z	debug	envoy client	[C3] connecting
+2022-12-19T08:48:05.108183Z	debug	envoy connection	[C3] connecting to ./etc/istio/proxy/XDS
+2022-12-19T08:48:05.108501Z	debug	envoy connection	[C3] connected
+2022-12-19T08:48:05.108534Z	debug	envoy client	[C3] connected
+2022-12-19T08:48:05.108542Z	debug	envoy pool	[C3] attaching to next stream
+2022-12-19T08:48:05.108545Z	debug	envoy pool	[C3] creating stream
+2022-12-19T08:48:05.108547Z	debug	envoy pool	[C3] maximum streams per connection, start draining
+2022-12-19T08:48:05.108556Z	debug	envoy router	[C0][S2030482344911163262] pool ready
+2022-12-19T08:48:05.159609Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T08:48:09.087530Z	debug	envoy main	flushing stats
+2022-12-19T08:48:09.087581Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:48:14.088368Z	debug	envoy main	flushing stats
+2022-12-19T08:48:14.088422Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats
+2022-12-19T08:48:15.492648Z	warn	xdsproxy	upstream [4] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:36806->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:48:15.493094Z	debug	envoy client	[C3] response complete
+2022-12-19T08:48:15.493139Z	debug	envoy client	[C3] waiting for encode to complete
+2022-12-19T08:48:15.493153Z	debug	envoy router	[C0][S2030482344911163262] upstream headers complete: end_stream=true
+2022-12-19T08:48:15.493175Z	debug	envoy router	[C0][S2030482344911163262] resetting pool request
+2022-12-19T08:48:15.493220Z	debug	envoy client	[C3] request reset
+2022-12-19T08:48:15.493423Z	debug	envoy pool	[C3] destroying stream: 0 remaining
+2022-12-19T08:48:15.493533Z	debug	envoy connection	[C3] closing data_to_write=0 type=1
+2022-12-19T08:48:15.493537Z	debug	envoy connection	[C3] closing socket: 1
+2022-12-19T08:48:15.493656Z	debug	envoy client	[C3] disconnect. resetting 0 pending requests
+2022-12-19T08:48:15.493692Z	debug	envoy pool	[C3] client disconnected, failure reason: 
+2022-12-19T08:48:15.493732Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:48:15.493741Z	debug	envoy pool	invoking idle callbacks - is_draining_for_deletion_=false
+2022-12-19T08:48:15.493808Z	debug	envoy http	async http request response headers (end_stream=true):
+':status', '200'
+'content-type', 'application/grpc'
+'grpc-status', '14'
+'grpc-message', 'error reading from server: read tcp 172.16.0.3:36806->172.16.0.2:15012: read: connection timed out'
+
+2022-12-19T08:48:15.493850Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 31s ago: 14, error reading from server: read tcp 172.16.0.3:36806->172.16.0.2:15012: read: connection timed out
+2022-12-19T08:48:15.493855Z	debug	envoy config	gRPC update for type.googleapis.com/envoy.config.cluster.v3.Cluster failed
+2022-12-19T08:48:15.493865Z	debug	envoy client	[C3] Error dispatching received data: Connection was closed while dispatching frames
+2022-12-19T08:48:17.466577Z	debug	envoy config	Establishing new gRPC bidi stream to xds-grpc for rpc StreamAggregatedResources(stream .envoy.service.discovery.v3.DiscoveryRequest) returns (stream .envoy.service.discovery.v3.DiscoveryResponse);
+
+2022-12-19T08:48:17.466667Z	debug	envoy router	[C0][S17039224223306647613] cluster 'xds-grpc' match for URL '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+2022-12-19T08:48:17.466945Z	debug	envoy router	[C0][S17039224223306647613] router decoding headers:
+':method', 'POST'
+':path', '/envoy.service.discovery.v3.AggregatedDiscoveryService/StreamAggregatedResources'
+':authority', 'xds-grpc'
+':scheme', 'http'
+'te', 'trailers'
+'content-type', 'application/grpc'
+'x-envoy-internal', 'true'
+'x-forwarded-for', '10.244.0.25'
+
+2022-12-19T08:48:17.466992Z	debug	envoy pool	queueing stream due to no available connections (ready=0 busy=0 connecting=0)
+2022-12-19T08:48:17.466996Z	debug	envoy pool	trying to create new connection
+2022-12-19T08:48:17.466999Z	debug	envoy pool	creating a new connection (connecting=0)
+2022-12-19T08:48:17.467056Z	debug	envoy http2	[C4] updating connection-level initial window size to 268435456
+2022-12-19T08:48:17.467088Z	debug	envoy connection	[C4] current connecting state: true
+2022-12-19T08:48:17.467092Z	debug	envoy client	[C4] connecting
+2022-12-19T08:48:17.467095Z	debug	envoy connection	[C4] connecting to ./etc/istio/proxy/XDS
+2022-12-19T08:48:17.467287Z	debug	envoy connection	[C4] connected
+2022-12-19T08:48:17.467296Z	debug	envoy client	[C4] connected
+2022-12-19T08:48:17.467305Z	debug	envoy pool	[C4] attaching to next stream
+2022-12-19T08:48:17.467309Z	debug	envoy pool	[C4] creating stream
+2022-12-19T08:48:17.467311Z	debug	envoy pool	[C4] maximum streams per connection, start draining
+2022-12-19T08:48:17.467322Z	debug	envoy router	[C0][S17039224223306647613] pool ready
+2022-12-19T08:48:17.504747Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T08:48:19.090293Z	debug	envoy main	flushing stats
+2022-12-19T08:48:19.090362Z	debug	envoy main	Envoy is not fully initialized, skipping histogram merge and flushing stats

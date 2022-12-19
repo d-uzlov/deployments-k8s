@@ -1,5 +1,5 @@
 # Basic setup 
-1. install interdomain 
+1. install interdomain
 
 2. install vl3
 ```bash
@@ -31,14 +31,6 @@ kubectl --kubeconfig=$KUBECONFIG1 create namespace "${VM_NAMESPACE}"
 kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n "${VM_NAMESPACE}"
 ```
 
-```bash
-istioctl kube-inject -f ubuntu.yaml >ubuntu-ic.yaml
-k1 create ns vl3-test-vanilla
-k1 apply -n vl3-test-vanilla -f ubuntu-ic.yaml
-k1 -n vl3-test-vanilla wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-k1 -n vl3-test-vanilla logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-vanilla.log
-```
-
 Get istio config
 ```bash
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
@@ -51,8 +43,12 @@ istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clu
 ```bash
 k1 apply -k greeting
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-k1 -n vl3-test logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-proxy-manual.log
+k1 -n vl3-test wait --for=condition=ready --timeout=10m pod -l app=ubuntu
+k1 -n vl3-test logs deployment.apps/ubuntu-deployment -c istio-proxy >istio-2-proxy-manual-w-hosts-w-err-2.log
 ```
+
+k1 cluster-info dump --output yaml --all-namespaces --output-directory dump-1-sidecar
+
 
 ```bash
 k1 apply -k greeting
