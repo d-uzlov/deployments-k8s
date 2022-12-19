@@ -1,0 +1,185 @@
+2022-12-19T05:16:38.101044Z	info	FLAG: --concurrency="0"
+2022-12-19T05:16:38.101095Z	info	FLAG: --domain=""
+2022-12-19T05:16:38.101102Z	info	FLAG: --help="false"
+2022-12-19T05:16:38.101106Z	info	FLAG: --log_as_json="false"
+2022-12-19T05:16:38.101109Z	info	FLAG: --log_caller=""
+2022-12-19T05:16:38.101112Z	info	FLAG: --log_output_level="all:debug"
+2022-12-19T05:16:38.101115Z	info	FLAG: --log_rotate=""
+2022-12-19T05:16:38.101119Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-19T05:16:38.101122Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-19T05:16:38.101125Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-19T05:16:38.101128Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-19T05:16:38.101180Z	info	FLAG: --log_target="[stdout]"
+2022-12-19T05:16:38.101193Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-19T05:16:38.101197Z	info	FLAG: --outlierLogPath=""
+2022-12-19T05:16:38.101200Z	info	FLAG: --proxyComponentLogLevel=""
+2022-12-19T05:16:38.101203Z	info	FLAG: --proxyLogLevel="trace"
+2022-12-19T05:16:38.101206Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-19T05:16:38.101209Z	info	FLAG: --stsPort="0"
+2022-12-19T05:16:38.101212Z	info	FLAG: --templateFile=""
+2022-12-19T05:16:38.101215Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-19T05:16:38.101230Z	info	FLAG: --vklog="0"
+2022-12-19T05:16:38.101238Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-19T05:16:38.103444Z	info	Maximum file descriptors (ulimit -n): 1024
+2022-12-19T05:16:38.103663Z	info	Proxy role	ips=[10.244.0.13 172.16.0.4] type=sidecar id=ubuntu-deployment-6855596d8-4xfhs.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-19T05:16:38.103713Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T05:16:38.103755Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-19T05:16:38.109084Z	info	Apply proxy config from env 
+serviceCluster: vm-app.vm-ns
+controlPlaneAuthPolicy: MUTUAL_TLS
+
+2022-12-19T05:16:38.109742Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: vm-app.vm-ns
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-19T05:16:38.109764Z	info	JWT policy is third-party-jwt
+2022-12-19T05:16:38.109769Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-19T05:16:38.109996Z	debug	Error reading sys_vendor in Azure platform detection: open /sys/class/dmi/id/sys_vendor: no such file or directory
+2022-12-19T05:16:38.211901Z	debug	error in getting aws info for iam/info : Get "http://169.254.169.254/latest/meta-data/iam/info": dial tcp 169.254.169.254:80: i/o timeout (Client.Timeout exceeded while awaiting headers)
+2022-12-19T05:16:38.573051Z	debug	dns	initialized DNS	search=[] servers=[127.0.0.1:53]
+2022-12-19T05:16:38.573174Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2022-12-19T05:16:38.573372Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2022-12-19T05:16:38.573415Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-19T05:16:38.573427Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-19T05:16:38.573438Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: ./etc/certs/root-cert.pem
+2022-12-19T05:16:38.573541Z	info	citadelclient	Citadel client using custom root cert: ./etc/certs/root-cert.pem
+2022-12-19T05:16:38.579421Z	info	Opening status port 15020
+2022-12-19T05:16:38.588265Z	info	ads	All caches have been synced up in 491.162622ms, marking server ready
+2022-12-19T05:16:38.589158Z	debug	wasm	LocalFileCache is created with the option
+wasm.Options{PurgeInterval:3600000000000, ModuleExpiry:86400000000000, InsecureRegistries:sets.Set[string]{"":struct {}{}}, HTTPRequestTimeout:15000000000, HTTPRequestMaxRetries:5}
+2022-12-19T05:16:38.589193Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-19T05:16:38.592361Z	info	sds	Starting SDS grpc server
+2022-12-19T05:16:38.592536Z	debug	cache	generate secret "default"
+2022-12-19T05:16:38.592619Z	debug	cache	constructed host name for CSR: spiffe://cluster.local/ns/vm-ns/sa/serviceaccountvm
+2022-12-19T05:16:38.596090Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-19T05:16:38.596119Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T05:16:38.597391Z	debug	failed to read pod labels: open ./etc/istio/pod/labels: no such file or directory
+2022-12-19T05:16:38.597409Z	debug	failed to read pod annotations: open ./etc/istio/pod/annotations: no such file or directory
+2022-12-19T05:16:38.597416Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-19T05:16:38.599383Z	info	Starting proxy agent
+2022-12-19T05:16:38.599408Z	info	starting
+2022-12-19T05:16:38.599444Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l trace --concurrency 2]
+2022-12-19T05:16:38.604394Z	info	starting Http service at 127.0.0.1:15004
+2022-12-19T05:16:38.604569Z	debug	Add file ./etc/certs/root-cert.pem watcher
+2022-12-19T05:16:38.649132Z	warn	citadelclient	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-19T05:16:38.760715Z	debug	xdsproxy	accepted XDS connection from Envoy, forwarding to upstream XDS server
+2022-12-19T05:16:38.800389Z	warn	cannot parse the cert chain, using token instead: failed to read the cert, error is open etc/certs/cert-chain.pem: no such file or directory
+2022-12-19T05:16:38.808543Z	info	cache	generated new workload certificate	latency=215.915643ms ttl=23h59m59.191466883s
+2022-12-19T05:16:38.808573Z	debug	cache	scheduled certificate for rotation in 11h59m59.59571632s	resource=default
+2022-12-19T05:16:38.808581Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-19T05:16:38.808600Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-19T05:16:38.808808Z	debug	cache	output the resource to ./etc/certs	resource=default
+2022-12-19T05:16:38.808817Z	debug	cache	generate secret "ROOTCA"
+2022-12-19T05:16:38.808853Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.191149197s
+2022-12-19T05:16:38.809073Z	debug	cache	output the resource to ./etc/certs	resource=ROOTCA
+2022-12-19T05:16:38.809443Z	debug	Receive file ./etc/certs/root-cert.pem event "etc/certs/root-cert.pem.tmp.903667068": WRITE
+2022-12-19T05:16:38.820800Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T05:16:39.030524Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-19T05:16:39.086438Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-19T05:16:39.099181Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-19T05:16:39.099216Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.cluster.v3.Cluster
+2022-12-19T05:16:39.114878Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-19T05:16:39.119216Z	debug	ads	Unauthenticated XDS: @
+2022-12-19T05:16:39.120033Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-4xfhs.vm-ns-1
+2022-12-19T05:16:39.120054Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-4xfhs.vm-ns-1 resources:1 nonce: version: 
+2022-12-19T05:16:39.120060Z	debug	ads	ADS:SDS: INIT/RECONNECT ubuntu-deployment-6855596d8-4xfhs.vm-ns-1  
+2022-12-19T05:16:39.120067Z	debug	cache	generate secret "ROOTCA"
+2022-12-19T05:16:39.120128Z	info	cache	returned workload trust anchor from cache	ttl=23h59m58.879876923s
+2022-12-19T05:16:39.120149Z	debug	cache	output the resource to ./etc/certs	resource=ROOTCA
+2022-12-19T05:16:39.120429Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-4xfhs.vm-ns resources:1 size:1.1kB resource:ROOTCA nonce:6b3df14c-3d90-4e5e-8d0f-a7185cb6adaa version:
+2022-12-19T05:16:39.120523Z	debug	ads	Unauthenticated XDS: @
+2022-12-19T05:16:39.121036Z	info	ads	ADS: new connection for node:ubuntu-deployment-6855596d8-4xfhs.vm-ns-2
+2022-12-19T05:16:39.121054Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-4xfhs.vm-ns-2 resources:1 nonce: version: 
+2022-12-19T05:16:39.121058Z	debug	ads	ADS:SDS: INIT/RECONNECT ubuntu-deployment-6855596d8-4xfhs.vm-ns-2  
+2022-12-19T05:16:39.121064Z	debug	cache	generate secret "default"
+2022-12-19T05:16:39.121141Z	info	cache	returned workload certificate from cache	ttl=23h59m58.878862293s
+2022-12-19T05:16:39.121173Z	debug	cache	output the resource to ./etc/certs	resource=default
+2022-12-19T05:16:39.121248Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-6855596d8-4xfhs.vm-ns resources:1 size:4.0kB resource:default nonce:9a521cef-9d6f-4210-a914-c8856d632381 version:
+2022-12-19T05:16:39.121420Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+2022-12-19T05:16:39.121436Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-4xfhs.vm-ns-1 resources:1 nonce:6b3df14c-3d90-4e5e-8d0f-a7185cb6adaa version: 
+2022-12-19T05:16:39.121547Z	debug	ads	ADS:SDS: ACK ubuntu-deployment-6855596d8-4xfhs.vm-ns-1  6b3df14c-3d90-4e5e-8d0f-a7185cb6adaa
+2022-12-19T05:16:39.127543Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-19T05:16:39.127565Z	debug	xdsproxy	request for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-19T05:16:39.127604Z	debug	ads	ADS:SDS: REQ ubuntu-deployment-6855596d8-4xfhs.vm-ns-2 resources:1 nonce:9a521cef-9d6f-4210-a914-c8856d632381 version: 
+2022-12-19T05:16:39.127620Z	debug	ads	ADS:SDS: ACK ubuntu-deployment-6855596d8-4xfhs.vm-ns-2  9a521cef-9d6f-4210-a914-c8856d632381
+2022-12-19T05:16:39.175042Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-19T05:16:39.175201Z	debug	xdsproxy	response for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-19T05:16:39.175409Z	debug	dns	updated lookup table with 36 hosts
+2022-12-19T05:16:39.175425Z	debug	xdsproxy	request for type url type.googleapis.com/istio.networking.nds.v1.NameTable
+2022-12-19T05:16:39.242338Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+2022-12-19T05:16:39.242383Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.listener.v3.Listener
+2022-12-19T05:16:39.260000Z	debug	xdsproxy	response for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+2022-12-19T05:16:39.266905Z	debug	xdsproxy	request for type url type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+[2022-12-19T05:17:09.029Z] "- - -" 0 - - - "-" 39 39 23 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34132 10.96.0.10:53 10.244.0.13:36978 - -
+[2022-12-19T05:17:09.062Z] "- - -" 0 - - - "-" 65 158 1 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34144 10.96.0.10:53 10.244.0.13:36992 - -
+[2022-12-19T05:17:09.033Z] "- - -" 0 - - - "-" 39 39 56 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43850 172.16.0.1:53 172.16.0.4:43838 - -
+[2022-12-19T05:17:09.104Z] "- - -" 0 - - - "-" 57 150 1 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59884 10.96.0.10:53 10.244.0.13:37006 - -
+[2022-12-19T05:17:09.062Z] "- - -" 0 - - - "-" 65 65 57 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43872 172.16.0.1:53 172.16.0.4:43862 - -
+[2022-12-19T05:17:09.132Z] "- - -" 0 - - - "-" 53 146 1 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34152 10.96.0.10:53 10.244.0.13:37010 - -
+[2022-12-19T05:17:09.104Z] "- - -" 0 - - - "-" 57 57 35 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43902 172.16.0.1:53 172.16.0.4:43888 - -
+[2022-12-19T05:17:09.162Z] "- - -" 0 - - - "-" 39 39 9 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34154 10.96.0.10:53 10.244.0.13:37012 - -
+[2022-12-19T05:17:09.132Z] "- - -" 0 - - - "-" 53 53 41 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43924 172.16.0.1:53 172.16.0.4:43914 - -
+[2022-12-19T05:17:09.190Z] "- - -" 0 - - - "-" 65 158 2 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59886 10.96.0.10:53 10.244.0.13:37026 - -
+[2022-12-19T05:17:09.163Z] "- - -" 0 - - - "-" 39 39 36 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43942 172.16.0.1:53 172.16.0.4:43938 - -
+[2022-12-19T05:17:09.218Z] "- - -" 0 - - - "-" 57 150 1 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59896 10.96.0.10:53 10.244.0.13:37042 - -
+[2022-12-19T05:17:09.190Z] "- - -" 0 - - - "-" 65 65 41 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43964 172.16.0.1:53 172.16.0.4:43956 - -
+[2022-12-19T05:17:09.244Z] "- - -" 0 - - - "-" 53 146 1 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59900 10.96.0.10:53 10.244.0.13:37052 - -
+[2022-12-19T05:17:09.219Z] "- - -" 0 - - - "-" 57 57 40 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43976 172.16.0.1:53 172.16.0.4:43966 - -
+[2022-12-19T05:17:09.244Z] "- - -" 0 - - - "-" 53 53 38 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:43992 172.16.0.1:53 172.16.0.4:43984 - -
+[2022-12-19T05:17:09.275Z] "- - -" 0 - - - "-" 39 39 9 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59906 10.96.0.10:53 10.244.0.13:37054 - -
+[2022-12-19T05:17:09.305Z] "- - -" 0 - - - "-" 65 158 1 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34160 10.96.0.10:53 10.244.0.13:37058 - -
+[2022-12-19T05:17:09.275Z] "- - -" 0 - - - "-" 39 39 42 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44014 172.16.0.1:53 172.16.0.4:43998 - -
+[2022-12-19T05:17:09.334Z] "- - -" 0 - - - "-" 57 150 2 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59922 10.96.0.10:53 10.244.0.13:37068 - -
+[2022-12-19T05:17:09.305Z] "- - -" 0 - - - "-" 65 65 42 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44030 172.16.0.1:53 172.16.0.4:44026 - -
+[2022-12-19T05:17:09.363Z] "- - -" 0 - - - "-" 53 146 1 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34166 10.96.0.10:53 10.244.0.13:37084 - -
+[2022-12-19T05:17:09.334Z] "- - -" 0 - - - "-" 57 57 47 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44062 172.16.0.1:53 172.16.0.4:44046 - -
+[2022-12-19T05:17:09.364Z] "- - -" 0 - - - "-" 53 53 44 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44076 172.16.0.1:53 172.16.0.4:44072 - -
+[2022-12-19T05:17:09.399Z] "- - -" 0 - - - "-" 39 39 8 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34168 10.96.0.10:53 10.244.0.13:37086 - -
+[2022-12-19T05:17:09.428Z] "- - -" 0 - - - "-" 65 158 2 - "-" "-" "-" "-" "10.244.0.4:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:59926 10.96.0.10:53 10.244.0.13:37096 - -
+[2022-12-19T05:17:09.399Z] "- - -" 0 - - - "-" 39 39 40 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44096 172.16.0.1:53 172.16.0.4:44080 - -
+[2022-12-19T05:17:09.469Z] "- - -" 0 - - - "-" 57 150 2 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34170 10.96.0.10:53 10.244.0.13:37100 - -
+[2022-12-19T05:17:09.428Z] "- - -" 0 - - - "-" 65 65 58 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44116 172.16.0.1:53 172.16.0.4:44100 - -
+[2022-12-19T05:17:09.503Z] "- - -" 0 - - - "-" 53 146 1 - "-" "-" "-" "-" "10.244.0.3:53" outbound|53||kube-dns.kube-system.svc.cluster.local 10.244.0.13:34186 10.96.0.10:53 10.244.0.13:37116 - -
+[2022-12-19T05:17:09.470Z] "- - -" 0 - - - "-" 57 57 46 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44136 172.16.0.1:53 172.16.0.4:44126 - -
+[2022-12-19T05:17:09.502Z] "- - -" 0 - - - "-" 53 53 44 - "-" "-" "-" "-" "172.16.0.1:53" PassthroughCluster 172.16.0.4:44154 172.16.0.1:53 172.16.0.4:44152 - -

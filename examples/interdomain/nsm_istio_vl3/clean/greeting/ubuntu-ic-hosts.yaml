@@ -161,47 +161,47 @@ spec:
         # - mountPath: /etc/istio/pod
         #   name: istio-podinfo
       initContainers:
-      # - args:
-      #   - istio-iptables
-      #   - -p
-      #   - "15001"
-      #   - -z
-      #   - "15006"
-      #   - -u
-      #   - "1337"
-      #   - -m
-      #   - REDIRECT
-      #   - -i
-      #   - '*'
-      #   - -x
-      #   - ""
-      #   - -b
-      #   - '*'
-      #   - -d
-      #   - 15090,15021,15020
-      #   - --log_output_level=default:info
-      #   image: docker.io/istio/proxyv2:1.16.0
-      #   name: istio-init
-      #   resources:
-      #     limits:
-      #       cpu: "2"
-      #       memory: 1Gi
-      #     requests:
-      #       cpu: 100m
-      #       memory: 128Mi
-      #   securityContext:
-      #     allowPrivilegeEscalation: false
-      #     capabilities:
-      #       add:
-      #       - NET_ADMIN
-      #       - NET_RAW
-      #       drop:
-      #       - ALL
-      #     privileged: false
-      #     readOnlyRootFilesystem: false
-      #     runAsGroup: 0
-      #     runAsNonRoot: false
-      #     runAsUser: 0
+      - args:
+        - istio-iptables
+        - -p
+        - "15001"
+        - -z
+        - "15006"
+        - -u
+        - "1337"
+        - -m
+        - REDIRECT
+        - -i
+        - '*'
+        - -x
+        - ""
+        - -b
+        - '*'
+        - -d
+        - 15090,15021,15020
+        - --log_output_level=default:info
+        image: docker.io/istio/proxyv2:1.16.0
+        name: istio-init
+        resources:
+          limits:
+            cpu: "2"
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+            - NET_ADMIN
+            - NET_RAW
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
       volumes:
       - name: cert
         configMap:

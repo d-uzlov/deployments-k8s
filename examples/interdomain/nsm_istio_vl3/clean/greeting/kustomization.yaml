@@ -6,8 +6,8 @@ namespace: vl3-test
 
 resources:
 - namespace.yaml
-# - ubuntu-ic-hosts.yaml
-- ubuntu-ic.yaml
+- ubuntu-ic-hosts.yaml
+# - ubuntu-ic.yaml
 # - ./server.yaml
 
 configMapGenerator:
