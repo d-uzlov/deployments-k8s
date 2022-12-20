@@ -77,3 +77,16 @@ sleep 1
 k1 delete -k ubuntu-hosts
 tshark -r 1-istio-nsm.pcap
 ```
+
+```bash
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >2-istio-nsm.pcap &
+sleep 1
+k2 apply -k ubuntu-hosts-2
+sleep 0.5
+k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+sleep 1
+kill -2 $!
+sleep 1
+k2 delete -k ubuntu-hosts-2
+tshark -r 2-istio-nsm.pcap
+```
