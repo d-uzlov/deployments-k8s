@@ -13,11 +13,12 @@ kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --tim
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 apply -f istio-namespace.yaml
 istioctl install --set profile=minimal -y --kubeconfig=$KUBECONFIG1 --set meshConfig.accessLogFile=/dev/stdout
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- apk add tcpdump
 ```
 
 4. Prepare configuration for istio
 ```bash
-WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/clean/greeting/istio-vm-configs"
+WORK_DIR="$(git rev-parse --show-toplevel)/examples/interdomain/nsm_istio_vl3/clean/istio-vm-configs"
 VM_APP="vm-app"
 VM_NAMESPACE="vm-ns"
 SERVICE_ACCOUNT="serviceaccountvm"
@@ -31,6 +32,13 @@ kubectl --kubeconfig=$KUBECONFIG1 create namespace "${VM_NAMESPACE}"
 kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n "${VM_NAMESPACE}"
 ```
 
+fix connection:
+```bash
+kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu-2.yaml
+sleep 0.5
+kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu-2
+```
+
 Get istio config
 ```bash
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
@@ -38,57 +46,35 @@ k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
 ingressIP - copy from nsm interface ip
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
+rm -rf ubuntu-standard/istio-vm-configs
+rm -rf ubuntu-hosts/istio-vm-configs
+cp -r "${WORK_DIR}" ubuntu-standard/istio-vm-configs
+cp -r "${WORK_DIR}" ubuntu-hosts/istio-vm-configs
 ```
 
 ```bash
-k1 apply -k greeting
-# should fail:
-k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-```
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu-2.yaml
-sleep 0.5
-kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu-2
-```
-
-```bash
-# should iimidiately succeed:
-k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-```
-
-
-
-
-
-
-
-
-
-
-
----
-
-Text below is not part of the test
-
-k1 exec -n istio-system deployments/istiod -c cmd-nsc -- apk add tcpdump
-
-```bash
-k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-nsm.pcap &
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-standard.pcap &
 sleep 1
-k1 apply -k ./greeting/
+k1 apply -k ubuntu-standard
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 sleep 1
 kill -2 $!
 sleep 1
+k1 delete -k ubuntu-standard
+tshark -r 1-istio-standard.pcap
+```
+
+```bash
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-nsm.pcap &
+sleep 1
+k1 apply -k ubuntu-hosts
+sleep 1
+k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+sleep 1
+kill -2 $!
+sleep 1
+k1 delete -k ubuntu-hosts
 tshark -r 1-istio-nsm.pcap
-```
-6. Check logs
-```bash
-k1 -n vl3-test logs deployment.apps/greeting -c istio-proxy
-```
-```bash
-istioctl proxy-status --kubeconfig=$KUBECONFIG1 | grep vm-ns
 ```
 
 k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- ip a | grep nsm
