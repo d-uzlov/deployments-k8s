@@ -56,6 +56,7 @@ cp -r "${WORK_DIR}" ubuntu-hosts/istio-vm-configs
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-standard.pcap &
 sleep 1
 k1 apply -k ubuntu-standard
+sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 sleep 1
 kill -2 $!
@@ -68,7 +69,7 @@ tshark -r 1-istio-standard.pcap
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-nsm.pcap &
 sleep 1
 k1 apply -k ubuntu-hosts
-sleep 1
+sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 sleep 1
 kill -2 $!
