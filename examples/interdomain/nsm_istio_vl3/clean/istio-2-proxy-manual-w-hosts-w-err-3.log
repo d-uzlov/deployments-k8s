@@ -1,0 +1,121 @@
+2022-12-19T19:18:30.776656Z	info	FLAG: --concurrency="2"
+2022-12-19T19:18:30.776678Z	info	FLAG: --domain=""
+2022-12-19T19:18:30.776682Z	info	FLAG: --help="false"
+2022-12-19T19:18:30.776683Z	info	FLAG: --log_as_json="false"
+2022-12-19T19:18:30.776685Z	info	FLAG: --log_caller=""
+2022-12-19T19:18:30.776687Z	info	FLAG: --log_output_level="default:info"
+2022-12-19T19:18:30.776688Z	info	FLAG: --log_rotate=""
+2022-12-19T19:18:30.776690Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-19T19:18:30.776691Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-19T19:18:30.776693Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-19T19:18:30.776694Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-19T19:18:30.776709Z	info	FLAG: --log_target="[stdout]"
+2022-12-19T19:18:30.776713Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-19T19:18:30.776714Z	info	FLAG: --outlierLogPath=""
+2022-12-19T19:18:30.776716Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2022-12-19T19:18:30.776717Z	info	FLAG: --proxyLogLevel="warning"
+2022-12-19T19:18:30.776719Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-19T19:18:30.776720Z	info	FLAG: --stsPort="0"
+2022-12-19T19:18:30.776722Z	info	FLAG: --templateFile=""
+2022-12-19T19:18:30.776724Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-19T19:18:30.776772Z	info	FLAG: --vklog="0"
+2022-12-19T19:18:30.776779Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-19T19:18:30.784068Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-12-19T19:18:30.784356Z	info	Proxy role	ips=[10.244.0.16 172.16.0.3] type=sidecar id=ubuntu-deployment-584577c947-v2mm2.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-19T19:18:30.784446Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-19T19:18:30.786937Z	info	Apply proxy config from env {}
+
+2022-12-19T19:18:30.788693Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-19T19:18:30.788735Z	info	JWT policy is third-party-jwt
+2022-12-19T19:18:30.788741Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-19T19:18:30.890258Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-19T19:18:30.890373Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-19T19:18:30.890397Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-12-19T19:18:30.890522Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-12-19T19:18:30.890273Z	info	Opening status port 15020
+2022-12-19T19:18:30.916869Z	info	ads	All caches have been synced up in 144.544771ms, marking server ready
+2022-12-19T19:18:30.917375Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-19T19:18:30.917503Z	info	sds	Starting SDS grpc server
+2022-12-19T19:18:30.918177Z	info	starting Http service at 127.0.0.1:15004
+2022-12-19T19:18:30.920359Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-19T19:18:30.922517Z	info	Starting proxy agent
+2022-12-19T19:18:30.922815Z	info	starting
+2022-12-19T19:18:30.922969Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-12-19T19:18:31.022039Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:18:31.152679Z	info	cache	generated new workload certificate	latency=235.182318ms ttl=23h59m59.847340054s
+2022-12-19T19:18:31.152761Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-19T19:18:31.152784Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-19T19:18:31.152821Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.847181809s
+2022-12-19T19:18:41.269621Z	warn	xdsproxy	upstream [1] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:35108->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:18:41.460265Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:18:51.509195Z	warn	xdsproxy	upstream [2] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:42292->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:18:51.877473Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:19:02.133053Z	warn	xdsproxy	upstream [3] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:44622->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:03.682617Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:19:13.909509Z	warn	xdsproxy	upstream [4] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:49504->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:13.910293Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 32s ago: 14, error reading from server: read tcp 172.16.0.3:49504->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:17.567332Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:19:27.605099Z	warn	xdsproxy	upstream [5] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:56706->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:27.605955Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 46s ago: 14, error reading from server: read tcp 172.16.0.3:56706->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:34.997866Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:19:45.268829Z	warn	xdsproxy	upstream [6] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:41112->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:45.269394Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 63s ago: 14, error reading from server: read tcp 172.16.0.3:41112->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:19:55.199550Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:20:05.627203Z	warn	xdsproxy	upstream [7] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:36676->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:20:05.628936Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 84s ago: 14, error reading from server: read tcp 172.16.0.3:36676->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:20:14.965193Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:20:25.204499Z	warn	xdsproxy	upstream [8] terminated with unexpected error rpc error: code = Unavailable desc = error reading from server: read tcp 172.16.0.3:32772->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:20:25.205108Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed since 103s ago: 14, error reading from server: read tcp 172.16.0.3:32772->172.16.0.2:15012: read: connection timed out
+2022-12-19T19:20:28.852847Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-19T19:20:28.897745Z	info	ads	ADS: new connection for node:ubuntu-deployment-584577c947-v2mm2.vm-ns-1
+2022-12-19T19:20:28.898311Z	info	cache	returned workload certificate from cache	ttl=23h58m2.10169589s
+2022-12-19T19:20:28.898910Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-584577c947-v2mm2.vm-ns resources:1 size:4.0kB resource:default
+2022-12-19T19:20:28.900809Z	info	ads	ADS: new connection for node:ubuntu-deployment-584577c947-v2mm2.vm-ns-2
+2022-12-19T19:20:28.900935Z	info	cache	returned workload trust anchor from cache	ttl=23h58m2.099071036s
+2022-12-19T19:20:28.901576Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-584577c947-v2mm2.vm-ns resources:1 size:1.1kB resource:ROOTCA
+2022-12-19T19:20:30.495511Z	info	Readiness succeeded in 1m59.73573224s
+2022-12-19T19:20:30.496076Z	info	Envoy proxy is ready
