@@ -77,13 +77,3 @@ sleep 1
 k1 delete -k ubuntu-hosts
 tshark -r 1-istio-nsm.pcap
 ```
-
-k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- ip a | grep nsm
-k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- ping 172.16.0.2 -c4
-k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- apk add netcat-openbsd
-k2 exec -n vl3-test deployments/greeting -c cmd-nsc -- nc -v 172.16.0.2 15012
-ps -aef --forest
-
-```bash
-istioctl kube-inject -f ubuntu.yaml >greeting/ubuntu-ic.yaml
-```
