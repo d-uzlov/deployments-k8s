@@ -34,9 +34,9 @@ kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n 
 
 fix connection:
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu-2.yaml
-sleep 0.5
-kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu-2
+# kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu-2.yaml
+# sleep 0.5
+# kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu-2
 ```
 
 Get istio config
@@ -56,16 +56,16 @@ cp -r "${WORK_DIR}" ubuntu-hosts-2/istio-vm-configs
 ```
 
 ```bash
-time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-standard.pcap &
-sleep 1
-k1 apply -k ubuntu-standard
-sleep 0.5
-k1 -n vl3-test wait --for=condition=ready --timeout=20s pod -l app=ubuntu
-sleep 1
-kill -2 $!
-sleep 1
-k1 delete -k ubuntu-standard
-tshark -r 1-istio-standard.pcap
+# time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-standard.pcap &
+# sleep 1
+# k1 apply -k ubuntu-standard
+# sleep 0.5
+# k1 -n vl3-test wait --for=condition=ready --timeout=20s pod -l app=ubuntu
+# sleep 1
+# kill -2 $!
+# sleep 1
+# k1 delete -k ubuntu-standard
+# tshark -r 1-istio-standard.pcap
 ```
 
 ```bash
@@ -82,6 +82,16 @@ k1 delete -k ubuntu-hosts
 tshark -r 4-istio-tcpdump-1-nsm.pcap
 tshark -r 4-istio-tcpdump-2-nsm.pcap
 ```
+
+
+
+---
+
+---
+
+---
+
+
 
 ```bash
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >2-istio-nsm.pcap &
