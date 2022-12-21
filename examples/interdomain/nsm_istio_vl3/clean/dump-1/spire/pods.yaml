@@ -1,0 +1,456 @@
+---
+apiVersion: v1
+items:
+- metadata:
+    creationTimestamp: "2022-12-21T04:32:54Z"
+    generateName: spire-agent-
+    labels:
+      app: spire-agent
+      controller-revision-hash: 69b6bb49cf
+      pod-template-generation: "1"
+    name: spire-agent-g5f88
+    namespace: spire
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: spire-agent
+      uid: c80e51d3-96fc-45a8-9a12-d2003ad81243
+    resourceVersion: "760"
+    uid: 9b76b9f1-82f0-452c-8937-e151d5abea86
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - kind-1-control-plane
+    containers:
+    - args:
+      - -config
+      - /run/spire/config/agent.conf
+      image: gcr.io/spiffe-io/spire-agent:1.2.3
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /opt/spire/bin/spire-agent
+          - healthcheck
+          - -socketPath
+          - /run/spire/sockets/agent.sock
+        failureThreshold: 2
+        initialDelaySeconds: 15
+        periodSeconds: 60
+        successThreshold: 1
+        timeoutSeconds: 3
+      name: spire-agent
+      readinessProbe:
+        exec:
+          command:
+          - /opt/spire/bin/spire-agent
+          - healthcheck
+          - -socketPath
+          - /run/spire/sockets/agent.sock
+          - --shallow
+        failureThreshold: 3
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/config
+        name: spire-config
+        readOnly: true
+      - mountPath: /run/spire/bundle
+        name: spire-bundle
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+      - mountPath: /var/run/secrets/tokens
+        name: spire-token
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xrdkq
+        readOnly: true
+    dnsPolicy: ClusterFirstWithHostNet
+    enableServiceLinks: true
+    hostNetwork: true
+    hostPID: true
+    initContainers:
+    - args:
+      - -t
+      - "30"
+      - spire-server:8081
+      image: gcr.io/spiffe-io/wait-for-it
+      imagePullPolicy: IfNotPresent
+      name: init
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xrdkq
+        readOnly: true
+    - command:
+      - sh
+      - -c
+      - t=0; until [ -f /run/spire/bundle/bundle.crt 2>&1 ] || [ $t -eq 60 ]; do t=`expr
+        $t + 1`; sleep 1; done
+      image: gcr.io/spiffe-io/wait-for-it
+      imagePullPolicy: IfNotPresent
+      name: init-bundle
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/bundle
+        name: spire-bundle
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xrdkq
+        readOnly: true
+    nodeName: kind-1-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: spire-agent
+    serviceAccountName: spire-agent
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: spire-agent
+      name: spire-config
+    - configMap:
+        defaultMode: 420
+        name: spire-bundle
+      name: spire-bundle
+    - hostPath:
+        path: /run/spire/sockets
+        type: DirectoryOrCreate
+      name: spire-agent-socket
+    - name: spire-token
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            audience: spire-server
+            expirationSeconds: 7200
+            path: spire-agent
+    - name: kube-api-access-xrdkq
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:33:18Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:33:29Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:33:29Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:32:54Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://1b54a206d4d9b7964f4f4145c8cb8452b6976fe854d963c85760cfd0c71bd961
+      image: gcr.io/spiffe-io/spire-agent:1.2.3
+      imageID: gcr.io/spiffe-io/spire-agent@sha256:e0791477303c598a77c08e63933c06805b773bf1b9c12f540cbd8682e631a510
+      lastState: {}
+      name: spire-agent
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-21T04:33:23Z"
+    hostIP: 172.18.0.2
+    initContainerStatuses:
+    - containerID: containerd://dffab47f49bfe77eb48e29423768ee447fc06f44dd3b64da30eb60bca05d0e43
+      image: gcr.io/spiffe-io/wait-for-it:latest
+      imageID: gcr.io/spiffe-io/wait-for-it@sha256:3facff26e582e57e3b994d3a3b95fc06475bb02a3dc6647ce6c91f4c3c2534b5
+      lastState: {}
+      name: init
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: containerd://dffab47f49bfe77eb48e29423768ee447fc06f44dd3b64da30eb60bca05d0e43
+          exitCode: 0
+          finishedAt: "2022-12-21T04:33:15Z"
+          reason: Completed
+          startedAt: "2022-12-21T04:32:59Z"
+    - containerID: containerd://0db43fa1a130ebbd9f1ebc0343047a214918e9ae1930f3156cff98ab1819742e
+      image: gcr.io/spiffe-io/wait-for-it:latest
+      imageID: gcr.io/spiffe-io/wait-for-it@sha256:3facff26e582e57e3b994d3a3b95fc06475bb02a3dc6647ce6c91f4c3c2534b5
+      lastState: {}
+      name: init-bundle
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: containerd://0db43fa1a130ebbd9f1ebc0343047a214918e9ae1930f3156cff98ab1819742e
+          exitCode: 0
+          finishedAt: "2022-12-21T04:33:17Z"
+          reason: Completed
+          startedAt: "2022-12-21T04:33:16Z"
+    phase: Running
+    podIP: 172.18.0.2
+    podIPs:
+    - ip: 172.18.0.2
+    qosClass: BestEffort
+    startTime: "2022-12-21T04:32:54Z"
+- metadata:
+    creationTimestamp: "2022-12-21T04:32:54Z"
+    generateName: spire-server-
+    labels:
+      app: spire-server
+      controller-revision-hash: spire-server-56cf88f8cf
+      statefulset.kubernetes.io/pod-name: spire-server-0
+    name: spire-server-0
+    namespace: spire
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: spire-server
+      uid: 377b5f10-ce65-4737-9d78-2fc17a4fd4cd
+    resourceVersion: "719"
+    uid: 73f8578b-fe71-429b-a08b-e9666a22cddd
+  spec:
+    containers:
+    - args:
+      - -config
+      - /run/spire/config/server.conf
+      image: gcr.io/spiffe-io/spire-server:1.2.3
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        postStart:
+          exec:
+            command:
+            - sleep
+            - "2"
+      livenessProbe:
+        exec:
+          command:
+          - /opt/spire/bin/spire-server
+          - healthcheck
+        failureThreshold: 2
+        initialDelaySeconds: 15
+        periodSeconds: 60
+        successThreshold: 1
+        timeoutSeconds: 3
+      name: spire-server
+      ports:
+      - containerPort: 8081
+        protocol: TCP
+      readinessProbe:
+        exec:
+          command:
+          - /opt/spire/bin/spire-server
+          - healthcheck
+          - --shallow
+        failureThreshold: 3
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/config
+        name: spire-config
+        readOnly: true
+      - mountPath: /tmp
+        name: spire-registration-socket
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-zr4sj
+        readOnly: true
+    - args:
+      - -config
+      - /run/spire/config/k8s-workload-registrar.conf
+      env:
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      image: gcr.io/spiffe-io/k8s-workload-registrar:1.2.3
+      imagePullPolicy: IfNotPresent
+      name: k8s-workload-registrar
+      ports:
+      - containerPort: 9443
+        name: webhook
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/config
+        name: k8s-workload-registrar-config
+        readOnly: true
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+        readOnly: true
+      - mountPath: /tmp
+        name: spire-registration-socket
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-zr4sj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: spire-server-0
+    nodeName: kind-1-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: spire-server
+    serviceAccountName: spire-server
+    shareProcessNamespace: true
+    subdomain: spire-server
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: spire-server
+      name: spire-config
+    - hostPath:
+        path: /run/spire/sockets
+        type: DirectoryOrCreate
+      name: spire-agent-socket
+    - configMap:
+        defaultMode: 420
+        name: k8s-workload-registrar
+      name: k8s-workload-registrar-config
+    - emptyDir: {}
+      name: spire-registration-socket
+    - name: kube-api-access-zr4sj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:32:54Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:33:13Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:33:13Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-21T04:32:54Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://75007e2215b149846ef17a88fe31776e162b6990437b52d3ad3beb89e7ba80a0
+      image: gcr.io/spiffe-io/k8s-workload-registrar:1.2.3
+      imageID: gcr.io/spiffe-io/k8s-workload-registrar@sha256:46cc26598ce10c34c67e5ee1a71f212b77d8d5c52c5723a1cebed1bca3a8f9dd
+      lastState: {}
+      name: k8s-workload-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-21T04:33:12Z"
+    - containerID: containerd://acaddd66a402e6f1e5913272563c087b0948f6285fad4162dae1f7d0181c71b1
+      image: gcr.io/spiffe-io/spire-server:1.2.3
+      imageID: gcr.io/spiffe-io/spire-server@sha256:b02e6f3604513515fe131768be14a9c8b2e933ce56d2bdc91972bbf933e42dd6
+      lastState: {}
+      name: spire-server
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-21T04:33:05Z"
+    hostIP: 172.18.0.2
+    phase: Running
+    podIP: 10.244.0.6
+    podIPs:
+    - ip: 10.244.0.6
+    qosClass: BestEffort
+    startTime: "2022-12-21T04:32:54Z"
+kind: PodList
+metadata:
+  resourceVersion: "19318"

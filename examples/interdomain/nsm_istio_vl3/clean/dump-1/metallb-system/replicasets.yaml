@@ -1,0 +1,110 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-12-21T04:31:38Z"
+    generation: 1
+    labels:
+      app: metallb
+      component: controller
+      pod-template-hash: 6658b8446c
+    name: controller-6658b8446c
+    namespace: metallb-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: controller
+      uid: 9560e6a4-e7df-4b42-bdf2-5902178b7eb1
+    resourceVersion: "559"
+    uid: 5fb24c8e-7c3a-4629-9a16-eaec69aa77a3
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: metallb
+        component: controller
+        pod-template-hash: 6658b8446c
+    template:
+      metadata:
+        annotations:
+          prometheus.io/port: "7472"
+          prometheus.io/scrape: "true"
+        creationTimestamp: null
+        labels:
+          app: metallb
+          component: controller
+          pod-template-hash: 6658b8446c
+      spec:
+        containers:
+        - args:
+          - --port=7472
+          - --config=config
+          - --log-level=info
+          env:
+          - name: METALLB_ML_SECRET_NAME
+            value: memberlist
+          - name: METALLB_DEPLOYMENT
+            value: controller
+          image: quay.io/metallb/controller:v0.12.1
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /metrics
+              port: monitoring
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: controller
+          ports:
+          - containerPort: 7472
+            name: monitoring
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /metrics
+              port: monitoring
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          fsGroup: 65534
+          runAsNonRoot: true
+          runAsUser: 65534
+        serviceAccount: controller
+        serviceAccountName: controller
+        terminationGracePeriodSeconds: 0
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+kind: ReplicaSetList
+metadata:
+  resourceVersion: "19315"

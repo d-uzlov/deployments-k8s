@@ -1,0 +1,207 @@
+apiVersion: v1
+items:
+- metadata:
+    annotations:
+      kubeadm.alpha.kubernetes.io/cri-socket: unix:///run/containerd/containerd.sock
+      node.alpha.kubernetes.io/ttl: "0"
+      volumes.kubernetes.io/controller-managed-attach-detach: "true"
+    creationTimestamp: "2022-12-21T04:31:02Z"
+    labels:
+      beta.kubernetes.io/arch: amd64
+      beta.kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
+      kubernetes.io/hostname: kind-1-control-plane
+      kubernetes.io/os: linux
+      node-role.kubernetes.io/control-plane: ""
+      node.kubernetes.io/exclude-from-external-load-balancers: ""
+    name: kind-1-control-plane
+    resourceVersion: "18727"
+    uid: b8c34189-e6b7-4641-8e74-140a634bc102
+  spec:
+    podCIDR: 10.244.0.0/24
+    podCIDRs:
+    - 10.244.0.0/24
+    providerID: kind://docker/kind-1/kind-1-control-plane
+  status:
+    addresses:
+    - address: 172.18.0.2
+      type: InternalIP
+    - address: kind-1-control-plane
+      type: Hostname
+    allocatable:
+      cpu: "4"
+      ephemeral-storage: 61202244Ki
+      hugepages-2Mi: "0"
+      memory: 12266940Ki
+      pods: "110"
+    capacity:
+      cpu: "4"
+      ephemeral-storage: 61202244Ki
+      hugepages-2Mi: "0"
+      memory: 12266940Ki
+      pods: "110"
+    conditions:
+    - lastHeartbeatTime: "2022-12-21T07:25:39Z"
+      lastTransitionTime: "2022-12-21T04:30:58Z"
+      message: kubelet has sufficient memory available
+      reason: KubeletHasSufficientMemory
+      status: "False"
+      type: MemoryPressure
+    - lastHeartbeatTime: "2022-12-21T07:25:39Z"
+      lastTransitionTime: "2022-12-21T04:30:58Z"
+      message: kubelet has no disk pressure
+      reason: KubeletHasNoDiskPressure
+      status: "False"
+      type: DiskPressure
+    - lastHeartbeatTime: "2022-12-21T07:25:39Z"
+      lastTransitionTime: "2022-12-21T04:30:58Z"
+      message: kubelet has sufficient PID available
+      reason: KubeletHasSufficientPID
+      status: "False"
+      type: PIDPressure
+    - lastHeartbeatTime: "2022-12-21T07:25:39Z"
+      lastTransitionTime: "2022-12-21T04:31:26Z"
+      message: kubelet is posting ready status
+      reason: KubeletReady
+      status: "True"
+      type: Ready
+    daemonEndpoints:
+      kubeletEndpoint:
+        Port: 10250
+    images:
+    - names:
+      - registry.k8s.io/etcd:3.5.4-0
+      sizeBytes: 102157811
+    - names:
+      - docker.io/istio/proxyv2@sha256:f6f97fa4fb77a3cbe1e3eca0fa46bd462ad6b284c129cf57bf91575c4fb50cf9
+      - docker.io/istio/proxyv2:1.16.0
+      sizeBytes: 93745814
+    - names:
+      - ghcr.io/networkservicemesh/cmd-forwarder-vpp@sha256:4b61f63d47f03a79216bef7613652c5d4477921e2a803a6a37b945baa9469219
+      - ghcr.io/networkservicemesh/cmd-forwarder-vpp:v1.7.0-rc.2
+      sizeBytes: 83817670
+    - names:
+      - docker.io/library/import-2022-10-25@sha256:4002c19dafb94b1995fc598fae590f70cac10135f61ca2551bd97aae37ed9c4a
+      - registry.k8s.io/kube-apiserver:v1.25.3
+      sizeBytes: 76530158
+    - names:
+      - docker.io/istio/pilot@sha256:ac0284d75ec9e6a73acaeb787881779ed27342c10fa5589d873dd30790a57868
+      - docker.io/istio/pilot:1.16.0
+      sizeBytes: 74787427
+    - names:
+      - ghcr.io/networkservicemesh/cmd-nse-vl3-vpp@sha256:c218c59e51ff3c2655bd8eb553b6abc7bda9ef0278c716eddf22751a11d38b40
+      - ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2
+      sizeBytes: 74684192
+    - names:
+      - docker.io/library/import-2022-10-25@sha256:1c35781a4b6011d5c27bedbba7ca130db72c4aaf74d108c60bc77ae49130e5e4
+      - registry.k8s.io/kube-controller-manager:v1.25.3
+      sizeBytes: 64499836
+    - names:
+      - docker.io/library/import-2022-10-25@sha256:0dae4b69c2aa90e6c24691ebbe2e860e2a1ae68463a622c627fb58110153d950
+      - registry.k8s.io/kube-proxy:v1.25.3
+      sizeBytes: 63275005
+    - names:
+      - docker.io/library/import-2022-10-25@sha256:409b0e81d9aecf59df96df445a3171f43e2ae834ef6c9e77b1492c4d19bfd78d
+      - registry.k8s.io/kube-scheduler:v1.25.3
+      sizeBytes: 51921020
+    - names:
+      - ghcr.io/networkservicemesh/cmd-nsmgr@sha256:c8276d514d23649142c50d49626c5998b4791d646760a55c93ce620e179a6478
+      - ghcr.io/networkservicemesh/cmd-nsmgr:v1.7.0-rc.2
+      sizeBytes: 32614836
+    - names:
+      - quay.io/metallb/speaker@sha256:40e0373788f3ea5e21a42b302a0ae4fd537646eb4b485e02b7ae52dc71da230c
+      - quay.io/metallb/speaker:v0.12.1
+      sizeBytes: 30634669
+    - names:
+      - docker.io/library/ubuntu@sha256:27cb6e6ccef575a4698b66f5de06c7ecd61589132d5a91d098f7f3f9285415a9
+      - docker.io/library/ubuntu:latest
+      sizeBytes: 30432116
+    - names:
+      - ghcr.io/networkservicemesh/cmd-registry-k8s@sha256:9dab6e8fc3baeb85b2e006c4958490a8ebae5d2c25ebbfb821947b9d8252b29b
+      - ghcr.io/networkservicemesh/cmd-registry-k8s:v1.7.0-rc.2
+      sizeBytes: 28156528
+    - names:
+      - docker.io/kindest/kindnetd:v20221004-44d545d1
+      sizeBytes: 25830582
+    - names:
+      - k8s.gcr.io/metrics-server/metrics-server@sha256:6c5603956c0aed6b4087a8716afce8eb22f664b13162346ee852b4fab305ca15
+      - k8s.gcr.io/metrics-server/metrics-server:v0.5.0
+      sizeBytes: 25804692
+    - names:
+      - ghcr.io/networkservicemesh/cmd-exclude-prefixes-k8s@sha256:3800b3afb1726014525354ae23822b6ec97156a81fc7921d59ca498df8b022ad
+      - ghcr.io/networkservicemesh/cmd-exclude-prefixes-k8s:v1.7.0-rc.2
+      sizeBytes: 25233503
+    - names:
+      - ghcr.io/networkservicemesh/cmd-admission-webhook-k8s@sha256:ba40fe253887061cd2eb247155fa5e60810efb699576e9e0ed53ae1fc888eb94
+      - ghcr.io/networkservicemesh/cmd-admission-webhook-k8s:v1.7.0-rc.2
+      sizeBytes: 25229792
+    - names:
+      - gcr.io/spiffe-io/spire-server@sha256:b02e6f3604513515fe131768be14a9c8b2e933ce56d2bdc91972bbf933e42dd6
+      - gcr.io/spiffe-io/spire-server:1.2.3
+      sizeBytes: 24648047
+    - names:
+      - ghcr.io/networkservicemesh/cmd-map-ip-k8s@sha256:881ae9d07ee3893c7518d2fe3dbe285eb3cd51783920a3a1e6348e973a685e64
+      - ghcr.io/networkservicemesh/cmd-map-ip-k8s:v1.7.0-rc.2
+      sizeBytes: 22121262
+    - names:
+      - quay.io/metallb/controller@sha256:4db40890faff645102d33a04fbb736265fad2259425f5a01cbb84df524eae53a
+      - quay.io/metallb/controller:v0.12.1
+      sizeBytes: 20251399
+    - names:
+      - ghcr.io/networkservicemesh/cmd-nsc@sha256:28bad4c7957cf62fc6637b5908904fe24768f24d24e6516c5e56209ab3a5b111
+      - ghcr.io/networkservicemesh/cmd-nsc:v1.7.0-rc.2
+      sizeBytes: 17604829
+    - names:
+      - docker.io/kindest/local-path-provisioner:v0.0.22-kind.0
+      sizeBytes: 17375346
+    - names:
+      - ghcr.io/networkservicemesh/cmd-nsmgr-proxy@sha256:0b952636400f6555eca4136c72105a048e3c673d202a28a459342a24c61be1f4
+      - ghcr.io/networkservicemesh/cmd-nsmgr-proxy:v1.7.0-rc.2
+      sizeBytes: 16992221
+    - names:
+      - ghcr.io/networkservicemesh/cmd-registry-proxy-dns@sha256:acc927976e92b0f95f38e645f1c9ca159513e7bf4df3da3f1d8d323cc7ce8587
+      - ghcr.io/networkservicemesh/cmd-registry-proxy-dns:v1.7.0-rc.2
+      sizeBytes: 16717752
+    - names:
+      - ghcr.io/networkservicemesh/cmd-nsc-init@sha256:abc32416a4667f54d1bd8b2891d2d08d2fbce612211214d763c7301760555b52
+      - ghcr.io/networkservicemesh/cmd-nsc-init:v1.7.0-rc.2
+      sizeBytes: 16619599
+    - names:
+      - registry.k8s.io/coredns/coredns:v1.9.3
+      sizeBytes: 14837849
+    - names:
+      - gcr.io/spiffe-io/spire-agent@sha256:e0791477303c598a77c08e63933c06805b773bf1b9c12f540cbd8682e631a510
+      - gcr.io/spiffe-io/spire-agent:1.2.3
+      sizeBytes: 14505615
+    - names:
+      - gcr.io/spiffe-io/k8s-workload-registrar@sha256:46cc26598ce10c34c67e5ee1a71f212b77d8d5c52c5723a1cebed1bca3a8f9dd
+      - gcr.io/spiffe-io/k8s-workload-registrar:1.2.3
+      sizeBytes: 14137934
+    - names:
+      - ghcr.io/networkservicemesh/cmd-ipam-vl3@sha256:81d439a0437acfe1c29da2dfc176dc29774f50feec47e42ea2772ddec61e11a9
+      - ghcr.io/networkservicemesh/cmd-ipam-vl3:v1.7.0-rc.2
+      sizeBytes: 11966915
+    - names:
+      - gcr.io/spiffe-io/wait-for-it@sha256:3facff26e582e57e3b994d3a3b95fc06475bb02a3dc6647ce6c91f4c3c2534b5
+      - gcr.io/spiffe-io/wait-for-it:latest
+      sizeBytes: 5410686
+    - names:
+      - docker.io/kindest/local-path-helper:v20220607-9a4d8d2a
+      sizeBytes: 2859509
+    - names:
+      - registry.k8s.io/pause:3.7
+      sizeBytes: 311278
+    nodeInfo:
+      architecture: amd64
+      bootID: 38ae7367-9741-489a-911b-574aecce3185
+      containerRuntimeVersion: containerd://1.6.9
+      kernelVersion: 5.15.49-linuxkit
+      kubeProxyVersion: v1.25.3
+      kubeletVersion: v1.25.3
+      machineID: 83fe5cc306ad46938b353beab4af695f
+      operatingSystem: linux
+      osImage: Ubuntu 22.04.1 LTS
+      systemUUID: 83fe5cc306ad46938b353beab4af695f
+kind: NodeList
+metadata:
+  resourceVersion: "19307"

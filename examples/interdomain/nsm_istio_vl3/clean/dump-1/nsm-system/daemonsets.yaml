@@ -1,0 +1,307 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"forwarder-vpp"},"name":"forwarder-vpp","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"forwarder-vpp"}},"template":{"metadata":{"labels":{"app":"forwarder-vpp","spiffe.io/spiffe-id":"true"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"NSM_LOG_LEVEL","value":"TRACE"},{"name":"NSM_TUNNEL_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"NSM_CONNECT_TO","value":"unix:///var/lib/networkservicemesh/nsm.io.sock"},{"name":"NSM_LISTEN_ON","value":"unix:///listen.on.sock"},{"name":"NSM_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"image":"ghcr.io/networkservicemesh/cmd-forwarder-vpp:v1.7.0-rc.2","imagePullPolicy":"IfNotPresent","livenessProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///listen.on.sock"]},"failureThreshold":25,"initialDelaySeconds":10,"periodSeconds":5,"timeoutSeconds":2},"name":"forwarder-vpp","readinessProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///listen.on.sock"]},"failureThreshold":120,"initialDelaySeconds":1,"periodSeconds":1,"successThreshold":1,"timeoutSeconds":2},"resources":{"limits":{"cpu":"525m","memory":"500Mi"},"requests":{"cpu":"150m"}},"securityContext":{"privileged":true},"startupProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///listen.on.sock"]},"failureThreshold":25,"periodSeconds":5},"volumeMounts":[{"mountPath":"/run/spire/sockets","name":"spire-agent-socket","readOnly":true},{"mountPath":"/var/lib/networkservicemesh","name":"nsm-socket"},{"mountPath":"/var/lib/kubelet","name":"kubelet-socket"},{"mountPath":"/host/sys/fs/cgroup","name":"cgroup"},{"mountPath":"/host/dev/vfio","name":"vfio"},{"mountPath":"/var/run/vpp/external","name":"vpp"}]}],"dnsPolicy":"ClusterFirstWithHostNet","hostNetwork":true,"hostPID":true,"volumes":[{"hostPath":{"path":"/run/spire/sockets","type":"Directory"},"name":"spire-agent-socket"},{"hostPath":{"path":"/var/lib/networkservicemesh","type":"DirectoryOrCreate"},"name":"nsm-socket"},{"hostPath":{"path":"/var/lib/kubelet","type":"Directory"},"name":"kubelet-socket"},{"hostPath":{"path":"/sys/fs/cgroup","type":"Directory"},"name":"cgroup"},{"hostPath":{"path":"/dev/vfio","type":"DirectoryOrCreate"},"name":"vfio"},{"hostPath":{"path":"/var/run/vpp","type":"DirectoryOrCreate"},"name":"vpp"}]}}}}
+    creationTimestamp: "2022-12-21T04:34:21Z"
+    generation: 1
+    labels:
+      app: forwarder-vpp
+    name: forwarder-vpp
+    namespace: nsm-system
+    resourceVersion: "1136"
+    uid: 727ea0c8-6a06-4d11-a1c9-67f615ffe592
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: forwarder-vpp
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: forwarder-vpp
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          - name: NSM_TUNNEL_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: NSM_CONNECT_TO
+            value: unix:///var/lib/networkservicemesh/nsm.io.sock
+          - name: NSM_LISTEN_ON
+            value: unix:///listen.on.sock
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          image: ghcr.io/networkservicemesh/cmd-forwarder-vpp:v1.7.0-rc.2
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///listen.on.sock
+            failureThreshold: 25
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 2
+          name: forwarder-vpp
+          readinessProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///listen.on.sock
+            failureThreshold: 120
+            initialDelaySeconds: 1
+            periodSeconds: 1
+            successThreshold: 1
+            timeoutSeconds: 2
+          resources:
+            limits:
+              cpu: 525m
+              memory: 500Mi
+            requests:
+              cpu: 150m
+          securityContext:
+            privileged: true
+          startupProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///listen.on.sock
+            failureThreshold: 25
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+            readOnly: true
+          - mountPath: /var/lib/networkservicemesh
+            name: nsm-socket
+          - mountPath: /var/lib/kubelet
+            name: kubelet-socket
+          - mountPath: /host/sys/fs/cgroup
+            name: cgroup
+          - mountPath: /host/dev/vfio
+            name: vfio
+          - mountPath: /var/run/vpp/external
+            name: vpp
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        hostPID: true
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+        - hostPath:
+            path: /var/lib/kubelet
+            type: Directory
+          name: kubelet-socket
+        - hostPath:
+            path: /sys/fs/cgroup
+            type: Directory
+          name: cgroup
+        - hostPath:
+            path: /dev/vfio
+            type: DirectoryOrCreate
+          name: vfio
+        - hostPath:
+            path: /var/run/vpp
+            type: DirectoryOrCreate
+          name: vpp
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 1
+    updatedNumberScheduled: 1
+- metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"nsmgr"},"name":"nsmgr","namespace":"nsm-system"},"spec":{"selector":{"matchLabels":{"app":"nsmgr"}},"template":{"metadata":{"labels":{"app":"nsmgr","spiffe.io/spiffe-id":"true"}},"spec":{"containers":[{"env":[{"name":"SPIFFE_ENDPOINT_SOCKET","value":"unix:///run/spire/sockets/agent.sock"},{"name":"NSM_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"NSM_LOG_LEVEL","value":"TRACE"},{"name":"NSM_REGISTRY_URL","value":"registry:5002"},{"name":"POD_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"NSM_LISTEN_ON","value":"unix:///var/lib/networkservicemesh/nsm.io.sock,tcp://[$(POD_IP)]:5001"},{"name":"NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}}],"image":"ghcr.io/networkservicemesh/cmd-nsmgr:v1.7.0-rc.2","imagePullPolicy":"IfNotPresent","livenessProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///var/lib/networkservicemesh/nsm.io.sock"]},"failureThreshold":25,"initialDelaySeconds":10,"periodSeconds":5,"timeoutSeconds":2},"name":"nsmgr","ports":[{"containerPort":5001,"hostPort":5001}],"readinessProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///var/lib/networkservicemesh/nsm.io.sock"]},"failureThreshold":120,"initialDelaySeconds":1,"periodSeconds":1,"successThreshold":1,"timeoutSeconds":2},"resources":{"limits":{"cpu":"400m","memory":"200Mi"},"requests":{"cpu":"200m","memory":"100Mi"}},"startupProbe":{"exec":{"command":["/bin/grpc-health-probe","-spiffe","-addr=unix:///var/lib/networkservicemesh/nsm.io.sock"]},"failureThreshold":25,"periodSeconds":5},"volumeMounts":[{"mountPath":"/run/spire/sockets","name":"spire-agent-socket","readOnly":true},{"mountPath":"/var/lib/networkservicemesh","name":"nsm-socket"},{"mountPath":"/var/lib/networkservicemesh/config/","name":"exclude-prefixes-volume"}]},{"env":[{"name":"NSM_LOG_LEVEL","value":"TRACE"}],"image":"ghcr.io/networkservicemesh/cmd-exclude-prefixes-k8s:v1.7.0-rc.2","imagePullPolicy":"IfNotPresent","name":"exclude-prefixes","resources":{"limits":{"cpu":"75m","memory":"40Mi"}},"volumeMounts":[{"mountPath":"/var/lib/networkservicemesh/config/","name":"exclude-prefixes-volume"}]}],"serviceAccount":"nsmgr-sa","volumes":[{"hostPath":{"path":"/run/spire/sockets","type":"Directory"},"name":"spire-agent-socket"},{"hostPath":{"path":"/var/lib/networkservicemesh","type":"DirectoryOrCreate"},"name":"nsm-socket"},{"emptyDir":{},"name":"exclude-prefixes-volume"}]}}}}
+    creationTimestamp: "2022-12-21T04:34:21Z"
+    generation: 1
+    labels:
+      app: nsmgr
+    name: nsmgr
+    namespace: nsm-system
+    resourceVersion: "1184"
+    uid: 8a71b00f-7170-4088-9a6e-9c606cfd9b7f
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: nsmgr
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: nsmgr
+          spiffe.io/spiffe-id: "true"
+      spec:
+        containers:
+        - env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+          - name: NSM_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          - name: NSM_REGISTRY_URL
+            value: registry:5002
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: NSM_LISTEN_ON
+            value: unix:///var/lib/networkservicemesh/nsm.io.sock,tcp://[$(POD_IP)]:5001
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: ghcr.io/networkservicemesh/cmd-nsmgr:v1.7.0-rc.2
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+            failureThreshold: 25
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 2
+          name: nsmgr
+          ports:
+          - containerPort: 5001
+            hostPort: 5001
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+            failureThreshold: 120
+            initialDelaySeconds: 1
+            periodSeconds: 1
+            successThreshold: 1
+            timeoutSeconds: 2
+          resources:
+            limits:
+              cpu: 400m
+              memory: 200Mi
+            requests:
+              cpu: 200m
+              memory: 100Mi
+          startupProbe:
+            exec:
+              command:
+              - /bin/grpc-health-probe
+              - -spiffe
+              - -addr=unix:///var/lib/networkservicemesh/nsm.io.sock
+            failureThreshold: 25
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+            readOnly: true
+          - mountPath: /var/lib/networkservicemesh
+            name: nsm-socket
+          - mountPath: /var/lib/networkservicemesh/config/
+            name: exclude-prefixes-volume
+        - env:
+          - name: NSM_LOG_LEVEL
+            value: TRACE
+          image: ghcr.io/networkservicemesh/cmd-exclude-prefixes-k8s:v1.7.0-rc.2
+          imagePullPolicy: IfNotPresent
+          name: exclude-prefixes
+          resources:
+            limits:
+              cpu: 75m
+              memory: 40Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/networkservicemesh/config/
+            name: exclude-prefixes-volume
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: nsmgr-sa
+        serviceAccountName: nsmgr-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /run/spire/sockets
+            type: Directory
+          name: spire-agent-socket
+        - hostPath:
+            path: /var/lib/networkservicemesh
+            type: DirectoryOrCreate
+          name: nsm-socket
+        - emptyDir: {}
+          name: exclude-prefixes-volume
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 1
+    updatedNumberScheduled: 1
+kind: DaemonSetList
+metadata:
+  resourceVersion: "19317"

@@ -1,0 +1,85 @@
+---
+apiVersion: v1
+items:
+- count: 3
+  eventTime: null
+  firstTimestamp: "2022-12-21T05:12:54Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-s8prm
+    namespace: ns-dns-vl3
+    resourceVersion: "3909"
+    uid: dfc1222d-f199-4efd-b0f6-ba03413710d8
+  lastTimestamp: "2022-12-21T07:10:22Z"
+  message: Created container nse
+  metadata:
+    creationTimestamp: "2022-12-21T06:51:12Z"
+    name: nse-vl3-vpp-5d97745888-s8prm.1732b6f4f7209380
+    namespace: ns-dns-vl3
+    resourceVersion: "16958"
+    uid: 60edd918-a206-48af-85ca-24c30d790f25
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 3
+  eventTime: null
+  firstTimestamp: "2022-12-21T05:12:55Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-s8prm
+    namespace: ns-dns-vl3
+    resourceVersion: "3909"
+    uid: dfc1222d-f199-4efd-b0f6-ba03413710d8
+  lastTimestamp: "2022-12-21T07:10:22Z"
+  message: Started container nse
+  metadata:
+    creationTimestamp: "2022-12-21T06:51:12Z"
+    name: nse-vl3-vpp-5d97745888-s8prm.1732b6f500b071cd
+    namespace: ns-dns-vl3
+    resourceVersion: "16959"
+    uid: b7103a5e-c507-4f75-bf17-e18926d26fa0
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 2
+  eventTime: null
+  firstTimestamp: "2022-12-21T06:51:12Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-s8prm
+    namespace: ns-dns-vl3
+    resourceVersion: "3909"
+    uid: dfc1222d-f199-4efd-b0f6-ba03413710d8
+  lastTimestamp: "2022-12-21T07:10:22Z"
+  message: Container image "ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2"
+    already present on machine
+  metadata:
+    creationTimestamp: "2022-12-21T06:51:12Z"
+    name: nse-vl3-vpp-5d97745888-s8prm.1732bc5210743219
+    namespace: ns-dns-vl3
+    resourceVersion: "16954"
+    uid: db0a4787-2410-42bb-8c3c-282009fd5b1a
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "19315"
