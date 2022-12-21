@@ -46,10 +46,13 @@ k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
 ingressIP - copy from nsm interface ip
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
+sed -i '' 's/15012/15010/' "${WORK_DIR}/mesh.yaml"
 rm -rf ubuntu-standard/istio-vm-configs
 rm -rf ubuntu-hosts/istio-vm-configs
+rm -rf ubuntu-hosts-2/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-standard/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-hosts/istio-vm-configs
+cp -r "${WORK_DIR}" ubuntu-hosts-2/istio-vm-configs
 ```
 
 ```bash
@@ -66,16 +69,18 @@ tshark -r 1-istio-standard.pcap
 ```
 
 ```bash
-k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-nsm.pcap &
+time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-1-nsm.pcap &
 sleep 1
 k1 apply -k ubuntu-hosts
 sleep 0.5
-k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 -n vl3-test wait --for=condition=ready --timeout=20s pod -l app=ubuntu
 sleep 1
 kill -2 $!
+time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-2-nsm.pcap
 sleep 1
 k1 delete -k ubuntu-hosts
-tshark -r 1-istio-nsm.pcap
+tshark -r 4-istio-tcpdump-1-nsm.pcap
+tshark -r 4-istio-tcpdump-2-nsm.pcap
 ```
 
 ```bash
