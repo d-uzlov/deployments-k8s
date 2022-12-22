@@ -1,0 +1,127 @@
+---
+apiVersion: v1
+items:
+- metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"admission-webhook-k8s"},"name":"admission-webhook-svc","namespace":"nsm-system"},"spec":{"ports":[{"port":443,"targetPort":443}],"selector":{"app":"admission-webhook-k8s"}}}
+    creationTimestamp: "2022-12-21T23:41:10Z"
+    labels:
+      app: admission-webhook-k8s
+    name: admission-webhook-svc
+    namespace: nsm-system
+    resourceVersion: "825"
+    uid: e40b4ede-24a7-461b-b9f3-e2e193c7f6ca
+  spec:
+    clusterIP: 10.96.166.126
+    clusterIPs:
+    - 10.96.166.126
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 443
+      protocol: TCP
+      targetPort: 443
+    selector:
+      app: admission-webhook-k8s
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"nsmgr-proxy","namespace":"nsm-system"},"spec":{"ports":[{"port":5004,"protocol":"TCP","targetPort":5004}],"selector":{"app":"nsmgr-proxy"},"type":"LoadBalancer"}}
+    creationTimestamp: "2022-12-21T23:41:10Z"
+    name: nsmgr-proxy
+    namespace: nsm-system
+    resourceVersion: "833"
+    uid: 40ad5131-b070-4166-b51e-ff08960fc5fd
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.96.192.28
+    clusterIPs:
+    - 10.96.192.28
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30964
+      port: 5004
+      protocol: TCP
+      targetPort: 5004
+    selector:
+      app: nsmgr-proxy
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 172.18.201.2
+- metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"registry","namespace":"nsm-system"},"spec":{"ports":[{"name":"registry","port":5002,"protocol":"TCP","targetPort":5002}],"selector":{"app":"registry"},"type":"LoadBalancer"}}
+    creationTimestamp: "2022-12-21T23:41:10Z"
+    name: registry
+    namespace: nsm-system
+    resourceVersion: "839"
+    uid: e5bbb5ba-2c9c-4576-b4ec-a2efdcb12c1b
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.96.225.18
+    clusterIPs:
+    - 10.96.225.18
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: registry
+      nodePort: 30518
+      port: 5002
+      protocol: TCP
+      targetPort: 5002
+    selector:
+      app: registry
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 172.18.201.3
+- metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"registry-proxy","namespace":"nsm-system"},"spec":{"ports":[{"port":5005,"protocol":"TCP","targetPort":5005}],"selector":{"app":"registry-proxy"}}}
+    creationTimestamp: "2022-12-21T23:41:10Z"
+    name: registry-proxy
+    namespace: nsm-system
+    resourceVersion: "843"
+    uid: aebb1116-39d2-43f7-be46-c47639d8a33a
+  spec:
+    clusterIP: 10.96.5.160
+    clusterIPs:
+    - 10.96.5.160
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5005
+      protocol: TCP
+      targetPort: 5005
+    selector:
+      app: registry-proxy
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: ServiceList
+metadata:
+  resourceVersion: "5265"

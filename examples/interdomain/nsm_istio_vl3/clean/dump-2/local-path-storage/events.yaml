@@ -1,0 +1,183 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: local-path-provisioner-684f458cdd-zzxkz
+    namespace: local-path-storage
+    resourceVersion: "366"
+    uid: afd9940a-46e3-4fec-9895-7fb809d4380a
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: '0/1 nodes are available: 1 node(s) had untolerated taint {node.kubernetes.io/not-ready:
+    }. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: local-path-provisioner-684f458cdd-zzxkz.1732f347be8991c3
+    namespace: local-path-storage
+    resourceVersion: "375"
+    uid: 9fbcbfec-8177-450d-872d-6dacc490b44b
+  reason: FailedScheduling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:27Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: local-path-provisioner-684f458cdd-zzxkz
+    namespace: local-path-storage
+    resourceVersion: "376"
+    uid: afd9940a-46e3-4fec-9895-7fb809d4380a
+  lastTimestamp: "2022-12-21T23:38:27Z"
+  message: Successfully assigned local-path-storage/local-path-provisioner-684f458cdd-zzxkz
+    to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:27Z"
+    name: local-path-provisioner-684f458cdd-zzxkz.1732f34936855bd7
+    namespace: local-path-storage
+    resourceVersion: "404"
+    uid: 0d13047b-77d8-47df-b34f-f204162f655e
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:28Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{local-path-provisioner}
+    kind: Pod
+    name: local-path-provisioner-684f458cdd-zzxkz
+    namespace: local-path-storage
+    resourceVersion: "401"
+    uid: afd9940a-46e3-4fec-9895-7fb809d4380a
+  lastTimestamp: "2022-12-21T23:38:28Z"
+  message: Container image "docker.io/kindest/local-path-provisioner:v0.0.22-kind.0"
+    already present on machine
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:28Z"
+    name: local-path-provisioner-684f458cdd-zzxkz.1732f3496774d83a
+    namespace: local-path-storage
+    resourceVersion: "412"
+    uid: 65678515-5cfb-465f-8df2-b603d24675e1
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:29Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{local-path-provisioner}
+    kind: Pod
+    name: local-path-provisioner-684f458cdd-zzxkz
+    namespace: local-path-storage
+    resourceVersion: "401"
+    uid: afd9940a-46e3-4fec-9895-7fb809d4380a
+  lastTimestamp: "2022-12-21T23:38:29Z"
+  message: Created container local-path-provisioner
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:29Z"
+    name: local-path-provisioner-684f458cdd-zzxkz.1732f349b7d9add2
+    namespace: local-path-storage
+    resourceVersion: "417"
+    uid: 75c01e15-d705-4e21-adbb-9f581e9e4d4c
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:29Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{local-path-provisioner}
+    kind: Pod
+    name: local-path-provisioner-684f458cdd-zzxkz
+    namespace: local-path-storage
+    resourceVersion: "401"
+    uid: afd9940a-46e3-4fec-9895-7fb809d4380a
+  lastTimestamp: "2022-12-21T23:38:29Z"
+  message: Started container local-path-provisioner
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:29Z"
+    name: local-path-provisioner-684f458cdd-zzxkz.1732f349c460fba3
+    namespace: local-path-storage
+    resourceVersion: "418"
+    uid: afb2be5d-3403-4688-bc35-2c406aea6f84
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: local-path-provisioner-684f458cdd
+    namespace: local-path-storage
+    resourceVersion: "338"
+    uid: e008189e-402f-4eb7-a3da-c742826eccae
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: 'Created pod: local-path-provisioner-684f458cdd-zzxkz'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: local-path-provisioner-684f458cdd.1732f347bddb7317
+    namespace: local-path-storage
+    resourceVersion: "373"
+    uid: 9195ea1c-7b6b-43c8-aaef-bf59ae28958e
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:20Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: local-path-provisioner
+    namespace: local-path-storage
+    resourceVersion: "271"
+    uid: 4ebae717-ede7-47d8-9e4f-b52e4bd61e1a
+  lastTimestamp: "2022-12-21T23:38:20Z"
+  message: Scaled up replica set local-path-provisioner-684f458cdd to 1
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:20Z"
+    name: local-path-provisioner.1732f347ae7e260e
+    namespace: local-path-storage
+    resourceVersion: "340"
+    uid: e17b621d-4a2d-4dd3-8a50-3f9b946ac3c4
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "5258"

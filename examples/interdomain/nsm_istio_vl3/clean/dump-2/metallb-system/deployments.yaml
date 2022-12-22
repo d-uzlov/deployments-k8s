@@ -1,0 +1,120 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"metallb","component":"controller"},"name":"controller","namespace":"metallb-system"},"spec":{"revisionHistoryLimit":3,"selector":{"matchLabels":{"app":"metallb","component":"controller"}},"template":{"metadata":{"annotations":{"prometheus.io/port":"7472","prometheus.io/scrape":"true"},"labels":{"app":"metallb","component":"controller"}},"spec":{"containers":[{"args":["--port=7472","--config=config","--log-level=info"],"env":[{"name":"METALLB_ML_SECRET_NAME","value":"memberlist"},{"name":"METALLB_DEPLOYMENT","value":"controller"}],"image":"quay.io/metallb/controller:v0.12.1","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/metrics","port":"monitoring"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"controller","ports":[{"containerPort":7472,"name":"monitoring"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/metrics","port":"monitoring"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["all"]},"readOnlyRootFilesystem":true}}],"nodeSelector":{"kubernetes.io/os":"linux"},"securityContext":{"fsGroup":65534,"runAsNonRoot":true,"runAsUser":65534},"serviceAccountName":"controller","terminationGracePeriodSeconds":0}}}}
+    creationTimestamp: "2022-12-21T23:38:40Z"
+    generation: 1
+    labels:
+      app: metallb
+      component: controller
+    name: controller
+    namespace: metallb-system
+    resourceVersion: "548"
+    uid: 90963ed9-bd54-4d1a-abd3-0e00e0bf66a4
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 3
+    selector:
+      matchLabels:
+        app: metallb
+        component: controller
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          prometheus.io/port: "7472"
+          prometheus.io/scrape: "true"
+        creationTimestamp: null
+        labels:
+          app: metallb
+          component: controller
+      spec:
+        containers:
+        - args:
+          - --port=7472
+          - --config=config
+          - --log-level=info
+          env:
+          - name: METALLB_ML_SECRET_NAME
+            value: memberlist
+          - name: METALLB_DEPLOYMENT
+            value: controller
+          image: quay.io/metallb/controller:v0.12.1
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /metrics
+              port: monitoring
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: controller
+          ports:
+          - containerPort: 7472
+            name: monitoring
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /metrics
+              port: monitoring
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          fsGroup: 65534
+          runAsNonRoot: true
+          runAsUser: 65534
+        serviceAccount: controller
+        serviceAccountName: controller
+        terminationGracePeriodSeconds: 0
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-12-21T23:39:10Z"
+      lastUpdateTime: "2022-12-21T23:39:10Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-12-21T23:38:40Z"
+      lastUpdateTime: "2022-12-21T23:39:10Z"
+      message: ReplicaSet "controller-6658b8446c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: DeploymentList
+metadata:
+  resourceVersion: "5259"

@@ -1,0 +1,461 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3190"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: Successfully assigned ns-dns-vl3/nse-vl3-vpp-5d97745888-5mf9c to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f503d45a6196
+    namespace: ns-dns-vl3
+    resourceVersion: "3197"
+    uid: ebfc49b3-11e2-4408-a18a-5836a527f6ed
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:09Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:10:09Z"
+  message: Pulling image "ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2"
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:09Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f5040125b3cc
+    namespace: ns-dns-vl3
+    resourceVersion: "3213"
+    uid: 790522ee-eedb-4ccd-9c70-d229857f11e9
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:27Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:10:27Z"
+  message: Successfully pulled image "ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2"
+    in 18.244981089s
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:27Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f508409a0248
+    namespace: ns-dns-vl3
+    resourceVersion: "3237"
+    uid: dbf361f4-f576-4f0f-8964-72256e4715f7
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 3
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:27Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:23:55Z"
+  message: Created container nse
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:27Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f508431e9cb1
+    namespace: ns-dns-vl3
+    resourceVersion: "5179"
+    uid: 529f85b4-d586-4a39-aebd-844a2d5f8676
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 3
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:27Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:23:55Z"
+  message: Started container nse
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:27Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f50850d8e856
+    namespace: ns-dns-vl3
+    resourceVersion: "5181"
+    uid: 11608f0e-0483-499d-9e87-0559e3dff582
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 2
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:22:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:23:55Z"
+  message: Container image "ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2"
+    already present on machine
+  metadata:
+    creationTimestamp: "2022-12-22T00:22:21Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f5ae95f39899
+    namespace: ns-dns-vl3
+    resourceVersion: "5177"
+    uid: c1c62804-8109-4605-ba92-90c5b17da84b
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:43Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{nse}
+    kind: Pod
+    name: nse-vl3-vpp-5d97745888-5mf9c
+    namespace: ns-dns-vl3
+    resourceVersion: "3194"
+    uid: 9c2dec25-6944-48c0-a8e8-ad5b8a406a0f
+  lastTimestamp: "2022-12-22T00:23:43Z"
+  message: Back-off restarting failed container
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:43Z"
+    name: nse-vl3-vpp-5d97745888-5mf9c.1732f5c18682248f
+    namespace: ns-dns-vl3
+    resourceVersion: "5150"
+    uid: d6b4a228-d174-4e14-be13-6835151c5bdd
+  reason: BackOff
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: nse-vl3-vpp-5d97745888
+    namespace: ns-dns-vl3
+    resourceVersion: "3181"
+    uid: 99cb7a66-8bde-48f2-b905-08cce49090fe
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: 'Created pod: nse-vl3-vpp-5d97745888-5mf9c'
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: nse-vl3-vpp-5d97745888.1732f503d378f777
+    namespace: ns-dns-vl3
+    resourceVersion: "3193"
+    uid: 1687ce48-ce1d-4da2-9d32-417845bcc6d4
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nse-vl3-vpp
+    namespace: ns-dns-vl3
+    resourceVersion: "3180"
+    uid: a198541e-841f-43a5-91ad-5222624f6042
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: Scaled up replica set nse-vl3-vpp-5d97745888 to 1
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: nse-vl3-vpp.1732f503cf31c89f
+    namespace: ns-dns-vl3
+    resourceVersion: "3182"
+    uid: 072466eb-74e7-4993-b4be-33f489f9fab3
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: vl3-ipam-7d564f85b-4lfnn
+    namespace: ns-dns-vl3
+    resourceVersion: "3192"
+    uid: 815c6091-195c-4c48-a6f2-cd271d90a637
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: Successfully assigned ns-dns-vl3/vl3-ipam-7d564f85b-4lfnn to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: vl3-ipam-7d564f85b-4lfnn.1732f503d4ea12e6
+    namespace: ns-dns-vl3
+    resourceVersion: "3201"
+    uid: 8d00ccdf-b8bb-447b-ab60-6762b6c7c628
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:09Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{vl3-ipam}
+    kind: Pod
+    name: vl3-ipam-7d564f85b-4lfnn
+    namespace: ns-dns-vl3
+    resourceVersion: "3198"
+    uid: 815c6091-195c-4c48-a6f2-cd271d90a637
+  lastTimestamp: "2022-12-22T00:10:09Z"
+  message: Pulling image "ghcr.io/networkservicemesh/cmd-ipam-vl3:v1.7.0-rc.2"
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:09Z"
+    name: vl3-ipam-7d564f85b-4lfnn.1732f50405e7f6af
+    namespace: ns-dns-vl3
+    resourceVersion: "3214"
+    uid: 0372af8d-16ee-478f-91d7-798cd5cfc105
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:32Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{vl3-ipam}
+    kind: Pod
+    name: vl3-ipam-7d564f85b-4lfnn
+    namespace: ns-dns-vl3
+    resourceVersion: "3198"
+    uid: 815c6091-195c-4c48-a6f2-cd271d90a637
+  lastTimestamp: "2022-12-22T00:10:32Z"
+  message: Successfully pulled image "ghcr.io/networkservicemesh/cmd-ipam-vl3:v1.7.0-rc.2"
+    in 23.005318158s
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:32Z"
+    name: vl3-ipam-7d564f85b-4lfnn.1732f5096119384b
+    namespace: ns-dns-vl3
+    resourceVersion: "3250"
+    uid: 47354367-0831-44ba-8071-ba90f959575c
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:32Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{vl3-ipam}
+    kind: Pod
+    name: vl3-ipam-7d564f85b-4lfnn
+    namespace: ns-dns-vl3
+    resourceVersion: "3198"
+    uid: 815c6091-195c-4c48-a6f2-cd271d90a637
+  lastTimestamp: "2022-12-22T00:10:32Z"
+  message: Created container vl3-ipam
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:32Z"
+    name: vl3-ipam-7d564f85b-4lfnn.1732f50962893ce6
+    namespace: ns-dns-vl3
+    resourceVersion: "3251"
+    uid: fd944509-716a-4087-aa1c-5e0ac94f207d
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:32Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{vl3-ipam}
+    kind: Pod
+    name: vl3-ipam-7d564f85b-4lfnn
+    namespace: ns-dns-vl3
+    resourceVersion: "3198"
+    uid: 815c6091-195c-4c48-a6f2-cd271d90a637
+  lastTimestamp: "2022-12-22T00:10:32Z"
+  message: Started container vl3-ipam
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:32Z"
+    name: vl3-ipam-7d564f85b-4lfnn.1732f509788941c4
+    namespace: ns-dns-vl3
+    resourceVersion: "3253"
+    uid: 3c665a99-be20-4b4a-befc-eb2439a4bdd2
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: vl3-ipam-7d564f85b
+    namespace: ns-dns-vl3
+    resourceVersion: "3187"
+    uid: 2041bae5-f9e1-42e5-830d-fbf07be908bd
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: 'Created pod: vl3-ipam-7d564f85b-4lfnn'
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: vl3-ipam-7d564f85b.1732f503d4b352f7
+    namespace: ns-dns-vl3
+    resourceVersion: "3199"
+    uid: f5826962-37a8-4e03-87e8-76b39ea7f7bc
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Service
+    name: vl3-ipam
+    namespace: ns-dns-vl3
+    resourceVersion: "3174"
+    uid: 9ede86dd-f6ab-493e-be89-42d495548e30
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: Assigned IP ["172.18.201.4"]
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: vl3-ipam.1732f503cafeacca
+    namespace: ns-dns-vl3
+    resourceVersion: "3179"
+    uid: 924513f8-3dc6-4ca7-a8f7-a02c2d161ed5
+  reason: IPAllocated
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: metallb-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:08Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vl3-ipam
+    namespace: ns-dns-vl3
+    resourceVersion: "3184"
+    uid: a6c10fa7-240e-449c-a6e2-7ee6d59642eb
+  lastTimestamp: "2022-12-22T00:10:08Z"
+  message: Scaled up replica set vl3-ipam-7d564f85b to 1
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:08Z"
+    name: vl3-ipam.1732f503d255986d
+    namespace: ns-dns-vl3
+    resourceVersion: "3189"
+    uid: 2a011773-be96-470e-b51b-e89eb48bb66e
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:10:33Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Service
+    name: vl3-ipam
+    namespace: ns-dns-vl3
+    resourceVersion: "3178"
+    uid: 9ede86dd-f6ab-493e-be89-42d495548e30
+  lastTimestamp: "2022-12-22T00:10:33Z"
+  message: announcing from node "kind-1-control-plane"
+  metadata:
+    creationTimestamp: "2022-12-22T00:10:33Z"
+    name: vl3-ipam.1732f509b3a15edf
+    namespace: ns-dns-vl3
+    resourceVersion: "3261"
+    uid: 93e93263-c691-4898-87fa-c20ab42522a9
+  reason: nodeAssigned
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: metallb-speaker
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "5260"

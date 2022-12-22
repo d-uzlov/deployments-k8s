@@ -70,21 +70,25 @@ k1 delete -k ubuntu-standard
 tshark -r 1-istio-standard.pcap
 ```
 
+Add tcpdump to ubuntu
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
+
 ```bash
 time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-1-nsm.pcap &
 sleep 1
 k1 apply -k ubuntu-hosts
 sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+time k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-1-nsm.pcap &
 k1 -n vl3-test get pod
 k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl 172.16.0.2:8080/ready -vs
 sleep 1
 kill -2 $!
-time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-2-nsm.pcap
+# time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-2-nsm.pcap
 sleep 1
 k1 delete -k ubuntu-hosts
 tshark -r 4-istio-tcpdump-1-nsm.pcap
-tshark -r 4-istio-tcpdump-2-nsm.pcap
+# tshark -r 4-istio-tcpdump-2-nsm.pcap
 ```
 
 ```bash

@@ -1,0 +1,15 @@
+==== START logs for container metrics-server of pod kube-system/metrics-server-69dcc44d99-c4h5c ====
+I1221 23:42:16.096153       1 serving.go:341] Generated self-signed cert (/tmp/apiserver.crt, /tmp/apiserver.key)
+I1221 23:42:16.939884       1 secure_serving.go:197] Serving securely on [::]:443
+I1221 23:42:16.940068       1 requestheader_controller.go:169] Starting RequestHeaderAuthRequestController
+I1221 23:42:16.940080       1 shared_informer.go:240] Waiting for caches to sync for RequestHeaderAuthRequestController
+I1221 23:42:16.940103       1 dynamic_serving_content.go:130] Starting serving-cert::/tmp/apiserver.crt::/tmp/apiserver.key
+I1221 23:42:16.940139       1 tlsconfig.go:240] Starting DynamicServingCertificateController
+I1221 23:42:16.940554       1 configmap_cafile_content.go:202] Starting client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1221 23:42:16.940641       1 shared_informer.go:240] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::client-ca-file
+I1221 23:42:16.940654       1 configmap_cafile_content.go:202] Starting client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1221 23:42:16.940657       1 shared_informer.go:240] Waiting for caches to sync for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file
+I1221 23:42:17.041224       1 shared_informer.go:247] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file 
+I1221 23:42:17.041502       1 shared_informer.go:247] Caches are synced for RequestHeaderAuthRequestController 
+I1221 23:42:17.042036       1 shared_informer.go:247] Caches are synced for client-ca::kube-system::extension-apiserver-authentication::client-ca-file 
+==== END logs for container metrics-server of pod kube-system/metrics-server-69dcc44d99-c4h5c ====

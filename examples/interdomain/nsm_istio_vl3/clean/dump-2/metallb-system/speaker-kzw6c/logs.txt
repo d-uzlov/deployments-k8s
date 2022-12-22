@@ -1,0 +1,52 @@
+==== START logs for container speaker of pod metallb-system/speaker-kzw6c ====
+{"branch":"HEAD","caller":"level.go:63","commit":"v0.12.1","goversion":"gc / go1.16.14 / amd64","level":"info","msg":"MetalLB speaker starting version 0.12.1 (commit v0.12.1, branch HEAD)","ts":"2022-12-21T23:38:58.334458613Z","version":"0.12.1"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth30fd63b2","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:38:58.338697367Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethf5c1ee78","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:38:58.338942035Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth12f2a714","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:38:58.339087195Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth388fd561","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:38:58.339216592Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"eth0","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:38:58.339361801Z"}
+{"caller":"level.go:63","event":"createNDPResponder","interface":"eth0","level":"info","msg":"created NDP responder for interface","ts":"2022-12-21T23:38:58.339593721Z"}
+{"caller":"level.go:63","level":"info","msg":"node event - forcing sync","node addr":"172.18.0.2","node event":"NodeJoin","node name":"kind-1-control-plane","ts":"2022-12-21T23:38:58.356086536Z"}
+{"caller":"level.go:63","configmap":"metallb-system/config","event":"configLoaded","level":"info","msg":"config (re)loaded","ts":"2022-12-21T23:38:58.457260668Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:38:58.45768635Z"}
+{"caller":"level.go:63","event":"nodeLabelsChanged","level":"info","msg":"Node labels changed, resyncing BGP peers","ts":"2022-12-21T23:38:58.457713472Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:39:08.628473831Z"}
+{"caller":"level.go:63","event":"serviceAnnounced","ips":["172.18.201.0"],"level":"info","msg":"service has IP, announcing","pool":"default","protocol":"layer2","service":"kube-system/exposed-kube-dns","ts":"2022-12-21T23:39:42.737470732Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth38843f29","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:39:48.34571616Z"}
+{"caller":"level.go:63","event":"serviceAnnounced","ips":["172.18.201.1"],"level":"info","msg":"service has IP, announcing","pool":"default","protocol":"layer2","service":"spire/spire-server","ts":"2022-12-21T23:40:02.818604522Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:40:10.103852303Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:40:40.587864104Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethcc6b23f6","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:18.395290769Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethd9621bc6","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:18.395627476Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth3b23a6a6","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:18.395981965Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethe3c42c00","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:18.396305961Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethb3c72674","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:18.39656526Z"}
+{"caller":"level.go:63","event":"serviceAnnounced","ips":["172.18.201.3"],"level":"info","msg":"service has IP, announcing","pool":"default","protocol":"layer2","service":"nsm-system/registry","ts":"2022-12-21T23:41:31.07833635Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:41:41.9177999Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth9a4a56cf","level":"info","msg":"created ARP responder for interface","ts":"2022-12-21T23:41:48.422961417Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:42:12.257222926Z"}
+{"caller":"level.go:63","event":"serviceAnnounced","ips":["172.18.201.2"],"level":"info","msg":"service has IP, announcing","pool":"default","protocol":"layer2","service":"nsm-system/nsmgr-proxy","ts":"2022-12-21T23:42:12.290174324Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:42:42.640246767Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:47:48.875723841Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:52:55.294622233Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-21T23:58:02.547416914Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:03:09.827449197Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:08:15.183514914Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth1bc2b7a4","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:10:18.938813466Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth86b14c7f","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:10:18.952361106Z"}
+{"caller":"level.go:63","event":"serviceAnnounced","ips":["172.18.201.4"],"level":"info","msg":"service has IP, announcing","pool":"default","protocol":"layer2","service":"ns-dns-vl3/vl3-ipam","ts":"2022-12-22T00:10:33.723188871Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:10:37.694540309Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth490ee31d","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:10:58.973523797Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:11:08.139023294Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:11:39.036406594Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth68b5a1dc","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:13:59.035538311Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:14:12.115432227Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:14:42.795449934Z"}
+{"caller":"level.go:63","event":"deleteARPResponder","interface":"veth68b5a1dc","level":"info","msg":"deleted ARP responder for interface","ts":"2022-12-22T00:15:29.080956687Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vetha373db9d","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:18:49.361662085Z"}
+{"caller":"level.go:63","level":"info","msg":"triggering discovery","op":"memberDiscovery","ts":"2022-12-22T00:19:48.782555386Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"veth8741d069","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:21:19.426577811Z"}
+{"caller":"level.go:63","event":"deleteARPResponder","interface":"vetha373db9d","level":"info","msg":"deleted ARP responder for interface","ts":"2022-12-22T00:21:19.434981785Z"}
+{"caller":"level.go:63","event":"deleteARPResponder","interface":"veth8741d069","level":"info","msg":"deleted ARP responder for interface","ts":"2022-12-22T00:22:59.48322546Z"}
+{"caller":"level.go:63","event":"createARPResponder","interface":"vethb3dd5b51","level":"info","msg":"created ARP responder for interface","ts":"2022-12-22T00:23:29.499053927Z"}
+==== END logs for container speaker of pod metallb-system/speaker-kzw6c ====

@@ -1,0 +1,30 @@
+==== START logs for container nsmgr-proxy of pod nsm-system/nsmgr-proxy-c874d5d87-j7c9v ====
+Dec 21 23:41:23.353[36m [INFO] [cmd:/bin/nsmgr-proxy] [0mSetting env variable DLV_LISTEN_NSMGR_PROXY to a valid dlv '--listen' value will cause the dlv debugger to execute this binary and listen as directed.
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE                           DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_LISTEN_ON                Comma-separated list of URL    unix:///listen.on.socket                                           url to listen on.
+NSM_NAME                     String                         nsmgr-proxy                                                        Name of Network service manager proxy
+NSM_MAX_TOKEN_LIFETIME       Duration                       10m                                                                maximum lifetime of tokens
+NSM_MAP_IP_FILE_PATH         String                         map-ip.yaml                                                        Path to file that contains map of internal to external IPs
+NSM_REGISTRY_PROXY_URL       URL                                                                                               URL to registry proxy. All incoming interdomain registry requests will be proxying by the URL
+NSM_REGISTRY_URL             URL                                                                                               URL to registry. All incoming local registry requests will be proxying by the URL
+NSM_LOG_LEVEL                String                         INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String                         otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+Dec 21 23:41:23.354[36m [INFO] [cmd:/bin/nsmgr-proxy] [0mConfig: &main.Config{ListenOn:[]url.URL{url.URL{Scheme:"tcp", Opaque:"", User:(*url.Userinfo)(nil), Host:":5004", Path:"", RawPath:"", ForceQuery:false, RawQuery:"", Fragment:"", RawFragment:""}}, Name:"nsmgr-proxy-c874d5d87-j7c9v", MaxTokenLifetime:600000000000, MapIPFilePath:"/etc/mapip/config.yaml", RegistryProxyURL:(*url.URL)(0xc00054a090), RegistryURL:(*url.URL)(0xc00054a360), LogLevel:"TRACE", OpenTelemetryEndpoint:"otel-collector.observability.svc.cluster.local:4317"}
+Dec 21 23:42:12.503[36m [INFO] [0mSVID: "spiffe://nsm.cluster1/ns/nsm-system/pod/nsmgr-proxy-c874d5d87-j7c9v"
+Dec 21 23:42:12.504[36m [INFO] [cmd:/bin/nsmgr-proxy] [0mListening url: tcp://10.244.0.8:5004
+Dec 21 23:42:12.506[36m [INFO] [cmd:/bin/nsmgr-proxy] [0mStartup completed in 49.152916901s
+==== END logs for container nsmgr-proxy of pod nsm-system/nsmgr-proxy-c874d5d87-j7c9v ====
+==== START logs for container map-ip-k8s of pod nsm-system/nsmgr-proxy-c874d5d87-j7c9v ====
+time="2022-12-21T23:42:12Z" level=info msg="Starting NetworkServiceMesh Client ..."
+This application is configured via the environment. The following environment
+variables can be used:
+
+KEY                          TYPE      DEFAULT                                                REQUIRED    DESCRIPTION
+NSM_OUTPUTPATH               String    external_ips.yaml                                                  Path to writing map of internal to extenrnal ips
+NSM_NODENAME                 String                                                                       The name of node where application is running
+NSM_LOG_LEVEL                String    INFO                                                               Log level
+NSM_OPENTELEMETRYENDPOINT    String    otel-collector.observability.svc.cluster.local:4317                OpenTelemetry Collector Endpoint
+==== END logs for container map-ip-k8s of pod nsm-system/nsmgr-proxy-c874d5d87-j7c9v ====

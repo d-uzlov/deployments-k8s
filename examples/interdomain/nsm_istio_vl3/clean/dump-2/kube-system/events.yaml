@@ -1,0 +1,861 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: coredns-565d847f94-222sz
+    namespace: kube-system
+    resourceVersion: "362"
+    uid: 6cb3d2a6-713d-4dd4-916d-89d661cd16eb
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: '0/1 nodes are available: 1 node(s) had untolerated taint {node.kubernetes.io/not-ready:
+    }. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: coredns-565d847f94-222sz.1732f347bd702776
+    namespace: kube-system
+    resourceVersion: "365"
+    uid: 0559211f-4090-4047-b7b8-93b240c14f35
+  reason: FailedScheduling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:27Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: coredns-565d847f94-222sz
+    namespace: kube-system
+    resourceVersion: "367"
+    uid: 6cb3d2a6-713d-4dd4-916d-89d661cd16eb
+  lastTimestamp: "2022-12-21T23:38:27Z"
+  message: Successfully assigned kube-system/coredns-565d847f94-222sz to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:27Z"
+    name: coredns-565d847f94-222sz.1732f349368bf29e
+    namespace: kube-system
+    resourceVersion: "408"
+    uid: 1307383b-2405-41b9-aa75-eceb31f99624
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:28Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-222sz
+    namespace: kube-system
+    resourceVersion: "403"
+    uid: 6cb3d2a6-713d-4dd4-916d-89d661cd16eb
+  lastTimestamp: "2022-12-21T23:38:28Z"
+  message: Container image "registry.k8s.io/coredns/coredns:v1.9.3" already present
+    on machine
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:28Z"
+    name: coredns-565d847f94-222sz.1732f3498970dd39
+    namespace: kube-system
+    resourceVersion: "414"
+    uid: 16e94631-b540-4dda-98d0-d11507902789
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:30Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-222sz
+    namespace: kube-system
+    resourceVersion: "403"
+    uid: 6cb3d2a6-713d-4dd4-916d-89d661cd16eb
+  lastTimestamp: "2022-12-21T23:38:30Z"
+  message: Created container coredns
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:30Z"
+    name: coredns-565d847f94-222sz.1732f349d87759f1
+    namespace: kube-system
+    resourceVersion: "422"
+    uid: 8a04c602-afda-41f4-a7be-e7c14b3d0629
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:30Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-222sz
+    namespace: kube-system
+    resourceVersion: "403"
+    uid: 6cb3d2a6-713d-4dd4-916d-89d661cd16eb
+  lastTimestamp: "2022-12-21T23:38:30Z"
+  message: Started container coredns
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:30Z"
+    name: coredns-565d847f94-222sz.1732f349e2d2c0fb
+    namespace: kube-system
+    resourceVersion: "424"
+    uid: 0e88e6c6-761b-4b52-bdb0-2b1372a63f75
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: coredns-565d847f94-5j489
+    namespace: kube-system
+    resourceVersion: "363"
+    uid: c96cc9c4-d75a-4c0f-b32e-7dcb6c3bdc96
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: '0/1 nodes are available: 1 node(s) had untolerated taint {node.kubernetes.io/not-ready:
+    }. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: coredns-565d847f94-5j489.1732f347be129cd7
+    namespace: kube-system
+    resourceVersion: "371"
+    uid: 62935e6b-8324-4fbb-aef4-b70800b2cc63
+  reason: FailedScheduling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:27Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: coredns-565d847f94-5j489
+    namespace: kube-system
+    resourceVersion: "372"
+    uid: c96cc9c4-d75a-4c0f-b32e-7dcb6c3bdc96
+  lastTimestamp: "2022-12-21T23:38:27Z"
+  message: Successfully assigned kube-system/coredns-565d847f94-5j489 to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:27Z"
+    name: coredns-565d847f94-5j489.1732f349368b9d89
+    namespace: kube-system
+    resourceVersion: "405"
+    uid: 7cfbec50-df39-4040-80c3-b6f534ceb927
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:28Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-5j489
+    namespace: kube-system
+    resourceVersion: "402"
+    uid: c96cc9c4-d75a-4c0f-b32e-7dcb6c3bdc96
+  lastTimestamp: "2022-12-21T23:38:28Z"
+  message: Container image "registry.k8s.io/coredns/coredns:v1.9.3" already present
+    on machine
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:28Z"
+    name: coredns-565d847f94-5j489.1732f3498ab48bbc
+    namespace: kube-system
+    resourceVersion: "415"
+    uid: ec4b1670-ca07-4ab1-bbce-2ac743db69d5
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:30Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-5j489
+    namespace: kube-system
+    resourceVersion: "402"
+    uid: c96cc9c4-d75a-4c0f-b32e-7dcb6c3bdc96
+  lastTimestamp: "2022-12-21T23:38:30Z"
+  message: Created container coredns
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:30Z"
+    name: coredns-565d847f94-5j489.1732f349dac07956
+    namespace: kube-system
+    resourceVersion: "423"
+    uid: fd31065c-591a-4ca0-877a-a362c1b9535c
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:30Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{coredns}
+    kind: Pod
+    name: coredns-565d847f94-5j489
+    namespace: kube-system
+    resourceVersion: "402"
+    uid: c96cc9c4-d75a-4c0f-b32e-7dcb6c3bdc96
+  lastTimestamp: "2022-12-21T23:38:30Z"
+  message: Started container coredns
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:30Z"
+    name: coredns-565d847f94-5j489.1732f349e3e01f31
+    namespace: kube-system
+    resourceVersion: "425"
+    uid: f9b45209-1130-4744-a216-f1c0fd417c0e
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: coredns-565d847f94
+    namespace: kube-system
+    resourceVersion: "339"
+    uid: 8b8991f6-90ad-4d5f-bc85-7c27804fbdf3
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: 'Created pod: coredns-565d847f94-222sz'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: coredns-565d847f94.1732f347bd6a0afe
+    namespace: kube-system
+    resourceVersion: "364"
+    uid: fb6dc7a5-f113-46be-a1c2-f2ac2a1d57dc
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: coredns-565d847f94
+    namespace: kube-system
+    resourceVersion: "339"
+    uid: 8b8991f6-90ad-4d5f-bc85-7c27804fbdf3
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: 'Created pod: coredns-565d847f94-5j489'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: coredns-565d847f94.1732f347bdb9af9e
+    namespace: kube-system
+    resourceVersion: "368"
+    uid: 27da4af7-5a24-4ccd-9a03-53982a0f05ec
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:20Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: coredns
+    namespace: kube-system
+    resourceVersion: "222"
+    uid: bba0a766-ee1c-4e83-9108-df8453280553
+  lastTimestamp: "2022-12-21T23:38:20Z"
+  message: Scaled up replica set coredns-565d847f94 to 2
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:20Z"
+    name: coredns.1732f347aeabfbf4
+    namespace: kube-system
+    resourceVersion: "343"
+    uid: b6988269-41bf-4539-b7c6-d723d5d22f00
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:39:42Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Service
+    name: exposed-kube-dns
+    namespace: kube-system
+    resourceVersion: "589"
+    uid: f84e68b5-0c0d-4244-9dda-b07dcd2cb89f
+  lastTimestamp: "2022-12-21T23:39:42Z"
+  message: Assigned IP ["172.18.201.0"]
+  metadata:
+    creationTimestamp: "2022-12-21T23:39:42Z"
+    name: exposed-kube-dns.1732f35abba0efa2
+    namespace: kube-system
+    resourceVersion: "593"
+    uid: 3c132e07-0088-4acc-81ae-c79bc3629cf0
+  reason: IPAllocated
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: metallb-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:39:42Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Service
+    name: exposed-kube-dns
+    namespace: kube-system
+    resourceVersion: "592"
+    uid: f84e68b5-0c0d-4244-9dda-b07dcd2cb89f
+  lastTimestamp: "2022-12-21T23:39:42Z"
+  message: announcing from node "kind-1-control-plane"
+  metadata:
+    creationTimestamp: "2022-12-21T23:39:42Z"
+    name: exposed-kube-dns.1732f35abc5bb095
+    namespace: kube-system
+    resourceVersion: "594"
+    uid: 3c7de94e-1067-42cd-a07e-0b97971f43be
+  reason: nodeAssigned
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: metallb-speaker
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: kindnet-f7nrh
+    namespace: kube-system
+    resourceVersion: "351"
+    uid: 19fd76ff-c6fb-4f43-bc50-34a06b0bf30b
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: Successfully assigned kube-system/kindnet-f7nrh to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kindnet-f7nrh.1732f347b8394c66
+    namespace: kube-system
+    resourceVersion: "358"
+    uid: 697abe49-6d77-412e-ab6a-0ccf962bf27f
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kindnet-cni}
+    kind: Pod
+    name: kindnet-f7nrh
+    namespace: kube-system
+    resourceVersion: "353"
+    uid: 19fd76ff-c6fb-4f43-bc50-34a06b0bf30b
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: Container image "docker.io/kindest/kindnetd:v20221004-44d545d1" already
+    present on machine
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kindnet-f7nrh.1732f347e22e91db
+    namespace: kube-system
+    resourceVersion: "382"
+    uid: 5ce302ea-2d48-4e84-ad19-4a9bc064c378
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:23Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kindnet-cni}
+    kind: Pod
+    name: kindnet-f7nrh
+    namespace: kube-system
+    resourceVersion: "353"
+    uid: 19fd76ff-c6fb-4f43-bc50-34a06b0bf30b
+  lastTimestamp: "2022-12-21T23:38:23Z"
+  message: Created container kindnet-cni
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:23Z"
+    name: kindnet-f7nrh.1732f3483ec56349
+    namespace: kube-system
+    resourceVersion: "389"
+    uid: cf8012cb-f6ba-40af-a4b5-fc492494e8dd
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:23Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kindnet-cni}
+    kind: Pod
+    name: kindnet-f7nrh
+    namespace: kube-system
+    resourceVersion: "353"
+    uid: 19fd76ff-c6fb-4f43-bc50-34a06b0bf30b
+  lastTimestamp: "2022-12-21T23:38:23Z"
+  message: Started container kindnet-cni
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:23Z"
+    name: kindnet-f7nrh.1732f3485d9475f3
+    namespace: kube-system
+    resourceVersion: "391"
+    uid: 1629806b-3c2d-48ae-90ff-573bfb77e4de
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: DaemonSet
+    name: kindnet
+    namespace: kube-system
+    resourceVersion: "264"
+    uid: ebe628b4-6b5c-4e38-adcd-ce6c08e6989f
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: 'Created pod: kindnet-f7nrh'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kindnet.1732f347b7c9be32
+    namespace: kube-system
+    resourceVersion: "352"
+    uid: 97005f70-3a61-4706-805b-06b8e6c2c78a
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: daemonset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:07Z"
+  involvedObject:
+    apiVersion: coordination.k8s.io/v1
+    kind: Lease
+    name: kube-controller-manager
+    namespace: kube-system
+    resourceVersion: "240"
+    uid: 6b954192-a959-4f93-9165-d7ec1f8eb3f7
+  lastTimestamp: "2022-12-21T23:38:07Z"
+  message: kind-1-control-plane_49d9ca4f-3ff3-4837-b21d-4f0461abc984 became leader
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:07Z"
+    name: kube-controller-manager.1732f34485d66c0f
+    namespace: kube-system
+    resourceVersion: "242"
+    uid: 924d341c-bfb7-4208-aad6-8b04d41515da
+  reason: LeaderElection
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kube-controller-manager
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: kube-proxy-wljsj
+    namespace: kube-system
+    resourceVersion: "350"
+    uid: c2e207ff-948f-4bd7-8033-23a811fc9aec
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: Successfully assigned kube-system/kube-proxy-wljsj to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kube-proxy-wljsj.1732f347b88f26eb
+    namespace: kube-system
+    resourceVersion: "359"
+    uid: ce6c0a56-fada-4782-bf83-f0922ad6bd1b
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kube-proxy}
+    kind: Pod
+    name: kube-proxy-wljsj
+    namespace: kube-system
+    resourceVersion: "354"
+    uid: c2e207ff-948f-4bd7-8033-23a811fc9aec
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: Container image "registry.k8s.io/kube-proxy:v1.25.3" already present on
+    machine
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kube-proxy-wljsj.1732f347d424cd24
+    namespace: kube-system
+    resourceVersion: "381"
+    uid: 13691279-7f20-4153-8969-459911a5709c
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:22Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kube-proxy}
+    kind: Pod
+    name: kube-proxy-wljsj
+    namespace: kube-system
+    resourceVersion: "354"
+    uid: c2e207ff-948f-4bd7-8033-23a811fc9aec
+  lastTimestamp: "2022-12-21T23:38:22Z"
+  message: Created container kube-proxy
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:22Z"
+    name: kube-proxy-wljsj.1732f348002121d5
+    namespace: kube-system
+    resourceVersion: "383"
+    uid: e0567ab8-b3fe-4d11-9c49-48798346321f
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:22Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{kube-proxy}
+    kind: Pod
+    name: kube-proxy-wljsj
+    namespace: kube-system
+    resourceVersion: "354"
+    uid: c2e207ff-948f-4bd7-8033-23a811fc9aec
+  lastTimestamp: "2022-12-21T23:38:22Z"
+  message: Started container kube-proxy
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:22Z"
+    name: kube-proxy-wljsj.1732f3480b756050
+    namespace: kube-system
+    resourceVersion: "384"
+    uid: d552528c-d97e-4efe-801b-21f3bbad50b8
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:21Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: DaemonSet
+    name: kube-proxy
+    namespace: kube-system
+    resourceVersion: "226"
+    uid: 206067c5-f55e-40a5-ab20-addf2ce366cd
+  lastTimestamp: "2022-12-21T23:38:21Z"
+  message: 'Created pod: kube-proxy-wljsj'
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:21Z"
+    name: kube-proxy.1732f347b7c9e27b
+    namespace: kube-system
+    resourceVersion: "357"
+    uid: cbf0632a-7b67-4f2c-9379-72d123d0ee3a
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: daemonset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:38:08Z"
+  involvedObject:
+    apiVersion: coordination.k8s.io/v1
+    kind: Lease
+    name: kube-scheduler
+    namespace: kube-system
+    resourceVersion: "258"
+    uid: 1c527048-2ad7-4713-8660-e53ff2074534
+  lastTimestamp: "2022-12-21T23:38:08Z"
+  message: kind-1-control-plane_b4b149f8-6ade-420d-b7f4-4cb366fa4d97 became leader
+  metadata:
+    creationTimestamp: "2022-12-21T23:38:08Z"
+    name: kube-scheduler.1732f344c8ff7199
+    namespace: kube-system
+    resourceVersion: "259"
+    uid: f3172e81-2745-4ea7-92d8-d1ce98cb6cdf
+  reason: LeaderElection
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:41:44Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: metrics-server-69dcc44d99-c4h5c
+    namespace: kube-system
+    resourceVersion: "1032"
+    uid: fafcbdd9-db3e-485e-bfe1-3e414473785a
+  lastTimestamp: "2022-12-21T23:41:44Z"
+  message: Successfully assigned kube-system/metrics-server-69dcc44d99-c4h5c to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-21T23:41:44Z"
+    name: metrics-server-69dcc44d99-c4h5c.1732f3773374a761
+    namespace: kube-system
+    resourceVersion: "1036"
+    uid: 7ae0baae-8d91-4c4d-afe0-3d0a8b04236c
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:41:45Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{metrics-server}
+    kind: Pod
+    name: metrics-server-69dcc44d99-c4h5c
+    namespace: kube-system
+    resourceVersion: "1034"
+    uid: fafcbdd9-db3e-485e-bfe1-3e414473785a
+  lastTimestamp: "2022-12-21T23:41:45Z"
+  message: Pulling image "k8s.gcr.io/metrics-server/metrics-server:v0.5.0"
+  metadata:
+    creationTimestamp: "2022-12-21T23:41:45Z"
+    name: metrics-server-69dcc44d99-c4h5c.1732f3775fae0cbd
+    namespace: kube-system
+    resourceVersion: "1042"
+    uid: 53b50565-7f54-4c8e-9e02-7210b382d6df
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:42:15Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{metrics-server}
+    kind: Pod
+    name: metrics-server-69dcc44d99-c4h5c
+    namespace: kube-system
+    resourceVersion: "1034"
+    uid: fafcbdd9-db3e-485e-bfe1-3e414473785a
+  lastTimestamp: "2022-12-21T23:42:15Z"
+  message: Successfully pulled image "k8s.gcr.io/metrics-server/metrics-server:v0.5.0"
+    in 29.938086809s
+  metadata:
+    creationTimestamp: "2022-12-21T23:42:15Z"
+    name: metrics-server-69dcc44d99-c4h5c.1732f37e58207a5c
+    namespace: kube-system
+    resourceVersion: "1100"
+    uid: c6134a0b-6cd8-40e4-bb86-eed61daa70ee
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:42:15Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{metrics-server}
+    kind: Pod
+    name: metrics-server-69dcc44d99-c4h5c
+    namespace: kube-system
+    resourceVersion: "1034"
+    uid: fafcbdd9-db3e-485e-bfe1-3e414473785a
+  lastTimestamp: "2022-12-21T23:42:15Z"
+  message: Created container metrics-server
+  metadata:
+    creationTimestamp: "2022-12-21T23:42:15Z"
+    name: metrics-server-69dcc44d99-c4h5c.1732f37e597c7bb2
+    namespace: kube-system
+    resourceVersion: "1101"
+    uid: 99cd65c7-5748-4cf6-9ea4-887792523c5a
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:42:15Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{metrics-server}
+    kind: Pod
+    name: metrics-server-69dcc44d99-c4h5c
+    namespace: kube-system
+    resourceVersion: "1034"
+    uid: fafcbdd9-db3e-485e-bfe1-3e414473785a
+  lastTimestamp: "2022-12-21T23:42:15Z"
+  message: Started container metrics-server
+  metadata:
+    creationTimestamp: "2022-12-21T23:42:15Z"
+    name: metrics-server-69dcc44d99-c4h5c.1732f37e60604494
+    namespace: kube-system
+    resourceVersion: "1103"
+    uid: 4b75871a-0a47-43ca-b91a-2be56d77baf5
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:41:44Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: metrics-server-69dcc44d99
+    namespace: kube-system
+    resourceVersion: "1027"
+    uid: 37cf1aed-97bb-47c5-96c7-4c1a23c34977
+  lastTimestamp: "2022-12-21T23:41:44Z"
+  message: 'Created pod: metrics-server-69dcc44d99-c4h5c'
+  metadata:
+    creationTimestamp: "2022-12-21T23:41:44Z"
+    name: metrics-server-69dcc44d99.1732f37732367e05
+    namespace: kube-system
+    resourceVersion: "1035"
+    uid: 7d4bde45-4368-4c52-9e3f-02d5d94d10f9
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-21T23:41:44Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: metrics-server
+    namespace: kube-system
+    resourceVersion: "1025"
+    uid: d28d97e0-2d30-4e8a-ac65-e47f604bb34e
+  lastTimestamp: "2022-12-21T23:41:44Z"
+  message: Scaled up replica set metrics-server-69dcc44d99 to 1
+  metadata:
+    creationTimestamp: "2022-12-21T23:41:44Z"
+    name: metrics-server.1732f3772b8d76e7
+    namespace: kube-system
+    resourceVersion: "1029"
+    uid: cdc6fdf7-d7c1-4827-8b05-f4662b9c976a
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "5256"

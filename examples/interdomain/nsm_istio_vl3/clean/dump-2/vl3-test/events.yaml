@@ -1,0 +1,523 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:20Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5070"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:20Z"
+  message: Successfully assigned vl3-test/ubuntu-deployment-584577c947-77dn2 to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:20Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc4a2f0814
+    namespace: vl3-test
+    resourceVersion: "5074"
+    uid: 74d4ffe3-a312-466c-98a9-8f85add56203
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{istio-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:21Z"
+  message: Container image "docker.io/istio/proxyv2:1.16.0" already present on machine
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:21Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc64358b95
+    namespace: vl3-test
+    resourceVersion: "5084"
+    uid: 41e80cc5-dbf7-4697-845c-792ddb4eada0
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{istio-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:21Z"
+  message: Created container istio-init
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:21Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc650f4c18
+    namespace: vl3-test
+    resourceVersion: "5085"
+    uid: a8b57ba3-33c6-4727-aece-f3654e29e3ad
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:21Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{istio-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:21Z"
+  message: Started container istio-init
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:21Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc6d8174d4
+    namespace: vl3-test
+    resourceVersion: "5086"
+    uid: 8ff568a2-c940-46d5-9bf0-eb831767e224
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:22Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{cmd-nsc-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:22Z"
+  message: Container image "ghcr.io/networkservicemesh/cmd-nsc-init:v1.7.0-rc.2" already
+    present on machine
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:22Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc9d3e1385
+    namespace: vl3-test
+    resourceVersion: "5088"
+    uid: 0eb23035-5f02-4064-ba48-78e8eafe8eb6
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:22Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{cmd-nsc-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:22Z"
+  message: Created container cmd-nsc-init
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:22Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bc9e67de08
+    namespace: vl3-test
+    resourceVersion: "5090"
+    uid: 9d17b64b-00bc-4240-bacf-ac8ec8728add
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:22Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.initContainers{cmd-nsc-init}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:22Z"
+  message: Started container cmd-nsc-init
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:22Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bca501549c
+    namespace: vl3-test
+    resourceVersion: "5091"
+    uid: 3697aa74-7a2f-4d17-9543-e3f32660b76d
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:31Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{ubuntu}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:31Z"
+  message: Pulling image "ubuntu"
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:31Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5beb817ff40
+    namespace: vl3-test
+    resourceVersion: "5108"
+    uid: fdcdca67-a3dc-4f5f-a45a-fe533470c447
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{ubuntu}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Successfully pulled image "ubuntu" in 2.015331166s
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf30398e23
+    namespace: vl3-test
+    resourceVersion: "5117"
+    uid: de689954-df25-4aec-b7d6-228a5691ac04
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{ubuntu}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Created container ubuntu
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf3155ba4d
+    namespace: vl3-test
+    resourceVersion: "5118"
+    uid: 3dd3a695-6bb9-47eb-bd54-96891b215d4d
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{ubuntu}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Started container ubuntu
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf3834496c
+    namespace: vl3-test
+    resourceVersion: "5119"
+    uid: e076e32e-c7ab-41b0-8f57-844ab7120b04
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{istio-proxy}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Container image "docker.io/istio/proxyv2:1.16.0" already present on machine
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf384245ce
+    namespace: vl3-test
+    resourceVersion: "5120"
+    uid: b1eb1641-805d-4b3a-8854-f917e918f64d
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{istio-proxy}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Created container istio-proxy
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf39edf10e
+    namespace: vl3-test
+    resourceVersion: "5121"
+    uid: 6463cb6a-093f-4b15-9c1f-bb36a5dd9bec
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{istio-proxy}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Started container istio-proxy
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf41412018
+    namespace: vl3-test
+    resourceVersion: "5122"
+    uid: 352b584e-e1b4-4376-9d60-d8d2e8f2b666
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{cmd-nsc}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Container image "ghcr.io/networkservicemesh/cmd-nsc:v1.7.0-rc.2" already
+    present on machine
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf4150858e
+    namespace: vl3-test
+    resourceVersion: "5123"
+    uid: 54f7d701-4b68-4ba7-957a-43d6587f3378
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{cmd-nsc}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Created container cmd-nsc
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf42640acf
+    namespace: vl3-test
+    resourceVersion: "5124"
+    uid: e462c955-9121-4fbb-9568-474783ff473d
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:33Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{cmd-nsc}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:33Z"
+  message: Started container cmd-nsc
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:33Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf48d1ff05
+    namespace: vl3-test
+    resourceVersion: "5125"
+    uid: b4cb1c7a-dba4-4a83-bf3b-8a2de3a51a62
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 9
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:34Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{istio-proxy}
+    kind: Pod
+    name: ubuntu-deployment-584577c947-77dn2
+    namespace: vl3-test
+    resourceVersion: "5072"
+    uid: e2281074-49b9-46b0-9872-c658393505ee
+  lastTimestamp: "2022-12-22T00:23:47Z"
+  message: 'Readiness probe failed: Get "http://10.244.0.19:15021/healthz/ready":
+    dial tcp 10.244.0.19:15021: connect: connection refused'
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:34Z"
+    name: ubuntu-deployment-584577c947-77dn2.1732f5bf6bf99ef3
+    namespace: vl3-test
+    resourceVersion: "5159"
+    uid: b0ff1f99-8174-48bc-b47b-dbb8f78c845f
+  reason: Unhealthy
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Warning
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:20Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: ubuntu-deployment-584577c947
+    namespace: vl3-test
+    resourceVersion: "5067"
+    uid: d022b472-b0f9-4205-bb16-acbefc026961
+  lastTimestamp: "2022-12-22T00:23:20Z"
+  message: 'Created pod: ubuntu-deployment-584577c947-77dn2'
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:20Z"
+    name: ubuntu-deployment-584577c947.1732f5bc49d7e09f
+    namespace: vl3-test
+    resourceVersion: "5073"
+    uid: e6772d12-6ab9-4a7e-a03a-56815dea5831
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-22T00:23:20Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ubuntu-deployment
+    namespace: vl3-test
+    resourceVersion: "5066"
+    uid: 90854250-e27c-47f1-9ff9-62a9a74acfa7
+  lastTimestamp: "2022-12-22T00:23:20Z"
+  message: Scaled up replica set ubuntu-deployment-584577c947 to 1
+  metadata:
+    creationTimestamp: "2022-12-22T00:23:20Z"
+    name: ubuntu-deployment.1732f5bc47e3f397
+    namespace: vl3-test
+    resourceVersion: "5068"
+    uid: fcd1442f-f2e5-4c32-a7b9-0d0115ee22dc
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "5267"
