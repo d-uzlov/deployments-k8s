@@ -39,6 +39,13 @@ sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu-2
 ```
 
+deploy service
+```bash
+k1 apply -f sample-ns.yaml
+sleep 0.5
+kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
+```
+
 Get istio config
 ```bash
 k1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
@@ -48,26 +55,65 @@ ingressIP - copy from nsm interface ip
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 # sed -i '' 's/15012/15010/' "${WORK_DIR}/mesh.yaml"
 rm -rf ubuntu-standard/istio-vm-configs
-rm -rf ubuntu-hosts/istio-vm-configs
-rm -rf ubuntu-hosts-2/istio-vm-configs
-rm -rf ubuntu-hosts-2-vmlike/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-standard/istio-vm-configs
+rm -rf ubuntu-hosts/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-hosts/istio-vm-configs
+rm -rf ubuntu-hosts-2/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-hosts-2/istio-vm-configs
-cp -r "${WORK_DIR}" ubuntu-hosts-2-vmlike/istio-vm-configs
 ```
 
 ```bash
-time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >1-istio-standard.pcap &
-sleep 1
+k1 apply -k ubuntu-vanilla
+sleep 0.5
+k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-vanilla-http.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
+kill -2 $!
+k1 apply -f mtls-service-entry-hw1.yaml
+k1 apply -f mtls-dest-rule.yaml
+sleep 0.5
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-vanilla-mtls.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
+kill -2 $!
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+sleep 0.5
+k1 delete -k ubuntu-vanilla
+tshark -r 5-istio-vanilla-http.pcap | grep HTTP
+! tshark -r 5-istio-vanilla-mtls.pcap | grep HTTP
+```
+
+```bash
 k1 apply -k ubuntu-standard
 sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-sleep 1
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-standard-http.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
 kill -2 $!
-sleep 1
+k1 apply -f mtls-service-entry-hw1.yaml
+k1 apply -f mtls-dest-rule.yaml
+sleep 0.5
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-standard-mtls.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
+kill -2 $!
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+sleep 0.5
 k1 delete -k ubuntu-standard
-tshark -r 1-istio-standard.pcap
+tshark -r 5-istio-standard-http.pcap | grep HTTP
+! tshark -r 5-istio-standard-mtls.pcap | grep HTTP
 ```
 
 Add tcpdump to ubuntu
@@ -79,16 +125,27 @@ sleep 1
 k1 apply -k ubuntu-hosts
 sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-time k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-1-nsm.pcap &
-k1 -n vl3-test get pod
-k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl 172.16.0.2:8080/ready -vs
-sleep 1
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-http.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
 kill -2 $!
-# time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-2-nsm.pcap
-sleep 1
+k1 apply -f mtls-service-entry-hw1.yaml
+k1 apply -f mtls-dest-rule.yaml
+sleep 0.5
+k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-mtls.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
+kill -2 $!
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+sleep 0.5
 k1 delete -k ubuntu-hosts
-tshark -r 4-istio-tcpdump-1-nsm.pcap
-# tshark -r 4-istio-tcpdump-2-nsm.pcap
+tshark -r 5-istio-hosts-http.pcap | grep HTTP
+! tshark -r 5-istio-hosts-mtls.pcap | grep HTTP
 ```
 
 ```bash
@@ -97,11 +154,27 @@ sleep 1
 k2 apply -k ubuntu-hosts-2
 sleep 0.5
 k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-sleep 1
+k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
+k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
+k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-2-http.pcap &
+sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
 kill -2 $!
-sleep 1
+k1 apply -f mtls-service-entry-hw1.yaml
+k1 apply -f mtls-dest-rule.yaml
+sleep 0.5
+k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-2-mtls.pcap &
+sleep 0.5
+k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+sleep 0.5
+kill -2 $!
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+sleep 0.5
 k2 delete -k ubuntu-hosts-2
-tshark -r 2-istio-nsm.pcap
+tshark -r 5-istio-hosts-2-http.pcap | grep HTTP
+! tshark -r 5-istio-hosts-2-mtls.pcap | grep HTTP
 ```
 
 ```bash
@@ -115,12 +188,6 @@ kill -2 $!
 sleep 1
 k2 delete -k ubuntu-hosts-2-vmlike
 tshark -r 2-istio-nsm-vmlike.pcap
-```
-
-```bash
-k1 apply -f sample-ns.yaml
-sleep 0.5
-kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
 ```
 
 redeploy ubuntu
@@ -139,12 +206,6 @@ k2 -n vl3-test exec deployments/ubuntu-deployment -c istio-proxy -- curl hellowo
 sleep 1
 kill -2 $!
 tshark -r 3-mtls-default.pcap | grep HTTP
-```
-
-enable mtls
-```bash
-k1 apply -f mtls-service-entry-hw1.yaml
-k1 apply -f mtls-dest-rule.yaml
 ```
 
 Check mtls again

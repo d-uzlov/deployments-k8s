@@ -6,7 +6,7 @@ namespace: vl3-test
 
 resources:
 - namespace.yaml
-- ubuntu-ic-hosts.yaml
+- ubuntu.yaml
 
 configMapGenerator:
   - name: cert-file
