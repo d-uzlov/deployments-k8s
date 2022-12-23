@@ -1,0 +1,450 @@
+==== START logs for container kube-controller-manager of pod kube-system/kube-controller-manager-kind-1-control-plane ====
+I1223 13:19:17.852934       1 serving.go:348] Generated self-signed cert in-memory
+I1223 13:19:18.177800       1 controllermanager.go:178] Version: v1.25.3
+I1223 13:19:18.177832       1 controllermanager.go:180] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1223 13:19:18.179096       1 dynamic_cafile_content.go:157] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I1223 13:19:18.179507       1 secure_serving.go:210] Serving securely on 127.0.0.1:10257
+I1223 13:19:18.179753       1 leaderelection.go:248] attempting to acquire leader lease kube-system/kube-controller-manager...
+I1223 13:19:18.180028       1 tlsconfig.go:240] "Starting DynamicServingCertificateController"
+I1223 13:19:18.180208       1 dynamic_cafile_content.go:157] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+E1223 13:19:22.552926       1 leaderelection.go:330] error retrieving resource lock kube-system/kube-controller-manager: leases.coordination.k8s.io "kube-controller-manager" is forbidden: User "system:kube-controller-manager" cannot get resource "leases" in API group "coordination.k8s.io" in the namespace "kube-system"
+I1223 13:19:26.512663       1 leaderelection.go:258] successfully acquired lease kube-system/kube-controller-manager
+I1223 13:19:26.512879       1 event.go:294] "Event occurred" object="kube-system/kube-controller-manager" fieldPath="" kind="Lease" apiVersion="coordination.k8s.io/v1" type="Normal" reason="LeaderElection" message="kind-1-control-plane_3daba3d6-3ef4-45de-9240-135f59b5d2f6 became leader"
+I1223 13:19:26.522216       1 shared_informer.go:255] Waiting for caches to sync for tokens
+I1223 13:19:26.542353       1 controllermanager.go:603] Started "horizontalpodautoscaling"
+I1223 13:19:26.542411       1 horizontal.go:168] Starting HPA controller
+I1223 13:19:26.542990       1 shared_informer.go:255] Waiting for caches to sync for HPA
+I1223 13:19:26.557688       1 controllermanager.go:603] Started "disruption"
+I1223 13:19:26.558637       1 disruption.go:421] Sending events to api server.
+I1223 13:19:26.558975       1 disruption.go:432] Starting disruption controller
+I1223 13:19:26.559007       1 shared_informer.go:255] Waiting for caches to sync for disruption
+I1223 13:19:26.570753       1 controllermanager.go:603] Started "csrcleaner"
+I1223 13:19:26.570937       1 cleaner.go:82] Starting CSR cleaner controller
+I1223 13:19:26.582763       1 controllermanager.go:603] Started "podgc"
+I1223 13:19:26.583328       1 gc_controller.go:99] Starting GC controller
+I1223 13:19:26.583618       1 shared_informer.go:255] Waiting for caches to sync for GC
+I1223 13:19:26.593568       1 controllermanager.go:603] Started "replicaset"
+I1223 13:19:26.593754       1 replica_set.go:205] Starting replicaset controller
+I1223 13:19:26.594073       1 shared_informer.go:255] Waiting for caches to sync for ReplicaSet
+I1223 13:19:26.601642       1 node_ipam_controller.go:91] Sending events to api server.
+I1223 13:19:26.622711       1 shared_informer.go:262] Caches are synced for tokens
+I1223 13:19:36.613272       1 range_allocator.go:76] Sending events to api server.
+I1223 13:19:36.613404       1 range_allocator.go:110] No Secondary Service CIDR provided. Skipping filtering out secondary service addresses.
+I1223 13:19:36.613425       1 controllermanager.go:603] Started "nodeipam"
+I1223 13:19:36.613553       1 node_ipam_controller.go:154] Starting ipam controller
+I1223 13:19:36.613580       1 shared_informer.go:255] Waiting for caches to sync for node
+E1223 13:19:36.620826       1 core.go:92] Failed to start service controller: WARNING: no cloud provider provided, services of type LoadBalancer will fail
+W1223 13:19:36.620872       1 controllermanager.go:581] Skipping "service"
+I1223 13:19:36.649460       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for deployments.apps
+I1223 13:19:36.649524       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for poddisruptionbudgets.policy
+I1223 13:19:36.649542       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for limitranges
+I1223 13:19:36.649555       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for roles.rbac.authorization.k8s.io
+I1223 13:19:36.649566       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for jobs.batch
+I1223 13:19:36.649577       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for ingresses.networking.k8s.io
+I1223 13:19:36.649611       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for rolebindings.rbac.authorization.k8s.io
+I1223 13:19:36.649659       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for statefulsets.apps
+I1223 13:19:36.649767       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for podtemplates
+I1223 13:19:36.649891       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for leases.coordination.k8s.io
+I1223 13:19:36.649932       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for networkpolicies.networking.k8s.io
+I1223 13:19:36.649955       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for endpoints
+I1223 13:19:36.649979       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for horizontalpodautoscalers.autoscaling
+I1223 13:19:36.650002       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for replicasets.apps
+I1223 13:19:36.650023       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for controllerrevisions.apps
+I1223 13:19:36.650070       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for daemonsets.apps
+I1223 13:19:36.650108       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for cronjobs.batch
+I1223 13:19:36.650133       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for csistoragecapacities.storage.k8s.io
+I1223 13:19:36.650163       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for endpointslices.discovery.k8s.io
+I1223 13:19:36.650258       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for serviceaccounts
+I1223 13:19:36.650291       1 controllermanager.go:603] Started "resourcequota"
+I1223 13:19:36.650452       1 resource_quota_controller.go:277] Starting resource quota controller
+I1223 13:19:36.650517       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1223 13:19:36.650693       1 resource_quota_monitor.go:295] QuotaMonitor running
+I1223 13:19:36.653414       1 controllermanager.go:603] Started "csrsigning"
+I1223 13:19:36.653559       1 certificate_controller.go:112] Starting certificate controller "csrsigning-kubelet-serving"
+I1223 13:19:36.656136       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-serving
+I1223 13:19:36.653691       1 certificate_controller.go:112] Starting certificate controller "csrsigning-kubelet-client"
+I1223 13:19:36.656206       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kubelet-client
+I1223 13:19:36.653708       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1223 13:19:36.653730       1 certificate_controller.go:112] Starting certificate controller "csrsigning-kube-apiserver-client"
+I1223 13:19:36.656440       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-kube-apiserver-client
+I1223 13:19:36.653738       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1223 13:19:36.653748       1 certificate_controller.go:112] Starting certificate controller "csrsigning-legacy-unknown"
+I1223 13:19:36.656837       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrsigning-legacy-unknown
+I1223 13:19:36.653754       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1223 13:19:36.653801       1 dynamic_serving_content.go:132] "Starting controller" name="csr-controller::/etc/kubernetes/pki/ca.crt::/etc/kubernetes/pki/ca.key"
+I1223 13:19:36.667016       1 controllermanager.go:603] Started "ttl"
+I1223 13:19:36.667542       1 ttl_controller.go:120] Starting TTL controller
+I1223 13:19:36.667594       1 shared_informer.go:255] Waiting for caches to sync for TTL
+I1223 13:19:36.674830       1 controllermanager.go:603] Started "persistentvolume-binder"
+I1223 13:19:36.675383       1 pv_controller_base.go:318] Starting persistent volume controller
+I1223 13:19:36.675420       1 shared_informer.go:255] Waiting for caches to sync for persistent volume
+I1223 13:19:36.682012       1 controllermanager.go:603] Started "ttl-after-finished"
+I1223 13:19:36.682128       1 ttlafterfinished_controller.go:109] Starting TTL after finished controller
+I1223 13:19:36.682157       1 shared_informer.go:255] Waiting for caches to sync for TTL after finished
+I1223 13:19:36.688656       1 controllermanager.go:603] Started "cronjob"
+I1223 13:19:36.689129       1 cronjob_controllerv2.go:135] "Starting cronjob controller v2"
+I1223 13:19:36.689171       1 shared_informer.go:255] Waiting for caches to sync for cronjob
+I1223 13:19:36.696136       1 controllermanager.go:603] Started "attachdetach"
+I1223 13:19:36.696508       1 attach_detach_controller.go:328] Starting attach detach controller
+I1223 13:19:36.696520       1 shared_informer.go:255] Waiting for caches to sync for attach detach
+I1223 13:19:36.711921       1 controllermanager.go:603] Started "endpointslicemirroring"
+I1223 13:19:36.712315       1 endpointslicemirroring_controller.go:216] Starting EndpointSliceMirroring controller
+I1223 13:19:36.712423       1 shared_informer.go:255] Waiting for caches to sync for endpoint_slice_mirroring
+I1223 13:19:36.756950       1 controllermanager.go:603] Started "replicationcontroller"
+I1223 13:19:36.757133       1 replica_set.go:205] Starting replicationcontroller controller
+I1223 13:19:36.757141       1 shared_informer.go:255] Waiting for caches to sync for ReplicationController
+I1223 13:19:36.905336       1 controllermanager.go:603] Started "deployment"
+I1223 13:19:36.910962       1 deployment_controller.go:160] "Starting controller" controller="deployment"
+I1223 13:19:36.911245       1 shared_informer.go:255] Waiting for caches to sync for deployment
+I1223 13:19:37.056627       1 controllermanager.go:603] Started "statefulset"
+I1223 13:19:37.056724       1 stateful_set.go:152] Starting stateful set controller
+I1223 13:19:37.056730       1 shared_informer.go:255] Waiting for caches to sync for stateful set
+I1223 13:19:37.205174       1 controllermanager.go:603] Started "bootstrapsigner"
+W1223 13:19:37.205224       1 core.go:232] configure-cloud-routes is set, but no cloud provider specified. Will not configure cloud provider routes.
+W1223 13:19:37.205232       1 controllermanager.go:581] Skipping "route"
+I1223 13:19:37.205268       1 shared_informer.go:255] Waiting for caches to sync for bootstrap_signer
+I1223 13:19:37.355396       1 controllermanager.go:603] Started "clusterrole-aggregation"
+I1223 13:19:37.355705       1 clusterroleaggregation_controller.go:194] Starting ClusterRoleAggregator
+I1223 13:19:37.355828       1 shared_informer.go:255] Waiting for caches to sync for ClusterRoleAggregator
+I1223 13:19:37.504849       1 controllermanager.go:603] Started "pv-protection"
+I1223 13:19:37.505044       1 pv_protection_controller.go:79] Starting PV protection controller
+I1223 13:19:37.505133       1 shared_informer.go:255] Waiting for caches to sync for PV protection
+I1223 13:19:37.656145       1 controllermanager.go:603] Started "endpointslice"
+I1223 13:19:37.656254       1 endpointslice_controller.go:261] Starting endpoint slice controller
+I1223 13:19:37.656263       1 shared_informer.go:255] Waiting for caches to sync for endpoint_slice
+I1223 13:19:37.806939       1 controllermanager.go:603] Started "job"
+I1223 13:19:37.807041       1 job_controller.go:196] Starting job controller
+I1223 13:19:37.807049       1 shared_informer.go:255] Waiting for caches to sync for job
+I1223 13:19:37.857800       1 node_lifecycle_controller.go:497] Controller will reconcile labels.
+I1223 13:19:37.858454       1 controllermanager.go:603] Started "nodelifecycle"
+I1223 13:19:37.858571       1 node_lifecycle_controller.go:532] Sending events to api server.
+I1223 13:19:37.858639       1 node_lifecycle_controller.go:543] Starting node controller
+I1223 13:19:37.858649       1 shared_informer.go:255] Waiting for caches to sync for taint
+I1223 13:19:38.007456       1 controllermanager.go:603] Started "pvc-protection"
+I1223 13:19:38.007544       1 pvc_protection_controller.go:103] "Starting PVC protection controller"
+I1223 13:19:38.007555       1 shared_informer.go:255] Waiting for caches to sync for PVC protection
+I1223 13:19:38.157713       1 controllermanager.go:603] Started "ephemeral-volume"
+I1223 13:19:38.157825       1 controller.go:169] Starting ephemeral volume controller
+I1223 13:19:38.158125       1 shared_informer.go:255] Waiting for caches to sync for ephemeral
+I1223 13:19:38.306167       1 controllermanager.go:603] Started "daemonset"
+I1223 13:19:38.306295       1 daemon_controller.go:291] Starting daemon sets controller
+I1223 13:19:38.306304       1 shared_informer.go:255] Waiting for caches to sync for daemon sets
+E1223 13:19:38.357780       1 core.go:218] failed to start cloud node lifecycle controller: no cloud provider provided
+W1223 13:19:38.357847       1 controllermanager.go:581] Skipping "cloud-node-lifecycle"
+I1223 13:19:38.507784       1 controllermanager.go:603] Started "endpoint"
+I1223 13:19:38.507867       1 endpoints_controller.go:182] Starting endpoint controller
+I1223 13:19:38.507883       1 shared_informer.go:255] Waiting for caches to sync for endpoint
+I1223 13:19:38.769471       1 controllermanager.go:603] Started "namespace"
+I1223 13:19:38.769555       1 namespace_controller.go:200] Starting namespace controller
+I1223 13:19:38.769567       1 shared_informer.go:255] Waiting for caches to sync for namespace
+I1223 13:19:38.906696       1 controllermanager.go:603] Started "serviceaccount"
+I1223 13:19:38.906752       1 serviceaccounts_controller.go:117] Starting service account controller
+I1223 13:19:38.906761       1 shared_informer.go:255] Waiting for caches to sync for service account
+I1223 13:19:39.156823       1 controllermanager.go:603] Started "garbagecollector"
+I1223 13:19:39.156950       1 garbagecollector.go:154] Starting garbage collector controller
+I1223 13:19:39.156968       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1223 13:19:39.157022       1 graph_builder.go:291] GraphBuilder running
+I1223 13:19:39.205297       1 controllermanager.go:603] Started "csrapproving"
+I1223 13:19:39.205380       1 certificate_controller.go:112] Starting certificate controller "csrapproving"
+I1223 13:19:39.205389       1 shared_informer.go:255] Waiting for caches to sync for certificate-csrapproving
+I1223 13:19:39.457251       1 controllermanager.go:603] Started "tokencleaner"
+I1223 13:19:39.457417       1 tokencleaner.go:118] Starting token cleaner controller
+I1223 13:19:39.457474       1 shared_informer.go:255] Waiting for caches to sync for token_cleaner
+I1223 13:19:39.457505       1 shared_informer.go:262] Caches are synced for token_cleaner
+I1223 13:19:39.607681       1 controllermanager.go:603] Started "persistentvolume-expander"
+I1223 13:19:39.607817       1 expand_controller.go:340] Starting expand controller
+I1223 13:19:39.607858       1 shared_informer.go:255] Waiting for caches to sync for expand
+I1223 13:19:39.755817       1 controllermanager.go:603] Started "root-ca-cert-publisher"
+I1223 13:19:39.757448       1 publisher.go:107] Starting root CA certificate configmap publisher
+I1223 13:19:39.757485       1 shared_informer.go:255] Waiting for caches to sync for crt configmap
+I1223 13:19:39.771674       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+W1223 13:19:39.787868       1 actual_state_of_world.go:541] Failed to update statusUpdateNeeded field in actual state of world: Failed to set statusUpdateNeeded to needed true, because nodeName="kind-1-control-plane" does not exist
+I1223 13:19:39.804602       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1223 13:19:39.805886       1 shared_informer.go:262] Caches are synced for bootstrap_signer
+I1223 13:19:39.805957       1 shared_informer.go:262] Caches are synced for PV protection
+I1223 13:19:39.808363       1 shared_informer.go:262] Caches are synced for expand
+I1223 13:19:39.813070       1 shared_informer.go:262] Caches are synced for endpoint_slice_mirroring
+I1223 13:19:39.815835       1 shared_informer.go:262] Caches are synced for node
+I1223 13:19:39.816109       1 range_allocator.go:166] Starting range CIDR allocator
+I1223 13:19:39.816143       1 shared_informer.go:255] Waiting for caches to sync for cidrallocator
+I1223 13:19:39.816153       1 shared_informer.go:262] Caches are synced for cidrallocator
+I1223 13:19:39.822433       1 range_allocator.go:367] Set node kind-1-control-plane PodCIDR to [10.244.0.0/24]
+I1223 13:19:39.856879       1 shared_informer.go:262] Caches are synced for ClusterRoleAggregator
+I1223 13:19:39.859023       1 shared_informer.go:262] Caches are synced for crt configmap
+I1223 13:19:39.867861       1 shared_informer.go:262] Caches are synced for TTL
+I1223 13:19:39.870230       1 shared_informer.go:262] Caches are synced for namespace
+I1223 13:19:39.905523       1 shared_informer.go:262] Caches are synced for certificate-csrapproving
+I1223 13:19:39.908120       1 shared_informer.go:262] Caches are synced for service account
+I1223 13:19:39.956296       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-client
+I1223 13:19:39.956397       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kubelet-serving
+I1223 13:19:39.956681       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-kube-apiserver-client
+I1223 13:19:39.957706       1 shared_informer.go:262] Caches are synced for certificate-csrsigning-legacy-unknown
+I1223 13:19:39.972717       1 shared_informer.go:262] Caches are synced for resource quota
+I1223 13:19:39.976257       1 shared_informer.go:262] Caches are synced for persistent volume
+I1223 13:19:39.984040       1 shared_informer.go:262] Caches are synced for GC
+I1223 13:19:39.984244       1 shared_informer.go:262] Caches are synced for TTL after finished
+I1223 13:19:39.989898       1 shared_informer.go:262] Caches are synced for cronjob
+I1223 13:19:39.995497       1 shared_informer.go:262] Caches are synced for ReplicaSet
+I1223 13:19:39.997284       1 shared_informer.go:262] Caches are synced for attach detach
+I1223 13:19:40.007136       1 shared_informer.go:262] Caches are synced for daemon sets
+I1223 13:19:40.009095       1 shared_informer.go:262] Caches are synced for job
+I1223 13:19:40.009156       1 shared_informer.go:262] Caches are synced for PVC protection
+I1223 13:19:40.009263       1 shared_informer.go:262] Caches are synced for endpoint
+I1223 13:19:40.012712       1 shared_informer.go:262] Caches are synced for deployment
+I1223 13:19:40.043646       1 shared_informer.go:262] Caches are synced for HPA
+I1223 13:19:40.051170       1 shared_informer.go:262] Caches are synced for resource quota
+I1223 13:19:40.056677       1 shared_informer.go:262] Caches are synced for endpoint_slice
+I1223 13:19:40.057156       1 shared_informer.go:262] Caches are synced for stateful set
+I1223 13:19:40.057188       1 shared_informer.go:262] Caches are synced for ReplicationController
+I1223 13:19:40.058274       1 shared_informer.go:262] Caches are synced for ephemeral
+I1223 13:19:40.058706       1 shared_informer.go:262] Caches are synced for taint
+I1223 13:19:40.058900       1 taint_manager.go:204] "Starting NoExecuteTaintManager"
+I1223 13:19:40.059020       1 taint_manager.go:209] "Sending events to api server"
+I1223 13:19:40.059365       1 shared_informer.go:262] Caches are synced for disruption
+I1223 13:19:40.059492       1 node_lifecycle_controller.go:1443] Initializing eviction metric for zone: 
+W1223 13:19:40.059609       1 node_lifecycle_controller.go:1058] Missing timestamp for Node kind-1-control-plane. Assuming now as a timestamp.
+I1223 13:19:40.059672       1 node_lifecycle_controller.go:1209] Controller detected that all Nodes are not-Ready. Entering master disruption mode.
+I1223 13:19:40.059901       1 event.go:294] "Event occurred" object="kind-1-control-plane" fieldPath="" kind="Node" apiVersion="v1" type="Normal" reason="RegisteredNode" message="Node kind-1-control-plane event: Registered Node kind-1-control-plane in Controller"
+I1223 13:19:40.405233       1 shared_informer.go:262] Caches are synced for garbage collector
+I1223 13:19:40.457025       1 shared_informer.go:262] Caches are synced for garbage collector
+I1223 13:19:40.457065       1 garbagecollector.go:163] Garbage collector: all resource monitors have synced. Proceeding to collect garbage
+I1223 13:19:40.576863       1 event.go:294] "Event occurred" object="kube-system/kindnet" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kindnet-xqkww"
+I1223 13:19:40.584910       1 event.go:294] "Event occurred" object="kube-system/kube-proxy" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: kube-proxy-l59gv"
+I1223 13:19:40.630967       1 event.go:294] "Event occurred" object="local-path-storage/local-path-provisioner" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set local-path-provisioner-684f458cdd to 1"
+I1223 13:19:40.634756       1 event.go:294] "Event occurred" object="kube-system/coredns" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set coredns-565d847f94 to 2"
+I1223 13:19:40.764345       1 event.go:294] "Event occurred" object="kube-system/coredns-565d847f94" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: coredns-565d847f94-p867x"
+I1223 13:19:40.770075       1 event.go:294] "Event occurred" object="local-path-storage/local-path-provisioner-684f458cdd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: local-path-provisioner-684f458cdd-kznv2"
+I1223 13:19:40.778098       1 event.go:294] "Event occurred" object="kube-system/coredns-565d847f94" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: coredns-565d847f94-n9j98"
+I1223 13:19:50.061388       1 node_lifecycle_controller.go:1236] Controller detected that some Nodes are Ready. Exiting master disruption mode.
+I1223 13:19:57.421443       1 event.go:294] "Event occurred" object="metallb-system/speaker" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: speaker-cgv26"
+I1223 13:19:57.451941       1 event.go:294] "Event occurred" object="metallb-system/controller" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set controller-6658b8446c to 1"
+I1223 13:19:57.480454       1 event.go:294] "Event occurred" object="metallb-system/controller-6658b8446c" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: controller-6658b8446c-mrw8v"
+I1223 13:21:04.573086       1 event.go:294] "Event occurred" object="spire/spire-server" fieldPath="" kind="StatefulSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="create Pod spire-server-0 in StatefulSet spire-server successful"
+I1223 13:21:04.583392       1 event.go:294] "Event occurred" object="spire/spire-agent" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: spire-agent-8h25c"
+I1223 13:21:10.001364       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for spiffeids.spiffeid.spiffe.io
+I1223 13:21:10.001461       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1223 13:21:10.101800       1 shared_informer.go:262] Caches are synced for resource quota
+I1223 13:21:10.442483       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1223 13:21:10.442993       1 shared_informer.go:262] Caches are synced for garbage collector
+I1223 13:22:31.918675       1 event.go:294] "Event occurred" object="nsm-system/admission-webhook-k8s" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set admission-webhook-k8s-688dfc7685 to 1"
+I1223 13:22:31.964819       1 event.go:294] "Event occurred" object="nsm-system/admission-webhook-k8s-688dfc7685" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: admission-webhook-k8s-688dfc7685-mb5vw"
+I1223 13:22:31.965185       1 event.go:294] "Event occurred" object="nsm-system/nsmgr-proxy" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set nsmgr-proxy-c874d5d87 to 1"
+I1223 13:22:32.023831       1 event.go:294] "Event occurred" object="nsm-system/nsmgr-proxy-c874d5d87" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: nsmgr-proxy-c874d5d87-7qcqd"
+I1223 13:22:32.060136       1 event.go:294] "Event occurred" object="nsm-system/registry-k8s" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set registry-k8s-679b68767c to 1"
+I1223 13:22:32.085934       1 event.go:294] "Event occurred" object="nsm-system/registry-k8s-679b68767c" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: registry-k8s-679b68767c-hgmjm"
+I1223 13:22:32.115010       1 event.go:294] "Event occurred" object="nsm-system/registry-proxy-5d4487556b" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: registry-proxy-5d4487556b-zhfgv"
+I1223 13:22:32.127151       1 event.go:294] "Event occurred" object="nsm-system/registry-proxy" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set registry-proxy-5d4487556b to 1"
+I1223 13:22:32.186505       1 event.go:294] "Event occurred" object="nsm-system/forwarder-vpp" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: forwarder-vpp-7k4g4"
+I1223 13:22:32.236799       1 event.go:294] "Event occurred" object="nsm-system/nsmgr" fieldPath="" kind="DaemonSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: nsmgr-hbkmq"
+I1223 13:22:40.139013       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for networkservices.networkservicemesh.io
+I1223 13:22:40.139112       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for networkserviceendpoints.networkservicemesh.io
+I1223 13:22:40.139159       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1223 13:22:40.239892       1 shared_informer.go:262] Caches are synced for resource quota
+I1223 13:22:40.489741       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1223 13:22:40.489857       1 shared_informer.go:262] Caches are synced for garbage collector
+I1223 13:22:59.934209       1 event.go:294] "Event occurred" object="kube-system/metrics-server" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set metrics-server-69dcc44d99 to 1"
+I1223 13:22:59.971541       1 event.go:294] "Event occurred" object="kube-system/metrics-server-69dcc44d99" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: metrics-server-69dcc44d99-p9bb6"
+E1223 13:23:10.248144       1 resource_quota_controller.go:417] unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+W1223 13:23:10.507024       1 garbagecollector.go:752] failed to discover some groups: map[metrics.k8s.io/v1beta1:the server is currently unable to handle the request]
+I1223 13:23:14.234699       1 event.go:294] "Event occurred" object="ns-dns-vl3/nse-vl3-vpp" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set nse-vl3-vpp-5d97745888 to 1"
+I1223 13:23:14.271811       1 event.go:294] "Event occurred" object="ns-dns-vl3/vl3-ipam" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set vl3-ipam-7d564f85b to 1"
+I1223 13:23:14.290811       1 event.go:294] "Event occurred" object="ns-dns-vl3/nse-vl3-vpp-5d97745888" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: nse-vl3-vpp-5d97745888-vkb9m"
+I1223 13:23:14.410731       1 event.go:294] "Event occurred" object="ns-dns-vl3/vl3-ipam-7d564f85b" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: vl3-ipam-7d564f85b-9rd4q"
+E1223 13:23:40.268072       1 resource_quota_controller.go:417] unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+W1223 13:23:40.534138       1 garbagecollector.go:752] failed to discover some groups: map[metrics.k8s.io/v1beta1:the server is currently unable to handle the request]
+E1223 13:24:10.302577       1 resource_quota_controller.go:417] unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+W1223 13:24:10.589967       1 garbagecollector.go:752] failed to discover some groups: map[metrics.k8s.io/v1beta1:the server is currently unable to handle the request]
+E1223 13:24:40.327108       1 resource_quota_controller.go:417] unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: the server is currently unable to handle the request
+W1223 13:24:40.625378       1 garbagecollector.go:752] failed to discover some groups: map[metrics.k8s.io/v1beta1:the server is currently unable to handle the request]
+I1223 13:25:39.487107       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set istiod-5d74c58fdd to 1"
+I1223 13:25:39.541817       1 event.go:294] "Event occurred" object="istio-system/istiod-5d74c58fdd" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: istiod-5d74c58fdd-z495q"
+I1223 13:25:40.353273       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for sidecars.networking.istio.io
+I1223 13:25:40.353430       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for wasmplugins.extensions.istio.io
+I1223 13:25:40.353466       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for peerauthentications.security.istio.io
+I1223 13:25:40.353493       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for gateways.networking.istio.io
+I1223 13:25:40.354106       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for envoyfilters.networking.istio.io
+I1223 13:25:40.354194       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for virtualservices.networking.istio.io
+I1223 13:25:40.354277       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for workloadgroups.networking.istio.io
+I1223 13:25:40.354296       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for istiooperators.install.istio.io
+I1223 13:25:40.354368       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for destinationrules.networking.istio.io
+I1223 13:25:40.354385       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for requestauthentications.security.istio.io
+I1223 13:25:40.354398       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for authorizationpolicies.security.istio.io
+I1223 13:25:40.354413       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for serviceentries.networking.istio.io
+I1223 13:25:40.354461       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for workloadentries.networking.istio.io
+I1223 13:25:40.354585       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for telemetries.telemetry.istio.io
+I1223 13:25:40.355365       1 resource_quota_monitor.go:218] QuotaMonitor created object count evaluator for proxyconfigs.networking.istio.io
+I1223 13:25:40.355569       1 shared_informer.go:255] Waiting for caches to sync for resource quota
+I1223 13:25:40.665212       1 shared_informer.go:255] Waiting for caches to sync for garbage collector
+I1223 13:25:40.956831       1 shared_informer.go:262] Caches are synced for resource quota
+I1223 13:25:40.966131       1 shared_informer.go:262] Caches are synced for garbage collector
+I1223 13:25:54.560324       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API"
+E1223 13:25:54.565559       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+I1223 13:25:54.565622       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API"
+E1223 13:26:09.584878       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+I1223 13:26:09.585192       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API"
+I1223 13:26:09.585234       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API"
+I1223 13:26:24.596772       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+E1223 13:26:24.607569       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:26:24.607935       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:26:39.628845       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:26:39.629001       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:26:39.629027       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+I1223 13:26:54.639245       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:26:54.639353       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:26:54.638863       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+E1223 13:27:09.671699       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:27:09.672024       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:27:09.672038       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:27:24.682935       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:27:24.683540       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:27:24.683713       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+I1223 13:27:39.705807       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+E1223 13:27:39.706322       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:27:39.706374       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:27:54.716314       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:27:54.716704       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:27:54.716747       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:28:09.739416       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:28:09.739616       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:28:09.739647       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:28:24.749808       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:28:24.750548       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:28:24.750677       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:28:39.771348       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:28:39.771663       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:28:39.771708       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:28:54.783136       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:28:54.783295       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:28:54.783323       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:29:09.807519       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:29:09.807709       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:29:09.807747       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:29:24.848919       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:29:24.849009       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:29:24.849022       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:29:39.885701       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:29:39.885784       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:29:39.885798       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:29:54.842789       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:29:54.843983       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:29:54.844085       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:30:09.886166       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:30:09.886501       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:30:09.888112       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+I1223 13:30:17.806338       1 event.go:294] "Event occurred" object="sample/helloworld-v1" fieldPath="" kind="Deployment" apiVersion="apps/v1" type="Normal" reason="ScalingReplicaSet" message="Scaled up replica set helloworld-v1-5c59cf7d49 to 1"
+I1223 13:30:17.923109       1 event.go:294] "Event occurred" object="sample/helloworld-v1-5c59cf7d49" fieldPath="" kind="ReplicaSet" apiVersion="apps/v1" type="Normal" reason="SuccessfulCreate" message="Created pod: helloworld-v1-5c59cf7d49-cgqv7"
+E1223 13:30:24.838650       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:30:24.838865       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:30:24.838903       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:30:40.125143       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:30:40.125662       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:30:40.125705       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:30:55.131617       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:30:55.131845       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:30:55.131981       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:31:10.168072       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:31:10.168438       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:31:10.168483       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:31:25.184651       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:31:25.184723       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:31:25.184738       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:31:40.213126       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:31:40.213753       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:31:40.213835       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:31:55.222214       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:31:55.222584       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:31:55.222635       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:32:10.276413       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:32:10.277798       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:32:10.277904       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:32:25.286300       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:32:25.286549       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:32:25.286641       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:32:40.319118       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:32:40.319356       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:32:40.319425       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:32:55.329348       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:32:55.329498       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:32:55.329513       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:33:10.352752       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:33:10.352938       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:33:10.352954       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:33:25.361505       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:33:25.361629       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:33:25.361703       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:33:40.385041       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:33:40.385185       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:33:40.385203       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:33:55.394558       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:33:55.394891       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:33:55.394936       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:34:10.411584       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:34:10.411719       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:34:10.411740       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:34:25.431201       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:34:25.431586       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:34:25.431627       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:34:40.473497       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:34:40.473751       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:34:40.473792       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:34:55.483069       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:34:55.483134       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:34:55.483146       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:35:10.507726       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:35:10.508327       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:35:10.508354       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:35:25.519963       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:35:25.520189       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:35:25.520236       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:35:40.541075       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:35:40.541206       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:35:40.541265       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:35:55.550938       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:35:55.551071       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:35:55.551099       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:36:10.583549       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:36:10.583839       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:36:10.583927       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:36:25.593349       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:36:25.593607       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:36:25.593619       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+I1223 13:36:40.639844       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+E1223 13:36:40.640576       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:36:40.640606       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:36:55.650377       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:36:55.650551       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:36:55.650570       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:37:10.675738       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:37:10.675800       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:37:10.675810       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:37:25.684056       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:37:25.684241       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:37:25.684276       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:37:40.717370       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:37:40.717470       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:37:40.717496       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:37:55.726003       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:37:55.726102       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:37:55.726114       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:38:10.745870       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:38:10.746257       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:38:10.746314       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:38:25.756864       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:38:25.756999       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:38:25.757020       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:38:40.773677       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:38:40.773920       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:38:40.773955       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:38:55.787405       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:38:55.787957       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:38:55.787977       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:39:10.809596       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:39:10.809724       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:39:10.809738       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:39:25.825441       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:39:25.826153       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:39:25.826213       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+E1223 13:39:40.856519       1 horizontal.go:226] failed to compute desired number of replicas based on listed metrics for Deployment/istio-system/istiod: invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu
+I1223 13:39:40.857171       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedGetResourceMetric" message="failed to get cpu utilization: missing request for cpu"
+I1223 13:39:40.857441       1 event.go:294] "Event occurred" object="istio-system/istiod" fieldPath="" kind="HorizontalPodAutoscaler" apiVersion="autoscaling/v2" type="Warning" reason="FailedComputeMetricsReplicas" message="invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu"
+==== END logs for container kube-controller-manager of pod kube-system/kube-controller-manager-kind-1-control-plane ====

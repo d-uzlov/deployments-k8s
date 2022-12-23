@@ -1,0 +1,144 @@
+---
+apiVersion: apps/v1
+items:
+- metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"spire-agent"},"name":"spire-agent","namespace":"spire"},"spec":{"selector":{"matchLabels":{"app":"spire-agent"}},"template":{"metadata":{"labels":{"app":"spire-agent"},"namespace":"spire"},"spec":{"containers":[{"args":["-config","/run/spire/config/agent.conf"],"image":"gcr.io/spiffe-io/spire-agent:1.2.3","livenessProbe":{"exec":{"command":["/opt/spire/bin/spire-agent","healthcheck","-socketPath","/run/spire/sockets/agent.sock"]},"failureThreshold":2,"initialDelaySeconds":15,"periodSeconds":60,"timeoutSeconds":3},"name":"spire-agent","readinessProbe":{"exec":{"command":["/opt/spire/bin/spire-agent","healthcheck","-socketPath","/run/spire/sockets/agent.sock","--shallow"]},"initialDelaySeconds":5,"periodSeconds":5},"volumeMounts":[{"mountPath":"/run/spire/config","name":"spire-config","readOnly":true},{"mountPath":"/run/spire/bundle","name":"spire-bundle"},{"mountPath":"/run/spire/sockets","name":"spire-agent-socket","readOnly":false},{"mountPath":"/var/run/secrets/tokens","name":"spire-token"}]}],"dnsPolicy":"ClusterFirstWithHostNet","hostNetwork":true,"hostPID":true,"initContainers":[{"args":["-t","30","spire-server:8081"],"image":"gcr.io/spiffe-io/wait-for-it","imagePullPolicy":"IfNotPresent","name":"init"},{"command":["sh","-c","t=0; until [ -f /run/spire/bundle/bundle.crt 2\u003e\u00261 ] || [ $t -eq 60 ]; do t=`expr $t + 1`; sleep 1; done"],"image":"gcr.io/spiffe-io/wait-for-it","imagePullPolicy":"IfNotPresent","name":"init-bundle","volumeMounts":[{"mountPath":"/run/spire/bundle","name":"spire-bundle"}]}],"serviceAccountName":"spire-agent","volumes":[{"configMap":{"name":"spire-agent"},"name":"spire-config"},{"configMap":{"name":"spire-bundle"},"name":"spire-bundle"},{"hostPath":{"path":"/run/spire/sockets","type":"DirectoryOrCreate"},"name":"spire-agent-socket"},{"name":"spire-token","projected":{"sources":[{"serviceAccountToken":{"audience":"spire-server","expirationSeconds":7200,"path":"spire-agent"}}]}}]}}}}
+    creationTimestamp: "2022-12-23T13:21:04Z"
+    generation: 1
+    labels:
+      app: spire-agent
+    name: spire-agent
+    namespace: spire
+    resourceVersion: "742"
+    uid: 1cad4b33-aa5f-4da9-878f-b1672251aac6
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: spire-agent
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: spire-agent
+        namespace: spire
+      spec:
+        containers:
+        - args:
+          - -config
+          - /run/spire/config/agent.conf
+          image: gcr.io/spiffe-io/spire-agent:1.2.3
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - /opt/spire/bin/spire-agent
+              - healthcheck
+              - -socketPath
+              - /run/spire/sockets/agent.sock
+            failureThreshold: 2
+            initialDelaySeconds: 15
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 3
+          name: spire-agent
+          readinessProbe:
+            exec:
+              command:
+              - /opt/spire/bin/spire-agent
+              - healthcheck
+              - -socketPath
+              - /run/spire/sockets/agent.sock
+              - --shallow
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/config
+            name: spire-config
+            readOnly: true
+          - mountPath: /run/spire/bundle
+            name: spire-bundle
+          - mountPath: /run/spire/sockets
+            name: spire-agent-socket
+          - mountPath: /var/run/secrets/tokens
+            name: spire-token
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        hostPID: true
+        initContainers:
+        - args:
+          - -t
+          - "30"
+          - spire-server:8081
+          image: gcr.io/spiffe-io/wait-for-it
+          imagePullPolicy: IfNotPresent
+          name: init
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - command:
+          - sh
+          - -c
+          - t=0; until [ -f /run/spire/bundle/bundle.crt 2>&1 ] || [ $t -eq 60 ];
+            do t=`expr $t + 1`; sleep 1; done
+          image: gcr.io/spiffe-io/wait-for-it
+          imagePullPolicy: IfNotPresent
+          name: init-bundle
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /run/spire/bundle
+            name: spire-bundle
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: spire-agent
+        serviceAccountName: spire-agent
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: spire-agent
+          name: spire-config
+        - configMap:
+            defaultMode: 420
+            name: spire-bundle
+          name: spire-bundle
+        - hostPath:
+            path: /run/spire/sockets
+            type: DirectoryOrCreate
+          name: spire-agent-socket
+        - name: spire-token
+          projected:
+            defaultMode: 420
+            sources:
+            - serviceAccountToken:
+                audience: spire-server
+                expirationSeconds: 7200
+                path: spire-agent
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 1
+    desiredNumberScheduled: 1
+    numberAvailable: 1
+    numberMisscheduled: 0
+    numberReady: 1
+    observedGeneration: 1
+    updatedNumberScheduled: 1
+kind: DaemonSetList
+metadata:
+  resourceVersion: "3083"

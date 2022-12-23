@@ -1,0 +1,386 @@
+---
+apiVersion: v1
+items:
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: controller-6658b8446c-mrw8v
+    namespace: metallb-system
+    resourceVersion: "486"
+    uid: 1252ce99-dcec-4d0d-9ed6-84783fb84680
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: Successfully assigned metallb-system/controller-6658b8446c-mrw8v to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: controller-6658b8446c-mrw8v.17336eb2017a3ff5
+    namespace: metallb-system
+    resourceVersion: "491"
+    uid: a946724c-51b3-4ff9-879c-d471ca04d90d
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{controller}
+    kind: Pod
+    name: controller-6658b8446c-mrw8v
+    namespace: metallb-system
+    resourceVersion: "488"
+    uid: 1252ce99-dcec-4d0d-9ed6-84783fb84680
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: Pulling image "quay.io/metallb/controller:v0.12.1"
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: controller-6658b8446c-mrw8v.17336eb21c36c687
+    namespace: metallb-system
+    resourceVersion: "498"
+    uid: cb11019f-65de-4881-854a-07bda95c7ffa
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:09Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{controller}
+    kind: Pod
+    name: controller-6658b8446c-mrw8v
+    namespace: metallb-system
+    resourceVersion: "488"
+    uid: 1252ce99-dcec-4d0d-9ed6-84783fb84680
+  lastTimestamp: "2022-12-23T13:20:09Z"
+  message: Successfully pulled image "quay.io/metallb/controller:v0.12.1" in 11.344806333s
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:09Z"
+    name: controller-6658b8446c-mrw8v.17336eb4c06afbcb
+    namespace: metallb-system
+    resourceVersion: "518"
+    uid: a9228e09-f246-454e-a5c5-463d977b1587
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:09Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{controller}
+    kind: Pod
+    name: controller-6658b8446c-mrw8v
+    namespace: metallb-system
+    resourceVersion: "488"
+    uid: 1252ce99-dcec-4d0d-9ed6-84783fb84680
+  lastTimestamp: "2022-12-23T13:20:09Z"
+  message: Created container controller
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:09Z"
+    name: controller-6658b8446c-mrw8v.17336eb4c18de170
+    namespace: metallb-system
+    resourceVersion: "519"
+    uid: b8a346ca-b340-43d8-afee-b63ca5c51b83
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:09Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{controller}
+    kind: Pod
+    name: controller-6658b8446c-mrw8v
+    namespace: metallb-system
+    resourceVersion: "488"
+    uid: 1252ce99-dcec-4d0d-9ed6-84783fb84680
+  lastTimestamp: "2022-12-23T13:20:09Z"
+  message: Started container controller
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:09Z"
+    name: controller-6658b8446c-mrw8v.17336eb4c868416b
+    namespace: metallb-system
+    resourceVersion: "520"
+    uid: 0971ecc4-904f-4456-bf06-374ee9d68597
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: controller-6658b8446c
+    namespace: metallb-system
+    resourceVersion: "483"
+    uid: bdd20de1-d694-43db-9790-ee4a7ea0fa59
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: 'Created pod: controller-6658b8446c-mrw8v'
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: controller-6658b8446c.17336eb200b8e598
+    namespace: metallb-system
+    resourceVersion: "490"
+    uid: 6dfd3555-32f7-4815-8bb0-67bb33b186c5
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: replicaset-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: controller
+    namespace: metallb-system
+    resourceVersion: "479"
+    uid: de3981be-99d3-4067-a596-dfc7817754a1
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: Scaled up replica set controller-6658b8446c to 1
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: controller.17336eb1ff0abb2b
+    namespace: metallb-system
+    resourceVersion: "484"
+    uid: 0b5ab401-f6c3-448c-9cf8-1da9e874ede8
+  reason: ScalingReplicaSet
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: deployment-controller
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "477"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: Successfully assigned metallb-system/speaker-cgv26 to kind-1-control-plane
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: speaker-cgv26.17336eb1fdc5b33f
+    namespace: metallb-system
+    resourceVersion: "482"
+    uid: bbbd7700-5f82-41c9-a201-28e668ffd8a6
+  reason: Scheduled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: default-scheduler
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: Pulling image "quay.io/metallb/speaker:v0.12.1"
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: speaker-cgv26.17336eb2191f86e9
+    namespace: metallb-system
+    resourceVersion: "497"
+    uid: aa38c8bd-94a0-447c-8863-59b9860450d6
+  reason: Pulling
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:04Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:20:04Z"
+  message: Successfully pulled image "quay.io/metallb/speaker:v0.12.1" in 6.653207303s
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:04Z"
+    name: speaker-cgv26.17336eb3a5af97dc
+    namespace: metallb-system
+    resourceVersion: "506"
+    uid: 99a60e52-0bbc-436e-a005-d67861df9c7d
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 2
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:04Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:20:04Z"
+  message: 'Error: secret "memberlist" not found'
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:04Z"
+    name: speaker-cgv26.17336eb3a5b15e4e
+    namespace: metallb-system
+    resourceVersion: "510"
+    uid: 576e1dab-7d25-4666-9f06-a94ac6ecd26f
+  reason: Failed
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Warning
+- count: 2
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:04Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:20:16Z"
+  message: Container image "quay.io/metallb/speaker:v0.12.1" already present on machine
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:04Z"
+    name: speaker-cgv26.17336eb3b05dc648
+    namespace: metallb-system
+    resourceVersion: "531"
+    uid: 098ce2e5-5684-47c5-8aee-7effada27049
+  reason: Pulled
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:16Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:20:16Z"
+  message: Created container speaker
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:16Z"
+    name: speaker-cgv26.17336eb672febb8b
+    namespace: metallb-system
+    resourceVersion: "532"
+    uid: d564a58b-c451-48ad-a112-24d64f76cf1e
+  reason: Created
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:20:16Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{speaker}
+    kind: Pod
+    name: speaker-cgv26
+    namespace: metallb-system
+    resourceVersion: "478"
+    uid: 7ad6736a-6d86-45f2-95b6-957e6e3f6e95
+  lastTimestamp: "2022-12-23T13:20:16Z"
+  message: Started container speaker
+  metadata:
+    creationTimestamp: "2022-12-23T13:20:16Z"
+    name: speaker-cgv26.17336eb678f10e4a
+    namespace: metallb-system
+    resourceVersion: "533"
+    uid: f9ebe2ab-b7d4-414e-8ea5-2b3fbc46b1bd
+  reason: Started
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: kubelet
+    host: kind-1-control-plane
+  type: Normal
+- count: 1
+  eventTime: null
+  firstTimestamp: "2022-12-23T13:19:57Z"
+  involvedObject:
+    apiVersion: apps/v1
+    kind: DaemonSet
+    name: speaker
+    namespace: metallb-system
+    resourceVersion: "475"
+    uid: 6d5d47d7-4983-447c-aeee-1b64dd7eb5b9
+  lastTimestamp: "2022-12-23T13:19:57Z"
+  message: 'Created pod: speaker-cgv26'
+  metadata:
+    creationTimestamp: "2022-12-23T13:19:57Z"
+    name: speaker.17336eb1fd2db443
+    namespace: metallb-system
+    resourceVersion: "481"
+    uid: f8b4f198-c177-421b-b152-139cebf7a5e7
+  reason: SuccessfulCreate
+  reportingComponent: ""
+  reportingInstance: ""
+  source:
+    component: daemonset-controller
+  type: Normal
+kind: EventList
+metadata:
+  resourceVersion: "3074"

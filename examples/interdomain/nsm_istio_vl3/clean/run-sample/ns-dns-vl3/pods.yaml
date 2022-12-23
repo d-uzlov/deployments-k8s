@@ -1,0 +1,283 @@
+---
+apiVersion: v1
+items:
+- metadata:
+    creationTimestamp: "2022-12-23T13:23:14Z"
+    generateName: nse-vl3-vpp-5d97745888-
+    labels:
+      app: nse-vl3-vpp
+      pod-template-hash: 5d97745888
+      spiffe.io/spiffe-id: "true"
+    name: nse-vl3-vpp-5d97745888-vkb9m
+    namespace: ns-dns-vl3
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: nse-vl3-vpp-5d97745888
+      uid: 16ef52c9-46c1-4924-aeb7-71431ce9fde9
+    resourceVersion: "1248"
+    uid: 94ddb9d1-377d-4c4a-8a1e-dc93ec1eef5d
+  spec:
+    containers:
+    - env:
+      - name: NSM_SERVICE_NAMES
+        value: my-vl3-network
+      - name: NSM_REGISTER_SERVICE
+        value: "true"
+      - name: NSM_DNS_TEMPLATES
+        value: '{{ index .Labels "dnsName" }}.{{ .NetworkService }}.'
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      image: ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2
+      imagePullPolicy: IfNotPresent
+      name: nse
+      resources:
+        limits:
+          cpu: 500m
+          memory: 400Mi
+        requests:
+          cpu: 150m
+          memory: 400Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+        readOnly: true
+      - mountPath: /var/lib/networkservicemesh
+        name: nsm-socket
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hxws6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-1-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - name: kube-api-access-hxws6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:23:14Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:24:41Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:24:41Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:23:14Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://25f304fcffeefe45ee79abb37fcded725cc02559d7fb9fb7e036cebc3de9385a
+      image: ghcr.io/networkservicemesh/cmd-nse-vl3-vpp:v1.7.0-rc.2
+      imageID: ghcr.io/networkservicemesh/cmd-nse-vl3-vpp@sha256:c218c59e51ff3c2655bd8eb553b6abc7bda9ef0278c716eddf22751a11d38b40
+      lastState: {}
+      name: nse
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-23T13:24:41Z"
+    hostIP: 172.18.0.2
+    phase: Running
+    podIP: 10.244.0.13
+    podIPs:
+    - ip: 10.244.0.13
+    qosClass: Burstable
+    startTime: "2022-12-23T13:23:14Z"
+- metadata:
+    creationTimestamp: "2022-12-23T13:23:14Z"
+    generateName: vl3-ipam-7d564f85b-
+    labels:
+      app: vl3-ipam
+      pod-template-hash: 7d564f85b
+      spiffe.io/spiffe-id: "true"
+    name: vl3-ipam-7d564f85b-9rd4q
+    namespace: ns-dns-vl3
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: vl3-ipam-7d564f85b
+      uid: 6b65594a-4171-4cb9-8e57-98d2b315bfa1
+    resourceVersion: "1264"
+    uid: a0353249-7885-4e56-8bb5-5607a1911bea
+  spec:
+    containers:
+    - env:
+      - name: SPIFFE_ENDPOINT_SOCKET
+        value: unix:///run/spire/sockets/agent.sock
+      - name: NSM_LISTEN_ON
+        value: tcp://:5006
+      - name: NSM_PREFIX
+        value: 172.16.0.0/16
+      - name: NSM_LOG_LEVEL
+        value: TRACE
+      image: ghcr.io/networkservicemesh/cmd-ipam-vl3:v1.7.0-rc.2
+      imagePullPolicy: IfNotPresent
+      name: vl3-ipam
+      ports:
+      - containerPort: 5006
+        hostPort: 5006
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 200m
+          memory: 40Mi
+        requests:
+          cpu: 100m
+          memory: 40Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/spire/sockets
+        name: spire-agent-socket
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rgql2
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: kind-1-control-plane
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /run/spire/sockets
+        type: Directory
+      name: spire-agent-socket
+    - hostPath:
+        path: /var/lib/networkservicemesh
+        type: DirectoryOrCreate
+      name: nsm-socket
+    - name: kube-api-access-rgql2
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:23:14Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:24:46Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:24:46Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-12-23T13:23:14Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://53cb07f335f675dbbbce245139fd6b0a2276c79869cabe82201ef2125cbc7513
+      image: ghcr.io/networkservicemesh/cmd-ipam-vl3:v1.7.0-rc.2
+      imageID: ghcr.io/networkservicemesh/cmd-ipam-vl3@sha256:81d439a0437acfe1c29da2dfc176dc29774f50feec47e42ea2772ddec61e11a9
+      lastState: {}
+      name: vl3-ipam
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-12-23T13:24:46Z"
+    hostIP: 172.18.0.2
+    phase: Running
+    podIP: 10.244.0.14
+    podIPs:
+    - ip: 10.244.0.14
+    qosClass: Burstable
+    startTime: "2022-12-23T13:23:14Z"
+kind: PodList
+metadata:
+  resourceVersion: "3077"
