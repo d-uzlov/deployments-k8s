@@ -82,6 +82,9 @@ tshark -r dump-vanilla-curl-http.pcap | grep HTTP
 # ! tshark -r dump-vanilla-curl-mtls.pcap | grep HTTP && tshark -r dump-vanilla-curl-mtls.pcap | grep TCP
 ```
 
+
+
+
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-standard/istio-vm-configs
@@ -121,6 +124,9 @@ k1 delete -k ubuntu-standard
 tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
 
+
+
+
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-hosts/istio-vm-configs
@@ -159,6 +165,12 @@ sleep 0.5
 k1 delete -k ubuntu-hosts
 tshark -r dump-hosts-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-hosts-curl-mtls.pcap | grep HTTP
 ```
+
+
+
+
+
+
 
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
