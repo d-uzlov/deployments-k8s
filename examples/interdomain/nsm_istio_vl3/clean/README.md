@@ -93,7 +93,7 @@ sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 sleep 3
 kill -2 $!
-k2 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-standard-istio.log
+k1 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-standard-istio.log
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt update -qq
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt install curl tcpdump -y -qq
 
@@ -118,47 +118,46 @@ k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 sleep 0.5
 k1 delete -k ubuntu-standard
-tshark -r dump-standard-curl-http.pcap | grep HTTP
-# ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP && tshark -r dump-standard-curl-mtls.pcap | grep TCP
+tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
 
-Get istio config
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
-# sed -i '' 's/15012/15010/' "${WORK_DIR}/mesh.yaml"
-rm -rf ubuntu-standard/istio-vm-configs
-cp -r "${WORK_DIR}" ubuntu-standard/istio-vm-configs
 rm -rf ubuntu-hosts/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-hosts/istio-vm-configs
-```
-
-```bash
-time k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >4-istio-tcpdump-1-nsm.pcap &
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >dump-hosts-dep.pcap &
 sleep 1
 k1 apply -k ubuntu-hosts
 sleep 0.5
 k1 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
-k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
-k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-http.pcap &
+sleep 3
+kill -2 $!
+k1 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-hosts-istio.log
+k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt update -qq
+k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt install curl tcpdump -y -qq
+
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-curl-http.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
 sleep 0.5
 kill -2 $!
+
 k1 apply -f mtls-service-entry-hw1.yaml
 k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
-k1 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >5-istio-hosts-mtls.pcap &
+k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-curl-mtls.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
 sleep 0.5
 kill -2 $!
+
 k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 sleep 0.5
 k1 delete -k ubuntu-hosts
-tshark -r 5-istio-hosts-http.pcap | grep HTTP
-! tshark -r 5-istio-hosts-mtls.pcap | grep HTTP
+tshark -r dump-hosts-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-hosts-curl-mtls.pcap | grep HTTP
 ```
 
 ```bash
