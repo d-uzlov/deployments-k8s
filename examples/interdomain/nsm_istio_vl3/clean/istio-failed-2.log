@@ -1,0 +1,412 @@
+2022-12-23T07:31:00.467487Z	info	FLAG: --concurrency="2"
+2022-12-23T07:31:00.467546Z	info	FLAG: --domain=""
+2022-12-23T07:31:00.467552Z	info	FLAG: --help="false"
+2022-12-23T07:31:00.467554Z	info	FLAG: --log_as_json="false"
+2022-12-23T07:31:00.467574Z	info	FLAG: --log_caller=""
+2022-12-23T07:31:00.467576Z	info	FLAG: --log_output_level="default:info"
+2022-12-23T07:31:00.467577Z	info	FLAG: --log_rotate=""
+2022-12-23T07:31:00.467579Z	info	FLAG: --log_rotate_max_age="30"
+2022-12-23T07:31:00.467581Z	info	FLAG: --log_rotate_max_backups="1000"
+2022-12-23T07:31:00.467582Z	info	FLAG: --log_rotate_max_size="104857600"
+2022-12-23T07:31:00.467584Z	info	FLAG: --log_stacktrace_level="default:none"
+2022-12-23T07:31:00.467605Z	info	FLAG: --log_target="[stdout]"
+2022-12-23T07:31:00.467610Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2022-12-23T07:31:00.467612Z	info	FLAG: --outlierLogPath=""
+2022-12-23T07:31:00.467613Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2022-12-23T07:31:00.467615Z	info	FLAG: --proxyLogLevel="warning"
+2022-12-23T07:31:00.467616Z	info	FLAG: --serviceCluster="istio-proxy"
+2022-12-23T07:31:00.467618Z	info	FLAG: --stsPort="0"
+2022-12-23T07:31:00.467619Z	info	FLAG: --templateFile=""
+2022-12-23T07:31:00.467621Z	info	FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2022-12-23T07:31:00.467629Z	info	FLAG: --vklog="0"
+2022-12-23T07:31:00.467663Z	info	Version 1.16.0-8f2e2dc5d57f6f1f7a453e03ec96ca72b2205783-Clean
+2022-12-23T07:31:00.470693Z	info	Maximum file descriptors (ulimit -n): 1048576
+2022-12-23T07:31:00.470932Z	info	Proxy role	ips=[10.244.0.14 172.16.0.4] type=sidecar id=ubuntu-deployment-56bbd47db4-8x5vb.vm-ns domain=vm-ns.svc.cluster.local
+2022-12-23T07:31:00.471056Z	info	Apply mesh config from file defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata:
+    CANONICAL_REVISION: latest
+    CANONICAL_SERVICE: vm-app
+    ISTIO_META_CLUSTER_ID: Kubernetes
+    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_MESH_ID: ""
+    ISTIO_META_NETWORK: ""
+    ISTIO_META_WORKLOAD_NAME: vm-app
+    ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+    POD_NAMESPACE: vm-ns
+    SERVICE_ACCOUNT: serviceaccountvm
+    TRUST_DOMAIN: cluster.local
+  tracing:
+    zipkin:
+      address: zipkin.istio-system:9411
+
+2022-12-23T07:31:00.473638Z	info	Apply proxy config from env {}
+
+2022-12-23T07:31:00.475298Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+proxyMetadata:
+  CANONICAL_REVISION: latest
+  CANONICAL_SERVICE: vm-app
+  ISTIO_META_CLUSTER_ID: Kubernetes
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_MESH_ID: ""
+  ISTIO_META_NETWORK: ""
+  ISTIO_META_WORKLOAD_NAME: vm-app
+  ISTIO_METAJSON_LABELS: '{"app":"vm-app","service.istio.io/canonical-name":"vm-app","service.istio.io/canonical-revision":"latest"}'
+  POD_NAMESPACE: vm-ns
+  SERVICE_ACCOUNT: serviceaccountvm
+  TRUST_DOMAIN: cluster.local
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2022-12-23T07:31:00.475335Z	info	JWT policy is third-party-jwt
+2022-12-23T07:31:00.475342Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2022-12-23T07:31:00.577066Z	info	Workload SDS socket not found. Starting Istio SDS Server
+2022-12-23T07:31:00.577134Z	info	CA Endpoint istiod.istio-system.svc:15012, provider Citadel
+2022-12-23T07:31:00.577206Z	info	Using CA istiod.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2022-12-23T07:31:00.577322Z	info	citadelclient	Citadel client using custom root cert: var/run/secrets/istio/root-cert.pem
+2022-12-23T07:31:00.577273Z	info	Opening status port 15020
+2022-12-23T07:31:00.615492Z	info	ads	All caches have been synced up in 155.778796ms, marking server ready
+2022-12-23T07:31:00.616126Z	info	sds	Starting SDS grpc server
+2022-12-23T07:31:00.616181Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2022-12-23T07:31:00.617743Z	info	Pilot SAN: [istiod.istio-system.svc]
+2022-12-23T07:31:00.620133Z	info	Starting proxy agent
+2022-12-23T07:31:00.620335Z	info	starting
+2022-12-23T07:31:00.620404Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ	%l	envoy %n	%v -l warning --component-log-level misc:error --concurrency 2]
+2022-12-23T07:31:00.624975Z	info	starting Http service at 127.0.0.1:15004
+2022-12-23T07:31:00.727378Z	info	cache	generated new workload certificate	latency=111.308678ms ttl=23h59m59.272629192s
+2022-12-23T07:31:00.727427Z	info	cache	Root cert has changed, start rotating root cert
+2022-12-23T07:31:00.727446Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:0 Version:
+2022-12-23T07:31:00.727489Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.272513296s
+2022-12-23T07:31:00.734397Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T07:31:00.799203Z	info	ads	ADS: new connection for node:ubuntu-deployment-56bbd47db4-8x5vb.vm-ns-1
+2022-12-23T07:31:00.799278Z	info	cache	returned workload certificate from cache	ttl=23h59m59.200725647s
+2022-12-23T07:31:00.799280Z	info	ads	ADS: new connection for node:ubuntu-deployment-56bbd47db4-8x5vb.vm-ns-2
+2022-12-23T07:31:00.799539Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.200464634s
+2022-12-23T07:31:00.799868Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-56bbd47db4-8x5vb.vm-ns resources:1 size:1.1kB resource:ROOTCA
+2022-12-23T07:31:00.799871Z	info	ads	SDS: PUSH request for node:ubuntu-deployment-56bbd47db4-8x5vb.vm-ns resources:1 size:4.0kB resource:default
+2022-12-23T07:31:01.317683Z	info	Readiness succeeded in 869.874713ms
+2022-12-23T07:31:01.318196Z	info	Envoy proxy is ready
+[2022-12-23T07:31:56.925Z] "- - -" 0 - - - "-" 3001 22781577 5232 - "-" "-" "-" "-" "185.125.190.39:80" PassthroughCluster 10.244.0.14:52920 185.125.190.39:80 10.244.0.14:52918 - -
+[2022-12-23T07:31:56.926Z] "- - -" 0 - - - "-" 1193 2157019 5297 - "-" "-" "-" "-" "91.189.91.39:80" PassthroughCluster 10.244.0.14:44420 91.189.91.39:80 10.244.0.14:44406 - -
+[2022-12-23T07:32:04.709Z] "- - -" 0 - - - "-" 3219 4092309 1629 - "-" "-" "-" "-" "185.125.190.39:80" PassthroughCluster 10.244.0.14:34536 185.125.190.39:80 10.244.0.14:34530 - -
+[2022-12-23T07:32:37.538Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 677 676 "-" "curl/7.81.0" "a240241e-86b7-4796-8df1-894dea03fd8a" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" PassthroughCluster 172.16.0.4:47300 172.16.0.3:5000 172.16.0.4:47294 - allow_any
+[2022-12-23T07:32:46.136Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 476 476 "-" "curl/7.81.0" "ebdfc255-4215-9526-ac6b-3e476d12ee12" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" outbound|5000||helloworld.my-vl3-network 172.16.0.4:59788 172.16.0.3:5000 172.16.0.4:59772 - default
+2022-12-23T07:58:20.121380Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:28:37.943854Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+[2022-12-23T08:39:15.947Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 774 733 "-" "curl/7.81.0" "60771421-f764-4d14-90dd-c5e22770b842" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" outbound|5000||helloworld.my-vl3-network 172.16.0.4:50832 172.16.0.3:5000 172.16.0.4:50818 - default
+[2022-12-23T08:41:03.744Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 171 169 "-" "curl/7.81.0" "f772bb30-5b2f-4e80-82bf-73a0b74a6cd6" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" outbound|5000||helloworld.my-vl3-network 172.16.0.4:60322 172.16.0.3:5000 172.16.0.4:60308 - default
+[2022-12-23T08:41:36.387Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 178 177 "-" "curl/7.81.0" "6e7b0fb9-c7c2-4beb-a04a-a3c1a2632da4" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" outbound|5000||helloworld.my-vl3-network 172.16.0.4:60322 172.16.0.3:5000 172.16.0.4:35084 - default
+[2022-12-23T08:41:54.488Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 167 163 "-" "curl/7.81.0" "4fc5b7be-9d4c-4759-a581-fd9ac68931b7" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" PassthroughCluster 172.16.0.4:47406 172.16.0.3:5000 172.16.0.4:47390 - allow_any
+[2022-12-23T08:42:11.630Z] "GET /hello HTTP/1.1" 200 - via_upstream - "-" 0 60 166 165 "-" "curl/7.81.0" "99b1e8c6-757f-4e9f-a1d5-e71f9745e89f" "helloworld.my-vl3-network:5000" "172.16.0.3:5000" outbound|5000||helloworld.my-vl3-network 172.16.0.4:39246 172.16.0.3:5000 172.16.0.4:39232 - default
+2022-12-23T08:56:35.398117Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:35.409809Z	warn	xdsproxy	upstream [4] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:35.415503Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:56:35.885189Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:35.895143Z	warn	xdsproxy	upstream [5] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:35.895474Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:56:37.374006Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:37.379547Z	warn	xdsproxy	upstream [6] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:37.379902Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:56:41.264955Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:41.270960Z	warn	xdsproxy	upstream [7] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:41.271505Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:56:44.863653Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:44.875108Z	warn	xdsproxy	upstream [8] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:44.875598Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:56:58.353085Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:56:58.360245Z	warn	xdsproxy	upstream [9] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:56:58.361133Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:57:25.779223Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:57:25.789139Z	warn	xdsproxy	upstream [10] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:57:25.789728Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:57:26.076271Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:57:26.081383Z	warn	xdsproxy	upstream [11] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:57:26.082066Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:57:55.060137Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:57:55.071302Z	warn	xdsproxy	upstream [12] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:57:55.071977Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:58:13.165126Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:58:13.173034Z	warn	xdsproxy	upstream [13] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:58:13.173547Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:58:40.771589Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:58:40.780679Z	warn	xdsproxy	upstream [14] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:58:40.781301Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:59:02.168935Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:59:02.179409Z	warn	xdsproxy	upstream [15] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:59:02.179999Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:59:29.260389Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:59:29.267770Z	warn	xdsproxy	upstream [16] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:59:29.268681Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T08:59:41.476725Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T08:59:41.484043Z	warn	xdsproxy	upstream [17] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T08:59:41.484712Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:00:06.865083Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:00:06.874628Z	warn	xdsproxy	upstream [18] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:00:06.875302Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:00:08.001730Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:00:08.062090Z	warn	xdsproxy	upstream [19] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:00:08.062768Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:00:27.897686Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:00:27.944695Z	warn	xdsproxy	upstream [20] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:00:27.945124Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:00:55.652296Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:00:55.660273Z	warn	xdsproxy	upstream [21] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:00:55.661178Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:01:00.854073Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:01:00.861647Z	warn	xdsproxy	upstream [22] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:01:00.862560Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:01:13.763587Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:01:13.771874Z	warn	xdsproxy	upstream [23] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:01:13.772655Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:01:32.761936Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:01:32.772178Z	warn	xdsproxy	upstream [24] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:01:32.772910Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:01:36.864589Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:01:36.873329Z	warn	xdsproxy	upstream [25] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:01:36.874156Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:01:54.593722Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:01:54.644740Z	warn	xdsproxy	upstream [26] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:01:54.645264Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:02:19.051653Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:02:19.065460Z	warn	xdsproxy	upstream [27] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:02:19.066143Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:02:39.749325Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:02:39.759228Z	warn	xdsproxy	upstream [28] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:02:39.760004Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:03:09.591420Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:03:09.599092Z	warn	xdsproxy	upstream [29] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:03:09.599734Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:03:20.489029Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:03:20.500079Z	warn	xdsproxy	upstream [30] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:03:20.500564Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:03:41.262248Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:03:41.272469Z	warn	xdsproxy	upstream [31] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:03:41.273099Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:04:02.166474Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:04:02.173917Z	warn	xdsproxy	upstream [32] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:04:02.174660Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:04:07.863173Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:04:07.877019Z	warn	xdsproxy	upstream [33] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:04:07.877733Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:04:08.963228Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:04:08.971513Z	warn	xdsproxy	upstream [34] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:04:08.972120Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:04:30.590181Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:04:30.643378Z	warn	xdsproxy	upstream [35] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:04:30.644293Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:04:49.368041Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:04:49.378854Z	warn	xdsproxy	upstream [36] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:04:49.379369Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:05:16.178447Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:05:16.183279Z	warn	xdsproxy	upstream [37] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:05:16.183929Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:05:40.073810Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:05:40.081955Z	warn	xdsproxy	upstream [38] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:05:40.082625Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:05:55.660837Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:05:55.667230Z	warn	xdsproxy	upstream [39] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:05:55.667772Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:06:05.361091Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:06:05.369892Z	warn	xdsproxy	upstream [40] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:06:05.370538Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:06:09.972120Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:06:09.987720Z	warn	xdsproxy	upstream [41] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:06:09.988724Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:06:23.376156Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:06:23.389620Z	warn	xdsproxy	upstream [42] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:06:23.390174Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:06:50.386216Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:06:50.392700Z	warn	xdsproxy	upstream [43] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:06:50.394180Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:07:18.073214Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:07:18.083383Z	warn	xdsproxy	upstream [44] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:07:18.083871Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:07:33.670614Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:07:33.678448Z	warn	xdsproxy	upstream [45] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:07:33.679180Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:07:34.786595Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:07:34.793027Z	warn	xdsproxy	upstream [46] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:07:34.793596Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:07:53.263647Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:07:53.270318Z	warn	xdsproxy	upstream [47] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:07:53.271366Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:08:15.991552Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:08:16.057231Z	warn	xdsproxy	upstream [48] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:08:16.058192Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:08:20.467115Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:08:20.475283Z	warn	xdsproxy	upstream [49] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:08:20.475928Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:08:27.353923Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:08:27.358798Z	warn	xdsproxy	upstream [50] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:08:27.359362Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:08:42.251091Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:08:42.258428Z	warn	xdsproxy	upstream [51] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:08:42.258941Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:08:42.660969Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:08:42.670748Z	warn	xdsproxy	upstream [52] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:08:42.671139Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:09:11.766534Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:09:11.776675Z	warn	xdsproxy	upstream [53] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:09:11.777252Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:09:39.589901Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:09:39.641597Z	warn	xdsproxy	upstream [54] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:09:39.642298Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:09:49.382228Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:09:49.392862Z	warn	xdsproxy	upstream [55] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:09:49.393472Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:09:56.272472Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:09:56.284860Z	warn	xdsproxy	upstream [56] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:09:56.285255Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:10:02.265638Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:10:02.274721Z	warn	xdsproxy	upstream [57] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:10:02.275225Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:10:25.164454Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:10:25.171648Z	warn	xdsproxy	upstream [58] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:10:25.172279Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:10:43.965231Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:10:43.973446Z	warn	xdsproxy	upstream [59] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:10:43.974243Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:05.666273Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:05.679238Z	warn	xdsproxy	upstream [60] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:05.679872Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:07.368536Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:07.376624Z	warn	xdsproxy	upstream [61] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:07.377117Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:17.009926Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:17.020013Z	warn	xdsproxy	upstream [62] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:17.020581Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:26.684172Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:26.692779Z	warn	xdsproxy	upstream [63] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:26.693325Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:45.913632Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:45.991040Z	warn	xdsproxy	upstream [64] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:45.991953Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:11:53.996524Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:11:54.003677Z	warn	xdsproxy	upstream [65] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:11:54.004319Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:12:02.599139Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:12:02.604718Z	warn	xdsproxy	upstream [66] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:12:02.605487Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:12:24.574102Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:12:24.587233Z	warn	xdsproxy	upstream [67] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:12:24.587872Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:12:40.687679Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:12:40.698055Z	warn	xdsproxy	upstream [68] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:12:40.698985Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:12:56.389857Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:12:56.399772Z	warn	xdsproxy	upstream [69] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:12:56.400234Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:13:10.285363Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:13:10.292817Z	warn	xdsproxy	upstream [70] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:13:10.293306Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:13:38.387377Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:13:38.392973Z	warn	xdsproxy	upstream [71] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:13:38.393682Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:13:51.292862Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:13:51.302588Z	warn	xdsproxy	upstream [72] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:13:51.303332Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:07.595244Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:07.604966Z	warn	xdsproxy	upstream [73] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:07.605429Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:15.515975Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:15.565630Z	warn	xdsproxy	upstream [74] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:15.566477Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:19.319303Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:19.374864Z	warn	xdsproxy	upstream [75] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:19.375501Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:24.286474Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:24.291839Z	warn	xdsproxy	upstream [76] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:24.292399Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:24.787800Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:24.796181Z	warn	xdsproxy	upstream [77] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:24.796689Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:28.712325Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:28.721495Z	warn	xdsproxy	upstream [78] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:28.722162Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:46.799810Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:46.811062Z	warn	xdsproxy	upstream [79] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:46.811619Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:14:57.572895Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:14:57.593192Z	warn	xdsproxy	upstream [80] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:14:57.594278Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:19.609631Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:19.617565Z	warn	xdsproxy	upstream [81] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:19.618067Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:24.381596Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:24.389368Z	warn	xdsproxy	upstream [82] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:24.390105Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:44.202337Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:44.207212Z	warn	xdsproxy	upstream [83] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:44.207928Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:49.180102Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:49.187620Z	warn	xdsproxy	upstream [84] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:49.188171Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:51.383196Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:51.398062Z	warn	xdsproxy	upstream [85] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:51.398613Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:15:52.781779Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:15:52.793554Z	warn	xdsproxy	upstream [86] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:15:52.794161Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:16:03.681294Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:16:03.691961Z	warn	xdsproxy	upstream [87] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:16:03.692683Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:16:09.477194Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:16:09.502317Z	warn	xdsproxy	upstream [88] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:16:09.503153Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:16:20.288590Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:16:20.298647Z	warn	xdsproxy	upstream [89] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:16:20.299195Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:16:49.797187Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:16:49.808826Z	warn	xdsproxy	upstream [90] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:16:49.809376Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:17:14.915862Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:17:14.969964Z	warn	xdsproxy	upstream [91] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:17:14.970660Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:17:25.897508Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:17:25.918111Z	warn	xdsproxy	upstream [92] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:17:25.918834Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:17:55.381494Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:17:55.389646Z	warn	xdsproxy	upstream [93] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:17:55.390228Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:17:56.779058Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:17:56.792751Z	warn	xdsproxy	upstream [94] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:17:56.793983Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:18:03.614480Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:18:03.666523Z	warn	xdsproxy	upstream [95] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:18:03.667287Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:18:13.094361Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:18:13.101541Z	warn	xdsproxy	upstream [96] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:18:13.102300Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:18:25.661536Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:18:25.671988Z	warn	xdsproxy	upstream [97] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:18:25.672853Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:18:30.188567Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:18:30.195284Z	warn	xdsproxy	upstream [98] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:18:30.195761Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:18:52.981987Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:18:52.987077Z	warn	xdsproxy	upstream [99] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:18:52.987552Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:19:01.778971Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:19:01.788484Z	warn	xdsproxy	upstream [100] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:19:01.789111Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:19:11.577482Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:19:11.582763Z	warn	xdsproxy	upstream [101] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:19:11.583442Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:19:21.784142Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:19:21.796746Z	warn	xdsproxy	upstream [102] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:19:21.797527Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
+2022-12-23T09:19:42.593110Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2022-12-23T09:19:42.607965Z	warn	xdsproxy	upstream [103] terminated with unexpected error rpc error: code = Unauthenticated desc = authentication failure
+2022-12-23T09:19:42.608658Z	warning	envoy config	StreamAggregatedResources gRPC config stream to xds-grpc closed: 16, authentication failure
