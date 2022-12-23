@@ -104,8 +104,8 @@ k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-standard-curl-http.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 apply -f mtls-service-entry-hw1.yaml
@@ -113,8 +113,8 @@ k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-standard-curl-mtls.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 delete -f mtls-service-entry-hw1.yaml
@@ -146,8 +146,8 @@ k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-curl-http.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 apply -f mtls-service-entry-hw1.yaml
@@ -155,8 +155,8 @@ k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
 k1 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-curl-mtls.pcap &
 sleep 0.5
-k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k1 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 delete -f mtls-service-entry-hw1.yaml
@@ -191,8 +191,8 @@ k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-http.pcap &
 sleep 0.5
-k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 apply -f mtls-service-entry-hw1.yaml
@@ -200,13 +200,12 @@ k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-mtls.pcap &
 sleep 0.5
-k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 0.5
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
+sleep 1
 kill -2 $!
 
 k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
-sleep 0.5
 k2 delete -k ubuntu-hosts-2
 tshark -r dump-standard-curl-http.pcap | grep 'GET /hello'
 ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
