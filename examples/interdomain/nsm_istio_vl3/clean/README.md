@@ -49,6 +49,7 @@ kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l
 kubectl --kubeconfig=$KUBECONFIG2 delete -f ubuntu-2.yaml
 ```
 
+Check vanilla istio without any config changes
 ```bash
 k1 apply -k ubuntu-vanilla
 sleep 0.5
@@ -78,13 +79,13 @@ k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 sleep 0.5
 k1 delete -k ubuntu-vanilla
-tshark -r dump-vanilla-curl-http.pcap | grep HTTP
-# ! tshark -r dump-vanilla-curl-mtls.pcap | grep HTTP && tshark -r dump-vanilla-curl-mtls.pcap | grep TCP
+tshark -r dump-vanilla-curl-http.pcap | grep HTTP && ! tshark -r dump-vanilla-curl-mtls.pcap | grep HTTP
 ```
+Result: mtls works
 
 
 
-
+Check istio with replaced configs
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-standard/istio-vm-configs
@@ -123,10 +124,11 @@ sleep 0.5
 k1 delete -k ubuntu-standard
 tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
+Result: mtls works
 
 
 
-
+Check istio connected via nsm interface +configs
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-hosts/istio-vm-configs
@@ -165,13 +167,14 @@ sleep 0.5
 k1 delete -k ubuntu-hosts
 tshark -r dump-hosts-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-hosts-curl-mtls.pcap | grep HTTP
 ```
+Result: mtls works
 
 
 
 
 
 
-
+Check istio on second cluster +configs +via-nsm
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-hosts-2/istio-vm-configs
@@ -209,3 +212,4 @@ k1 delete -f mtls-dest-rule.yaml
 k2 delete -k ubuntu-hosts-2
 tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
+Result: mtls works
