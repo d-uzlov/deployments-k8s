@@ -1,4 +1,8 @@
-# Basic setup 
+
+Sample of running these commands can be found here: [readme-run-sample](./readme-run-sample.md)
+
+---
+
 1. install interdomain
 
 2. install vl3
