@@ -207,6 +207,5 @@ kill -2 $!
 k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 k2 delete -k ubuntu-hosts-2
-tshark -r dump-standard-curl-http.pcap | grep 'GET /hello'
-! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
+tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
