@@ -35,22 +35,13 @@ kubectl --kubeconfig=$KUBECONFIG1 create serviceaccount "${SERVICE_ACCOUNT}" -n 
 kubectl --kubeconfig=$KUBECONFIG2 apply -f ubuntu.yaml
 sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=2m pod -l app=ubuntu
-```
-
-```bash
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt update
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- apt install --yes curl iproute2 iptables nano dnsutils inetutils-ping systemctl sudo tcpdump netcat wget git
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo curl -LO https://storage.googleapis.com/istio-release/releases/1.16.0/deb/istio-sidecar.deb
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo dpkg -i istio-sidecar.deb
 ```
 
-Get istio config
-```bash
-kubectl --kubeconfig $KUBECONFIG1 exec -n istio-system deployments/istiod -c cmd-nsc -- ip a
-```
-ingressIP - copy from nsm interface ip.
-
-The wollowing command will launch istio using a custom 
+The following command will launch istio using a custom config
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 cp ./istio-start.sh istio-vm-configs/istio-start.sh
@@ -71,9 +62,11 @@ kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo chown -R istio-proxy /var/lib/istio /etc/certs /etc/istio/proxy /etc/istio/config /var/run/secrets /etc/certs/root-cert.pem
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.log
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- rm -f /var/log/istio/istio.err.log
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >dump-vm-dep.pcap &
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- sudo systemctl start istio
 sleep 5
 kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.log
+kill -2 $!
 ```
 
 You can also check the second log:
@@ -92,9 +85,9 @@ kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout
 
 Check mtls
 ```bash
-k2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i nsm-1 -U -w - >10-default.pcap &
+k2 exec deployments/ubuntu-deployment -c ubuntu -- tcpdump -i any -U -w - >10-default.pcap &
 sleep 1
-k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
 tshark -r 10-default.pcap | grep HTTP
@@ -108,6 +101,7 @@ check envoy config
 ```bash
 k2 exec deployments/ubuntu-deployment -c ubuntu -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-default.json
 cat envoy-config-dump-w-eds-default.json | grep PassthroughCluster172
+k2 exec deployments/ubuntu-deployment -c ubuntu -- curl -sS 'localhost:15000/config_dump?include_eds' | grep PassthroughCluster172.16
 ```
 expected output:
            "hostname": "PassthroughCluster172.16.0.4:5000"
