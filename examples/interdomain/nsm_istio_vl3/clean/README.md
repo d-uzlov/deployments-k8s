@@ -172,76 +172,30 @@ k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
 sleep 3
 kill -2 $!
 k2 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-hosts-2-istio.log
-tshark -r dump-hosts-2-dep.pcap
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt update -qq
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt install curl tcpdump -y -qq
 
-k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
-k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- apk add curl
-k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >dump-hosts-2-curl-http.pcap &
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-http.pcap &
 sleep 0.5
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -sS
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
 sleep 0.5
 kill -2 $!
+
 k1 apply -f mtls-service-entry-hw1.yaml
 k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
-k2 exec -n vl3-test deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >dump-hosts-2-curl-mtls.pcap &
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-mtls.pcap &
 sleep 0.5
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -sS
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -s
 sleep 0.5
 kill -2 $!
+
 k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 sleep 0.5
 k2 delete -k ubuntu-hosts-2
-tshark -r dump-hosts-2-curl-http.pcap | grep HTTP
-! tshark -r dump-hosts-2-curl-mtls.pcap | grep HTTP
+tshark -r dump-standard-curl-http.pcap | grep 'GET /hello'
+! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
 ```
-
-```bash
-k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >2-istio-nsm-vmlike.pcap &
-sleep 1
-k2 apply -k ubuntu-hosts-2-vmlike
-sleep 0.5
-k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-sleep 1
-kill -2 $!
-sleep 1
-k2 delete -k ubuntu-hosts-2-vmlike
-tshark -r 2-istio-nsm-vmlike.pcap
-```
-
-redeploy ubuntu
-```bash
-k2 apply -k ubuntu-hosts-2
-sleep 0.5
-k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- apk add tcpdump
-```
-
-Check mtls (should be disabled by default)
-```bash
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i nsm-1 -U -w - >3-mtls-default.pcap &
-sleep 1
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 1
-kill -2 $!
-tshark -r 3-mtls-default.pcap | grep HTTP
-```
-
-Check mtls again
-```bash
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- tcpdump -i lo -U -w - >3-mtls-enable-lo.pcap &
-sleep 1
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl helloworld.my-vl3-network:5000/hello -s
-sleep 1
-kill -2 $!
-! tshark -r 3-mtls-enable-lo.pcap | grep HTTP
-```
-Fails for some reason
-
-```bash
-k2 -n vl3-test exec deployments/ubuntu-deployment -c cmd-nsc -- curl 'localhost:15000/config_dump?include_eds' >envoy-config-dump-w-eds-mtls.json
-! cat envoy-config-dump-w-eds-mtls.json | grep PassthroughCluster172
-```
-
-
