@@ -54,7 +54,7 @@ fix connection:
 # kubectl --kubeconfig=$KUBECONFIG2 delete -f ubuntu-2.yaml
 ```
 
-Check istio on second cluster +configs +via-nsm
+Deploy test pod on second cluster:
 ```bash
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-hosts-2/istio-vm-configs
@@ -69,7 +69,10 @@ kill -2 $!
 k2 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-hosts-2-istio.log
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt update -qq >/dev/null 2>/dev/null
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt install curl tcpdump -y -qq >/dev/null 2>/dev/null
+```
 
+Use tcpdump with default settings:
+```bash
 k1 delete -f mtls-service-entry-hw1.yaml
 k1 delete -f mtls-dest-rule.yaml
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-http.pcap &
@@ -77,7 +80,10 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
+```
 
+Use tcpdump with manual service entry:
+```basg
 k1 apply -f mtls-service-entry-hw1.yaml
 k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
@@ -86,11 +92,22 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
+```
 
-k1 delete -f mtls-service-entry-hw1.yaml
-k1 delete -f mtls-dest-rule.yaml
-k2 delete -k ubuntu-hosts-2
-tshark -r dump-standard-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-standard-curl-mtls.pcap | grep HTTP
+Check tcpdump content:
+```bash
+tshark -r dump-hosts-2-curl-http.pcap | grep 'GET /hello' && ! tshark -r dump-hosts-2-curl-mtls.pcap | grep HTTP
 ```
 Result: mtls works
 
+Cleanup:
+```bash
+k1 delete -f mtls-service-entry-hw1.yaml
+k1 delete -f mtls-dest-rule.yaml
+k2 delete -k ubuntu-hosts-2
+
+rm dump-hosts-2-dep.pcap
+rm dump-hosts-2-curl-http.pcap
+rm dump-hosts-2-curl-mtls.pcap
+rm logs-ubuntu-hosts-2-istio.log
+```

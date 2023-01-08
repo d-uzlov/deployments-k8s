@@ -1,18 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: ubuntu-deployment
   labels:
     app: ubuntu
-  name: ubuntu-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: ubuntu
-  strategy: {}
   template:
     metadata:
+      labels:
+        app: ubuntu
+        security.istio.io/tlsMode: istio
+        service.istio.io/canonical-name: ubuntu
+        service.istio.io/canonical-revision: latest
       annotations:
         kubectl.kubernetes.io/default-container: ubuntu
         kubectl.kubernetes.io/default-logs-container: ubuntu
@@ -21,24 +24,17 @@ spec:
         prometheus.io/port: "15020"
         prometheus.io/scrape: "true"
         sidecar.istio.io/status: '{"initContainers":["istio-init"],"containers":["istio-proxy"],"volumes":["workload-socket","credential-socket","workload-certs","istio-envoy","istio-data","istio-podinfo","istio-token","istiod-ca-cert"],"imagePullSecrets":null,"revision":"default"}'
-      creationTimestamp: null
-      labels:
-        app: ubuntu
-        security.istio.io/tlsMode: istio
-        service.istio.io/canonical-name: ubuntu
-        service.istio.io/canonical-revision: latest
     spec:
       hostAliases:
       - ip: "172.16.0.2"
         hostnames:
         - istiod.istio-system.svc
       containers:
-      - command:
+      - name: ubuntu
+        image: ubuntu
+        command:
         - sleep
         - "123456"
-        image: ubuntu
-        name: ubuntu
-        resources: {}
         securityContext:
           privileged: true
       - args:
@@ -233,5 +229,4 @@ spec:
       # - configMap:
       #     name: istio-ca-root-cert
       #   name: istiod-ca-cert
-status: {}
 ---

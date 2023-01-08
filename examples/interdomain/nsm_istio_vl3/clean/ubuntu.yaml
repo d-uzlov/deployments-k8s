@@ -17,8 +17,10 @@ spec:
         networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
     spec:
       containers:
-        - name: ubuntu
-          image: ubuntu
-          command: ["sleep", "123456"]
-          securityContext:
-            privileged: true
+      - name: ubuntu
+        image: ubuntu
+        command:
+        - sleep
+        - "123456"
+        securityContext:
+          privileged: true
