@@ -1,2 +1,0 @@
-==== START logs for container ubuntu of pod default/ubuntu-deployment-696fdf7b4-nsdhk ====
-==== END logs for container ubuntu of pod default/ubuntu-deployment-696fdf7b4-nsdhk ====
