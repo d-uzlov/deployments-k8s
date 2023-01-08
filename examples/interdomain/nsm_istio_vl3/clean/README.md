@@ -59,9 +59,13 @@ Deploy test pod on second cluster:
 istioctl x workload entry configure -f workloadgroup.yaml -o "${WORK_DIR}" --clusterID "${CLUSTER}" --kubeconfig=$KUBECONFIG1 --ingressIP=172.16.0.2
 rm -rf ubuntu-hosts-2/istio-vm-configs
 cp -r "${WORK_DIR}" ubuntu-hosts-2/istio-vm-configs
+k1 exec -n istio-system deployments/istiod -c cmd-nsc -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-dep.pcap &
+sleep 0.5
 k2 apply -k ubuntu-hosts-2
 sleep 0.5
 k2 -n vl3-test wait --for=condition=ready --timeout=1m pod -l app=ubuntu
+sleep 3
+kill -2 $!
 k2 logs -n vl3-test deployments/ubuntu-deployment istio-proxy >logs-ubuntu-hosts-2-istio.log
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt update -qq >/dev/null 2>/dev/null
 k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- apt install curl tcpdump -y -qq >/dev/null 2>/dev/null
