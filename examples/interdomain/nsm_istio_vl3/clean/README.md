@@ -80,6 +80,7 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
+tshark -r dump-hosts-2-curl-http.pcap | grep 'GET /hello' 
 ```
 
 Use tcpdump with manual service entry:
@@ -92,6 +93,7 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
+! tshark -r dump-hosts-2-curl-mtls.pcap | grep HTTP
 ```
 
 Check tcpdump content:

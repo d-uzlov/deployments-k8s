@@ -5,14 +5,14 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - helloworld.my-vl3-network # not used
-  addresses:
-  - 172.16.0.3/24 # VIPs
+  - helloworld.my-vl3-network
+  # addresses:
+  # - 172.16.0.3/24 # VIPs
   ports:
   - number: 5000
     name: hw
     protocol: HTTP
-  location: MESH_INTERNAL
-  resolution: STATIC
-  endpoints:
-  - address: 172.16.0.3
+  # location: MESH_INTERNAL
+  # resolution: STATIC
+  # endpoints:
+  # - address: 172.16.0.3
