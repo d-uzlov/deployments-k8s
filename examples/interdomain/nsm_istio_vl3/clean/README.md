@@ -42,7 +42,8 @@ deploy service
 k1 apply -f sample-ns.yaml
 sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
-k1 exec -n sample deployments/helloworld-v1 -c cmd-nsc -- ip a | grep 172.16.0.3/32
+k1 exec -n sample deployments/helloworld-v2 -c cmd-nsc -- ip a | grep 172.16.0.3/32
+k1 exec -n sample deployments/helloworld-v1 -c cmd-nsc -- ip a | grep 172.16.0.4/32
 ```
 
 fix connection:
@@ -80,11 +81,18 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
-tshark -r dump-hosts-2-curl-http.pcap | grep 'GET /hello' 
+sleep 1
+
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-http2.pcap &
+sleep 0.5
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld2.my-vl3-network:5000/hello -sS
+sleep 1
+kill -2 $!
+tshark -r dump-hosts-2-curl-http.pcap | grep 'GET /hello' && tshark -r dump-hosts-2-curl-http2.pcap | grep 'GET /hello'
 ```
 
 Use tcpdump with manual service entry:
-```basg
+```bash
 k1 apply -f mtls-service-entry-hw1.yaml
 k1 apply -f mtls-dest-rule.yaml
 sleep 0.5
@@ -93,7 +101,15 @@ sleep 0.5
 k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld.my-vl3-network:5000/hello -sS
 sleep 1
 kill -2 $!
+sleep 0.5
+
+k2 exec -n vl3-test deployments/ubuntu-deployment -c ubuntu -- tcpdump -f '!icmp' -i nsm-1 -U -w - >dump-hosts-2-curl-mtls2.pcap &
+sleep 0.5
+k2 -n vl3-test exec deployments/ubuntu-deployment -c ubuntu -- curl helloworld2.my-vl3-network:5000/hello -sS
+sleep 1
+kill -2 $!
 ! tshark -r dump-hosts-2-curl-mtls.pcap | grep HTTP
+! tshark -r dump-hosts-2-curl-mtls2.pcap | grep HTTP
 ```
 
 Check tcpdump content:
@@ -110,6 +126,8 @@ k2 delete -k ubuntu-hosts-2
 
 rm dump-hosts-2-dep.pcap
 rm dump-hosts-2-curl-http.pcap
+rm dump-hosts-2-curl-http2.pcap
 rm dump-hosts-2-curl-mtls.pcap
+rm dump-hosts-2-curl-mtls2.pcap
 rm logs-ubuntu-hosts-2-istio.log
 ```

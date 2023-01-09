@@ -5,7 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - helloworld.my-vl3-network
+  # - helloworld.my-vl3-network
+  # - helloworld2.my-vl3-network
+  - "*.my-vl3-network"
   # addresses:
   # - 172.16.0.3/24 # VIPs
   ports:
