@@ -42,8 +42,8 @@ deploy service
 k1 apply -f sample-ns.yaml
 sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
-k1 exec -n sample deployments/helloworld-v2 -c cmd-nsc -- ip a | grep 172.16.0.3/32
-k1 exec -n sample deployments/helloworld-v1 -c cmd-nsc -- ip a | grep 172.16.0.4/32
+k1 exec -n sample deployments/helloworld-v2 -c cmd-nsc -- ip a | grep 172.16.0.4/32
+k1 exec -n sample deployments/helloworld-v1 -c cmd-nsc -- ip a | grep 172.16.0.3/32
 ```
 
 fix connection:
@@ -130,4 +130,32 @@ rm dump-hosts-2-curl-http2.pcap
 rm dump-hosts-2-curl-mtls.pcap
 rm dump-hosts-2-curl-mtls2.pcap
 rm logs-ubuntu-hosts-2-istio.log
+```
+
+
+
+
+
+
+
+Check tokens:
+```bash
+
+TOKEN_DIR=token-dir
+mkdir "$TOKEN_DIR"
+mkdir "$TOKEN_DIR/container"
+mkdir "$TOKEN_DIR/vm"
+
+
+CONTAINER_POD=$(k2 get pods -l app=ubuntu -n vl3-test --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+VM_POD=$(k2 get pods -l app=ubuntu -n default --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+
+k2 -n vl3-test cp $CONTAINER_POD:/var/run/secrets/istio/root-cert.pem -c istio-proxy "$TOKEN_DIR/container/root-cert.pem"
+k2 -n vl3-test cp $CONTAINER_POD:/var/run/secrets/tokens/istio-token -c istio-proxy "$TOKEN_DIR/container/istio-token"
+
+k2 -n default cp $VM_POD:/etc/certs/root-cert.pem -c ubuntu "$TOKEN_DIR/vm/root-cert.pem"
+k2 -n default cp $VM_POD:/var/run/secrets/tokens/istio-token -c ubuntu "$TOKEN_DIR/vm/istio-token"
+
+k2 -n vl3-test logs deployments/ubuntu-deployment istio-proxy >"$TOKEN_DIR/container/container-istio.log"
+kubectl --kubeconfig $KUBECONFIG2 exec deployments/ubuntu-deployment -c ubuntu -- cat /var/log/istio/istio.log >"$TOKEN_DIR/vm/vm-istio-2.log"
 ```
