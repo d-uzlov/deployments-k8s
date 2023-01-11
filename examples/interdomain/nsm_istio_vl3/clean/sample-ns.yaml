@@ -57,36 +57,36 @@ spec:
             - containerPort: 80
             - containerPort: 5000
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  namespace: sample
-  name: helloworld-v2
-  labels:
-    app: helloworld
-    version: v2
-  annotations:
-    networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=helloworld2
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: helloworld
-      version: v2
-  template:
-    metadata:
-      labels:
-        app: helloworld
-        version: v2
-    spec:
-      containers:
-        - name: helloworld
-          image: docker.io/istio/examples-helloworld-v2
-          # image: docker.io/kennethreitz/httpbin
-          resources:
-            requests:
-              cpu: "100m"
-          imagePullPolicy: IfNotPresent #Always
-          ports:
-            - containerPort: 80
-            - containerPort: 5000
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   namespace: sample
+#   name: helloworld-v2
+#   labels:
+#     app: helloworld
+#     version: v2
+#   annotations:
+#     networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=helloworld2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: helloworld
+#       version: v2
+#   template:
+#     metadata:
+#       labels:
+#         app: helloworld
+#         version: v2
+#     spec:
+#       containers:
+#         - name: helloworld
+#           image: docker.io/istio/examples-helloworld-v2
+#           # image: docker.io/kennethreitz/httpbin
+#           resources:
+#             requests:
+#               cpu: "100m"
+#           imagePullPolicy: IfNotPresent #Always
+#           ports:
+#             - containerPort: 80
+#             - containerPort: 5000

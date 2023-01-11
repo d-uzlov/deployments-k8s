@@ -5,12 +5,12 @@ kind: Kustomization
 namespace: nsm-system
 
 bases:
-- https://github.com/networkservicemesh/deployments-k8s/apps/nsmgr?ref=v1.7.0-rc.2
-- https://github.com/networkservicemesh/deployments-k8s/apps/forwarder-vpp?ref=v1.7.0-rc.2
-- https://github.com/networkservicemesh/deployments-k8s/apps/registry-k8s?ref=v1.7.0-rc.2
-- https://github.com/networkservicemesh/deployments-k8s/apps/registry-proxy-dns?ref=v1.7.0-rc.2
-- https://github.com/networkservicemesh/deployments-k8s/apps/nsmgr-proxy?ref=v1.7.0-rc.2
-- https://github.com/networkservicemesh/deployments-k8s/apps/admission-webhook-k8s?ref=v1.7.0-rc.2
+- ../../../../../deployments-k8s/apps/nsmgr
+- ../../../../../deployments-k8s/apps/forwarder-vpp
+- ../../../../../deployments-k8s/apps/registry-k8s
+- ../../../../../deployments-k8s/apps/registry-proxy-dns
+- ../../../../../deployments-k8s/apps/nsmgr-proxy
+- ../../../../../deployments-k8s/apps/admission-webhook-k8s
 
 patchesStrategicMerge:
 - patch-nsmgr-proxy.yaml

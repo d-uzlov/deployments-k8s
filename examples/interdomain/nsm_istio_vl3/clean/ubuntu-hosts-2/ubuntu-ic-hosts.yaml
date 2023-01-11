@@ -19,6 +19,8 @@ spec:
       - ip: "172.16.0.2"
         hostnames:
         - istiod.istio-system.svc
+      securityContext:
+        fsGroup: 1337
       containers:
       - name: ubuntu
         image: ubuntu
@@ -44,6 +46,12 @@ spec:
           value: istiod
         - name: CA_ADDR
           value: istiod.istio-system.svc:15012
+          ##########################
+        - name: PROV_CERT
+          value: /etc/certs
+        - name: OUTPUT_CERTS
+          value: /etc/certs
+          ##########################
         - name: POD_NAME
           valueFrom:
             fieldRef:
@@ -112,12 +120,17 @@ spec:
             drop:
             - ALL
           privileged: false
-          readOnlyRootFilesystem: true
+          # readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           runAsGroup: 1337
           runAsNonRoot: true
           runAsUser: 1337
         volumeMounts:
-        - mountPath: /var/run/secrets/istio/root-cert.pem
+        # - mountPath: /var/run/secrets/istio/root-cert.pem
+        - mountPath: /etc/certs/
+          name: etc-certs
+        # - mountPath: /var/run/secrets/istio/root-cert.pem
+        - mountPath: /etc/certs/root-cert.pem
           name: cert
           subPath: root-cert.pem
         - mountPath: /var/lib/istio/envoy/cluster.env
@@ -191,6 +204,7 @@ spec:
       - name: cert
         configMap:
           name: cert-file
+      - name: etc-certs
       - name: workload-socket
       - name: credential-socket
       - name: workload-certs

@@ -1,6 +1,4 @@
 
-Sample of running these commands can be found here: [readme-run-sample](./readme-run-sample.md)
-
 ---
 
 1. install interdomain
@@ -42,7 +40,7 @@ deploy service
 k1 apply -f sample-ns.yaml
 sleep 0.5
 kubectl --kubeconfig=$KUBECONFIG1 -n sample wait --for=condition=ready --timeout=2m pod -l app=helloworld
-k1 exec -n sample deployments/helloworld-v2 -c cmd-nsc -- ip a | grep 172.16.0.4/32
+# k1 exec -n sample deployments/helloworld-v2 -c cmd-nsc -- ip a | grep 172.16.0.4/32
 k1 exec -n sample deployments/helloworld-v1 -c cmd-nsc -- ip a | grep 172.16.0.3/32
 ```
 
@@ -132,9 +130,33 @@ rm dump-hosts-2-curl-mtls2.pcap
 rm logs-ubuntu-hosts-2-istio.log
 ```
 
+Full cleanup:
+```bash
+k1 delete ns ns-dns-vl3 sample istio-system vm-ns
+k2 delete -k ubuntu-hosts-2
+istioctl uninstall --purge -y
+```
 
+Relaunch nsm:
+```bash
+WH=$(kubectl --kubeconfig=$KUBECONFIG1 get pods -l app=admission-webhook-k8s -n nsm-system --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+kubectl --kubeconfig=$KUBECONFIG1 delete mutatingwebhookconfiguration ${WH}
 
+WH=$(kubectl --kubeconfig=$KUBECONFIG2 get pods -l app=admission-webhook-k8s -n nsm-system --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+kubectl --kubeconfig=$KUBECONFIG2 delete mutatingwebhookconfiguration ${WH}
 
+k1 delete ns nsm-system
+k2 delete ns nsm-system
+
+kubectl --kubeconfig=$KUBECONFIG1 apply -k ~/work/deployments-k8s/examples/interdomain/nsm/cluster1
+kubectl --kubeconfig=$KUBECONFIG2 apply -k ~/work/deployments-k8s/examples/interdomain/nsm/cluster2
+
+WH=$(kubectl --kubeconfig=$KUBECONFIG1 get pods -l app=admission-webhook-k8s -n nsm-system --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+kubectl --kubeconfig=$KUBECONFIG1 wait --for=condition=ready --timeout=1m pod ${WH} -n nsm-system
+
+WH=$(kubectl --kubeconfig=$KUBECONFIG2 get pods -l app=admission-webhook-k8s -n nsm-system --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+kubectl --kubeconfig=$KUBECONFIG2 wait --for=condition=ready --timeout=1m pod ${WH} -n nsm-system
+```
 
 
 
