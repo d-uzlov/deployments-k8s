@@ -19,8 +19,6 @@ spec:
       - ip: "172.16.0.2"
         hostnames:
         - istiod.istio-system.svc
-      securityContext:
-        fsGroup: 1337
       containers:
       - name: ubuntu
         image: ubuntu
@@ -120,8 +118,7 @@ spec:
             drop:
             - ALL
           privileged: false
-          # readOnlyRootFilesystem: true
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsGroup: 1337
           runAsNonRoot: true
           runAsUser: 1337
