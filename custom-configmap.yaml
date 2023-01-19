@@ -8,7 +8,7 @@ data:
     k8s_external my.cluster1
   proxy1.server: |
     my.cluster1:53 {
-      forward . 172.18.201.0:53 {
+      forward . 172.18.200.0:53 {
         force_tcp
       }
     }

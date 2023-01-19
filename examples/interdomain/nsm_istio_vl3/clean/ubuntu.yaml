@@ -13,8 +13,8 @@ spec:
     metadata:
       labels:
         app: ubuntu
-      annotations:
-        networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
+      # annotations:
+      #   networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
     spec:
       containers:
       - name: ubuntu
@@ -24,3 +24,13 @@ spec:
         - "123456"
         securityContext:
           privileged: true
+        volumeMounts:
+        - mountPath: /var/run/secrets/istiod/ca
+          name: istio-csr-ca-configmap
+          readOnly: true
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: istio-ca-root-cert
+          optional: true
+        name: istio-csr-ca-configmap

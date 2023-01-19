@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: admission-webhook-k8s
+  name: proxy-webhook-k8s
   labels:
-    app: admission-webhook-k8s
+    app: proxy-webhook-k8s
 spec:
   selector:
     matchLabels:
-      app: admission-webhook-k8s
+      app: proxy-webhook-k8s
   template:
     metadata:
       labels:
-        app: admission-webhook-k8s
+        app: proxy-webhook-k8s
     spec:
-      serviceAccount: admission-webhook-sa
+      serviceAccount: proxy-webhook-sa
       containers:
-        - name: admission-webhook-k8s
-          image: my-webhook:3
+        - name: proxy-webhook-k8s
+          image: proxy-webhook:5
           imagePullPolicy: IfNotPresent
           readinessProbe:
             httpGet:
@@ -28,7 +28,7 @@ spec:
             - name: SPIFFE_ENDPOINT_SOCKET
               value: unix:///run/spire/sockets/agent.sock
             - name: NSM_SERVICE_NAME
-              value: admission-webhook-svc
+              value: proxy-webhook-svc
             - name: NSM_NAME
               valueFrom:
                 fieldRef:
