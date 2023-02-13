@@ -1,0 +1,210 @@
+{
+  "RunType": "HTTP",
+  "Labels": "",
+  "StartTime": "2023-02-10T11:29:59.014846529Z",
+  "RequestedQPS": "100",
+  "RequestedDuration": "10s",
+  "ActualQPS": 99.96917161682289,
+  "ActualDuration": 10003083789,
+  "NumThreads": 1,
+  "Version": "1.40.0",
+  "DurationHistogram": {
+    "Count": 1000,
+    "Min": 0.000626291,
+    "Max": 0.055975177,
+    "Sum": 1.696523946000003,
+    "Avg": 0.001696523946000003,
+    "StdDev": 0.002022721940173447,
+    "Data": [
+      {
+        "Start": 0.000626291,
+        "End": 0.001,
+        "Percent": 2.6,
+        "Count": 26
+      },
+      {
+        "Start": 0.001,
+        "End": 0.002,
+        "Percent": 98.3,
+        "Count": 957
+      },
+      {
+        "Start": 0.002,
+        "End": 0.003,
+        "Percent": 99.7,
+        "Count": 14
+      },
+      {
+        "Start": 0.02,
+        "End": 0.025,
+        "Percent": 99.8,
+        "Count": 1
+      },
+      {
+        "Start": 0.025,
+        "End": 0.03,
+        "Percent": 99.9,
+        "Count": 1
+      },
+      {
+        "Start": 0.05,
+        "End": 0.055975177,
+        "Percent": 100,
+        "Count": 1
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.0014952978056426334
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0017565308254963428
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.0019132706374085685
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.0025
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.03
+      }
+    ]
+  },
+  "ErrorsDurationHistogram": {
+    "Count": 0,
+    "Min": 0,
+    "Max": 0,
+    "Sum": 0,
+    "Avg": 0,
+    "StdDev": 0,
+    "Data": null
+  },
+  "Exactly": 0,
+  "Jitter": false,
+  "Uniform": false,
+  "NoCatchUp": false,
+  "RunID": 4,
+  "AccessLoggerInfo": "",
+  "ID": "2023-02-10-112959_4",
+  "RetCodes": {
+    "200": 1000
+  },
+  "IPCountMap": {
+    "172.16.1.100:80": 2
+  },
+  "Insecure": false,
+  "CACert": "",
+  "Cert": "",
+  "Key": "",
+  "UnixDomainSocket": "",
+  "URL": "http://172.16.1.100:80",
+  "NumConnections": 1,
+  "Compression": false,
+  "DisableFastClient": false,
+  "HTTP10": false,
+  "H2": false,
+  "DisableKeepAlive": false,
+  "AllowHalfClose": false,
+  "FollowRedirects": false,
+  "Resolve": "",
+  "HTTPReqTimeOut": 3000000000,
+  "UserCredentials": "",
+  "ContentType": "",
+  "Payload": null,
+  "LogErrors": false,
+  "SequentialWarmup": false,
+  "ConnReuseRange": [
+    0,
+    0
+  ],
+  "NoResolveEachConn": false,
+  "Offset": 0,
+  "Resolution": 0.001,
+  "Sizes": {
+    "Count": 1000,
+    "Min": 848,
+    "Max": 853,
+    "Sum": 852995,
+    "Avg": 852.995,
+    "StdDev": 0.15803480636822337,
+    "Data": [
+      {
+        "Start": 848,
+        "End": 853,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "HeaderSizes": {
+    "Count": 1000,
+    "Min": 233,
+    "Max": 238,
+    "Sum": 237995,
+    "Avg": 237.995,
+    "StdDev": 0.1580348062975056,
+    "Data": [
+      {
+        "Start": 233,
+        "End": 238,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "Sockets": [
+    2
+  ],
+  "SocketCount": 2,
+  "ConnectionStats": {
+    "Count": 2,
+    "Min": 0.000857272,
+    "Max": 0.00131719,
+    "Sum": 0.002174462,
+    "Avg": 0.001087231,
+    "StdDev": 0.00022995900000000028,
+    "Data": [
+      {
+        "Start": 0.000857272,
+        "End": 0.001,
+        "Percent": 50,
+        "Count": 1
+      },
+      {
+        "Start": 0.001,
+        "End": 0.00131719,
+        "Percent": 100,
+        "Count": 1
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.000857272
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0011585950000000001
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.001253752
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.0013108462
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.00131655562
+      }
+    ]
+  },
+  "AbortOn": 0
+}

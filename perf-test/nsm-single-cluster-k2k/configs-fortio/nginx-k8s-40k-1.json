@@ -1,0 +1,8 @@
+{
+    "url": "http://nginx-service.msm-perf-test-nsm-k2k:80",
+    "qps": "40000",
+    "c": "1",
+    "t": "10s",
+    "headers": [],
+    "save": "on"
+}

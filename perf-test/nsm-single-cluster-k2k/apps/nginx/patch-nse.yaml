@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nse-kernel
+spec:
+  template:
+    spec:
+      containers:
+        - name: nse
+          env:
+            - name: NSM_CIDR_PREFIX
+              value: 172.16.1.0/24
+            - name: NSM_SERVICE_NAMES
+              value: "nginx-kernel2kernel"
+            - name: NSM_REGISTER_SERVICE
+              value: "false"
+        - name: nginx
+          image: nginx:1.23.3
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 80

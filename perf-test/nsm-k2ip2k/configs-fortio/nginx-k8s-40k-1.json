@@ -1,0 +1,8 @@
+{
+    "url": "http://nginx-service.ns-kernel2ip2kernel:80",
+    "qps": "40000",
+    "c": "1",
+    "t": "10s",
+    "headers": [],
+    "save": "on"
+}
