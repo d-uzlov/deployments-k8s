@@ -1,0 +1,8 @@
+{
+    "url": "http://nginx.my-vl3-network:80",
+    "qps": "40000",
+    "c": "1",
+    "t": "10s",
+    "headers": [],
+    "save": "on"
+}

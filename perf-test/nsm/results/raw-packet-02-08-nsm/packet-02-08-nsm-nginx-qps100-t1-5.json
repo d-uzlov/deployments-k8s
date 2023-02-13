@@ -1,0 +1,210 @@
+{
+  "RunType": "HTTP",
+  "Labels": "",
+  "StartTime": "2023-02-08T09:12:48.950378752Z",
+  "RequestedQPS": "100",
+  "RequestedDuration": "10s",
+  "ActualQPS": 99.87665577586144,
+  "ActualDuration": 10012349655,
+  "NumThreads": 1,
+  "Version": "1.40.0",
+  "DurationHistogram": {
+    "Count": 1000,
+    "Min": 0.000313298,
+    "Max": 0.051252137,
+    "Sum": 5.021858297000003,
+    "Avg": 0.005021858297000003,
+    "StdDev": 0.013682932698507858,
+    "Data": [
+      {
+        "Start": 0.000313298,
+        "End": 0.001,
+        "Percent": 89,
+        "Count": 890
+      },
+      {
+        "Start": 0.001,
+        "End": 0.002,
+        "Percent": 89.9,
+        "Count": 9
+      },
+      {
+        "Start": 0.011,
+        "End": 0.012,
+        "Percent": 90,
+        "Count": 1
+      },
+      {
+        "Start": 0.035,
+        "End": 0.04,
+        "Percent": 90.5,
+        "Count": 5
+      },
+      {
+        "Start": 0.04,
+        "End": 0.045,
+        "Percent": 93.8,
+        "Count": 33
+      },
+      {
+        "Start": 0.045,
+        "End": 0.05,
+        "Percent": 98.5,
+        "Count": 47
+      },
+      {
+        "Start": 0.05,
+        "End": 0.051252137,
+        "Percent": 100,
+        "Count": 15
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.0006987471541057367
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0008918579527559054
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.012
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.050417379000000005
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.05116866120000001
+      }
+    ]
+  },
+  "ErrorsDurationHistogram": {
+    "Count": 0,
+    "Min": 0,
+    "Max": 0,
+    "Sum": 0,
+    "Avg": 0,
+    "StdDev": 0,
+    "Data": null
+  },
+  "Exactly": 0,
+  "Jitter": false,
+  "Uniform": false,
+  "NoCatchUp": false,
+  "RunID": 20,
+  "AccessLoggerInfo": "",
+  "ID": "2023-02-08-091248_20",
+  "RetCodes": {
+    "200": 1000
+  },
+  "IPCountMap": {
+    "172.16.0.2:80": 2
+  },
+  "Insecure": false,
+  "CACert": "",
+  "Cert": "",
+  "Key": "",
+  "UnixDomainSocket": "",
+  "URL": "http://nginx.my-vl3-network:80",
+  "NumConnections": 1,
+  "Compression": false,
+  "DisableFastClient": false,
+  "HTTP10": false,
+  "H2": false,
+  "DisableKeepAlive": false,
+  "AllowHalfClose": false,
+  "FollowRedirects": false,
+  "Resolve": "",
+  "HTTPReqTimeOut": 3000000000,
+  "UserCredentials": "",
+  "ContentType": "",
+  "Payload": null,
+  "LogErrors": false,
+  "SequentialWarmup": false,
+  "ConnReuseRange": [
+    0,
+    0
+  ],
+  "NoResolveEachConn": false,
+  "Offset": 0,
+  "Resolution": 0.001,
+  "Sizes": {
+    "Count": 1000,
+    "Min": 848,
+    "Max": 853,
+    "Sum": 852995,
+    "Avg": 852.995,
+    "StdDev": 0.15803480636822337,
+    "Data": [
+      {
+        "Start": 848,
+        "End": 853,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "HeaderSizes": {
+    "Count": 1000,
+    "Min": 233,
+    "Max": 238,
+    "Sum": 237995,
+    "Avg": 237.995,
+    "StdDev": 0.1580348062975056,
+    "Data": [
+      {
+        "Start": 233,
+        "End": 238,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "Sockets": [
+    2
+  ],
+  "SocketCount": 2,
+  "ConnectionStats": {
+    "Count": 2,
+    "Min": 0.000501187,
+    "Max": 0.000607383,
+    "Sum": 0.0011085700000000001,
+    "Avg": 0.0005542850000000001,
+    "StdDev": 0.000053097999999999335,
+    "Data": [
+      {
+        "Start": 0.000501187,
+        "End": 0.000607383,
+        "Percent": 100,
+        "Count": 2
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.000501187
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0005542850000000001
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.0005861438
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.0006052590799999999
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.0006071706079999999
+      }
+    ]
+  },
+  "AbortOn": 0
+}

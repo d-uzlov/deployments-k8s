@@ -1,0 +1,8 @@
+{
+    "url": "nginx-service.msm-perf-test-nsm-vl3-ip:80",
+    "qps": "40000",
+    "c": "1",
+    "t": "10s",
+    "headers": [],
+    "save": "on"
+}

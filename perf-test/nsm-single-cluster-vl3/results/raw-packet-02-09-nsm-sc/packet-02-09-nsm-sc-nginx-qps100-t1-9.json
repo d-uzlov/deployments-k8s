@@ -1,0 +1,210 @@
+{
+  "RunType": "HTTP",
+  "Labels": "",
+  "StartTime": "2023-02-09T05:10:55.959267499Z",
+  "RequestedQPS": "100",
+  "RequestedDuration": "10s",
+  "ActualQPS": 99.8592601362588,
+  "ActualDuration": 10014093822,
+  "NumThreads": 1,
+  "Version": "1.40.0",
+  "DurationHistogram": {
+    "Count": 1000,
+    "Min": 0.000373187,
+    "Max": 0.051768401,
+    "Sum": 5.052548542000006,
+    "Avg": 0.005052548542000005,
+    "StdDev": 0.013699114728797625,
+    "Data": [
+      {
+        "Start": 0.000373187,
+        "End": 0.001,
+        "Percent": 89.2,
+        "Count": 892
+      },
+      {
+        "Start": 0.001,
+        "End": 0.002,
+        "Percent": 89.9,
+        "Count": 7
+      },
+      {
+        "Start": 0.012,
+        "End": 0.014,
+        "Percent": 90,
+        "Count": 1
+      },
+      {
+        "Start": 0.035,
+        "End": 0.04,
+        "Percent": 90.4,
+        "Count": 4
+      },
+      {
+        "Start": 0.04,
+        "End": 0.045,
+        "Percent": 94.2,
+        "Count": 38
+      },
+      {
+        "Start": 0.045,
+        "End": 0.05,
+        "Percent": 98.4,
+        "Count": 42
+      },
+      {
+        "Start": 0.05,
+        "End": 0.051768401,
+        "Percent": 100,
+        "Count": 16
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.0007242304197530864
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0009001038765432098
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.014
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.050663150375
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.05165787593750001
+      }
+    ]
+  },
+  "ErrorsDurationHistogram": {
+    "Count": 0,
+    "Min": 0,
+    "Max": 0,
+    "Sum": 0,
+    "Avg": 0,
+    "StdDev": 0,
+    "Data": null
+  },
+  "Exactly": 0,
+  "Jitter": false,
+  "Uniform": false,
+  "NoCatchUp": false,
+  "RunID": 49,
+  "AccessLoggerInfo": "",
+  "ID": "2023-02-09-051055_49",
+  "RetCodes": {
+    "200": 1000
+  },
+  "IPCountMap": {
+    "172.16.0.3:80": 2
+  },
+  "Insecure": false,
+  "CACert": "",
+  "Cert": "",
+  "Key": "",
+  "UnixDomainSocket": "",
+  "URL": "http://nginx.my-vl3-network:80",
+  "NumConnections": 1,
+  "Compression": false,
+  "DisableFastClient": false,
+  "HTTP10": false,
+  "H2": false,
+  "DisableKeepAlive": false,
+  "AllowHalfClose": false,
+  "FollowRedirects": false,
+  "Resolve": "",
+  "HTTPReqTimeOut": 3000000000,
+  "UserCredentials": "",
+  "ContentType": "",
+  "Payload": null,
+  "LogErrors": false,
+  "SequentialWarmup": false,
+  "ConnReuseRange": [
+    0,
+    0
+  ],
+  "NoResolveEachConn": false,
+  "Offset": 0,
+  "Resolution": 0.001,
+  "Sizes": {
+    "Count": 1000,
+    "Min": 848,
+    "Max": 853,
+    "Sum": 852995,
+    "Avg": 852.995,
+    "StdDev": 0.15803480636822337,
+    "Data": [
+      {
+        "Start": 848,
+        "End": 853,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "HeaderSizes": {
+    "Count": 1000,
+    "Min": 233,
+    "Max": 238,
+    "Sum": 237995,
+    "Avg": 237.995,
+    "StdDev": 0.1580348062975056,
+    "Data": [
+      {
+        "Start": 233,
+        "End": 238,
+        "Percent": 100,
+        "Count": 1000
+      }
+    ]
+  },
+  "Sockets": [
+    2
+  ],
+  "SocketCount": 2,
+  "ConnectionStats": {
+    "Count": 2,
+    "Min": 0.000540889,
+    "Max": 0.00054372,
+    "Sum": 0.001084609,
+    "Avg": 0.0005423045,
+    "StdDev": 0.000001415500000012824,
+    "Data": [
+      {
+        "Start": 0.000540889,
+        "End": 0.00054372,
+        "Percent": 100,
+        "Count": 2
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.000540889
+      },
+      {
+        "Percentile": 75,
+        "Value": 0.0005423045
+      },
+      {
+        "Percentile": 90,
+        "Value": 0.0005431538
+      },
+      {
+        "Percentile": 99,
+        "Value": 0.00054366338
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 0.000543714338
+      }
+    ]
+  },
+  "AbortOn": 0
+}
