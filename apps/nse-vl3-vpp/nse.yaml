@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
         - name: nse
-          image: ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp:2814c48
+          # image: ghcr.io/networkservicemesh/ci/cmd-nse-vl3-vpp:2814c48
+          image: daniluzlov/daniluzlov-test:myvl3--2023-02-n4-disable-stats-adaptive
           imagePullPolicy: IfNotPresent
           env:
             - name: SPIFFE_ENDPOINT_SOCKET
@@ -42,9 +43,9 @@ spec:
           resources:
             requests:
               cpu: 150m
-            limits:
-              memory: 400Mi
-              cpu: 500m
+            # limits:
+            #   memory: 400Mi
+            #   cpu: 500m
       volumes:
         - name: spire-agent-socket
           hostPath:
