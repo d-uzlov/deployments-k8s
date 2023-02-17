@@ -20,7 +20,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         # - image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:d52a54d
-        - image: daniluzlov/daniluzlov-test:myfwd--2023-02-n4-disable-stats-adaptive
+        - image: daniluzlov/daniluzlov-test:myfwd--2023-02-n5-disable-stats
           imagePullPolicy: IfNotPresent
           name: forwarder-vpp
           securityContext:
