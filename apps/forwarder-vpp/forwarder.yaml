@@ -19,8 +19,8 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-        # - image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:d52a54d
-        - image: daniluzlov/daniluzlov-test:myfwd--2023-02-n5-disable-stats
+        - image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:d52a54d
+        # - image: daniluzlov/daniluzlov-test:myfwd--2023-02-n5-disable-stats
           imagePullPolicy: IfNotPresent
           name: forwarder-vpp
           securityContext:
@@ -59,9 +59,9 @@ spec:
           resources:
             requests:
               cpu: 150m
-            limits:
-              memory: 500Mi
-              cpu: 525m
+            # limits:
+            #   memory: 500Mi
+            #   cpu: 525m
           readinessProbe:
             exec:
               command: ["/bin/grpc-health-probe", "-spiffe", "-addr=unix:///listen.on.sock"]
