@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-deployment
+  labels:
+    app: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+      # annotations:
+      #   networkservicemesh.io: kernel://my-vl3-network/nsm-1?dnsName=ubuntu
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command:
+        - sleep
+        - "123456"
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /var/run/secrets/istiod/ca
+          name: istio-csr-ca-configmap
+          readOnly: true
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: istio-ca-root-cert
+          optional: true
+        name: istio-csr-ca-configmap
