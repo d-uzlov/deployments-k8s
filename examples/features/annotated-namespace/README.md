@@ -13,7 +13,7 @@ Make sure that you have completed steps from [basic](../../basic) or [memory](..
 
 Create test namespace and deploy NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/features/annotated-namespace?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/features/annotated-namespace?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
 ```
 
 Wait for NSE to be ready:

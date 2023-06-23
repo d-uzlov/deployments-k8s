@@ -9,7 +9,7 @@ Forwarders are using the `wireguard` mechanism to connect with each other.
 
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/features/dual-stack/Kernel2IP2Kernel_dual_stack?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/features/dual-stack/Kernel2IP2Kernel_dual_stack?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
 ```
 
 Wait for applications ready:

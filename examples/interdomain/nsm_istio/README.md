@@ -42,7 +42,7 @@ kubectl --kubeconfig=$KUBECONFIG1 apply -f https://raw.githubusercontent.com/d-u
 
 Start `auto-scale` networkservicemesh endpoint:
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_istio/nse-auto-scale?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
+kubectl --kubeconfig=$KUBECONFIG2 apply -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_istio/nse-auto-scale?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
 ```
 
 Install http-server for the second cluster:
@@ -75,7 +75,7 @@ You have made a interdomain connection between two clusters via NSM + Istio!
 
 ```bash
 kubectl --kubeconfig=$KUBECONFIG2 delete -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4/examples/interdomain/nsm_istio/greeting/server.yaml
-kubectl --kubeconfig=$KUBECONFIG2 delete -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_istio/nse-auto-scale?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
+kubectl --kubeconfig=$KUBECONFIG2 delete -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_istio/nse-auto-scale?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
 kubectl --kubeconfig=$KUBECONFIG1 delete -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4/examples/interdomain/nsm_istio/greeting/client.yaml
 kubectl --kubeconfig=$KUBECONFIG2 delete -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4/examples/interdomain/nsm_istio/netsvc.yaml
 kubectl --kubeconfig=$KUBECONFIG2 delete ns istio-system

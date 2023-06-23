@@ -11,7 +11,7 @@
 ## Run
 1. Start vl3
 ```bash
-kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_kuma_universal_vl3/vl3-dns?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
+kubectl --kubeconfig=$KUBECONFIG1 apply -k https://github.com/d-uzlov/deployments-k8s/examples/interdomain/nsm_kuma_universal_vl3/vl3-dns?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
 kubectl --kubeconfig=$KUBECONFIG1 -n ns-dns-vl3 wait --for=condition=ready --timeout=5m pod -l app=vl3-ipam
 ```
 
