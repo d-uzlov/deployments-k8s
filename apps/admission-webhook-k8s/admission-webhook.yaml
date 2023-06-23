@@ -40,11 +40,9 @@ spec:
             - name: NSM_ANNOTATION
               value: networkservicemesh.io
             - name: NSM_CONTAINER_IMAGES
-              # value: ghcr.io/networkservicemesh/ci/cmd-nsc:beef06c
               value: daniluzlov/daniluzlov-test:nsc-18
             - name: NSM_INIT_CONTAINER_IMAGES
               value: ghcr.io/networkservicemesh/ci/cmd-nsc-init:3438325
-              # value: docker.io/library/1454-nsc-init:18
             - name: NSM_LABELS
               value: spiffe.io/spiffe-id:true
             - name: NSM_ENVS

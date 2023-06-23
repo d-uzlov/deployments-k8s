@@ -17,9 +17,7 @@ spec:
     spec:
       serviceAccount: nsmgr-sa
       containers:
-        # - image: docker.io/library/1454-nsmgr:18
         - image: daniluzlov/daniluzlov-test:nsmgr-18
-        # - image: ghcr.io/networkservicemesh/ci/cmd-nsmgr:d9c7859
           imagePullPolicy: IfNotPresent
           name: nsmgr
           ports:
