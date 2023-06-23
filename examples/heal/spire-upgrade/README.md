@@ -18,7 +18,7 @@ kubectl create ns ns-spire-upgrade
 
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/heal/spire-upgrade?ref=4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/heal/spire-upgrade?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
 ```
 
 Wait for applications ready:
@@ -49,7 +49,7 @@ kubectl delete ns spire
 
 Deploy SPIRE and wait for SPIRE server and agents:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/spire/single_cluster?ref=4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/spire/single_cluster?ref=f3d8e97881a29f22b150bfcd6233647c5f96ee68
 ```
 
 ```bash

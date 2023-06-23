@@ -17,12 +17,12 @@ get_root() {
   escape "${root}"
 }
 
-grep 'raw.githubusercontent.com' -rl examples/* | while IFS= read -r file; do
+grep 'raw.d-uzlov.com' -rl examples/* | while IFS= read -r file; do
   root="$(get_root "$file")"
-  sedi -E "s/(https:\/\/)?raw.githubusercontent.com\/networkservicemesh\/deployments-k8s\/[a-z0-9.]*\/(.*)/${root}\/\2/g" "${file}"
+  sedi -E "s/(https:\/\/)?raw.githubusercontent.com\/d-uzlov\/deployments-k8s\/[a-z0-9.]*\/(.*)/${root}\/\2/g" "${file}"
 done
 
-grep 'github.com\/networkservicemesh\/deployments-k8s' -rl examples/* | while IFS= read -r file; do
+grep 'github.com\/d-uzlov\/deployments-k8s' -rl examples/* | while IFS= read -r file; do
   root="$(get_root "$file")"
-  sedi -E "s/(https:\/\/)?github.com\/networkservicemesh\/deployments-k8s\/(.*)\?ref=[a-z0-9.]*/${root}\/\2/g" "${file}"
+  sedi -E "s/(https:\/\/)?github.com\/d-uzlov\/deployments-k8s\/(.*)\?ref=[a-z0-9.]*/${root}\/\2/g" "${file}"
 done
