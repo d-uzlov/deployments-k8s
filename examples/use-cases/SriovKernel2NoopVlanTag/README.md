@@ -12,7 +12,7 @@ Make sure that you have completed steps from [sriov](../../sriov_vlantag) setup.
 
 Deploy ponger:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2NoopVlanTag/ponger?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2NoopVlanTag/ponger?ref=40e76b2726cd8cb8f541d0c64bb17acf5f79ea50
 ```
 
 Wait for applications ready:
@@ -27,7 +27,7 @@ kubectl -n ns-sriov-kernel2noop-vlantag exec deploy/ponger -- ip a | grep "172.1
 
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2NoopVlanTag?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2NoopVlanTag?ref=40e76b2726cd8cb8f541d0c64bb17acf5f79ea50
 ```
 
 Wait for applications ready:

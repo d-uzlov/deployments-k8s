@@ -8,5 +8,5 @@ services:
     networks:
       - kind
     environment:
-      NSM_SERVICE_NAMES: kernel2wireguard2kernel-monolith-nse
+      NSM_SERVICE_NAMES: kernel2ip2kernel-monolith-nse
       NSM_REGISTER_SERVICE: false

@@ -16,7 +16,7 @@ hugepage, so in this case NSE pod should be created with memory limit > 2.2 GB.
 
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2KernelVLAN?ref=a54ae4d4a3f823c30a896ed64e82e9f963a0d12f
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2KernelVLAN?ref=40e76b2726cd8cb8f541d0c64bb17acf5f79ea50
 ```
 
 Wait for applications ready:
