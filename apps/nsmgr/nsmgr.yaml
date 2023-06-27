@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccount: nsmgr-sa
       containers:
-        - image: docker.io/daniluzlov/daniluzlov-test:nsmgr-19-pure
+        - image: docker.io/daniluzlov/daniluzlov-test:nsmgr-20-close
           imagePullPolicy: IfNotPresent
           name: nsmgr
           ports:
