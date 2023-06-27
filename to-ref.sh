@@ -17,13 +17,13 @@ get_root() {
   escape "${root}"
 }
 
-FILE_PATTERN="$(escape 'https://raw.githubusercontent.com/d-uzlov/deployments-k8s/41407ca07ccc0454f9708e7a5f82657b0f0c24fc/\1')"
+FILE_PATTERN="$(escape 'https://raw.githubusercontent.com/d-uzlov/deployments-k8s/02881b7400c6d2bc424ec9a01235cb1e7ea7c7c9/\1')"
 grep "$(pwd)" -rl examples/* | while IFS= read -r file; do
   root="$(get_root "$file")"
   sedi -E "s/${root//./\.}\/([^ ]*\.[a-z]+)/${FILE_PATTERN}/g" "${file}"
 done
 
-DIR_PATTERN="$(escape 'https://github.com/d-uzlov/deployments-k8s/\1?ref=41407ca07ccc0454f9708e7a5f82657b0f0c24fc')"
+DIR_PATTERN="$(escape 'https://github.com/d-uzlov/deployments-k8s/\1?ref=02881b7400c6d2bc424ec9a01235cb1e7ea7c7c9')"
 grep "$(pwd)" -rl examples/* | while IFS= read -r file; do
   root="$(get_root "$file")"
   sedi -E "s/${root//./\.}\/([^ ]*)/${DIR_PATTERN}/g" "${file}"

@@ -12,14 +12,14 @@ Make sure that you have completed steps from [remotevlan](../../remotevlan) setu
 
 Deployment in first namespace
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-1?ref=41407ca07ccc0454f9708e7a5f82657b0f0c24fc
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-1?ref=02881b7400c6d2bc424ec9a01235cb1e7ea7c7c9
 ```
 
 Deployment in second namespace:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4/examples/use-cases/Kernel2RVlanMultiNS/ns-2/ns-kernel2vlan-multins-2.yaml
 kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4a0ec48044729b965bd0a6f161f5fbf2aaf5e0b4/examples/use-cases/Kernel2RVlanMultiNS/ns-2/netsvc.yaml
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-2?ref=41407ca07ccc0454f9708e7a5f82657b0f0c24fc
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-2?ref=02881b7400c6d2bc424ec9a01235cb1e7ea7c7c9
 ```
 
 Deploy the last client
