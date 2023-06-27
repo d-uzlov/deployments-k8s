@@ -19,7 +19,7 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-        - image: daniluzlov/daniluzlov-test:fwd-18
+        - image: docker.io/daniluzlov/daniluzlov-test:fwd-19-pure
           imagePullPolicy: IfNotPresent
           name: forwarder-vpp
           securityContext:
