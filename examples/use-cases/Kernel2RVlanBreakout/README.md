@@ -13,7 +13,7 @@ Make sure that you have completed steps from [remotevlan](../../remotevlan) setu
 Deploy iperf server:
 
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanBreakout?ref=63d2effb4e93b0238bd80c5af9bd899b1245b6ba
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanBreakout?ref=41407ca07ccc0454f9708e7a5f82657b0f0c24fc
 ```
 
 Wait for applications ready:
