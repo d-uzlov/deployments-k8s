@@ -10,7 +10,7 @@ Make sure that you have completed steps from [sriov](../../sriov) setup.
 
 Deploy ponger:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2Noop/ponger?ref=ac92ed6624dd03b7297e12d6d56608ab2ec175bb
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2Noop/ponger?ref=6bd62e7cbe871b4ccd92a2bf0a5dbaf408eef820
 ```
 
 Wait for applications ready:
@@ -25,7 +25,7 @@ kubectl -n ns-sriov-kernel2noop exec deploy/ponger -- ip a | grep "172.16.1.100"
 
 Deploy NSC and NSE:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2Noop?ref=ac92ed6624dd03b7297e12d6d56608ab2ec175bb
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/SriovKernel2Noop?ref=6bd62e7cbe871b4ccd92a2bf0a5dbaf408eef820
 ```
 
 Wait for applications ready:
