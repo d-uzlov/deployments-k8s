@@ -6,7 +6,7 @@ This setup is basic for interdomain examples on two clusters. This setup can be 
 
 ## Requires
 
-- [Load balancer](./loadbalancer)
+- Load balancer is not required when using NodePort services
 - [Interdomain DNS](./dns)
 - Interdomain spire
     - [Spire on first cluster](../spire/cluster1)

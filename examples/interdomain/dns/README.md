@@ -5,60 +5,9 @@ Can be skipped if clusters setupped with external DNS.
 
 ## Run
 
-Expose kube-dns service on cluster 1:
-
 ```bash
-kubectl --kubeconfig=$KUBECONFIG1 expose service kube-dns -n kube-system --port=53 --target-port=53 --protocol=TCP --name=exposed-kube-dns --type=LoadBalancer
-```
-
-Wait until IP of external DNS for cluster 1 is allocated:
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG1 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "ip"}}'
-```
-
-Get and store that IP:
-
-```bash
-ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "ip"}}')
-# If cluster uses DNS records for load-balancer, resolve them
-if [[ $ip1 == *"no value"* ]]; then 
-    ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "hostname"}}')
-    ip1=$(dig +short $ip1 | head -1)
-fi
-# if IPv6
-if [[ $ip1 =~ ':' ]]; then ip1=[$ip1]; fi
-
-echo Selected externalIP: $ip1 for cluster1
-[[ ! -z $ip1 ]]
-```
-
-Expose kube-dns service on cluster 2:
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG2 expose service kube-dns -n kube-system --port=53 --target-port=53 --protocol=TCP --name=exposed-kube-dns --type=LoadBalancer
-```
-
-Wait until IP of external DNS for cluster 2 is allocated:
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG2 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "ip"}}'
-```
-
-Get and store that IP:
-
-```bash
-ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "ip"}}')
-# If cluster uses DNS records for load-balancer, resolve them
-if [[ $ip2 == *"no value"* ]]; then 
-    ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get services exposed-kube-dns -n kube-system -o go-template='{{index (index (index (index .status "loadBalancer") "ingress") 0) "hostname"}}')
-    ip2=$(dig +short $ip2 | head -1)
-fi
-# if IPv6
-if [[ $ip2 =~ ':' ]]; then ip2=[$ip2]; fi
-
-echo Selected externalIP: $ip2 for cluster2
-[[ ! -z $ip2 ]]
+ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
 ```
 
 Add DNS forwarding from cluster1 to cluster2:
@@ -77,6 +26,10 @@ data:
             lameduck 5s
         }
         ready
+        hosts /etc/coredns/customdomains.db my.cluster2. {
+          fallthrough
+        }
+        file /etc/coredns/custom.db my.cluster2.
         kubernetes cluster.local in-addr.arpa ip6.arpa {
             pods insecure
             fallthrough in-addr.arpa ip6.arpa
@@ -90,30 +43,25 @@ data:
         loop
         reload 5s
     }
-    my.cluster2:53 {
-      forward . ${ip2}:53 {
-        force_tcp
-      }
-    }
+  customdomains.db: |
+    # 172.18.0.2 spire-server.spire.my.cluster2.
+    # 172.18.0.2 nsmgr-proxy.nsm-system.my.cluster2.
+    # 172.18.0.2 registry.nsm-system.my.cluster2.
+  custom.db: |
+    my.cluster2. IN SOA sns.dns.icann.org. noc.dns.icann.org. 2015082541 7200 3600 1209600 3600
+    registry.nsm-system.my.cluster2. 86400 IN SRV 10 0 30002 raw.registry.nsm-system.my.cluster2.
+    nsmgr-proxy.nsm-system.my.cluster2. 86400 IN SRV 10 0 30004 raw.nsmgr-proxy.nsm-system.my.cluster2.
+    registry.nsm-system.my.cluster2.            IN      A       $ip2
+    nsmgr-proxy.nsm-system.my.cluster2.            IN      A       $ip2
+    spire-server.spire.my.cluster2.            IN      A       $ip2
 EOF
 ```
 ```bash
-kubectl --kubeconfig=$KUBECONFIG1 apply -f - <<EOF
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: coredns-custom
-  namespace: kube-system
-data:
-  server.override: |
-    k8s_external my.cluster1
-  proxy1.server: |
-    my.cluster2:53 {
-      forward . ${ip2}:53 {
-        force_tcp
-      }
-    }
-EOF
+curl https://raw.githubusercontent.com/networkservicemesh/deployments-k8s/30bab5c9638e9d8da3b126e5d7c92f24ff769684/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG1 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
+```
+```bash
+kubectl --kubeconfig=$KUBECONFIG1 -n kube-system rollout restart deployment coredns &&
+kubectl --kubeconfig=$KUBECONFIG1 -n kube-system rollout status deployment coredns
 ```
 
 Add DNS forwarding from cluster2 to cluster1:
@@ -132,12 +80,16 @@ data:
             lameduck 5s
         }
         ready
+        hosts /etc/coredns/customdomains.db my.cluster1. {
+          fallthrough
+        }
+        file /etc/coredns/custom.db my.cluster1.
         kubernetes cluster.local in-addr.arpa ip6.arpa {
             pods insecure
             fallthrough in-addr.arpa ip6.arpa
             ttl 30
         }
-        k8s_external my.cluster2
+        k8s_external my.cluster1
         prometheus :9153
         forward . /etc/resolv.conf {
             max_concurrent 1000
@@ -145,36 +97,26 @@ data:
         loop
         reload 5s
     }
-    my.cluster1:53 {
-      forward . ${ip1}:53 {
-        force_tcp
-      }
-    }
+  customdomains.db: |
+    # 172.18.0.3 spire-server.spire.my.cluster1.
+    # 172.18.0.3 nsmgr-proxy.nsm-system.my.cluster1.
+    # 172.18.0.3 registry.nsm-system.my.cluster1.
+  custom.db: |
+    my.cluster1. IN SOA sns.dns.icann.org. noc.dns.icann.org. 2015082541 7200 3600 1209600 3600
+    registry.nsm-system.my.cluster1. 86400 IN SRV 10 0 30002 raw.registry.nsm-system.my.cluster1.
+    nsmgr-proxy.nsm-system.my.cluster1. 86400 IN SRV 10 0 30004 raw.nsmgr-proxy.nsm-system.my.cluster1.
+    registry.nsm-system.my.cluster1.            IN      A       $ip1
+    nsmgr-proxy.nsm-system.my.cluster1.            IN      A       $ip1
+    spire-server.spire.my.cluster1.            IN      A       $ip1
 EOF
 ```
 ```bash
-kubectl --kubeconfig=$KUBECONFIG2 apply -f - <<EOF
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: coredns-custom
-  namespace: kube-system
-data:
-  server.override: |
-    k8s_external my.cluster2
-  proxy1.server: |
-    my.cluster1:53 {
-      forward . ${ip1}:53 {
-        force_tcp
-      }
-    }
-EOF
+curl https://raw.githubusercontent.com/networkservicemesh/deployments-k8s/30bab5c9638e9d8da3b126e5d7c92f24ff769684/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG2 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
+```
+```bash
+kubectl --kubeconfig=$KUBECONFIG2 -n kube-system rollout restart deployment coredns &&
+kubectl --kubeconfig=$KUBECONFIG2 -n kube-system rollout status deployment coredns
 ```
 
 ## Cleanup
-
-```bash
-kubectl --kubeconfig=$KUBECONFIG1 delete service -n kube-system exposed-kube-dns
-kubectl --kubeconfig=$KUBECONFIG2 delete service -n kube-system exposed-kube-dns
-```
 

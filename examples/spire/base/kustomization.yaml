@@ -22,3 +22,4 @@ resources:
 - leader_election_role.yaml
 - leader_election_role_binding.yaml
 - spire-controller-manager-webhook.yaml
+- spire-nodeport.yaml

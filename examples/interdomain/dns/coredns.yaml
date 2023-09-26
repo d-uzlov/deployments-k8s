@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns
+  namespace: kube-system
+spec:
+  selector: {}
+  template:
+    spec:
+      containers: []
+      volumes:
+      - configMap:
+          items:
+          - key: Corefile
+            path: Corefile
+          - key: customdomains.db
+            path: customdomains.db
+          - key: custom.db
+            path: custom.db
+          name: coredns
+        name: config-volume
