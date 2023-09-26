@@ -12,19 +12,19 @@ Make sure that you have completed steps from [remotevlan_ovs](../../remotevlan_o
 
 Deployment in first namespace
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-1?ref=47df790e254afd83bd80b052dbc447a6560034d6
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-1?ref=396a90b0927a8a77c36fdb8f2ec9f9203da74f03
 ```
 
 Deployment in second namespace:
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/47df790e254afd83bd80b052dbc447a6560034d6/examples/use-cases/Kernel2RVlanMultiNS/ns-2/ns-kernel2vlan-multins-2.yaml
-kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/47df790e254afd83bd80b052dbc447a6560034d6/examples/use-cases/Kernel2RVlanMultiNS/ns-2/netsvc.yaml
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-2?ref=47df790e254afd83bd80b052dbc447a6560034d6
+kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/use-cases/Kernel2RVlanMultiNS/ns-2/ns-kernel2vlan-multins-2.yaml
+kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/use-cases/Kernel2RVlanMultiNS/ns-2/netsvc.yaml
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/use-cases/Kernel2RVlanMultiNS/ns-2?ref=396a90b0927a8a77c36fdb8f2ec9f9203da74f03
 ```
 
 Deploy the last client
 ```bash
-kubectl apply -n nsm-system -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/47df790e254afd83bd80b052dbc447a6560034d6/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
+kubectl apply -n nsm-system -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
 ```
 
 Wait for applications ready:
@@ -341,7 +341,7 @@ true
 Delete the last client:
 
 ```bash
-kubectl delete --namespace=nsm-system -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/47df790e254afd83bd80b052dbc447a6560034d6/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
+kubectl delete --namespace=nsm-system -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/use-cases/Kernel2RVlanMultiNS/client.yaml
 ```
 
 Delete the test namespace:
