@@ -35,7 +35,6 @@ data:
             fallthrough in-addr.arpa ip6.arpa
             ttl 30
         }
-        k8s_external my.cluster1
         prometheus :9153
         forward . /etc/resolv.conf {
             max_concurrent 1000
@@ -89,7 +88,6 @@ data:
             fallthrough in-addr.arpa ip6.arpa
             ttl 30
         }
-        k8s_external my.cluster1
         prometheus :9153
         forward . /etc/resolv.conf {
             max_concurrent 1000
