@@ -62,7 +62,7 @@ data:
 EOF
 ```
 ```bash
-curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG1 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
+curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4cff7e4e8aa4d26982884b48a1cfc8b2cdf3bd23/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG1 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
 ```
 ```bash
 kubectl --kubeconfig=$KUBECONFIG1 -n kube-system rollout restart deployment coredns &&
@@ -115,7 +115,7 @@ data:
 EOF
 ```
 ```bash
-curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/396a90b0927a8a77c36fdb8f2ec9f9203da74f03/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG2 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
+curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4cff7e4e8aa4d26982884b48a1cfc8b2cdf3bd23/examples/interdomain/dns/coredns.yaml | kubectl --kubeconfig=$KUBECONFIG2 -n kube-system patch deployments.apps coredns --patch-file /dev/stdin
 ```
 ```bash
 kubectl --kubeconfig=$KUBECONFIG2 -n kube-system rollout restart deployment coredns &&
