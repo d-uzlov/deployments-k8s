@@ -6,8 +6,14 @@ Can be skipped if clusters setupped with external DNS.
 ## Run
 
 ```bash
-ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
-ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "ExternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+if [ -z "$ip1" ]; then
+  ip1=$(kubectl --kubeconfig=$KUBECONFIG1 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+fi
+ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "ExternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+if [ -z "$ip2" ]; then
+  ip2=$(kubectl --kubeconfig=$KUBECONFIG2 get node -o go-template='{{ $addresses := (index .items 0).status.addresses }}{{range $addresses}}{{if eq .type "InternalIP"}}{{.address}}{{break}}{{end}}{{end}}')
+fi
 ```
 
 Add DNS forwarding from cluster1 to cluster2:
