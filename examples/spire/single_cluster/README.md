@@ -6,7 +6,7 @@ This is a Spire setup for the single cluster scenario.
 
 To apply spire deployments following the next command:
 ```bash
-kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/spire/single_cluster?ref=4cff7e4e8aa4d26982884b48a1cfc8b2cdf3bd23
+kubectl apply -k https://github.com/d-uzlov/deployments-k8s/examples/spire/single_cluster?ref=c6466909ce55b440777cb06e0c9b41bd089403cd
 ```
 
 Wait for PODs status ready:
@@ -19,7 +19,7 @@ kubectl wait -n spire --timeout=1m --for=condition=ready pod -l app=spire-agent
 
 Apply the ClusterSPIFFEID CR for the cluster:
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4cff7e4e8aa4d26982884b48a1cfc8b2cdf3bd23/examples/spire/single_cluster/clusterspiffeid-template.yaml
+kubectl apply -f https://raw.githubusercontent.com/d-uzlov/deployments-k8s/c6466909ce55b440777cb06e0c9b41bd089403cd/examples/spire/single_cluster/clusterspiffeid-template.yaml
 ```
 
 ## Cleanup

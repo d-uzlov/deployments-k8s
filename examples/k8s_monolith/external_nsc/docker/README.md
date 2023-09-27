@@ -23,7 +23,7 @@ EOF
 
 Download docker-compose base file:
 ```bash
-curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/4cff7e4e8aa4d26982884b48a1cfc8b2cdf3bd23/apps/nsc-simple-docker/docker-compose.yaml -o docker-compose.yaml
+curl https://raw.githubusercontent.com/d-uzlov/deployments-k8s/c6466909ce55b440777cb06e0c9b41bd089403cd/apps/nsc-simple-docker/docker-compose.yaml -o docker-compose.yaml
 ```
 
 Run docker-nsc:
