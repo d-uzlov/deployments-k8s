@@ -22,6 +22,15 @@ spec:
         - image: ghcr.io/networkservicemesh/ci/cmd-forwarder-vpp:4a18797
           imagePullPolicy: IfNotPresent
           name: forwarder-vpp
+          command:
+          - bash
+          - -c
+          - |
+            set -eu
+            externalIp=$(ip route get 1.1.1.1 | grep -oP 'src \K\S+')
+            export NSM_TUNNEL_IP="$externalIp"
+            echo NSM_TUNNEL_IP = $NSM_TUNNEL_IP
+            /bin/forwarder
           securityContext:
             privileged: true
           env:
